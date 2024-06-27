@@ -1,0 +1,9 @@
+:host {
+  --clock-color: yellow;
+  display: block;
+}
+
+.clock {
+  background-color: var(--clock-color);
+  padding: 10px;
+}

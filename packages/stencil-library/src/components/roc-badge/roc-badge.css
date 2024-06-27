@@ -1,0 +1,32 @@
+.badge {
+  padding: 4px 8px;
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 12px;
+  min-width: 50px;
+  border-radius: 5px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.badge-info {
+  color: white;
+  background-color: #4790dd;
+}
+
+.badge-warning {
+  color: #2d2d2d;
+  background-color: #e9aa0cc4;
+}
+
+.badge-success {
+  color: white;
+  background-color: rgb(9, 187, 9);
+}
+
+.badge-error {
+  color: white;
+  background-color: #df2525;
+}

@@ -3,5 +3,10 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "html.customData": [
+    "./../packages/stencil-library/vscode-data.json"
+  ],
+  "tsEssentialPlugins.experiments.excludeNonJsxCompletions": false,
+  "editor.suggest.localityBonus": false
 }

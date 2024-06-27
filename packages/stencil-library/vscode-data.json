@@ -1,0 +1,61 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "my-component",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "first",
+          "description": "The first name"
+        },
+        {
+          "name": "last",
+          "description": "The last name"
+        },
+        {
+          "name": "middle",
+          "description": "The middle name"
+        }
+      ]
+    },
+    {
+      "name": "roc-badge",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "type",
+          "description": "",
+          "values": [
+            {
+              "name": "danger"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "roc-clock",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    }
+  ]
+}
