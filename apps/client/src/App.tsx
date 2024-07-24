@@ -1,6 +1,6 @@
 import './App.css'
 
-import { MyComponent, RocBadge, RocClock, defineCustomElements } from 'stencil-react'
+import { DateSelector, MyComponent, RocBadge, RocClock, TodoList, defineCustomElements } from 'stencil-react'
 
 import React from 'react'
 
@@ -13,13 +13,15 @@ function App() {
   }
 
   return (
-    <>
+    <div>
       <div>You are here</div>
       <MyComponent first="Rob" last="Taylor" onClick={console.log} />
       <MyComponent {...person} />
       <RocBadge type='danger'>Hello</RocBadge>
-      <RocClock onTimeChange={e => console.log(e.detail)}></RocClock>
-    </>
+      {/* <RocClock onTimeChange={e => console.log(e.detail)}></RocClock> */}
+      <DateSelector onValueChange={e => console.log(e.detail)} />
+      <TodoList todos='["one", "two", "three"]' />
+    </div>
   )
 }
 

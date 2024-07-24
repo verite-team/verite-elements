@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CustomTextInput {
+    }
+    interface DateSelector {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,22 +24,84 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyEmbeddedComponent {
+        "color": string;
+    }
+    interface MyParentComponent {
+    }
     interface RocBadge {
         "type": 'info' | 'warning' | 'danger' | 'success';
     }
     interface RocClock {
     }
+    interface TodoList {
+        "todos": string[];
+    }
+    interface TodoListItem {
+        "checked": boolean;
+    }
+}
+export interface DateSelectorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDateSelectorElement;
 }
 export interface RocClockCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLRocClockElement;
 }
+export interface TodoListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTodoListElement;
+}
+export interface TodoListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTodoListItemElement;
+}
 declare global {
+    interface HTMLCustomTextInputElement extends Components.CustomTextInput, HTMLStencilElement {
+    }
+    var HTMLCustomTextInputElement: {
+        prototype: HTMLCustomTextInputElement;
+        new (): HTMLCustomTextInputElement;
+    };
+    interface HTMLDateSelectorElementEventMap {
+        "valueChange": {
+    month: string
+    day: string
+    year: string
+  };
+    }
+    interface HTMLDateSelectorElement extends Components.DateSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDateSelectorElementEventMap>(type: K, listener: (this: HTMLDateSelectorElement, ev: DateSelectorCustomEvent<HTMLDateSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDateSelectorElementEventMap>(type: K, listener: (this: HTMLDateSelectorElement, ev: DateSelectorCustomEvent<HTMLDateSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDateSelectorElement: {
+        prototype: HTMLDateSelectorElement;
+        new (): HTMLDateSelectorElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
+    };
+    interface HTMLMyEmbeddedComponentElement extends Components.MyEmbeddedComponent, HTMLStencilElement {
+    }
+    var HTMLMyEmbeddedComponentElement: {
+        prototype: HTMLMyEmbeddedComponentElement;
+        new (): HTMLMyEmbeddedComponentElement;
+    };
+    interface HTMLMyParentComponentElement extends Components.MyParentComponent, HTMLStencilElement {
+    }
+    var HTMLMyParentComponentElement: {
+        prototype: HTMLMyParentComponentElement;
+        new (): HTMLMyParentComponentElement;
     };
     interface HTMLRocBadgeElement extends Components.RocBadge, HTMLStencilElement {
     }
@@ -60,13 +126,62 @@ declare global {
         prototype: HTMLRocClockElement;
         new (): HTMLRocClockElement;
     };
+    interface HTMLTodoListElementEventMap {
+        "ready": any;
+    }
+    interface HTMLTodoListElement extends Components.TodoList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTodoListElementEventMap>(type: K, listener: (this: HTMLTodoListElement, ev: TodoListCustomEvent<HTMLTodoListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTodoListElementEventMap>(type: K, listener: (this: HTMLTodoListElement, ev: TodoListCustomEvent<HTMLTodoListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTodoListElement: {
+        prototype: HTMLTodoListElement;
+        new (): HTMLTodoListElement;
+    };
+    interface HTMLTodoListItemElementEventMap {
+        "checkedChange": boolean;
+    }
+    interface HTMLTodoListItemElement extends Components.TodoListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTodoListItemElementEventMap>(type: K, listener: (this: HTMLTodoListItemElement, ev: TodoListItemCustomEvent<HTMLTodoListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTodoListItemElementEventMap>(type: K, listener: (this: HTMLTodoListItemElement, ev: TodoListItemCustomEvent<HTMLTodoListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTodoListItemElement: {
+        prototype: HTMLTodoListItemElement;
+        new (): HTMLTodoListItemElement;
+    };
     interface HTMLElementTagNameMap {
+        "custom-text-input": HTMLCustomTextInputElement;
+        "date-selector": HTMLDateSelectorElement;
         "my-component": HTMLMyComponentElement;
+        "my-embedded-component": HTMLMyEmbeddedComponentElement;
+        "my-parent-component": HTMLMyParentComponentElement;
         "roc-badge": HTMLRocBadgeElement;
         "roc-clock": HTMLRocClockElement;
+        "todo-list": HTMLTodoListElement;
+        "todo-list-item": HTMLTodoListItemElement;
     }
 }
 declare namespace LocalJSX {
+    interface CustomTextInput {
+    }
+    interface DateSelector {
+        "onValueChange"?: (event: DateSelectorCustomEvent<{
+    month: string
+    day: string
+    year: string
+  }>) => void;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -81,25 +196,50 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyEmbeddedComponent {
+        "color"?: string;
+    }
+    interface MyParentComponent {
+    }
     interface RocBadge {
         "type"?: 'info' | 'warning' | 'danger' | 'success';
     }
     interface RocClock {
         "onTimeChange"?: (event: RocClockCustomEvent<number>) => void;
     }
+    interface TodoList {
+        "onReady"?: (event: TodoListCustomEvent<any>) => void;
+        "todos"?: string[];
+    }
+    interface TodoListItem {
+        "checked"?: boolean;
+        "onCheckedChange"?: (event: TodoListItemCustomEvent<boolean>) => void;
+    }
     interface IntrinsicElements {
+        "custom-text-input": CustomTextInput;
+        "date-selector": DateSelector;
         "my-component": MyComponent;
+        "my-embedded-component": MyEmbeddedComponent;
+        "my-parent-component": MyParentComponent;
         "roc-badge": RocBadge;
         "roc-clock": RocClock;
+        "todo-list": TodoList;
+        "todo-list-item": TodoListItem;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "custom-text-input": LocalJSX.CustomTextInput & JSXBase.HTMLAttributes<HTMLCustomTextInputElement>;
+            "date-selector": LocalJSX.DateSelector & JSXBase.HTMLAttributes<HTMLDateSelectorElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-embedded-component": LocalJSX.MyEmbeddedComponent & JSXBase.HTMLAttributes<HTMLMyEmbeddedComponentElement>;
+            "my-parent-component": LocalJSX.MyParentComponent & JSXBase.HTMLAttributes<HTMLMyParentComponentElement>;
             "roc-badge": LocalJSX.RocBadge & JSXBase.HTMLAttributes<HTMLRocBadgeElement>;
             "roc-clock": LocalJSX.RocClock & JSXBase.HTMLAttributes<HTMLRocClockElement>;
+            "todo-list": LocalJSX.TodoList & JSXBase.HTMLAttributes<HTMLTodoListElement>;
+            "todo-list-item": LocalJSX.TodoListItem & JSXBase.HTMLAttributes<HTMLTodoListItemElement>;
         }
     }
 }

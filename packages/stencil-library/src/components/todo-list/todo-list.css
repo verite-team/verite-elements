@@ -1,0 +1,23 @@
+/* :host {
+  display: block;
+  padding: 10px;
+  background-color: yellow;
+} */
+.list {
+  display: inline-flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* gap: 20px; */
+  /* use var */
+  background-color: var(--list-bg-color, yellow);
+}
+
+.list .title {
+  font-weight: bold;
+}
+
+.list > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

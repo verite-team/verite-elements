@@ -1,3 +1,12 @@
+# What should I do first?
+
+```bash
+cd packages/stencil-library
+pnpm start # to start the dev server
+pnpm generate # to generate the web components
+```
+
+
 # `Turborepo` Vite starter
 
 This is an official starter Turborepo.

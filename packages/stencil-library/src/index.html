@@ -8,6 +8,11 @@
     <script type="module" src="/build/stencil-library.esm.js"></script>
     <script nomodule src="/build/stencil-library.js"></script>
     <style>
+      todo-list {
+        /* set var --list-bg-color to orange */
+        --list-bg-color: limegreen;
+      }
+
       roc-clock {
         /* display: block;
         margin-top: 20px; */
@@ -17,19 +22,72 @@
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
       }
+
+      li {
+        background-color: yellow;
+      }
     </style>
+
+    <script async>
+      function handleSubmit(event) {
+        event.preventDefault()
+        // get form value from event
+        const data = new FormData(form)
+        for (const [name, value] of data) {
+          console.log(name, ':', value)
+        }
+      }
+
+      function handleTodoListReady(event) {
+        console.log('🍉 Todo list is ready:', event.detail)
+      }
+    </script>
   </head>
   <body>
+    <h2>Examples</h2>
+
     <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
     <roc-clock>
       <div slot="clock">🕒</div>
     </roc-clock>
+    <date-selector></date-selector>
+    <my-parent-component></my-parent-component>
+
+    <form id="form" onsubmit="handleSubmit(event)">
+      <custom-text-input name="firstName"></custom-text-input>
+      <button type="submit">Submit</button>
+    </form>
+
+    <todo-list></todo-list>
 
     <script>
-      const clock = document.querySelector('roc-clock')
-      clock.addEventListener('timeChange', event => {
-        console.log('Time changed:', event.detail)
+      // const clock = document.querySelector('roc-clock')
+      // clock.addEventListener('timeChange', event => {
+      //   console.log('Time changed:', event.detail)
+      // })
+
+      const dateSelector = document.querySelector('date-selector')
+      dateSelector.addEventListener('valueChange', event => {
+        console.log('Date changed:', event.detail)
       })
+
+      const todosEl = document.querySelector('todo-list')
+      todosEl.addEventListener('ready', event => {
+        todosEl.todos = ['one', 'two', 'three', 'four']
+      })
+      // todosEl.componentOnReady().then(() => {
+      //   console.log('🍉 todosEl', todosEl)
+      //   todosEl.todos = ['one', 'two', 'three', 'four']
+      // })
+
+      // window.addEventListener('appload', evt => {
+      //   const todosEl = document.querySelector('#todos')
+      //   console.log('🍉 todosEl', todosEl)
+      //   // console.log('Todo list is ready:', event.detail)
+      //   // console.log('🍉 before', todosEl.todos)
+      //   // todosEl.todos = ['one', 'two', 'three', 'four']
+      //   // console.log('🍉 after', todosEl.todos)
+      // })
     </script>
   </body>
 </html>
