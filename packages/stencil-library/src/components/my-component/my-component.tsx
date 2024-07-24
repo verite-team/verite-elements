@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Event, EventEmitter, Prop, h } from '@stencil/core'
 
 import { format } from '../../utils/utils'
 
@@ -23,15 +23,22 @@ export class MyComponent {
    */
   @Prop() last: string
 
+
+  @Event() clicked: EventEmitter<void>
+
   private getText(): string {
     return format(this.first, this.middle, this.last)
   }
 
-  connectedCallback() {
-    console.log('Component has been rendered')
+  handleClick() {
+    this.clicked.emit()
   }
 
+  // connectedCallback() {
+  //   console.log('Component has been rendered')
+  // }
+
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>
+    return <div onClick={() => this.handleClick()}>Hello, world! I'm {this.getText()}</div>
   }
 }

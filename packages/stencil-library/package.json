@@ -32,28 +32,46 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build --docs",
+    "build:watch": "stencil build --watch",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
     "@stencil/core": "^4.7.0",
     "@stencil/react-output-target": "^0.5.3",
+    "@storybook/addon-actions": "^8.2.6",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-knobs": "^8.0.1",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/test": "^8.2.6",
+    "@storybook/web-components": "^8.2.6",
+    "@storybook/web-components-vite": "^8.2.6",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "puppeteer": "^21.9.0"
+    "lit": "^3.1.4",
+    "puppeteer": "^21.9.0",
+    "storybook": "^8.2.6"
   },
   "license": "MIT",
   "contributes": {
     "html": {
-      "customData": ["./vscode-data.json"]
+      "customData": [
+        "./vscode-data.json"
+      ]
     },
     "css": {
-      "customData": ["./css.css-data.json"]
+      "customData": [
+        "./css.css-data.json"
+      ]
     }
   }
 }

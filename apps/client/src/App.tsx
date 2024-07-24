@@ -20,7 +20,7 @@ function App() {
       <RocBadge type='danger'>Hello</RocBadge>
       {/* <RocClock onTimeChange={e => console.log(e.detail)}></RocClock> */}
       <DateSelector onValueChange={e => console.log(e.detail)} />
-      <TodoList todos='["one", "two", "three"]' />
+      <TodoList id='todos' todos={["one", "two", "three"]} />
     </div>
   )
 }

@@ -7,9 +7,16 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `todos`  | `todos`   |             | `string` | `''`    |
+| Property | Attribute | Description | Type       | Default |
+| -------- | --------- | ----------- | ---------- | ------- |
+| `todos`  | --        |             | `string[]` | `[]`    |
+
+
+## Events
+
+| Event   | Description | Type               |
+| ------- | ----------- | ------------------ |
+| `ready` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

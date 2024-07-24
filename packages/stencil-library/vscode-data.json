@@ -100,12 +100,7 @@
         "kind": "markdown",
         "value": ""
       },
-      "attributes": [
-        {
-          "name": "todos",
-          "description": ""
-        }
-      ]
+      "attributes": []
     },
     {
       "name": "todo-list-item",
