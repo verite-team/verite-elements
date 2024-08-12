@@ -1,42 +1,89 @@
-# What should I do first?
+# Stencil Project
 
-```bash
-cd packages/stencil-library
-pnpm start # to start the dev server
-pnpm generate # to generate the web components
-```
+## What should I do first?
 
-
-# `Turborepo` Vite starter
-
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
+### Running stencil standalone
 
 ```sh
-npx create-turbo@latest -e with-vite
+pnpm dev
+
+# Open
+http://localhost:5173/
 ```
 
-## What's inside?
+### Running Storybook
 
-This Turborepo includes the following packages and apps:
+```bash
+pnpm storybook
+```
 
-### Apps and Packages
+### Running React Client
 
-- `docs`: a vanilla [vite](https://vitejs.dev) ts app
-- `web`: another vanilla [vite](https://vitejs.dev) ts app
-- `@repo/ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: shared `eslint` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+```bash
+pnpm react:dev
+```
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Deep Dive
 
-### Utilities
+- [Stencil Starter Kit Readme](./packages/stencil-library/readme.md)
 
-This Turborepo has some additional tools already setup for you:
+This project is uses
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- Stencil 4.x
+- Storybook 8.x
+
+Storybook Addons
+
+There are a number of addons that storybook includes by default. These are the addons I have added in addition.
+
+- Actions - https://storybook.js.org/docs/essentials/actions#action-event-handlers
+  - Used to watch "events" in Storybook edutir
+- CSS Props - https://github.com/ljcl/storybook-addon-cssprops
+  - Used to modify CSS props in the Storybook editor
+
+## Storybook
+
+- When running Storybook goto http://localhost:6006/. The `my-component` is the example I have been working with.
+
+### Known issues
+
+- `Sourcemap for "/virtual:/@storybook...`
+  - https://oss.issuehunt.io/r/storybookjs/storybook/issues/28567
+  - I am pretty certain its a vite issue but its just a warning so ignoring for now
+
+### Awesome components
+
+0 Graphs - https://visa.github.io/visa-chart-components/?path=/story/introduction--page
+
+### Actions
+
+I implemented [Action event handlers](https://storybook.js.org/docs/essentials/actions#action-event-handlers) in the following story:
+
+- [my-component.stories.ts](./packages/stencil-library/src/components/my-component/my-component.stories.ts)
+
+**Example**
+
+```ts
+// Replace your-framework with the name of your framework
+import type { Meta } from '@storybook/your-framework';
+
+import { withActions } from '@storybook/addon-actions/decorator';
+
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+  parameters: {
+    actions: {
+      handles: ['mouseover', 'click .btn'],
+    },
+  },
+  decorators: [withActions],
+};
+
+export default meta;
+```
+
+## Turborepo
+
+This project using Turoborepo for the monorepo. [Click here to view readme](README-turborepo.md)

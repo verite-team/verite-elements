@@ -3,6 +3,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "react:dev": "turbo dev --filter=react-client",
+    "storybook": "turbo storybook",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
