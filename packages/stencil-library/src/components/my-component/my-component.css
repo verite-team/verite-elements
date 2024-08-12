@@ -1,4 +1,4 @@
 :host {
   display: block;
-  /* background: yellow; */
+  background: var(--my-component-background, white);
 }

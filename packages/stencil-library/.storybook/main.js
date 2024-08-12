@@ -22,6 +22,7 @@ const config = {
     getAbsolutePath('@chromatic-com/storybook'),
     // '@storybook/addon-knobs',
     '@storybook/addon-actions',
+    '@ljcl/storybook-addon-cssprops'
   ],
   framework: {
     name: getAbsolutePath('@storybook/web-components-vite'),

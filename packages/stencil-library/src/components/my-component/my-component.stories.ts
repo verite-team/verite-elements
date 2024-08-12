@@ -17,6 +17,12 @@ const metadata: Meta = {
         component: 'This is a simple component',
       },
     },
+    cssprops: {
+      "my-component-background": {
+        value: "white",
+        description: "Optional description",
+      },
+    },
   },
   // args: { onClicked: fn() },
   // render: args => {
