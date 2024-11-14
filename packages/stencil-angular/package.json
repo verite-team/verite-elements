@@ -1,5 +1,5 @@
 {
-  "name": "stencil-react",
+  "name": "stencil-angular",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -12,18 +12,16 @@
   "scripts": {
     "build": "npm run tsc",
     "clean": "rm -rf node_modules .turbo",
-    "test": "node ./__tests__/react-library.test.js",
     "tsc": "tsc -p . --outDir ./dist"
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "stencil-library": "file:stencil-library-0.0.1.tgz"
+    "@angular/core": "^18.2.0",
+    "rxjs": "~7.8.0",
+    "stencil-library": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",
-    "@types/react": "^18.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "typescript": "^5.5.2"
   },
   "publishConfig": {

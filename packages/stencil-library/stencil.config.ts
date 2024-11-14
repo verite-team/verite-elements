@@ -1,13 +1,23 @@
+import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target'
+
 import { Config } from '@stencil/core'
 import { reactOutputTarget } from '@stencil/react-output-target'
 
+const angularValueAccessorBindings: ValueAccessorConfig[] = []
+
 export const config: Config = {
   namespace: 'stencil-library',
+  hashFileNames: true,
+  invisiblePrehydration: true,
+  extras: {
+    enableImportInjection: true,
+  },
   srcDir: 'src',
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
+      copy: [],
+      // esmLoaderPath: '../loader',
     },
     {
       type: 'docs-vscode',
@@ -15,16 +25,28 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: 'stencil-library',
-      proxiesFile: '../stencil-react/src/components/stencil-generated/index.ts',
+      proxiesFile: './dist/frameworks/verite-react/index.ts',
+      // includePolyfills: true,
+
+      // proxiesFile: '../stencil-react/src/components/stencil-generated/index.ts',
+      // customElementsDir: 'dist/components',
+      // includeDefineCustomElements: true,
     }),
-    {
-      type: 'dist-custom-elements',
-      customElementsExportBehavior: 'auto-define-custom-elements',
-      externalRuntime: false,
-    },
-    {
-      type: 'docs-readme',
-    },
+    angularOutputTarget({
+      componentCorePackage: 'stencil-library',
+      directivesProxyFile: './dist/frameworks/verite-angular/index.ts',
+      // outputType: 'component',
+      // directivesProxyFile: '../stencil-angular/src/components/stencil-generated/index.ts',
+      // valueAccessorConfigs: angularValueAccessorBindings,
+    }),
+    // {
+    //   type: 'dist-custom-elements',
+    //   // customElementsExportBehavior: 'auto-define-custom-elements',
+    //   // externalRuntime: false,
+    // },
+    // {
+    //   type: 'docs-readme',
+    // },
     {
       type: 'www',
       serviceWorker: null, // disable service workers

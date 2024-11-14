@@ -9,14 +9,14 @@
     "sourceMap": true,
     "outDir": "./dist",
     "lib": ["dom", "es2015"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "es2015",
+    "moduleResolution": "node",
     "target": "es2015",
     "skipLibCheck": true,
-    "jsx": "react-jsx",
+    // "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "declarationDir": "./dist/types"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"]
 }

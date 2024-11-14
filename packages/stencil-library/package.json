@@ -1,35 +1,19 @@
 {
   "name": "stencil-library",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
+  "module": "dist/index.ts",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stencil-library/stencil-library.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/stencil-library/stencil-library.esm.js",
-      "require": "./dist/stencil-library/stencil-library.cjs.js"
-    },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
-    },
-    "./loader": {
-      "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
-      "types": "./loader/index.d.ts"
-    }
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "https://github.com/jombee-labs/stencil-library.git"
   },
   "files": [
-    "dist/",
-    "loader/"
+    "dist/"
   ],
   "scripts": {
     "build": "stencil build --docs",
@@ -44,6 +28,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@ljcl/storybook-addon-cssprops": "^4.0.0",
+    "@stencil/angular-output-target": "^0.8.4",
     "@stencil/core": "^4.7.0",
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-actions": "^8.2.6",
