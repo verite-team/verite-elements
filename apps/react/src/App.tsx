@@ -1,9 +1,8 @@
 import './App.css'
 
-import { DateSelector, MyComponent, RocBadge, RocClock, TodoList } from 'stencil-library/dist/frameworks/verite-react'
+import { DateSelector, MyComponent, RocBadge, RocClock, TodoList, defineCustomElements } from 'stencil-react'
 
 import React from 'react'
-import { defineCustomElements } from 'stencil-library/dist/loader'
 
 defineCustomElements()
 

@@ -5,9 +5,8 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from 'stencil-library';
 
-import { defineCustomElements } from 'stencil-library/loader';
 
-defineCustomElements();
+
 export const CustomTextInput = /*@__PURE__*/createReactComponent<JSX.CustomTextInput, HTMLCustomTextInputElement>('custom-text-input');
 export const DateSelector = /*@__PURE__*/createReactComponent<JSX.DateSelector, HTMLDateSelectorElement>('date-selector');
 export const MyComponent = /*@__PURE__*/createReactComponent<JSX.MyComponent, HTMLMyComponentElement>('my-component');

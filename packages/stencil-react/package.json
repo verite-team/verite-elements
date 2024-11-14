@@ -17,7 +17,7 @@
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "stencil-library": "file:stencil-library-0.0.1.tgz"
+    "stencil-library": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

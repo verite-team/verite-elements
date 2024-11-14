@@ -1,5 +1,11 @@
 # Stencil Project
 
+```bash
+pnpm clean
+pnpm install
+
+```
+
 ## What should I do first?
 
 ### Running stencil standalone
@@ -65,11 +71,11 @@ I implemented [Action event handlers](https://storybook.js.org/docs/essentials/a
 
 ```ts
 // Replace your-framework with the name of your framework
-import type { Meta } from '@storybook/your-framework';
+import type { Meta } from '@storybook/your-framework'
 
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from '@storybook/addon-actions/decorator'
 
-import { Button } from './Button';
+import { Button } from './Button'
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -79,9 +85,9 @@ const meta: Meta<typeof Button> = {
     },
   },
   decorators: [withActions],
-};
+}
 
-export default meta;
+export default meta
 ```
 
 ## Turborepo

@@ -25,10 +25,10 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: 'stencil-library',
-      proxiesFile: './dist/frameworks/verite-react/index.ts',
+      // proxiesFile: './dist/frameworks/verite-react/index.ts',
       // includePolyfills: true,
 
-      // proxiesFile: '../stencil-react/src/components/stencil-generated/index.ts',
+      proxiesFile: '../stencil-react/src/components/stencil-generated/index.ts',
       // customElementsDir: 'dist/components',
       // includeDefineCustomElements: true,
     }),

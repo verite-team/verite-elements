@@ -1,10 +1,36 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "install": {
+      "dependsOn": [],
+      "outputs": []
+    },
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^install"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "app-install": {
+      "dependsOn": [
+        "packages-build"
+      ],
+      "outputs": []
+    },
+    "packages-build": {
+      "dependsOn": [
+        "^install",
+        "^packages-build"
+      ],
+      "outputs": [
+        "packages/*/dist/**"
+      ]
     },
     "lint": {},
     "dev": {
@@ -14,6 +40,12 @@
     "storybook": {
       "cache": false,
       "persistent": true
+    },
+    "//#stencil-react#install": {
+      "dependsOn": [
+        "//#stencil-library#install",
+        "//#stencil-library#build"
+      ]
     }
   }
 }
