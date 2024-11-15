@@ -32,12 +32,14 @@
 
 ### Used by
 
+ - [verite-otp](../verite-otp)
  - [vf-signin](../vf-signin)
  - [vf-signup](../vf-signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  verite-otp --> vf-textbox
   vf-signin --> vf-textbox
   vf-signup --> vf-textbox
   style vf-textbox fill:#f9f,stroke:#333,stroke-width:4px

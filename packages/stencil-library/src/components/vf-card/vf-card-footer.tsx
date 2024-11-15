@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vf-card-footer',
@@ -6,11 +6,12 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class VfCardFooter {
-  @Prop() variant: 'normal' | 'inset' = 'normal';
+  @Prop() variant: 'normal' | 'inset' = 'normal'
 
   render() {
     return (
       <div
+        part="footer"
         class={{
           'vf-card-footer': true,
           [`vf-card-footer--${this.variant}`]: true,
@@ -18,6 +19,6 @@ export class VfCardFooter {
       >
         <slot></slot>
       </div>
-    );
+    )
   }
 }

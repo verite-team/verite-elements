@@ -1,6 +1,7 @@
-/* :host { */
-/* display: inline-block; */
-/* } */
+:host {
+  --transparent: 0 0% 100% / 0;
+  --color-foreground: 222.2 47.4% 11.2%;
+}
 
 .vf-button {
   width: 100%;
@@ -44,8 +45,8 @@
 
 .vf-button--outline {
   background-color: transparent;
-  border-color: hsl(var(--border));
-  color: hsl(var(--foreground));
+  border-color: hsl(var(--border, var(--transparent)));
+  color: hsl(var(--foreground, var(--color-foreground)));
 }
 
 .vf-button--outline:hover {

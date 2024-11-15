@@ -27,16 +27,25 @@
 | `buttonClick` |             | `CustomEvent<MouseEvent>` |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"button"` |             |
+
+
 ## Dependencies
 
 ### Used by
 
+ - [verite-otp](../verite-otp)
  - [vf-signin](../vf-signin)
  - [vf-signup](../vf-signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  verite-otp --> vf-button
   vf-signin --> vf-button
   vf-signup --> vf-button
   style vf-button fill:#f9f,stroke:#333,stroke-width:4px

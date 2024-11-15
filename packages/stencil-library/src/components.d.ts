@@ -40,6 +40,8 @@ export namespace Components {
     interface TodoListItem {
         "checked": boolean;
     }
+    interface VeriteOtp {
+    }
     interface VfButton {
         "busy"?: boolean;
         "disabled"?: boolean;
@@ -119,8 +121,10 @@ export namespace Components {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
+        "maxlength"?: number;
         "name"?: string;
         "placeholder"?: string;
+        "readonly"?: boolean;
         "required"?: boolean;
         "type": string;
         "value": string;
@@ -147,6 +151,10 @@ export interface TodoListCustomEvent<T> extends CustomEvent<T> {
 export interface TodoListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTodoListItemElement;
+}
+export interface VeriteOtpCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVeriteOtpElement;
 }
 export interface VfButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -281,6 +289,23 @@ declare global {
     var HTMLTodoListItemElement: {
         prototype: HTMLTodoListItemElement;
         new (): HTMLTodoListItemElement;
+    };
+    interface HTMLVeriteOtpElementEventMap {
+        "formSubmit": any;
+    }
+    interface HTMLVeriteOtpElement extends Components.VeriteOtp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVeriteOtpElementEventMap>(type: K, listener: (this: HTMLVeriteOtpElement, ev: VeriteOtpCustomEvent<HTMLVeriteOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVeriteOtpElementEventMap>(type: K, listener: (this: HTMLVeriteOtpElement, ev: VeriteOtpCustomEvent<HTMLVeriteOtpElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVeriteOtpElement: {
+        prototype: HTMLVeriteOtpElement;
+        new (): HTMLVeriteOtpElement;
     };
     interface HTMLVfButtonElementEventMap {
         "buttonClick": MouseEvent;
@@ -465,6 +490,7 @@ declare global {
         "roc-clock": HTMLRocClockElement;
         "todo-list": HTMLTodoListElement;
         "todo-list-item": HTMLTodoListItemElement;
+        "verite-otp": HTMLVeriteOtpElement;
         "vf-button": HTMLVfButtonElement;
         "vf-card": HTMLVfCardElement;
         "vf-card-content": HTMLVfCardContentElement;
@@ -529,6 +555,9 @@ declare namespace LocalJSX {
     interface TodoListItem {
         "checked"?: boolean;
         "onCheckedChange"?: (event: TodoListItemCustomEvent<boolean>) => void;
+    }
+    interface VeriteOtp {
+        "onFormSubmit"?: (event: VeriteOtpCustomEvent<any>) => void;
     }
     interface VfButton {
         "busy"?: boolean;
@@ -615,11 +644,13 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
+        "maxlength"?: number;
         "name"?: string;
         "onEnterKey"?: (event: VfTextboxCustomEvent<void>) => void;
         "onInputChange"?: (event: VfTextboxCustomEvent<string>) => void;
         "onValueChange"?: (event: VfTextboxCustomEvent<string>) => void;
         "placeholder"?: string;
+        "readonly"?: boolean;
         "required"?: boolean;
         "type"?: string;
         "value"?: string;
@@ -636,6 +667,7 @@ declare namespace LocalJSX {
         "roc-clock": RocClock;
         "todo-list": TodoList;
         "todo-list-item": TodoListItem;
+        "verite-otp": VeriteOtp;
         "vf-button": VfButton;
         "vf-card": VfCard;
         "vf-card-content": VfCardContent;
@@ -670,6 +702,7 @@ declare module "@stencil/core" {
             "roc-clock": LocalJSX.RocClock & JSXBase.HTMLAttributes<HTMLRocClockElement>;
             "todo-list": LocalJSX.TodoList & JSXBase.HTMLAttributes<HTMLTodoListElement>;
             "todo-list-item": LocalJSX.TodoListItem & JSXBase.HTMLAttributes<HTMLTodoListItemElement>;
+            "verite-otp": LocalJSX.VeriteOtp & JSXBase.HTMLAttributes<HTMLVeriteOtpElement>;
             "vf-button": LocalJSX.VfButton & JSXBase.HTMLAttributes<HTMLVfButtonElement>;
             "vf-card": LocalJSX.VfCard & JSXBase.HTMLAttributes<HTMLVfCardElement>;
             "vf-card-content": LocalJSX.VfCardContent & JSXBase.HTMLAttributes<HTMLVfCardContentElement>;

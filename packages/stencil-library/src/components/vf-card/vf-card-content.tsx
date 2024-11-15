@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h } from '@stencil/core'
 
 @Component({
   tag: 'vf-card-content',
@@ -9,12 +9,13 @@ export class VfCardContent {
   render() {
     return (
       <p
+        part="content"
         class={{
           'vf-card-content': true,
         }}
       >
         <slot></slot>
       </p>
-    );
+    )
   }
 }

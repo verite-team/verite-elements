@@ -26,11 +26,13 @@
 
 ### Used by
 
+ - [verite-otp](../verite-otp)
  - [vf-signin](../vf-signin)
 
 ### Graph
 ```mermaid
 graph TD;
+  verite-otp --> vf-link
   vf-signin --> vf-link
   style vf-link fill:#f9f,stroke:#333,stroke-width:4px
 ```

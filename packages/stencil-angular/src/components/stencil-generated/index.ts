@@ -222,6 +222,31 @@ export declare interface TodoListItem extends Components.TodoListItem {
 
 
 @ProxyCmp({
+})
+@Component({
+  selector: 'verite-otp',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteOtp {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['formSubmit']);
+  }
+}
+
+
+export declare interface VeriteOtp extends Components.VeriteOtp {
+
+  formSubmit: EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
   inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
 })
 @Component({
@@ -613,14 +638,14 @@ export declare interface VfSignup extends Components.VfSignup {
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'name', 'placeholder', 'required', 'type', 'value']
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
 })
 @Component({
   selector: 'vf-textbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'name', 'placeholder', 'required', 'type', 'value'],
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
 })
 export class VfTextbox {
   protected el: HTMLElement;

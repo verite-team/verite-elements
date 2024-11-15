@@ -1,5 +1,22 @@
- /* Base theme (light) */
- :root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+}
+
+:root[data-theme='dark'] {
+  --background: 0 0% 8.5%;
+  --foreground: 0 0% 98%;
+}
+
+/* Base theme (light) */
+vf-signin,
+vf-signup,
+.vf-card--signin,
+.vf-card--signup {
   --background: 0 0% 100%;
   --background-dark: 0 0% 14%;
   --foreground: 222.2 84% 4.9%;
@@ -32,9 +49,11 @@
 }
 
 /* Dark theme */
-[data-theme='dark'] {
-  --background: 0 0% 12%;
-  --background-dark: 0 0% 8.5%;
+[data-theme='dark'] vf-signin,
+[data-theme='dark'] vf-signup,
+[data-theme='dark'] .vf-card--signin,
+[data-theme='dark'] .vf-card--signup {
+  --background: 0 0% 8.5%;
   --foreground: 0 0% 98%;
   --card: 0 0% 10.3%;
   --card-foreground: 0 0% 98%;
@@ -50,9 +69,20 @@
   --accent-foreground: 0 0% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
+  --border: 240 3.7% 15.9%;
   --input: 0 0% 14.9%;
   --ring: 0 0% 23.1%;
+  --radius: 0.5rem;
+  --success: 144 84% 38%;
+  --success-foreground: 211.29 100% 95%;
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 2%;
+  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --transparent: 0 0% 100% / 0;
+  --color-foreground: 0 0% 98%;
 }
 
 /* Apply colors when data-theme is on html tag */

@@ -116,6 +116,14 @@
       ]
     },
     {
+      "name": "verite-otp",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
       "name": "vf-button",
       "description": {
         "kind": "markdown",

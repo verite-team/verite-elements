@@ -34,8 +34,7 @@
 }
 
 .container {
-  display: flex;
-  gap: 2em;
+  @apply flex gap-8
 }
 
 .card {

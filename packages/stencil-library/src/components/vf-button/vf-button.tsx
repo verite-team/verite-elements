@@ -1,4 +1,6 @@
-import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stencil/core'
+
+import { clsx } from '../../utils/clsx'
 
 @Component({
   tag: 'vf-button',
@@ -9,19 +11,19 @@ import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stenc
 })
 export class VfButton {
   // Styling props
-  @Prop() variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' = 'default';
-  @Prop() size?: 'default' | 'sm' | 'lg' | 'icon' = 'default';
+  @Prop() variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' = 'default'
+  @Prop() size?: 'default' | 'sm' | 'lg' | 'icon' = 'default'
 
   // Essential button props
-  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
-  @Prop() disabled?: boolean = false;
-  @Prop() busy?: boolean = false;
-  @Prop() name?: string;
-  @Prop() value?: string;
-  @Prop() form?: string;
-  @Prop() width?: 'full' | 'auto' = 'auto';
+  @Prop() type: 'button' | 'submit' | 'reset' = 'button'
+  @Prop() disabled?: boolean = false
+  @Prop() busy?: boolean = false
+  @Prop() name?: string
+  @Prop() value?: string
+  @Prop() form?: string
+  @Prop() width?: 'full' | 'auto' = 'auto'
 
-  @AttachInternals() internals: ElementInternals;
+  @AttachInternals() internals: ElementInternals
 
   // // Accessibility props
   // @Prop() ariaLabel?: string;
@@ -30,17 +32,17 @@ export class VfButton {
   // @Prop() ariaPressed?: boolean;
 
   // Events
-  @Event() buttonClick: EventEmitter<MouseEvent>;
+  @Event() buttonClick: EventEmitter<MouseEvent>
 
   private handleClick = (event: MouseEvent) => {
     if (!this.disabled && !this.busy) {
-      this.buttonClick.emit(event);
+      this.buttonClick.emit(event)
       if (this.type === 'submit') {
         // perform form submission
-        this.internals.form?.requestSubmit();
+        this.internals.form?.requestSubmit()
       }
     }
-  };
+  }
 
   render() {
     const classes = {
@@ -49,13 +51,12 @@ export class VfButton {
       [`vf-button--${this.size}`]: this.size !== 'default',
       'vf-button--busy': this.busy,
       'vf-button--disabled': this.disabled,
-    };
+    }
 
     return (
       <button
-        class={Object.keys(classes)
-          .filter(key => classes[key])
-          .join(' ')}
+        part="button"
+        class={clsx(classes)}
         type={this.type}
         disabled={this.disabled || this.busy}
         name={this.name}
@@ -82,6 +83,6 @@ export class VfButton {
           <slot></slot>
         </div>
       </button>
-    );
+    )
   }
 }

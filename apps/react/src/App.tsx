@@ -36,8 +36,9 @@ function App() {
       <DateSelector onValueChange={(e: CustomEvent) => console.log(e.detail)} />
       <TodoList id="todos" todos={['one', 'two', 'three']} />
       <VfButton onClick={() => console.log('clicked')}>Click me</VfButton> */}
-      <div style={{position: 'fixed', top: '1rem', left: '1rem'}}>
-        React App
+      <div className='fixed top-4 left-4 font-semibold flex gap-2 items-center'>
+        <img src="/assets/react.svg" alt="React Logo" style={{ width: '32px' }} />
+        React App Demo
       </div>
 
       <VfThemeToggle style={{ position: 'fixed', top: '1rem', right: '1rem' }}></VfThemeToggle>

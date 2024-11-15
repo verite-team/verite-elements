@@ -16,6 +16,7 @@ export const RocBadge = /*@__PURE__*/createReactComponent<JSX.RocBadge, HTMLRocB
 export const RocClock = /*@__PURE__*/createReactComponent<JSX.RocClock, HTMLRocClockElement>('roc-clock');
 export const TodoList = /*@__PURE__*/createReactComponent<JSX.TodoList, HTMLTodoListElement>('todo-list');
 export const TodoListItem = /*@__PURE__*/createReactComponent<JSX.TodoListItem, HTMLTodoListItemElement>('todo-list-item');
+export const VeriteOtp = /*@__PURE__*/createReactComponent<JSX.VeriteOtp, HTMLVeriteOtpElement>('verite-otp');
 export const VfButton = /*@__PURE__*/createReactComponent<JSX.VfButton, HTMLVfButtonElement>('vf-button');
 export const VfCard = /*@__PURE__*/createReactComponent<JSX.VfCard, HTMLVfCardElement>('vf-card');
 export const VfCardContent = /*@__PURE__*/createReactComponent<JSX.VfCardContent, HTMLVfCardContentElement>('vf-card-content');
