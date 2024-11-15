@@ -34,9 +34,10 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: 'stencil-library',
-      directivesProxyFile: './dist/frameworks/verite-angular/index.ts',
+      // outputType: 'standalone',
+      // directivesProxyFile: './dist/frameworks/verite-angular/index.ts',
       // outputType: 'component',
-      // directivesProxyFile: '../stencil-angular/src/components/stencil-generated/index.ts',
+      directivesProxyFile: '../stencil-angular/src/components/stencil-generated/index.ts',
       // valueAccessorConfigs: angularValueAccessorBindings,
     }),
     // {

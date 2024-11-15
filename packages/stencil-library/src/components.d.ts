@@ -70,9 +70,9 @@ declare global {
     };
     interface HTMLDateSelectorElementEventMap {
         "valueChange": {
-    month: string
-    day: string
-    year: string
+    month: string;
+    day: string;
+    year: string;
   };
     }
     interface HTMLDateSelectorElement extends Components.DateSelector, HTMLStencilElement {
@@ -192,9 +192,9 @@ declare namespace LocalJSX {
     }
     interface DateSelector {
         "onValueChange"?: (event: DateSelectorCustomEvent<{
-    month: string
-    day: string
-    year: string
+    month: string;
+    day: string;
+    year: string;
   }>) => void;
     }
     interface MyComponent {

@@ -49,7 +49,7 @@ export class DateSelector {
 
 export declare interface DateSelector extends Components.DateSelector {
 
-  valueChange: EventEmitter<CustomEvent<{ month: string day: string year: string }>>;
+  valueChange: EventEmitter<CustomEvent<{ month: string; day: string; year: string; }>>;
 }
 
 

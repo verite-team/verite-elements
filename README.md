@@ -3,7 +3,8 @@
 ```bash
 pnpm clean
 pnpm install
-
+pnpm build
+pnpm react:dev
 ```
 
 ## What should I do first?

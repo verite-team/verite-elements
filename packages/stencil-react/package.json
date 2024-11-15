@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "npm run tsc",
-    "clean": "rm -rf node_modules .turbo",
+    "clean": "rm -rf node_modules .turbo dist",
     "test": "node ./__tests__/react-library.test.js",
     "tsc": "tsc -p . --outDir ./dist"
   },

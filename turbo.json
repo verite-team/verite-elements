@@ -1,13 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "cacheDir": ".turbo/cache",
   "tasks": {
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "install": {
       "dependsOn": [],
       "outputs": []
     },
     "build": {
       "dependsOn": [
-        "^install"
+        "^install",
+        "stencil-react#build",
+        "stencil-angular#build"
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -17,35 +25,66 @@
         "dist/**"
       ]
     },
-    "app-install": {
+    "xapp-install": {
       "dependsOn": [
-        "packages-build"
+        "stencil-react#build",
+        "stencil-angular#build"
       ],
       "outputs": []
     },
-    "packages-build": {
+    "xpackages-build": {
       "dependsOn": [
         "^install",
         "^packages-build"
       ],
-      "outputs": [
-        "packages/*/dist/**"
-      ]
-    },
-    "lint": {},
-    "dev": {
-      "cache": false,
-      "persistent": true
+      "outputs": []
     },
     "storybook": {
       "cache": false,
       "persistent": true
     },
-    "//#stencil-react#install": {
+    "stencil-library#install": {
+      "cache": true,
+      "dependsOn": [],
+      "outputs": []
+    },
+    "stencil-library#build": {
+      "cache": true,
       "dependsOn": [
-        "//#stencil-library#install",
-        "//#stencil-library#build"
-      ]
+        "stencil-library#install"
+      ],
+      "outputs": []
+    },
+    "stencil-react#install": {
+      "cache": true,
+      "dependsOn": [
+        "stencil-library#build"
+      ],
+      "outputs": []
+    },
+    "stencil-react#build": {
+      "cache": true,
+      "dependsOn": [
+        "stencil-react#install"
+      ],
+      "outputs": []
+    },
+    "stencil-angular#install": {
+      "cache": true,
+      "dependsOn": [
+        "stencil-library#build"
+      ],
+      "outputs": []
+    },
+    "stencil-angular#build": {
+      "cache": true,
+      "dependsOn": [
+        "stencil-library#build"
+      ],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

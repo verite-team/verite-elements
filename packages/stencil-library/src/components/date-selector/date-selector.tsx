@@ -14,9 +14,9 @@ export class DateSelector {
   @Element() el: HTMLElement
 
   @Event() valueChange: EventEmitter<{
-    month: string
-    day: string
-    year: string
+    month: string;
+    day: string;
+    year: string;
   }>
 
   months: string[] = [
