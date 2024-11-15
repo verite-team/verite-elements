@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "build:stencil": "turbo run build --filter=stencil-react --filter=stencil-angular",
+    "build:stencil": "turbo run build --force --filter=stencil-react --filter=stencil-angular",
     "dev": "turbo dev",
     "storybook": "turbo storybook",
     "lint": "turbo lint",

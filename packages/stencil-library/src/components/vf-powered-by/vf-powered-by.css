@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.vf-powered-by {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* padding: 1rem; */
+  color: hsl(var(--muted-foreground));
+}

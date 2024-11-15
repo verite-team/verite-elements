@@ -1,0 +1,10 @@
+:root {
+  /* Base unit for spacing */
+  --space-unit: 0.25rem;
+
+  /* You can also predefine common values if desired */
+  --space-1: calc(var(--space-unit) * 1); /* 0.25rem */
+  --space-2: calc(var(--space-unit) * 2); /* 0.5rem */
+  --space-4: calc(var(--space-unit) * 4); /* 1rem */
+  --space-8: calc(var(--space-unit) * 8); /* 2rem */
+}

@@ -1,0 +1,88 @@
+/* :host { */
+/* display: inline-block; */
+/* } */
+
+.vf-button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 16px;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.vf-button:hover {
+  opacity: 0.9;
+}
+
+.vf-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--ring));
+}
+
+.vf-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.vf-button--secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.vf-button--outline {
+  background-color: transparent;
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.vf-button--outline:hover {
+  background-color: hsl(var(--muted));
+}
+
+.vf-button--ghost {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+}
+
+.vf-button--ghost:hover {
+  background-color: hsl(var(--muted));
+}
+
+.vf-button--destructive {
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+}
+
+/* Sizes */
+.vf-button--icon {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.vf-button--sm {
+  height: 32px;
+  padding: 0 12px;
+}
+
+.vf-button--lg {
+  height: 48px;
+  padding: 0 20px;
+}
+
+.vf-button--busy {
+  pointer-events: none;
+}

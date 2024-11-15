@@ -7,6 +7,10 @@
  * DO NOT use this file to export your components. Instead, use the recommended approaches
  * to consume components of this package as outlined in the `README.md`.
  */
+import { initializeTheme } from './utils/theme';
+
+// Initialize theme before rendering
+initializeTheme();
 
 export { format } from './utils/utils';
 export type * from './components.d.ts';

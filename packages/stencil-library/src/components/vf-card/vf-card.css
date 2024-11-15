@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.vf-card {
+  border-radius: var(--radius);
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  /* padding: 16px; */
+}
+
+/* Dark mode using data-theme */
+:host-context([data-theme='dark']) .vf-card,
+.vf-card[data-theme='dark'] {
+  background-color: var(--background);
+  border-color: hsl(var(--border));
+}
+
+/* Dark mode using class */
+:host-context(.dark) .vf-card,
+.dark .vf-card {
+  background-color: var(--background);
+  border-color: hsl(var(--border));
+}
+
+/* System dark mode preference */
+@media (prefers-color-scheme: dark) {
+  .vf-card {
+    background-color: var(--background);
+    border-color: hsl(var(--border));
+  }
+}

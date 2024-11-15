@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* Basic divider without content */
+.divider--horizontal {
+  height: 1px;
+  width: 100%;
+  background-color: hsl(var(--border));
+}
+
+.divider--vertical {
+  height: 100%;
+  width: 1px;
+  background-color: hsl(var(--border));
+}
+
+/* Divider with content */
+.divider--horizontal:not(:empty) {
+  height: auto;
+  background: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.divider--horizontal:not(:empty)::before,
+.divider--horizontal:not(:empty)::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: hsl(var(--border));
+}
+
+.divider--horizontal:not(:empty) ::slotted(*) {
+  padding: 0 1rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+}

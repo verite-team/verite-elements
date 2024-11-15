@@ -221,3 +221,445 @@ export declare interface TodoListItem extends Components.TodoListItem {
 }
 
 
+@ProxyCmp({
+  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
+})
+@Component({
+  selector: 'vf-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
+})
+export class VfButton {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['buttonClick']);
+  }
+}
+
+
+export declare interface VfButton extends Components.VfButton {
+
+  buttonClick: EventEmitter<CustomEvent<MouseEvent>>;
+}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vf-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VfCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCard extends Components.VfCard {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vf-card-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VfCardContent {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCardContent extends Components.VfCardContent {}
+
+
+@ProxyCmp({
+  inputs: ['align']
+})
+@Component({
+  selector: 'vf-card-description',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['align'],
+})
+export class VfCardDescription {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCardDescription extends Components.VfCardDescription {}
+
+
+@ProxyCmp({
+  inputs: ['variant']
+})
+@Component({
+  selector: 'vf-card-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['variant'],
+})
+export class VfCardFooter {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCardFooter extends Components.VfCardFooter {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vf-card-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VfCardHeader {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCardHeader extends Components.VfCardHeader {}
+
+
+@ProxyCmp({
+  inputs: ['align', 'size', 'weight']
+})
+@Component({
+  selector: 'vf-card-title',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['align', 'size', 'weight'],
+})
+export class VfCardTitle {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfCardTitle extends Components.VfCardTitle {}
+
+
+@ProxyCmp({
+  inputs: ['orientation']
+})
+@Component({
+  selector: 'vf-divider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['orientation'],
+})
+export class VfDivider {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfDivider extends Components.VfDivider {}
+
+
+@ProxyCmp({
+  inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width']
+})
+@Component({
+  selector: 'vf-flex',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width'],
+})
+export class VfFlex {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfFlex extends Components.VfFlex {}
+
+
+@ProxyCmp({
+  inputs: ['googleClientId']
+})
+@Component({
+  selector: 'vf-google-one-tap',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['googleClientId'],
+})
+export class VfGoogleOneTap {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['googleCredential', 'googleError']);
+  }
+}
+
+
+export declare interface VfGoogleOneTap extends Components.VfGoogleOneTap {
+
+  googleCredential: EventEmitter<CustomEvent<any>>;
+
+  googleError: EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['color', 'name', 'size']
+})
+@Component({
+  selector: 'vf-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'name', 'size'],
+})
+export class VfIcon {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfIcon extends Components.VfIcon {}
+
+
+@ProxyCmp({
+  inputs: ['for', 'required']
+})
+@Component({
+  selector: 'vf-label',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['for', 'required'],
+})
+export class VfLabel {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfLabel extends Components.VfLabel {}
+
+
+@ProxyCmp({
+  inputs: ['disabled', 'href', 'target', 'variant']
+})
+@Component({
+  selector: 'vf-link',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled', 'href', 'target', 'variant'],
+})
+export class VfLink {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfLink extends Components.VfLink {}
+
+
+@ProxyCmp({
+  inputs: ['name', 'size']
+})
+@Component({
+  selector: 'vf-logo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['name', 'size'],
+})
+export class VfLogo {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfLogo extends Components.VfLogo {}
+
+
+@ProxyCmp({
+  inputs: ['label']
+})
+@Component({
+  selector: 'vf-powered-by',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['label'],
+})
+export class VfPoweredBy {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfPoweredBy extends Components.VfPoweredBy {}
+
+
+@ProxyCmp({
+  inputs: ['styles']
+})
+@Component({
+  selector: 'vf-signin',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['styles'],
+})
+export class VfSignin {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['formSubmit', 'ready']);
+  }
+}
+
+
+export declare interface VfSignin extends Components.VfSignin {
+
+  formSubmit: EventEmitter<CustomEvent<any>>;
+
+  ready: EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['styles']
+})
+@Component({
+  selector: 'vf-signup',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['styles'],
+})
+export class VfSignup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['ready']);
+  }
+}
+
+
+export declare interface VfSignup extends Components.VfSignup {
+
+  ready: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'name', 'placeholder', 'required', 'type', 'value']
+})
+@Component({
+  selector: 'vf-textbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'name', 'placeholder', 'required', 'type', 'value'],
+})
+export class VfTextbox {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['valueChange', 'inputChange', 'enterKey']);
+  }
+}
+
+
+export declare interface VfTextbox extends Components.VfTextbox {
+
+  valueChange: EventEmitter<CustomEvent<string>>;
+
+  inputChange: EventEmitter<CustomEvent<string>>;
+
+  enterKey: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vf-theme-toggle',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VfThemeToggle {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VfThemeToggle extends Components.VfThemeToggle {}
+
+

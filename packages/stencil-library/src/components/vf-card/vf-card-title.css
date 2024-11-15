@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.vf-card-title {
+  /* font-size: 1rem;
+  font-weight: 600; */
+  line-height: 1.2;
+  margin: 0;
+  color: hsl(var(--card-foreground));
+}
+
+.vf-card-title--sm {
+  font-size: 0.875rem;
+}
+
+.vf-card-title--md {
+  font-size: 1rem;
+}
+
+.vf-card-title--lg {
+  font-size: 1.25rem;
+}
+
+.vf-card-title--center {
+  text-align: center;
+}
+
+.vf-card-title--medium {
+  font-weight: 500;
+}
+
+.vf-card-title--light {
+  font-weight: 300;
+}
+
+/* :host-context([data-theme='dark']) .vf-card-title,
+.dark .vf-card-title {
+  color: hsl(var(--foreground));
+} */

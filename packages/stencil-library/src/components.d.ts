@@ -40,6 +40,93 @@ export namespace Components {
     interface TodoListItem {
         "checked": boolean;
     }
+    interface VfButton {
+        "busy"?: boolean;
+        "disabled"?: boolean;
+        "form"?: string;
+        "name"?: string;
+        "size"?: 'default' | 'sm' | 'lg' | 'icon';
+        "type": 'button' | 'submit' | 'reset';
+        "value"?: string;
+        "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+        "width"?: 'full' | 'auto';
+    }
+    interface VfCard {
+    }
+    interface VfCardContent {
+    }
+    interface VfCardDescription {
+        "align": 'left' | 'center';
+    }
+    interface VfCardFooter {
+        "variant": 'normal' | 'inset';
+    }
+    interface VfCardHeader {
+    }
+    interface VfCardTitle {
+        "align": 'left' | 'center';
+        "size": 'sm' | 'md' | 'lg';
+        "weight": 'bold' | 'medium' | 'light';
+    }
+    interface VfDivider {
+        "orientation"?: 'horizontal' | 'vertical';
+    }
+    interface VfFlex {
+        "direction"?: 'row' | 'column';
+        "gap"?: number;
+        "grow"?: boolean;
+        "halign"?: 'start' | 'center' | 'end';
+        "spaceUnit"?: number;
+        "valign"?: 'start' | 'center' | 'end';
+        "width"?: 'full' | 'auto';
+    }
+    interface VfGoogleOneTap {
+        "googleClientId": string;
+    }
+    interface VfIcon {
+        "color"?: string;
+        "name": string;
+        "size"?: 'sm' | 'md' | 'lg';
+    }
+    interface VfLabel {
+        "for"?: string;
+        "required"?: boolean;
+    }
+    interface VfLink {
+        "disabled"?: boolean;
+        "href"?: string;
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        "variant"?: 'default' | 'muted' | 'destructive';
+    }
+    interface VfLogo {
+        "name": 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
+        "size": number;
+    }
+    interface VfPoweredBy {
+        "label": string;
+    }
+    interface VfSignin {
+        "styles"?: {
+    link?: { [key: string]: string | number };
+  };
+    }
+    interface VfSignup {
+        "styles"?: {
+    link?: { [key: string]: string | number };
+  };
+    }
+    interface VfTextbox {
+        "autocomplete"?: string;
+        "autocorrect"?: 'on' | 'off';
+        "disabled"?: boolean;
+        "name"?: string;
+        "placeholder"?: string;
+        "required"?: boolean;
+        "type": string;
+        "value": string;
+    }
+    interface VfThemeToggle {
+    }
 }
 export interface DateSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -60,6 +147,26 @@ export interface TodoListCustomEvent<T> extends CustomEvent<T> {
 export interface TodoListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTodoListItemElement;
+}
+export interface VfButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVfButtonElement;
+}
+export interface VfGoogleOneTapCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVfGoogleOneTapElement;
+}
+export interface VfSigninCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVfSigninElement;
+}
+export interface VfSignupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVfSignupElement;
+}
+export interface VfTextboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVfTextboxElement;
 }
 declare global {
     interface HTMLCustomTextInputElement extends Components.CustomTextInput, HTMLStencilElement {
@@ -175,6 +282,179 @@ declare global {
         prototype: HTMLTodoListItemElement;
         new (): HTMLTodoListItemElement;
     };
+    interface HTMLVfButtonElementEventMap {
+        "buttonClick": MouseEvent;
+    }
+    interface HTMLVfButtonElement extends Components.VfButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVfButtonElementEventMap>(type: K, listener: (this: HTMLVfButtonElement, ev: VfButtonCustomEvent<HTMLVfButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVfButtonElementEventMap>(type: K, listener: (this: HTMLVfButtonElement, ev: VfButtonCustomEvent<HTMLVfButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVfButtonElement: {
+        prototype: HTMLVfButtonElement;
+        new (): HTMLVfButtonElement;
+    };
+    interface HTMLVfCardElement extends Components.VfCard, HTMLStencilElement {
+    }
+    var HTMLVfCardElement: {
+        prototype: HTMLVfCardElement;
+        new (): HTMLVfCardElement;
+    };
+    interface HTMLVfCardContentElement extends Components.VfCardContent, HTMLStencilElement {
+    }
+    var HTMLVfCardContentElement: {
+        prototype: HTMLVfCardContentElement;
+        new (): HTMLVfCardContentElement;
+    };
+    interface HTMLVfCardDescriptionElement extends Components.VfCardDescription, HTMLStencilElement {
+    }
+    var HTMLVfCardDescriptionElement: {
+        prototype: HTMLVfCardDescriptionElement;
+        new (): HTMLVfCardDescriptionElement;
+    };
+    interface HTMLVfCardFooterElement extends Components.VfCardFooter, HTMLStencilElement {
+    }
+    var HTMLVfCardFooterElement: {
+        prototype: HTMLVfCardFooterElement;
+        new (): HTMLVfCardFooterElement;
+    };
+    interface HTMLVfCardHeaderElement extends Components.VfCardHeader, HTMLStencilElement {
+    }
+    var HTMLVfCardHeaderElement: {
+        prototype: HTMLVfCardHeaderElement;
+        new (): HTMLVfCardHeaderElement;
+    };
+    interface HTMLVfCardTitleElement extends Components.VfCardTitle, HTMLStencilElement {
+    }
+    var HTMLVfCardTitleElement: {
+        prototype: HTMLVfCardTitleElement;
+        new (): HTMLVfCardTitleElement;
+    };
+    interface HTMLVfDividerElement extends Components.VfDivider, HTMLStencilElement {
+    }
+    var HTMLVfDividerElement: {
+        prototype: HTMLVfDividerElement;
+        new (): HTMLVfDividerElement;
+    };
+    interface HTMLVfFlexElement extends Components.VfFlex, HTMLStencilElement {
+    }
+    var HTMLVfFlexElement: {
+        prototype: HTMLVfFlexElement;
+        new (): HTMLVfFlexElement;
+    };
+    interface HTMLVfGoogleOneTapElementEventMap {
+        "googleCredential": any;
+        "googleError": any;
+    }
+    interface HTMLVfGoogleOneTapElement extends Components.VfGoogleOneTap, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVfGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVfGoogleOneTapElement, ev: VfGoogleOneTapCustomEvent<HTMLVfGoogleOneTapElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVfGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVfGoogleOneTapElement, ev: VfGoogleOneTapCustomEvent<HTMLVfGoogleOneTapElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVfGoogleOneTapElement: {
+        prototype: HTMLVfGoogleOneTapElement;
+        new (): HTMLVfGoogleOneTapElement;
+    };
+    interface HTMLVfIconElement extends Components.VfIcon, HTMLStencilElement {
+    }
+    var HTMLVfIconElement: {
+        prototype: HTMLVfIconElement;
+        new (): HTMLVfIconElement;
+    };
+    interface HTMLVfLabelElement extends Components.VfLabel, HTMLStencilElement {
+    }
+    var HTMLVfLabelElement: {
+        prototype: HTMLVfLabelElement;
+        new (): HTMLVfLabelElement;
+    };
+    interface HTMLVfLinkElement extends Components.VfLink, HTMLStencilElement {
+    }
+    var HTMLVfLinkElement: {
+        prototype: HTMLVfLinkElement;
+        new (): HTMLVfLinkElement;
+    };
+    interface HTMLVfLogoElement extends Components.VfLogo, HTMLStencilElement {
+    }
+    var HTMLVfLogoElement: {
+        prototype: HTMLVfLogoElement;
+        new (): HTMLVfLogoElement;
+    };
+    interface HTMLVfPoweredByElement extends Components.VfPoweredBy, HTMLStencilElement {
+    }
+    var HTMLVfPoweredByElement: {
+        prototype: HTMLVfPoweredByElement;
+        new (): HTMLVfPoweredByElement;
+    };
+    interface HTMLVfSigninElementEventMap {
+        "formSubmit": any;
+        "ready": any;
+    }
+    interface HTMLVfSigninElement extends Components.VfSignin, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVfSigninElementEventMap>(type: K, listener: (this: HTMLVfSigninElement, ev: VfSigninCustomEvent<HTMLVfSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVfSigninElementEventMap>(type: K, listener: (this: HTMLVfSigninElement, ev: VfSigninCustomEvent<HTMLVfSigninElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVfSigninElement: {
+        prototype: HTMLVfSigninElement;
+        new (): HTMLVfSigninElement;
+    };
+    interface HTMLVfSignupElementEventMap {
+        "ready": void;
+    }
+    interface HTMLVfSignupElement extends Components.VfSignup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVfSignupElementEventMap>(type: K, listener: (this: HTMLVfSignupElement, ev: VfSignupCustomEvent<HTMLVfSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVfSignupElementEventMap>(type: K, listener: (this: HTMLVfSignupElement, ev: VfSignupCustomEvent<HTMLVfSignupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVfSignupElement: {
+        prototype: HTMLVfSignupElement;
+        new (): HTMLVfSignupElement;
+    };
+    interface HTMLVfTextboxElementEventMap {
+        "valueChange": string;
+        "inputChange": string;
+        "enterKey": void;
+    }
+    interface HTMLVfTextboxElement extends Components.VfTextbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVfTextboxElementEventMap>(type: K, listener: (this: HTMLVfTextboxElement, ev: VfTextboxCustomEvent<HTMLVfTextboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVfTextboxElementEventMap>(type: K, listener: (this: HTMLVfTextboxElement, ev: VfTextboxCustomEvent<HTMLVfTextboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVfTextboxElement: {
+        prototype: HTMLVfTextboxElement;
+        new (): HTMLVfTextboxElement;
+    };
+    interface HTMLVfThemeToggleElement extends Components.VfThemeToggle, HTMLStencilElement {
+    }
+    var HTMLVfThemeToggleElement: {
+        prototype: HTMLVfThemeToggleElement;
+        new (): HTMLVfThemeToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "custom-text-input": HTMLCustomTextInputElement;
         "date-selector": HTMLDateSelectorElement;
@@ -185,6 +465,25 @@ declare global {
         "roc-clock": HTMLRocClockElement;
         "todo-list": HTMLTodoListElement;
         "todo-list-item": HTMLTodoListItemElement;
+        "vf-button": HTMLVfButtonElement;
+        "vf-card": HTMLVfCardElement;
+        "vf-card-content": HTMLVfCardContentElement;
+        "vf-card-description": HTMLVfCardDescriptionElement;
+        "vf-card-footer": HTMLVfCardFooterElement;
+        "vf-card-header": HTMLVfCardHeaderElement;
+        "vf-card-title": HTMLVfCardTitleElement;
+        "vf-divider": HTMLVfDividerElement;
+        "vf-flex": HTMLVfFlexElement;
+        "vf-google-one-tap": HTMLVfGoogleOneTapElement;
+        "vf-icon": HTMLVfIconElement;
+        "vf-label": HTMLVfLabelElement;
+        "vf-link": HTMLVfLinkElement;
+        "vf-logo": HTMLVfLogoElement;
+        "vf-powered-by": HTMLVfPoweredByElement;
+        "vf-signin": HTMLVfSigninElement;
+        "vf-signup": HTMLVfSignupElement;
+        "vf-textbox": HTMLVfTextboxElement;
+        "vf-theme-toggle": HTMLVfThemeToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -231,6 +530,102 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "onCheckedChange"?: (event: TodoListItemCustomEvent<boolean>) => void;
     }
+    interface VfButton {
+        "busy"?: boolean;
+        "disabled"?: boolean;
+        "form"?: string;
+        "name"?: string;
+        "onButtonClick"?: (event: VfButtonCustomEvent<MouseEvent>) => void;
+        "size"?: 'default' | 'sm' | 'lg' | 'icon';
+        "type"?: 'button' | 'submit' | 'reset';
+        "value"?: string;
+        "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+        "width"?: 'full' | 'auto';
+    }
+    interface VfCard {
+    }
+    interface VfCardContent {
+    }
+    interface VfCardDescription {
+        "align"?: 'left' | 'center';
+    }
+    interface VfCardFooter {
+        "variant"?: 'normal' | 'inset';
+    }
+    interface VfCardHeader {
+    }
+    interface VfCardTitle {
+        "align"?: 'left' | 'center';
+        "size"?: 'sm' | 'md' | 'lg';
+        "weight"?: 'bold' | 'medium' | 'light';
+    }
+    interface VfDivider {
+        "orientation"?: 'horizontal' | 'vertical';
+    }
+    interface VfFlex {
+        "direction"?: 'row' | 'column';
+        "gap"?: number;
+        "grow"?: boolean;
+        "halign"?: 'start' | 'center' | 'end';
+        "spaceUnit"?: number;
+        "valign"?: 'start' | 'center' | 'end';
+        "width"?: 'full' | 'auto';
+    }
+    interface VfGoogleOneTap {
+        "googleClientId": string;
+        "onGoogleCredential"?: (event: VfGoogleOneTapCustomEvent<any>) => void;
+        "onGoogleError"?: (event: VfGoogleOneTapCustomEvent<any>) => void;
+    }
+    interface VfIcon {
+        "color"?: string;
+        "name": string;
+        "size"?: 'sm' | 'md' | 'lg';
+    }
+    interface VfLabel {
+        "for"?: string;
+        "required"?: boolean;
+    }
+    interface VfLink {
+        "disabled"?: boolean;
+        "href"?: string;
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        "variant"?: 'default' | 'muted' | 'destructive';
+    }
+    interface VfLogo {
+        "name"?: 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
+        "size"?: number;
+    }
+    interface VfPoweredBy {
+        "label"?: string;
+    }
+    interface VfSignin {
+        "onFormSubmit"?: (event: VfSigninCustomEvent<any>) => void;
+        "onReady"?: (event: VfSigninCustomEvent<any>) => void;
+        "styles"?: {
+    link?: { [key: string]: string | number };
+  };
+    }
+    interface VfSignup {
+        "onReady"?: (event: VfSignupCustomEvent<void>) => void;
+        "styles"?: {
+    link?: { [key: string]: string | number };
+  };
+    }
+    interface VfTextbox {
+        "autocomplete"?: string;
+        "autocorrect"?: 'on' | 'off';
+        "disabled"?: boolean;
+        "name"?: string;
+        "onEnterKey"?: (event: VfTextboxCustomEvent<void>) => void;
+        "onInputChange"?: (event: VfTextboxCustomEvent<string>) => void;
+        "onValueChange"?: (event: VfTextboxCustomEvent<string>) => void;
+        "placeholder"?: string;
+        "required"?: boolean;
+        "type"?: string;
+        "value"?: string;
+    }
+    interface VfThemeToggle {
+    }
     interface IntrinsicElements {
         "custom-text-input": CustomTextInput;
         "date-selector": DateSelector;
@@ -241,6 +636,25 @@ declare namespace LocalJSX {
         "roc-clock": RocClock;
         "todo-list": TodoList;
         "todo-list-item": TodoListItem;
+        "vf-button": VfButton;
+        "vf-card": VfCard;
+        "vf-card-content": VfCardContent;
+        "vf-card-description": VfCardDescription;
+        "vf-card-footer": VfCardFooter;
+        "vf-card-header": VfCardHeader;
+        "vf-card-title": VfCardTitle;
+        "vf-divider": VfDivider;
+        "vf-flex": VfFlex;
+        "vf-google-one-tap": VfGoogleOneTap;
+        "vf-icon": VfIcon;
+        "vf-label": VfLabel;
+        "vf-link": VfLink;
+        "vf-logo": VfLogo;
+        "vf-powered-by": VfPoweredBy;
+        "vf-signin": VfSignin;
+        "vf-signup": VfSignup;
+        "vf-textbox": VfTextbox;
+        "vf-theme-toggle": VfThemeToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -256,6 +670,25 @@ declare module "@stencil/core" {
             "roc-clock": LocalJSX.RocClock & JSXBase.HTMLAttributes<HTMLRocClockElement>;
             "todo-list": LocalJSX.TodoList & JSXBase.HTMLAttributes<HTMLTodoListElement>;
             "todo-list-item": LocalJSX.TodoListItem & JSXBase.HTMLAttributes<HTMLTodoListItemElement>;
+            "vf-button": LocalJSX.VfButton & JSXBase.HTMLAttributes<HTMLVfButtonElement>;
+            "vf-card": LocalJSX.VfCard & JSXBase.HTMLAttributes<HTMLVfCardElement>;
+            "vf-card-content": LocalJSX.VfCardContent & JSXBase.HTMLAttributes<HTMLVfCardContentElement>;
+            "vf-card-description": LocalJSX.VfCardDescription & JSXBase.HTMLAttributes<HTMLVfCardDescriptionElement>;
+            "vf-card-footer": LocalJSX.VfCardFooter & JSXBase.HTMLAttributes<HTMLVfCardFooterElement>;
+            "vf-card-header": LocalJSX.VfCardHeader & JSXBase.HTMLAttributes<HTMLVfCardHeaderElement>;
+            "vf-card-title": LocalJSX.VfCardTitle & JSXBase.HTMLAttributes<HTMLVfCardTitleElement>;
+            "vf-divider": LocalJSX.VfDivider & JSXBase.HTMLAttributes<HTMLVfDividerElement>;
+            "vf-flex": LocalJSX.VfFlex & JSXBase.HTMLAttributes<HTMLVfFlexElement>;
+            "vf-google-one-tap": LocalJSX.VfGoogleOneTap & JSXBase.HTMLAttributes<HTMLVfGoogleOneTapElement>;
+            "vf-icon": LocalJSX.VfIcon & JSXBase.HTMLAttributes<HTMLVfIconElement>;
+            "vf-label": LocalJSX.VfLabel & JSXBase.HTMLAttributes<HTMLVfLabelElement>;
+            "vf-link": LocalJSX.VfLink & JSXBase.HTMLAttributes<HTMLVfLinkElement>;
+            "vf-logo": LocalJSX.VfLogo & JSXBase.HTMLAttributes<HTMLVfLogoElement>;
+            "vf-powered-by": LocalJSX.VfPoweredBy & JSXBase.HTMLAttributes<HTMLVfPoweredByElement>;
+            "vf-signin": LocalJSX.VfSignin & JSXBase.HTMLAttributes<HTMLVfSigninElement>;
+            "vf-signup": LocalJSX.VfSignup & JSXBase.HTMLAttributes<HTMLVfSignupElement>;
+            "vf-textbox": LocalJSX.VfTextbox & JSXBase.HTMLAttributes<HTMLVfTextboxElement>;
+            "vf-theme-toggle": LocalJSX.VfThemeToggle & JSXBase.HTMLAttributes<HTMLVfThemeToggleElement>;
         }
     }
 }
