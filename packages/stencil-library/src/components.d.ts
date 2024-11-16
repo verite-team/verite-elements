@@ -18,6 +18,7 @@ export namespace Components {
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
+        "elevation"?: string;
     }
     interface VuiCardContent {
     }
@@ -421,6 +422,7 @@ declare namespace LocalJSX {
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
+        "elevation"?: string;
     }
     interface VuiCardContent {
     }

@@ -34,13 +34,14 @@ export declare interface VuiButton extends Components.VuiButton {
 
 
 @ProxyCmp({
+  inputs: ['elevation']
 })
 @Component({
   selector: 'vui-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['elevation'],
 })
 export class VuiCard {
   protected el: HTMLElement;
