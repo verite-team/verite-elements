@@ -1,6 +1,4 @@
-# vf-button
-
-
+# vui-button
 
 <!-- Auto Generated Below -->
 
@@ -38,17 +36,19 @@
 
 ### Used by
 
- - [verite-otp](../verite-otp)
- - [vf-signin](../vf-signin)
- - [vf-signup](../vf-signup)
+ - [vui-otp](../otp)
+ - [vui-signin](../signin)
+ - [vui-signup](../signup)
+ - [vui-user-menu](../user-menu)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-button
-  vf-signin --> vf-button
-  vf-signup --> vf-button
-  style vf-button fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-button
+  vui-signin --> vui-button
+  vui-signup --> vui-button
+  vui-user-menu --> vui-button
+  style vui-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

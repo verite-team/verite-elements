@@ -1,6 +1,4 @@
-# vf-powered-by
-
-
+# vui-powered-by
 
 <!-- Auto Generated Below -->
 
@@ -16,15 +14,15 @@
 
 ### Used by
 
- - [vf-signin](../vf-signin)
- - [vf-signup](../vf-signup)
+ - [vui-signin](../signin)
+ - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
-  vf-signin --> vf-powered-by
-  vf-signup --> vf-powered-by
-  style vf-powered-by fill:#f9f,stroke:#333,stroke-width:4px
+  vui-signin --> vui-powered-by
+  vui-signup --> vui-powered-by
+  style vui-powered-by fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

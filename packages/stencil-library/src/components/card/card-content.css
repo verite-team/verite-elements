@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.card-content {
+  margin: 0;
+  padding: 1rem;
+}

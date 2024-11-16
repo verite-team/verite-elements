@@ -1,7 +1,5 @@
 # verite-otp
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -16,25 +14,25 @@
 
 ### Depends on
 
-- [vf-card-content](../vf-card)
-- [vf-flex](../vf-flex)
-- [vf-textbox](../vf-textbox)
-- [vf-card-footer](../vf-card)
-- [vf-button](../vf-button)
-- [vf-label](../vf-label)
-- [vf-link](../vf-link)
+- [vui-card-content](../card)
+- [vui-flex](../flex)
+- [vui-textbox](../textbox)
+- [vui-card-footer](../card)
+- [vui-button](../button)
+- [vui-label](../label)
+- [vui-link](../link)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-card-content
-  verite-otp --> vf-flex
-  verite-otp --> vf-textbox
-  verite-otp --> vf-card-footer
-  verite-otp --> vf-button
-  verite-otp --> vf-label
-  verite-otp --> vf-link
-  style verite-otp fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-card-content
+  vui-otp --> vui-flex
+  vui-otp --> vui-textbox
+  vui-otp --> vui-card-footer
+  vui-otp --> vui-button
+  vui-otp --> vui-label
+  vui-otp --> vui-link
+  style vui-otp fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

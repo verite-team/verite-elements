@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.vui-label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: hsl(var(--foreground));
+  user-select: none;
+  pointer-events: none;
+}
+
+.vui-label-required {
+  margin-left: 4px;
+  color: hsl(var(--destructive));
+}
+
+.vui-label[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

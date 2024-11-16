@@ -2,129 +2,7 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "custom-text-input",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "date-selector",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "my-component",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "first",
-          "description": "The first name"
-        },
-        {
-          "name": "last",
-          "description": "The last name"
-        },
-        {
-          "name": "middle",
-          "description": "The middle name"
-        }
-      ]
-    },
-    {
-      "name": "my-embedded-component",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "color",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "my-parent-component",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "roc-badge",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "type",
-          "description": "",
-          "values": [
-            {
-              "name": "danger"
-            },
-            {
-              "name": "info"
-            },
-            {
-              "name": "success"
-            },
-            {
-              "name": "warning"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "roc-clock",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "todo-list",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "todo-list-item",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "checked",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "verite-otp",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": []
-    },
-    {
-      "name": "vf-button",
+      "name": "vui-button",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -219,7 +97,7 @@
       ]
     },
     {
-      "name": "vf-card",
+      "name": "vui-card",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -227,7 +105,7 @@
       "attributes": []
     },
     {
-      "name": "vf-card-content",
+      "name": "vui-card-content",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -235,14 +113,14 @@
       "attributes": []
     },
     {
-      "name": "vf-card-description",
+      "name": "vui-card-description",
       "description": {
         "kind": "markdown",
         "value": ""
       },
       "attributes": [
         {
-          "name": "align",
+          "name": "halign",
           "description": "",
           "values": [
             {
@@ -256,7 +134,7 @@
       ]
     },
     {
-      "name": "vf-card-footer",
+      "name": "vui-card-footer",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -277,7 +155,7 @@
       ]
     },
     {
-      "name": "vf-card-header",
+      "name": "vui-card-header",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -285,14 +163,14 @@
       "attributes": []
     },
     {
-      "name": "vf-card-title",
+      "name": "vui-card-title",
       "description": {
         "kind": "markdown",
         "value": ""
       },
       "attributes": [
         {
-          "name": "align",
+          "name": "halign",
           "description": "",
           "values": [
             {
@@ -336,7 +214,7 @@
       ]
     },
     {
-      "name": "vf-divider",
+      "name": "vui-divider",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -357,7 +235,71 @@
       ]
     },
     {
-      "name": "vf-flex",
+      "name": "vui-dropdown-menu",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "position",
+          "description": "",
+          "values": [
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vui-dropdown-menu-content",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "vui-dropdown-menu-item",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "vui-dropdown-menu-separator",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "vui-dropdown-menu-trigger",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "vui-flex",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -432,7 +374,7 @@
       ]
     },
     {
-      "name": "vf-google-one-tap",
+      "name": "vui-google-one-tap",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -445,7 +387,7 @@
       ]
     },
     {
-      "name": "vf-icon",
+      "name": "vui-icon",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -471,13 +413,16 @@
             },
             {
               "name": "sm"
+            },
+            {
+              "name": "xs"
             }
           ]
         }
       ]
     },
     {
-      "name": "vf-label",
+      "name": "vui-label",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -494,7 +439,7 @@
       ]
     },
     {
-      "name": "vf-link",
+      "name": "vui-link",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -544,7 +489,7 @@
       ]
     },
     {
-      "name": "vf-logo",
+      "name": "vui-logo",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -578,7 +523,15 @@
       ]
     },
     {
-      "name": "vf-powered-by",
+      "name": "vui-otp",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "vui-powered-by",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -591,7 +544,7 @@
       ]
     },
     {
-      "name": "vf-signin",
+      "name": "vui-signin",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -599,7 +552,7 @@
       "attributes": []
     },
     {
-      "name": "vf-signup",
+      "name": "vui-signup",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -607,7 +560,7 @@
       "attributes": []
     },
     {
-      "name": "vf-textbox",
+      "name": "vui-textbox",
       "description": {
         "kind": "markdown",
         "value": ""
@@ -664,7 +617,15 @@
       ]
     },
     {
-      "name": "vf-theme-toggle",
+      "name": "vui-theme-toggle",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "vui-user-menu",
       "description": {
         "kind": "markdown",
         "value": ""

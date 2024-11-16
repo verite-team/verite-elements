@@ -1,6 +1,4 @@
-# vf-label
-
-
+# vui-label
 
 <!-- Auto Generated Below -->
 
@@ -17,13 +15,13 @@
 
 ### Used by
 
- - [verite-otp](../verite-otp)
+ - [vui-otp](../otp)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-label
-  style vf-label fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-label
+  style vui-label fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

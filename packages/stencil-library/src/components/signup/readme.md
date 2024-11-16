@@ -1,6 +1,4 @@
-# vf-signup
-
-
+# vui-signup
 
 <!-- Auto Generated Below -->
 
@@ -23,27 +21,27 @@
 
 ### Depends on
 
-- [vf-card-content](../vf-card)
-- [vf-flex](../vf-flex)
-- [vf-textbox](../vf-textbox)
-- [vf-button](../vf-button)
-- [vf-icon](../vf-icon)
-- [vf-card-footer](../vf-card)
-- [vf-divider](../vf-divider)
-- [vf-powered-by](../vf-powered-by)
+- [vui-card-content](../card)
+- [vui-flex](../flex)
+- [vui-textbox](../textbox)
+- [vui-button](../button)
+- [vui-icon](../icon)
+- [vui-card-footer](../card)
+- [vui-divider](../divider)
+- [vui-powered-by](../powered-by)
 
 ### Graph
 ```mermaid
 graph TD;
-  vf-signup --> vf-card-content
-  vf-signup --> vf-flex
-  vf-signup --> vf-textbox
-  vf-signup --> vf-button
-  vf-signup --> vf-icon
-  vf-signup --> vf-card-footer
-  vf-signup --> vf-divider
-  vf-signup --> vf-powered-by
-  style vf-signup fill:#f9f,stroke:#333,stroke-width:4px
+  vui-signup --> vui-card-content
+  vui-signup --> vui-flex
+  vui-signup --> vui-textbox
+  vui-signup --> vui-button
+  vui-signup --> vui-icon
+  vui-signup --> vui-card-footer
+  vui-signup --> vui-divider
+  vui-signup --> vui-powered-by
+  style vui-signup fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

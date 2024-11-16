@@ -1,0 +1,89 @@
+:host {
+  --transparent: 0 0% 100% / 0;
+  --color-foreground: 222.2 47.4% 11.2%;
+}
+
+.vui-button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 16px;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.vui-button:hover {
+  opacity: 0.9;
+}
+
+.vui-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--ring));
+}
+
+.vui-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.vui-button--secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.vui-button--outline {
+  background-color: transparent;
+  border-color: hsl(var(--border, var(--transparent)));
+  color: hsl(var(--foreground, var(--color-foreground)));
+}
+
+.vui-button--outline:hover {
+  background-color: hsl(var(--muted));
+}
+
+.vui-button--ghost {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+}
+
+.vui-button--ghost:hover {
+  background-color: hsl(var(--muted));
+}
+
+.vui-button--destructive {
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+}
+
+/* Sizes */
+.vui-button--icon {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.vui-button--sm {
+  height: 32px;
+  padding: 0 12px;
+}
+
+.vui-button--lg {
+  height: 48px;
+  padding: 0 20px;
+}
+
+.vui-button--busy {
+  pointer-events: none;
+}

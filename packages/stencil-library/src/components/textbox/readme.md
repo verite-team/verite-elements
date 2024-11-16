@@ -1,6 +1,4 @@
-# vf-textbox
-
-
+# vui-textbox
 
 <!-- Auto Generated Below -->
 
@@ -41,17 +39,17 @@
 
 ### Used by
 
- - [verite-otp](../verite-otp)
- - [vf-signin](../vf-signin)
- - [vf-signup](../vf-signup)
+ - [vui-otp](../otp)
+ - [vui-signin](../signin)
+ - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-textbox
-  vf-signin --> vf-textbox
-  vf-signup --> vf-textbox
-  style vf-textbox fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-textbox
+  vui-signin --> vui-textbox
+  vui-signup --> vui-textbox
+  style vui-textbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -1,6 +1,4 @@
-# vf-divider
-
-
+# vui-divider
 
 <!-- Auto Generated Below -->
 
@@ -16,15 +14,15 @@
 
 ### Used by
 
- - [vf-signin](../vf-signin)
- - [vf-signup](../vf-signup)
+ - [vui-signin](../signin)
+ - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
-  vf-signin --> vf-divider
-  vf-signup --> vf-divider
-  style vf-divider fill:#f9f,stroke:#333,stroke-width:4px
+  vui-signin --> vui-divider
+  vui-signup --> vui-divider
+  style vui-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

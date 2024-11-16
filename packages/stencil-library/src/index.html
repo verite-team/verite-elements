@@ -21,13 +21,13 @@
       }
 
       /* Base theme (light) */
-      vf-signin,
-      vf-signup,
-      vf-otp,
-      verite-user-menu,
-      .vf-card--signin,
-      .vf-card--signup,
-      .vf-card--otp {
+      vui-signin,
+      vui-signup,
+      vui-otp,
+      vui-user-menu,
+      .card--signin,
+      .card--signup,
+      .card--otp {
         --background: 0 0% 100%;
         --background-dark: 0 0% 14%;
         --foreground: 222.2 84% 4.9%;
@@ -60,13 +60,13 @@
       }
 
       /* Dark theme */
-      [data-theme='dark'] vf-signin,
-      [data-theme='dark'] vf-signup,
-      [data-theme='dark'] vf-otp,
-      [data-theme='dark'] verite-user-menu,
-      [data-theme='dark'] .vf-card--signin,
-      [data-theme='dark'] .vf-card--signup,
-      [data-theme='dark'] .vf-card--otp {
+      [data-theme='dark'] vui-signin,
+      [data-theme='dark'] vui-signup,
+      [data-theme='dark'] vui-otp,
+      [data-theme='dark'] vui-user-menu,
+      [data-theme='dark'] .card--signin,
+      [data-theme='dark'] .card--signup,
+      [data-theme='dark'] .card--otp {
         --background: 0 0% 8.5%;
         --foreground: 0 0% 98%;
         --card: 0 0% 10.3%;
@@ -122,47 +122,47 @@
         color: hsl(var(--foreground));
       }
 
-      /* Style all vf-link components */
-      /* vf-link::part(link) {
+      /* Style all vui-link components */
+      /* vui-link::part(link) {
         color: hsl(var(--primary));
         text-decoration: none;
       } */
 
       /* Add hover state */
-      /* vf-link::part(link):hover {
+      /* vui-link::part(link):hover {
         text-decoration: underline;
         background-color: yellow;
       } */
 
       /* Test style - add this to verify it's working */
-      /* vf-link::part(link) {
+      /* vui-link::part(link) {
         border: 3px solid red !important;
         padding: 10px !important;
         background: yellow !important;
       } */
 
-      /* .vf-card--signin-container::part(card) {
+      /* .vui-card--signin-container::part(card) {
         width: 100%;
         max-width: 400px;
         background-color: #f9f9f9;
         padding: 0;
       } */
 
-      /* This will now work for links inside vf-signin */
-      vf-signin::part(link),
-      vf-signup::part(link) {
+      /* This will now work for links inside vui-signin */
+      vui-signin::part(link),
+      vui-signup::part(link) {
         color: hsl(var(--primary));
         text-decoration: none;
         font-size: 0.875rem;
       }
 
-      vf-signin::part(link):hover,
-      vf-signup::part(link):hover {
+      vui-signin::part(link):hover,
+      vui-signup::part(link):hover {
         text-decoration: underline;
       }
 
-      .vf-card--signin::part(card),
-      .vf-card--signup::part(card) {
+      .card--signin::part(card),
+      .card--signup::part(card) {
         box-shadow: var(--elevation-3);
       }
 
@@ -170,8 +170,8 @@
         font-weight: 600;
       }
 
-      /* .vf-card--signin::part(card),
-      .vf-card--signup::part(card) {
+      /* .vui-card--signin::part(card),
+      .vui-card--signup::part(card) {
         background-color: red;
       } */
     </style>
@@ -180,12 +180,12 @@
     <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">
       Stencil Library
     </div>
-    <vf-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vf-theme-toggle>
-    <verite-user-menu style="position: fixed; top: 1rem; right: 3rem"></verite-user-menu>
+    <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
+    <vui-user-menu style="position: fixed; top: 1rem; right: 3rem"></vui-user-menu>
 
     <div id="signin-container" style="width: 100%; max-width: 360px">
-      <vf-card class="vf-card--signin">
-        <vf-card-header>
+      <vui-card class="card--signin">
+        <vui-card-header>
           <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px">
             <svg id="logo-88" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -197,37 +197,37 @@
               ></path>
             </svg>
           </div>
-          <vf-card-title align="center">Sign in to Acme Co</vf-card-title>
-          <vf-card-description align="center">Welcome back! Please sign in to continue</vf-card-description>
-        </vf-card-header>
-        <vf-signin onsubmit="console.log('Signin clicked')">
+          <vui-card-title halign="center">Sign in to Acme Co</vui-card-title>
+          <vui-card-description halign="center">Welcome back! Please sign in to continue</vui-card-description>
+        </vui-card-header>
+        <vui-signin onsubmit="console.log('Signin clicked')">
           <div slot="providers">
-            <vf-flex direction="column" gap="2" style="width: 100%">
-              <!-- <vf-button class="google-button" variant="outline" style="width: 100%">
-                <vf-flex valign="center" gap="2">
-                  <vf-logo name="apple" size="20"></vf-logo>
-                  <vf-label>Sign in with Apple</vf-label>
-                </vf-flex>
-              </vf-button> -->
+            <vui-flex direction="column" gap="2" style="width: 100%">
+              <!-- <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex valign="center" gap="2">
+                  <vui-logo name="apple" size="20"></vui-logo>
+                  <vui-label>Sign in with Apple</vui-label>
+                </vui-flex>
+              </vui-button> -->
 
-              <vf-button class="google-button" variant="outline" style="width: 100%">
-                <vf-flex valign="center" gap="2">
-                  <vf-logo name="google" size="20"></vf-logo>
-                  <vf-label>Sign in with Google</vf-label>
-                </vf-flex>
-              </vf-button>
-            </vf-flex>
-            <vf-divider orientation="horizontal" style="margin: 16px 0">
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex valign="center" gap="2">
+                  <vui-logo name="google" size="20"></vui-logo>
+                  <vui-label>Sign in with Google</vui-label>
+                </vui-flex>
+              </vui-button>
+            </vui-flex>
+            <vui-divider orientation="horizontal" style="margin: 16px 0">
               <span>or</span>
-            </vf-divider>
+            </vui-divider>
           </div>
-        </vf-signin>
-      </vf-card>
+        </vui-signin>
+      </vui-card>
     </div>
 
     <div id="signup-container" style="width: 100%; max-width: 360px">
-      <vf-card class="vf-card--signup">
-        <vf-card-header>
+      <vui-card class="card--signup">
+        <vui-card-header>
           <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px">
             <svg id="logo-88" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -239,38 +239,38 @@
               ></path>
             </svg>
           </div>
-          <vf-card-title align="center">Sign up to Acme Co</vf-card-title>
-          <vf-card-description align="center">Welcome! Please fill in the details to get started.</vf-card-description>
-        </vf-card-header>
-        <vf-signup onsubmit="console.log('Signup clicked')">
+          <vui-card-title halign="center">Sign up to Acme Co</vui-card-title>
+          <vui-card-description halign="center">Welcome! Please fill in the details to get started.</vui-card-description>
+        </vui-card-header>
+        <vui-signup onsubmit="console.log('Signup clicked')">
           <div slot="providers">
-            <vf-flex direction="column" gap="2" style="width: 100%">
-              <!-- <vf-button class="google-button" variant="outline" style="width: 100%">
-                <vf-flex valign="center" gap="2">
-                  <vf-logo name="apple" size="20"></vf-logo>
-                  <vf-label>Sign up with Apple</vf-label>
-                </vf-flex>
-              </vf-button> -->
+            <vui-flex direction="column" gap="2" style="width: 100%">
+              <!-- <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex valign="center" gap="2">
+                  <vui-logo name="apple" size="20"></vui-logo>
+                  <vui-label>Sign up with Apple</vui-label>
+                </vui-flex>
+              </vui-button> -->
 
-              <vf-button class="google-button" variant="outline" style="width: 100%">
-                <vf-flex valign="center" gap="2">
-                  <vf-logo name="google" size="20"></vf-logo>
-                  <vf-label>Sign up with Google</vf-label>
-                </vf-flex>
-              </vf-button>
-            </vf-flex>
-            <vf-divider orientation="horizontal" style="margin: 16px 0">
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex valign="center" gap="2">
+                  <vui-logo name="google" size="20"></vui-logo>
+                  <vui-label>Sign up with Google</vui-label>
+                </vui-flex>
+              </vui-button>
+            </vui-flex>
+            <vui-divider orientation="horizontal" style="margin: 16px 0">
               <span>or</span>
-            </vf-divider>
+            </vui-divider>
           </div>
-        </vf-signup>
-      </vf-card>
+        </vui-signup>
+      </vui-card>
     </div>
 
     <div class="flex flex-col items-center justify-center gap-4">
       <div id="otp-container" style="width: 100%; max-width: 360px">
-        <vf-card class="vf-card--otp">
-          <vf-card-header></vf-card-header>
+        <vui-card class="card--otp">
+          <vui-card-header></vui-card-header>
             <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px">
               <svg id="logo-88" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -282,22 +282,22 @@
                 ></path>
               </svg>
             </div>
-            <vf-card-title align="center">Please check your email</vf-card-title>
-            <vf-card-description align="center">
+            <vui-card-title align="center">Please check your email</vui-card-title>
+            <vui-card-description align="center">
               We've sent you a code to <span class="email-address">roboncode@gmail.com</span>
-            </vf-card-description>
-          </vf-card-header>
-          <vf-card-content>
-            <verite-otp></verite-otp>
-          </vf-card-content>
-        </vf-card>
+            </vui-card-description>
+          </vui-card-header>
+          <vui-card-content>
+            <vui-otp></verite-otp>
+          </vui-card-content>
+        </vui-card>
         <div style="margin-top: 16px">
-          <vf-powered-by label="Secured by Verite"></vf-powered-by>
+          <vui-powered-by label="Secured by Verite"></vui-powered-by>
         </div>
       </div>
   
     </div>
-    <!-- <vf-google-one-tap google-client-id="1234567890"></vf-google-one-tap> -->
+    <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
     <!-- <script>
       const signupContainer = document.getElementById('signup-container')

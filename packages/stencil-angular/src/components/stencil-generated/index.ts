@@ -8,173 +8,16 @@ import { Components } from 'stencil-library';
 
 
 @ProxyCmp({
-  inputs: ['position']
-})
-@Component({
-  selector: 'verite-dropdown-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['position'],
-})
-export class VeriteDropdownMenu {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VeriteDropdownMenu extends Components.VeriteDropdownMenu {}
-
-
-@ProxyCmp({
-})
-@Component({
-  selector: 'verite-dropdown-menu-content',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class VeriteDropdownMenuContent {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VeriteDropdownMenuContent extends Components.VeriteDropdownMenuContent {}
-
-
-@ProxyCmp({
-  inputs: ['disabled']
-})
-@Component({
-  selector: 'verite-dropdown-menu-item',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled'],
-})
-export class VeriteDropdownMenuItem {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['itemClick']);
-  }
-}
-
-
-export declare interface VeriteDropdownMenuItem extends Components.VeriteDropdownMenuItem {
-
-  itemClick: EventEmitter<CustomEvent<void>>;
-}
-
-
-@ProxyCmp({
-})
-@Component({
-  selector: 'verite-dropdown-menu-separator',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class VeriteDropdownMenuSeparator {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VeriteDropdownMenuSeparator extends Components.VeriteDropdownMenuSeparator {}
-
-
-@ProxyCmp({
-})
-@Component({
-  selector: 'verite-dropdown-menu-trigger',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class VeriteDropdownMenuTrigger {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VeriteDropdownMenuTrigger extends Components.VeriteDropdownMenuTrigger {}
-
-
-@ProxyCmp({
-})
-@Component({
-  selector: 'verite-otp',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class VeriteOtp {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit']);
-  }
-}
-
-
-export declare interface VeriteOtp extends Components.VeriteOtp {
-
-  formSubmit: EventEmitter<CustomEvent<any>>;
-}
-
-
-@ProxyCmp({
-})
-@Component({
-  selector: 'verite-user-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
-})
-export class VeriteUserMenu {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VeriteUserMenu extends Components.VeriteUserMenu {}
-
-
-@ProxyCmp({
   inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
 })
 @Component({
-  selector: 'vf-button',
+  selector: 'vui-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
 })
-export class VfButton {
+export class VuiButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -184,7 +27,7 @@ export class VfButton {
 }
 
 
-export declare interface VfButton extends Components.VfButton {
+export declare interface VuiButton extends Components.VuiButton {
 
   buttonClick: EventEmitter<CustomEvent<MouseEvent>>;
 }
@@ -193,13 +36,13 @@ export declare interface VfButton extends Components.VfButton {
 @ProxyCmp({
 })
 @Component({
-  selector: 'vf-card',
+  selector: 'vui-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
 })
-export class VfCard {
+export class VuiCard {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -208,19 +51,19 @@ export class VfCard {
 }
 
 
-export declare interface VfCard extends Components.VfCard {}
+export declare interface VuiCard extends Components.VuiCard {}
 
 
 @ProxyCmp({
 })
 @Component({
-  selector: 'vf-card-content',
+  selector: 'vui-card-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
 })
-export class VfCardContent {
+export class VuiCardContent {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -229,20 +72,20 @@ export class VfCardContent {
 }
 
 
-export declare interface VfCardContent extends Components.VfCardContent {}
+export declare interface VuiCardContent extends Components.VuiCardContent {}
 
 
 @ProxyCmp({
-  inputs: ['align']
+  inputs: ['halign']
 })
 @Component({
-  selector: 'vf-card-description',
+  selector: 'vui-card-description',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['align'],
+  inputs: ['halign'],
 })
-export class VfCardDescription {
+export class VuiCardDescription {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -251,20 +94,20 @@ export class VfCardDescription {
 }
 
 
-export declare interface VfCardDescription extends Components.VfCardDescription {}
+export declare interface VuiCardDescription extends Components.VuiCardDescription {}
 
 
 @ProxyCmp({
   inputs: ['variant']
 })
 @Component({
-  selector: 'vf-card-footer',
+  selector: 'vui-card-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['variant'],
 })
-export class VfCardFooter {
+export class VuiCardFooter {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -273,19 +116,19 @@ export class VfCardFooter {
 }
 
 
-export declare interface VfCardFooter extends Components.VfCardFooter {}
+export declare interface VuiCardFooter extends Components.VuiCardFooter {}
 
 
 @ProxyCmp({
 })
 @Component({
-  selector: 'vf-card-header',
+  selector: 'vui-card-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
 })
-export class VfCardHeader {
+export class VuiCardHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -294,20 +137,20 @@ export class VfCardHeader {
 }
 
 
-export declare interface VfCardHeader extends Components.VfCardHeader {}
+export declare interface VuiCardHeader extends Components.VuiCardHeader {}
 
 
 @ProxyCmp({
-  inputs: ['align', 'size', 'weight']
+  inputs: ['halign', 'size', 'weight']
 })
 @Component({
-  selector: 'vf-card-title',
+  selector: 'vui-card-title',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['align', 'size', 'weight'],
+  inputs: ['halign', 'size', 'weight'],
 })
-export class VfCardTitle {
+export class VuiCardTitle {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -316,20 +159,20 @@ export class VfCardTitle {
 }
 
 
-export declare interface VfCardTitle extends Components.VfCardTitle {}
+export declare interface VuiCardTitle extends Components.VuiCardTitle {}
 
 
 @ProxyCmp({
   inputs: ['orientation']
 })
 @Component({
-  selector: 'vf-divider',
+  selector: 'vui-divider',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['orientation'],
 })
-export class VfDivider {
+export class VuiDivider {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -338,20 +181,131 @@ export class VfDivider {
 }
 
 
-export declare interface VfDivider extends Components.VfDivider {}
+export declare interface VuiDivider extends Components.VuiDivider {}
+
+
+@ProxyCmp({
+  inputs: ['position']
+})
+@Component({
+  selector: 'vui-dropdown-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['position'],
+})
+export class VuiDropdownMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiDropdownMenu extends Components.VuiDropdownMenu {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vui-dropdown-menu-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VuiDropdownMenuContent {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiDropdownMenuContent extends Components.VuiDropdownMenuContent {}
+
+
+@ProxyCmp({
+  inputs: ['disabled']
+})
+@Component({
+  selector: 'vui-dropdown-menu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled'],
+})
+export class VuiDropdownMenuItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['itemClick']);
+  }
+}
+
+
+export declare interface VuiDropdownMenuItem extends Components.VuiDropdownMenuItem {
+
+  itemClick: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vui-dropdown-menu-separator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VuiDropdownMenuSeparator {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiDropdownMenuSeparator extends Components.VuiDropdownMenuSeparator {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vui-dropdown-menu-trigger',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VuiDropdownMenuTrigger {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiDropdownMenuTrigger extends Components.VuiDropdownMenuTrigger {}
 
 
 @ProxyCmp({
   inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width']
 })
 @Component({
-  selector: 'vf-flex',
+  selector: 'vui-flex',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width'],
 })
-export class VfFlex {
+export class VuiFlex {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -360,20 +314,20 @@ export class VfFlex {
 }
 
 
-export declare interface VfFlex extends Components.VfFlex {}
+export declare interface VuiFlex extends Components.VuiFlex {}
 
 
 @ProxyCmp({
   inputs: ['googleClientId']
 })
 @Component({
-  selector: 'vf-google-one-tap',
+  selector: 'vui-google-one-tap',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['googleClientId'],
 })
-export class VfGoogleOneTap {
+export class VuiGoogleOneTap {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -383,7 +337,7 @@ export class VfGoogleOneTap {
 }
 
 
-export declare interface VfGoogleOneTap extends Components.VfGoogleOneTap {
+export declare interface VuiGoogleOneTap extends Components.VuiGoogleOneTap {
 
   googleCredential: EventEmitter<CustomEvent<any>>;
 
@@ -395,13 +349,13 @@ export declare interface VfGoogleOneTap extends Components.VfGoogleOneTap {
   inputs: ['color', 'name', 'size']
 })
 @Component({
-  selector: 'vf-icon',
+  selector: 'vui-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['color', 'name', 'size'],
 })
-export class VfIcon {
+export class VuiIcon {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -410,20 +364,20 @@ export class VfIcon {
 }
 
 
-export declare interface VfIcon extends Components.VfIcon {}
+export declare interface VuiIcon extends Components.VuiIcon {}
 
 
 @ProxyCmp({
   inputs: ['for', 'required']
 })
 @Component({
-  selector: 'vf-label',
+  selector: 'vui-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['for', 'required'],
 })
-export class VfLabel {
+export class VuiLabel {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -432,20 +386,20 @@ export class VfLabel {
 }
 
 
-export declare interface VfLabel extends Components.VfLabel {}
+export declare interface VuiLabel extends Components.VuiLabel {}
 
 
 @ProxyCmp({
   inputs: ['disabled', 'href', 'target', 'variant']
 })
 @Component({
-  selector: 'vf-link',
+  selector: 'vui-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['disabled', 'href', 'target', 'variant'],
 })
-export class VfLink {
+export class VuiLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -454,20 +408,20 @@ export class VfLink {
 }
 
 
-export declare interface VfLink extends Components.VfLink {}
+export declare interface VuiLink extends Components.VuiLink {}
 
 
 @ProxyCmp({
   inputs: ['name', 'size']
 })
 @Component({
-  selector: 'vf-logo',
+  selector: 'vui-logo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['name', 'size'],
 })
-export class VfLogo {
+export class VuiLogo {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -476,20 +430,45 @@ export class VfLogo {
 }
 
 
-export declare interface VfLogo extends Components.VfLogo {}
+export declare interface VuiLogo extends Components.VuiLogo {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vui-otp',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VuiOtp {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['formSubmit']);
+  }
+}
+
+
+export declare interface VuiOtp extends Components.VuiOtp {
+
+  formSubmit: EventEmitter<CustomEvent<any>>;
+}
 
 
 @ProxyCmp({
   inputs: ['label']
 })
 @Component({
-  selector: 'vf-powered-by',
+  selector: 'vui-powered-by',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['label'],
 })
-export class VfPoweredBy {
+export class VuiPoweredBy {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -498,20 +477,20 @@ export class VfPoweredBy {
 }
 
 
-export declare interface VfPoweredBy extends Components.VfPoweredBy {}
+export declare interface VuiPoweredBy extends Components.VuiPoweredBy {}
 
 
 @ProxyCmp({
   inputs: ['styles']
 })
 @Component({
-  selector: 'vf-signin',
+  selector: 'vui-signin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['styles'],
 })
-export class VfSignin {
+export class VuiSignin {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -521,7 +500,7 @@ export class VfSignin {
 }
 
 
-export declare interface VfSignin extends Components.VfSignin {
+export declare interface VuiSignin extends Components.VuiSignin {
 
   formSubmit: EventEmitter<CustomEvent<any>>;
 
@@ -533,13 +512,13 @@ export declare interface VfSignin extends Components.VfSignin {
   inputs: ['styles']
 })
 @Component({
-  selector: 'vf-signup',
+  selector: 'vui-signup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['styles'],
 })
-export class VfSignup {
+export class VuiSignup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -549,7 +528,7 @@ export class VfSignup {
 }
 
 
-export declare interface VfSignup extends Components.VfSignup {
+export declare interface VuiSignup extends Components.VuiSignup {
 
   ready: EventEmitter<CustomEvent<void>>;
 }
@@ -559,13 +538,13 @@ export declare interface VfSignup extends Components.VfSignup {
   inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
 })
 @Component({
-  selector: 'vf-textbox',
+  selector: 'vui-textbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
 })
-export class VfTextbox {
+export class VuiTextbox {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -575,7 +554,7 @@ export class VfTextbox {
 }
 
 
-export declare interface VfTextbox extends Components.VfTextbox {
+export declare interface VuiTextbox extends Components.VuiTextbox {
 
   valueChange: EventEmitter<CustomEvent<string>>;
 
@@ -588,13 +567,13 @@ export declare interface VfTextbox extends Components.VfTextbox {
 @ProxyCmp({
 })
 @Component({
-  selector: 'vf-theme-toggle',
+  selector: 'vui-theme-toggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
 })
-export class VfThemeToggle {
+export class VuiThemeToggle {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -603,6 +582,27 @@ export class VfThemeToggle {
 }
 
 
-export declare interface VfThemeToggle extends Components.VfThemeToggle {}
+export declare interface VuiThemeToggle extends Components.VuiThemeToggle {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'vui-user-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VuiUserMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiUserMenu extends Components.VuiUserMenu {}
 
 

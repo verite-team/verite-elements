@@ -6,23 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface VeriteDropdownMenu {
-        "position": 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
-    }
-    interface VeriteDropdownMenuContent {
-    }
-    interface VeriteDropdownMenuItem {
-        "disabled"?: boolean;
-    }
-    interface VeriteDropdownMenuSeparator {
-    }
-    interface VeriteDropdownMenuTrigger {
-    }
-    interface VeriteOtp {
-    }
-    interface VeriteUserMenu {
-    }
-    interface VfButton {
+    interface VuiButton {
         "busy"?: boolean;
         "disabled"?: boolean;
         "form"?: string;
@@ -33,27 +17,39 @@ export namespace Components {
         "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
         "width"?: 'full' | 'auto';
     }
-    interface VfCard {
+    interface VuiCard {
     }
-    interface VfCardContent {
+    interface VuiCardContent {
     }
-    interface VfCardDescription {
-        "align": 'left' | 'center';
+    interface VuiCardDescription {
+        "halign": 'left' | 'center';
     }
-    interface VfCardFooter {
+    interface VuiCardFooter {
         "variant": 'normal' | 'inset';
     }
-    interface VfCardHeader {
+    interface VuiCardHeader {
     }
-    interface VfCardTitle {
-        "align": 'left' | 'center';
+    interface VuiCardTitle {
+        "halign": 'left' | 'center';
         "size": 'sm' | 'md' | 'lg';
         "weight": 'bold' | 'medium' | 'light';
     }
-    interface VfDivider {
+    interface VuiDivider {
         "orientation"?: 'horizontal' | 'vertical';
     }
-    interface VfFlex {
+    interface VuiDropdownMenu {
+        "position": 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
+    }
+    interface VuiDropdownMenuContent {
+    }
+    interface VuiDropdownMenuItem {
+        "disabled"?: boolean;
+    }
+    interface VuiDropdownMenuSeparator {
+    }
+    interface VuiDropdownMenuTrigger {
+    }
+    interface VuiFlex {
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
@@ -62,42 +58,44 @@ export namespace Components {
         "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
     }
-    interface VfGoogleOneTap {
+    interface VuiGoogleOneTap {
         "googleClientId": string;
     }
-    interface VfIcon {
+    interface VuiIcon {
         "color"?: string;
         "name": string;
         "size"?: 'xs' | 'sm' | 'md' | 'lg';
     }
-    interface VfLabel {
+    interface VuiLabel {
         "for"?: string;
         "required"?: boolean;
     }
-    interface VfLink {
+    interface VuiLink {
         "disabled"?: boolean;
         "href"?: string;
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         "variant"?: 'default' | 'muted' | 'destructive';
     }
-    interface VfLogo {
+    interface VuiLogo {
         "name": 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
         "size": number;
     }
-    interface VfPoweredBy {
+    interface VuiOtp {
+    }
+    interface VuiPoweredBy {
         "label": string;
     }
-    interface VfSignin {
+    interface VuiSignin {
         "styles"?: {
-    link?: { [key: string]: string | number };
+    link?: { [key: string]: string | number }
   };
     }
-    interface VfSignup {
+    interface VuiSignup {
         "styles"?: {
-    link?: { [key: string]: string | number };
+    link?: { [key: string]: string | number }
   };
     }
-    interface VfTextbox {
+    interface VuiTextbox {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
@@ -109,356 +107,353 @@ export namespace Components {
         "type": string;
         "value": string;
     }
-    interface VfThemeToggle {
+    interface VuiThemeToggle {
+    }
+    interface VuiUserMenu {
     }
 }
-export interface VeriteDropdownMenuItemCustomEvent<T> extends CustomEvent<T> {
+export interface VuiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVeriteDropdownMenuItemElement;
+    target: HTMLVuiButtonElement;
 }
-export interface VeriteOtpCustomEvent<T> extends CustomEvent<T> {
+export interface VuiDropdownMenuItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVeriteOtpElement;
+    target: HTMLVuiDropdownMenuItemElement;
 }
-export interface VfButtonCustomEvent<T> extends CustomEvent<T> {
+export interface VuiGoogleOneTapCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVfButtonElement;
+    target: HTMLVuiGoogleOneTapElement;
 }
-export interface VfGoogleOneTapCustomEvent<T> extends CustomEvent<T> {
+export interface VuiOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVfGoogleOneTapElement;
+    target: HTMLVuiOtpElement;
 }
-export interface VfSigninCustomEvent<T> extends CustomEvent<T> {
+export interface VuiSigninCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVfSigninElement;
+    target: HTMLVuiSigninElement;
 }
-export interface VfSignupCustomEvent<T> extends CustomEvent<T> {
+export interface VuiSignupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVfSignupElement;
+    target: HTMLVuiSignupElement;
 }
-export interface VfTextboxCustomEvent<T> extends CustomEvent<T> {
+export interface VuiTextboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLVfTextboxElement;
+    target: HTMLVuiTextboxElement;
 }
 declare global {
-    interface HTMLVeriteDropdownMenuElement extends Components.VeriteDropdownMenu, HTMLStencilElement {
-    }
-    var HTMLVeriteDropdownMenuElement: {
-        prototype: HTMLVeriteDropdownMenuElement;
-        new (): HTMLVeriteDropdownMenuElement;
-    };
-    interface HTMLVeriteDropdownMenuContentElement extends Components.VeriteDropdownMenuContent, HTMLStencilElement {
-    }
-    var HTMLVeriteDropdownMenuContentElement: {
-        prototype: HTMLVeriteDropdownMenuContentElement;
-        new (): HTMLVeriteDropdownMenuContentElement;
-    };
-    interface HTMLVeriteDropdownMenuItemElementEventMap {
-        "itemClick": void;
-    }
-    interface HTMLVeriteDropdownMenuItemElement extends Components.VeriteDropdownMenuItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVeriteDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVeriteDropdownMenuItemElement, ev: VeriteDropdownMenuItemCustomEvent<HTMLVeriteDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVeriteDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVeriteDropdownMenuItemElement, ev: VeriteDropdownMenuItemCustomEvent<HTMLVeriteDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLVeriteDropdownMenuItemElement: {
-        prototype: HTMLVeriteDropdownMenuItemElement;
-        new (): HTMLVeriteDropdownMenuItemElement;
-    };
-    interface HTMLVeriteDropdownMenuSeparatorElement extends Components.VeriteDropdownMenuSeparator, HTMLStencilElement {
-    }
-    var HTMLVeriteDropdownMenuSeparatorElement: {
-        prototype: HTMLVeriteDropdownMenuSeparatorElement;
-        new (): HTMLVeriteDropdownMenuSeparatorElement;
-    };
-    interface HTMLVeriteDropdownMenuTriggerElement extends Components.VeriteDropdownMenuTrigger, HTMLStencilElement {
-    }
-    var HTMLVeriteDropdownMenuTriggerElement: {
-        prototype: HTMLVeriteDropdownMenuTriggerElement;
-        new (): HTMLVeriteDropdownMenuTriggerElement;
-    };
-    interface HTMLVeriteOtpElementEventMap {
-        "formSubmit": any;
-    }
-    interface HTMLVeriteOtpElement extends Components.VeriteOtp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVeriteOtpElementEventMap>(type: K, listener: (this: HTMLVeriteOtpElement, ev: VeriteOtpCustomEvent<HTMLVeriteOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVeriteOtpElementEventMap>(type: K, listener: (this: HTMLVeriteOtpElement, ev: VeriteOtpCustomEvent<HTMLVeriteOtpElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLVeriteOtpElement: {
-        prototype: HTMLVeriteOtpElement;
-        new (): HTMLVeriteOtpElement;
-    };
-    interface HTMLVeriteUserMenuElement extends Components.VeriteUserMenu, HTMLStencilElement {
-    }
-    var HTMLVeriteUserMenuElement: {
-        prototype: HTMLVeriteUserMenuElement;
-        new (): HTMLVeriteUserMenuElement;
-    };
-    interface HTMLVfButtonElementEventMap {
+    interface HTMLVuiButtonElementEventMap {
         "buttonClick": MouseEvent;
     }
-    interface HTMLVfButtonElement extends Components.VfButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVfButtonElementEventMap>(type: K, listener: (this: HTMLVfButtonElement, ev: VfButtonCustomEvent<HTMLVfButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLVuiButtonElement extends Components.VuiButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiButtonElementEventMap>(type: K, listener: (this: HTMLVuiButtonElement, ev: VuiButtonCustomEvent<HTMLVuiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVfButtonElementEventMap>(type: K, listener: (this: HTMLVfButtonElement, ev: VfButtonCustomEvent<HTMLVfButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiButtonElementEventMap>(type: K, listener: (this: HTMLVuiButtonElement, ev: VuiButtonCustomEvent<HTMLVuiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLVfButtonElement: {
-        prototype: HTMLVfButtonElement;
-        new (): HTMLVfButtonElement;
+    var HTMLVuiButtonElement: {
+        prototype: HTMLVuiButtonElement;
+        new (): HTMLVuiButtonElement;
     };
-    interface HTMLVfCardElement extends Components.VfCard, HTMLStencilElement {
+    interface HTMLVuiCardElement extends Components.VuiCard, HTMLStencilElement {
     }
-    var HTMLVfCardElement: {
-        prototype: HTMLVfCardElement;
-        new (): HTMLVfCardElement;
+    var HTMLVuiCardElement: {
+        prototype: HTMLVuiCardElement;
+        new (): HTMLVuiCardElement;
     };
-    interface HTMLVfCardContentElement extends Components.VfCardContent, HTMLStencilElement {
+    interface HTMLVuiCardContentElement extends Components.VuiCardContent, HTMLStencilElement {
     }
-    var HTMLVfCardContentElement: {
-        prototype: HTMLVfCardContentElement;
-        new (): HTMLVfCardContentElement;
+    var HTMLVuiCardContentElement: {
+        prototype: HTMLVuiCardContentElement;
+        new (): HTMLVuiCardContentElement;
     };
-    interface HTMLVfCardDescriptionElement extends Components.VfCardDescription, HTMLStencilElement {
+    interface HTMLVuiCardDescriptionElement extends Components.VuiCardDescription, HTMLStencilElement {
     }
-    var HTMLVfCardDescriptionElement: {
-        prototype: HTMLVfCardDescriptionElement;
-        new (): HTMLVfCardDescriptionElement;
+    var HTMLVuiCardDescriptionElement: {
+        prototype: HTMLVuiCardDescriptionElement;
+        new (): HTMLVuiCardDescriptionElement;
     };
-    interface HTMLVfCardFooterElement extends Components.VfCardFooter, HTMLStencilElement {
+    interface HTMLVuiCardFooterElement extends Components.VuiCardFooter, HTMLStencilElement {
     }
-    var HTMLVfCardFooterElement: {
-        prototype: HTMLVfCardFooterElement;
-        new (): HTMLVfCardFooterElement;
+    var HTMLVuiCardFooterElement: {
+        prototype: HTMLVuiCardFooterElement;
+        new (): HTMLVuiCardFooterElement;
     };
-    interface HTMLVfCardHeaderElement extends Components.VfCardHeader, HTMLStencilElement {
+    interface HTMLVuiCardHeaderElement extends Components.VuiCardHeader, HTMLStencilElement {
     }
-    var HTMLVfCardHeaderElement: {
-        prototype: HTMLVfCardHeaderElement;
-        new (): HTMLVfCardHeaderElement;
+    var HTMLVuiCardHeaderElement: {
+        prototype: HTMLVuiCardHeaderElement;
+        new (): HTMLVuiCardHeaderElement;
     };
-    interface HTMLVfCardTitleElement extends Components.VfCardTitle, HTMLStencilElement {
+    interface HTMLVuiCardTitleElement extends Components.VuiCardTitle, HTMLStencilElement {
     }
-    var HTMLVfCardTitleElement: {
-        prototype: HTMLVfCardTitleElement;
-        new (): HTMLVfCardTitleElement;
+    var HTMLVuiCardTitleElement: {
+        prototype: HTMLVuiCardTitleElement;
+        new (): HTMLVuiCardTitleElement;
     };
-    interface HTMLVfDividerElement extends Components.VfDivider, HTMLStencilElement {
+    interface HTMLVuiDividerElement extends Components.VuiDivider, HTMLStencilElement {
     }
-    var HTMLVfDividerElement: {
-        prototype: HTMLVfDividerElement;
-        new (): HTMLVfDividerElement;
+    var HTMLVuiDividerElement: {
+        prototype: HTMLVuiDividerElement;
+        new (): HTMLVuiDividerElement;
     };
-    interface HTMLVfFlexElement extends Components.VfFlex, HTMLStencilElement {
+    interface HTMLVuiDropdownMenuElement extends Components.VuiDropdownMenu, HTMLStencilElement {
     }
-    var HTMLVfFlexElement: {
-        prototype: HTMLVfFlexElement;
-        new (): HTMLVfFlexElement;
+    var HTMLVuiDropdownMenuElement: {
+        prototype: HTMLVuiDropdownMenuElement;
+        new (): HTMLVuiDropdownMenuElement;
     };
-    interface HTMLVfGoogleOneTapElementEventMap {
+    interface HTMLVuiDropdownMenuContentElement extends Components.VuiDropdownMenuContent, HTMLStencilElement {
+    }
+    var HTMLVuiDropdownMenuContentElement: {
+        prototype: HTMLVuiDropdownMenuContentElement;
+        new (): HTMLVuiDropdownMenuContentElement;
+    };
+    interface HTMLVuiDropdownMenuItemElementEventMap {
+        "itemClick": void;
+    }
+    interface HTMLVuiDropdownMenuItemElement extends Components.VuiDropdownMenuItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVuiDropdownMenuItemElement, ev: VuiDropdownMenuItemCustomEvent<HTMLVuiDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVuiDropdownMenuItemElement, ev: VuiDropdownMenuItemCustomEvent<HTMLVuiDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiDropdownMenuItemElement: {
+        prototype: HTMLVuiDropdownMenuItemElement;
+        new (): HTMLVuiDropdownMenuItemElement;
+    };
+    interface HTMLVuiDropdownMenuSeparatorElement extends Components.VuiDropdownMenuSeparator, HTMLStencilElement {
+    }
+    var HTMLVuiDropdownMenuSeparatorElement: {
+        prototype: HTMLVuiDropdownMenuSeparatorElement;
+        new (): HTMLVuiDropdownMenuSeparatorElement;
+    };
+    interface HTMLVuiDropdownMenuTriggerElement extends Components.VuiDropdownMenuTrigger, HTMLStencilElement {
+    }
+    var HTMLVuiDropdownMenuTriggerElement: {
+        prototype: HTMLVuiDropdownMenuTriggerElement;
+        new (): HTMLVuiDropdownMenuTriggerElement;
+    };
+    interface HTMLVuiFlexElement extends Components.VuiFlex, HTMLStencilElement {
+    }
+    var HTMLVuiFlexElement: {
+        prototype: HTMLVuiFlexElement;
+        new (): HTMLVuiFlexElement;
+    };
+    interface HTMLVuiGoogleOneTapElementEventMap {
         "googleCredential": any;
         "googleError": any;
     }
-    interface HTMLVfGoogleOneTapElement extends Components.VfGoogleOneTap, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVfGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVfGoogleOneTapElement, ev: VfGoogleOneTapCustomEvent<HTMLVfGoogleOneTapElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLVuiGoogleOneTapElement extends Components.VuiGoogleOneTap, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVuiGoogleOneTapElement, ev: VuiGoogleOneTapCustomEvent<HTMLVuiGoogleOneTapElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVfGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVfGoogleOneTapElement, ev: VfGoogleOneTapCustomEvent<HTMLVfGoogleOneTapElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVuiGoogleOneTapElement, ev: VuiGoogleOneTapCustomEvent<HTMLVuiGoogleOneTapElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLVfGoogleOneTapElement: {
-        prototype: HTMLVfGoogleOneTapElement;
-        new (): HTMLVfGoogleOneTapElement;
+    var HTMLVuiGoogleOneTapElement: {
+        prototype: HTMLVuiGoogleOneTapElement;
+        new (): HTMLVuiGoogleOneTapElement;
     };
-    interface HTMLVfIconElement extends Components.VfIcon, HTMLStencilElement {
+    interface HTMLVuiIconElement extends Components.VuiIcon, HTMLStencilElement {
     }
-    var HTMLVfIconElement: {
-        prototype: HTMLVfIconElement;
-        new (): HTMLVfIconElement;
+    var HTMLVuiIconElement: {
+        prototype: HTMLVuiIconElement;
+        new (): HTMLVuiIconElement;
     };
-    interface HTMLVfLabelElement extends Components.VfLabel, HTMLStencilElement {
+    interface HTMLVuiLabelElement extends Components.VuiLabel, HTMLStencilElement {
     }
-    var HTMLVfLabelElement: {
-        prototype: HTMLVfLabelElement;
-        new (): HTMLVfLabelElement;
+    var HTMLVuiLabelElement: {
+        prototype: HTMLVuiLabelElement;
+        new (): HTMLVuiLabelElement;
     };
-    interface HTMLVfLinkElement extends Components.VfLink, HTMLStencilElement {
+    interface HTMLVuiLinkElement extends Components.VuiLink, HTMLStencilElement {
     }
-    var HTMLVfLinkElement: {
-        prototype: HTMLVfLinkElement;
-        new (): HTMLVfLinkElement;
+    var HTMLVuiLinkElement: {
+        prototype: HTMLVuiLinkElement;
+        new (): HTMLVuiLinkElement;
     };
-    interface HTMLVfLogoElement extends Components.VfLogo, HTMLStencilElement {
+    interface HTMLVuiLogoElement extends Components.VuiLogo, HTMLStencilElement {
     }
-    var HTMLVfLogoElement: {
-        prototype: HTMLVfLogoElement;
-        new (): HTMLVfLogoElement;
+    var HTMLVuiLogoElement: {
+        prototype: HTMLVuiLogoElement;
+        new (): HTMLVuiLogoElement;
     };
-    interface HTMLVfPoweredByElement extends Components.VfPoweredBy, HTMLStencilElement {
+    interface HTMLVuiOtpElementEventMap {
+        "formSubmit": any;
     }
-    var HTMLVfPoweredByElement: {
-        prototype: HTMLVfPoweredByElement;
-        new (): HTMLVfPoweredByElement;
+    interface HTMLVuiOtpElement extends Components.VuiOtp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiOtpElementEventMap>(type: K, listener: (this: HTMLVuiOtpElement, ev: VuiOtpCustomEvent<HTMLVuiOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiOtpElementEventMap>(type: K, listener: (this: HTMLVuiOtpElement, ev: VuiOtpCustomEvent<HTMLVuiOtpElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiOtpElement: {
+        prototype: HTMLVuiOtpElement;
+        new (): HTMLVuiOtpElement;
     };
-    interface HTMLVfSigninElementEventMap {
+    interface HTMLVuiPoweredByElement extends Components.VuiPoweredBy, HTMLStencilElement {
+    }
+    var HTMLVuiPoweredByElement: {
+        prototype: HTMLVuiPoweredByElement;
+        new (): HTMLVuiPoweredByElement;
+    };
+    interface HTMLVuiSigninElementEventMap {
         "formSubmit": any;
         "ready": any;
     }
-    interface HTMLVfSigninElement extends Components.VfSignin, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVfSigninElementEventMap>(type: K, listener: (this: HTMLVfSigninElement, ev: VfSigninCustomEvent<HTMLVfSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVfSigninElementEventMap>(type: K, listener: (this: HTMLVfSigninElement, ev: VfSigninCustomEvent<HTMLVfSigninElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLVfSigninElement: {
-        prototype: HTMLVfSigninElement;
-        new (): HTMLVfSigninElement;
+    var HTMLVuiSigninElement: {
+        prototype: HTMLVuiSigninElement;
+        new (): HTMLVuiSigninElement;
     };
-    interface HTMLVfSignupElementEventMap {
+    interface HTMLVuiSignupElementEventMap {
         "ready": void;
     }
-    interface HTMLVfSignupElement extends Components.VfSignup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVfSignupElementEventMap>(type: K, listener: (this: HTMLVfSignupElement, ev: VfSignupCustomEvent<HTMLVfSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVfSignupElementEventMap>(type: K, listener: (this: HTMLVfSignupElement, ev: VfSignupCustomEvent<HTMLVfSignupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLVfSignupElement: {
-        prototype: HTMLVfSignupElement;
-        new (): HTMLVfSignupElement;
+    var HTMLVuiSignupElement: {
+        prototype: HTMLVuiSignupElement;
+        new (): HTMLVuiSignupElement;
     };
-    interface HTMLVfTextboxElementEventMap {
+    interface HTMLVuiTextboxElementEventMap {
         "valueChange": string;
         "inputChange": string;
         "enterKey": void;
     }
-    interface HTMLVfTextboxElement extends Components.VfTextbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVfTextboxElementEventMap>(type: K, listener: (this: HTMLVfTextboxElement, ev: VfTextboxCustomEvent<HTMLVfTextboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLVuiTextboxElement extends Components.VuiTextbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiTextboxElementEventMap>(type: K, listener: (this: HTMLVuiTextboxElement, ev: VuiTextboxCustomEvent<HTMLVuiTextboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVfTextboxElementEventMap>(type: K, listener: (this: HTMLVfTextboxElement, ev: VfTextboxCustomEvent<HTMLVfTextboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiTextboxElementEventMap>(type: K, listener: (this: HTMLVuiTextboxElement, ev: VuiTextboxCustomEvent<HTMLVuiTextboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLVfTextboxElement: {
-        prototype: HTMLVfTextboxElement;
-        new (): HTMLVfTextboxElement;
+    var HTMLVuiTextboxElement: {
+        prototype: HTMLVuiTextboxElement;
+        new (): HTMLVuiTextboxElement;
     };
-    interface HTMLVfThemeToggleElement extends Components.VfThemeToggle, HTMLStencilElement {
+    interface HTMLVuiThemeToggleElement extends Components.VuiThemeToggle, HTMLStencilElement {
     }
-    var HTMLVfThemeToggleElement: {
-        prototype: HTMLVfThemeToggleElement;
-        new (): HTMLVfThemeToggleElement;
+    var HTMLVuiThemeToggleElement: {
+        prototype: HTMLVuiThemeToggleElement;
+        new (): HTMLVuiThemeToggleElement;
+    };
+    interface HTMLVuiUserMenuElement extends Components.VuiUserMenu, HTMLStencilElement {
+    }
+    var HTMLVuiUserMenuElement: {
+        prototype: HTMLVuiUserMenuElement;
+        new (): HTMLVuiUserMenuElement;
     };
     interface HTMLElementTagNameMap {
-        "verite-dropdown-menu": HTMLVeriteDropdownMenuElement;
-        "verite-dropdown-menu-content": HTMLVeriteDropdownMenuContentElement;
-        "verite-dropdown-menu-item": HTMLVeriteDropdownMenuItemElement;
-        "verite-dropdown-menu-separator": HTMLVeriteDropdownMenuSeparatorElement;
-        "verite-dropdown-menu-trigger": HTMLVeriteDropdownMenuTriggerElement;
-        "verite-otp": HTMLVeriteOtpElement;
-        "verite-user-menu": HTMLVeriteUserMenuElement;
-        "vf-button": HTMLVfButtonElement;
-        "vf-card": HTMLVfCardElement;
-        "vf-card-content": HTMLVfCardContentElement;
-        "vf-card-description": HTMLVfCardDescriptionElement;
-        "vf-card-footer": HTMLVfCardFooterElement;
-        "vf-card-header": HTMLVfCardHeaderElement;
-        "vf-card-title": HTMLVfCardTitleElement;
-        "vf-divider": HTMLVfDividerElement;
-        "vf-flex": HTMLVfFlexElement;
-        "vf-google-one-tap": HTMLVfGoogleOneTapElement;
-        "vf-icon": HTMLVfIconElement;
-        "vf-label": HTMLVfLabelElement;
-        "vf-link": HTMLVfLinkElement;
-        "vf-logo": HTMLVfLogoElement;
-        "vf-powered-by": HTMLVfPoweredByElement;
-        "vf-signin": HTMLVfSigninElement;
-        "vf-signup": HTMLVfSignupElement;
-        "vf-textbox": HTMLVfTextboxElement;
-        "vf-theme-toggle": HTMLVfThemeToggleElement;
+        "vui-button": HTMLVuiButtonElement;
+        "vui-card": HTMLVuiCardElement;
+        "vui-card-content": HTMLVuiCardContentElement;
+        "vui-card-description": HTMLVuiCardDescriptionElement;
+        "vui-card-footer": HTMLVuiCardFooterElement;
+        "vui-card-header": HTMLVuiCardHeaderElement;
+        "vui-card-title": HTMLVuiCardTitleElement;
+        "vui-divider": HTMLVuiDividerElement;
+        "vui-dropdown-menu": HTMLVuiDropdownMenuElement;
+        "vui-dropdown-menu-content": HTMLVuiDropdownMenuContentElement;
+        "vui-dropdown-menu-item": HTMLVuiDropdownMenuItemElement;
+        "vui-dropdown-menu-separator": HTMLVuiDropdownMenuSeparatorElement;
+        "vui-dropdown-menu-trigger": HTMLVuiDropdownMenuTriggerElement;
+        "vui-flex": HTMLVuiFlexElement;
+        "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
+        "vui-icon": HTMLVuiIconElement;
+        "vui-label": HTMLVuiLabelElement;
+        "vui-link": HTMLVuiLinkElement;
+        "vui-logo": HTMLVuiLogoElement;
+        "vui-otp": HTMLVuiOtpElement;
+        "vui-powered-by": HTMLVuiPoweredByElement;
+        "vui-signin": HTMLVuiSigninElement;
+        "vui-signup": HTMLVuiSignupElement;
+        "vui-textbox": HTMLVuiTextboxElement;
+        "vui-theme-toggle": HTMLVuiThemeToggleElement;
+        "vui-user-menu": HTMLVuiUserMenuElement;
     }
 }
 declare namespace LocalJSX {
-    interface VeriteDropdownMenu {
-        "position"?: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
-    }
-    interface VeriteDropdownMenuContent {
-    }
-    interface VeriteDropdownMenuItem {
-        "disabled"?: boolean;
-        "onItemClick"?: (event: VeriteDropdownMenuItemCustomEvent<void>) => void;
-    }
-    interface VeriteDropdownMenuSeparator {
-    }
-    interface VeriteDropdownMenuTrigger {
-    }
-    interface VeriteOtp {
-        "onFormSubmit"?: (event: VeriteOtpCustomEvent<any>) => void;
-    }
-    interface VeriteUserMenu {
-    }
-    interface VfButton {
+    interface VuiButton {
         "busy"?: boolean;
         "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
-        "onButtonClick"?: (event: VfButtonCustomEvent<MouseEvent>) => void;
+        "onButtonClick"?: (event: VuiButtonCustomEvent<MouseEvent>) => void;
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
         "type"?: 'button' | 'submit' | 'reset';
         "value"?: string;
         "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
         "width"?: 'full' | 'auto';
     }
-    interface VfCard {
+    interface VuiCard {
     }
-    interface VfCardContent {
+    interface VuiCardContent {
     }
-    interface VfCardDescription {
-        "align"?: 'left' | 'center';
+    interface VuiCardDescription {
+        "halign"?: 'left' | 'center';
     }
-    interface VfCardFooter {
+    interface VuiCardFooter {
         "variant"?: 'normal' | 'inset';
     }
-    interface VfCardHeader {
+    interface VuiCardHeader {
     }
-    interface VfCardTitle {
-        "align"?: 'left' | 'center';
+    interface VuiCardTitle {
+        "halign"?: 'left' | 'center';
         "size"?: 'sm' | 'md' | 'lg';
         "weight"?: 'bold' | 'medium' | 'light';
     }
-    interface VfDivider {
+    interface VuiDivider {
         "orientation"?: 'horizontal' | 'vertical';
     }
-    interface VfFlex {
+    interface VuiDropdownMenu {
+        "position"?: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
+    }
+    interface VuiDropdownMenuContent {
+    }
+    interface VuiDropdownMenuItem {
+        "disabled"?: boolean;
+        "onItemClick"?: (event: VuiDropdownMenuItemCustomEvent<void>) => void;
+    }
+    interface VuiDropdownMenuSeparator {
+    }
+    interface VuiDropdownMenuTrigger {
+    }
+    interface VuiFlex {
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
@@ -467,122 +462,127 @@ declare namespace LocalJSX {
         "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
     }
-    interface VfGoogleOneTap {
+    interface VuiGoogleOneTap {
         "googleClientId": string;
-        "onGoogleCredential"?: (event: VfGoogleOneTapCustomEvent<any>) => void;
-        "onGoogleError"?: (event: VfGoogleOneTapCustomEvent<any>) => void;
+        "onGoogleCredential"?: (event: VuiGoogleOneTapCustomEvent<any>) => void;
+        "onGoogleError"?: (event: VuiGoogleOneTapCustomEvent<any>) => void;
     }
-    interface VfIcon {
+    interface VuiIcon {
         "color"?: string;
         "name": string;
         "size"?: 'xs' | 'sm' | 'md' | 'lg';
     }
-    interface VfLabel {
+    interface VuiLabel {
         "for"?: string;
         "required"?: boolean;
     }
-    interface VfLink {
+    interface VuiLink {
         "disabled"?: boolean;
         "href"?: string;
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         "variant"?: 'default' | 'muted' | 'destructive';
     }
-    interface VfLogo {
+    interface VuiLogo {
         "name"?: 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
         "size"?: number;
     }
-    interface VfPoweredBy {
+    interface VuiOtp {
+        "onFormSubmit"?: (event: VuiOtpCustomEvent<any>) => void;
+    }
+    interface VuiPoweredBy {
         "label"?: string;
     }
-    interface VfSignin {
-        "onFormSubmit"?: (event: VfSigninCustomEvent<any>) => void;
-        "onReady"?: (event: VfSigninCustomEvent<any>) => void;
+    interface VuiSignin {
+        "onFormSubmit"?: (event: VuiSigninCustomEvent<any>) => void;
+        "onReady"?: (event: VuiSigninCustomEvent<any>) => void;
         "styles"?: {
-    link?: { [key: string]: string | number };
+    link?: { [key: string]: string | number }
   };
     }
-    interface VfSignup {
-        "onReady"?: (event: VfSignupCustomEvent<void>) => void;
+    interface VuiSignup {
+        "onReady"?: (event: VuiSignupCustomEvent<void>) => void;
         "styles"?: {
-    link?: { [key: string]: string | number };
+    link?: { [key: string]: string | number }
   };
     }
-    interface VfTextbox {
+    interface VuiTextbox {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
         "maxlength"?: number;
         "name"?: string;
-        "onEnterKey"?: (event: VfTextboxCustomEvent<void>) => void;
-        "onInputChange"?: (event: VfTextboxCustomEvent<string>) => void;
-        "onValueChange"?: (event: VfTextboxCustomEvent<string>) => void;
+        "onEnterKey"?: (event: VuiTextboxCustomEvent<void>) => void;
+        "onInputChange"?: (event: VuiTextboxCustomEvent<string>) => void;
+        "onValueChange"?: (event: VuiTextboxCustomEvent<string>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
         "type"?: string;
         "value"?: string;
     }
-    interface VfThemeToggle {
+    interface VuiThemeToggle {
+    }
+    interface VuiUserMenu {
     }
     interface IntrinsicElements {
-        "verite-dropdown-menu": VeriteDropdownMenu;
-        "verite-dropdown-menu-content": VeriteDropdownMenuContent;
-        "verite-dropdown-menu-item": VeriteDropdownMenuItem;
-        "verite-dropdown-menu-separator": VeriteDropdownMenuSeparator;
-        "verite-dropdown-menu-trigger": VeriteDropdownMenuTrigger;
-        "verite-otp": VeriteOtp;
-        "verite-user-menu": VeriteUserMenu;
-        "vf-button": VfButton;
-        "vf-card": VfCard;
-        "vf-card-content": VfCardContent;
-        "vf-card-description": VfCardDescription;
-        "vf-card-footer": VfCardFooter;
-        "vf-card-header": VfCardHeader;
-        "vf-card-title": VfCardTitle;
-        "vf-divider": VfDivider;
-        "vf-flex": VfFlex;
-        "vf-google-one-tap": VfGoogleOneTap;
-        "vf-icon": VfIcon;
-        "vf-label": VfLabel;
-        "vf-link": VfLink;
-        "vf-logo": VfLogo;
-        "vf-powered-by": VfPoweredBy;
-        "vf-signin": VfSignin;
-        "vf-signup": VfSignup;
-        "vf-textbox": VfTextbox;
-        "vf-theme-toggle": VfThemeToggle;
+        "vui-button": VuiButton;
+        "vui-card": VuiCard;
+        "vui-card-content": VuiCardContent;
+        "vui-card-description": VuiCardDescription;
+        "vui-card-footer": VuiCardFooter;
+        "vui-card-header": VuiCardHeader;
+        "vui-card-title": VuiCardTitle;
+        "vui-divider": VuiDivider;
+        "vui-dropdown-menu": VuiDropdownMenu;
+        "vui-dropdown-menu-content": VuiDropdownMenuContent;
+        "vui-dropdown-menu-item": VuiDropdownMenuItem;
+        "vui-dropdown-menu-separator": VuiDropdownMenuSeparator;
+        "vui-dropdown-menu-trigger": VuiDropdownMenuTrigger;
+        "vui-flex": VuiFlex;
+        "vui-google-one-tap": VuiGoogleOneTap;
+        "vui-icon": VuiIcon;
+        "vui-label": VuiLabel;
+        "vui-link": VuiLink;
+        "vui-logo": VuiLogo;
+        "vui-otp": VuiOtp;
+        "vui-powered-by": VuiPoweredBy;
+        "vui-signin": VuiSignin;
+        "vui-signup": VuiSignup;
+        "vui-textbox": VuiTextbox;
+        "vui-theme-toggle": VuiThemeToggle;
+        "vui-user-menu": VuiUserMenu;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "verite-dropdown-menu": LocalJSX.VeriteDropdownMenu & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuElement>;
-            "verite-dropdown-menu-content": LocalJSX.VeriteDropdownMenuContent & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuContentElement>;
-            "verite-dropdown-menu-item": LocalJSX.VeriteDropdownMenuItem & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuItemElement>;
-            "verite-dropdown-menu-separator": LocalJSX.VeriteDropdownMenuSeparator & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuSeparatorElement>;
-            "verite-dropdown-menu-trigger": LocalJSX.VeriteDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuTriggerElement>;
-            "verite-otp": LocalJSX.VeriteOtp & JSXBase.HTMLAttributes<HTMLVeriteOtpElement>;
-            "verite-user-menu": LocalJSX.VeriteUserMenu & JSXBase.HTMLAttributes<HTMLVeriteUserMenuElement>;
-            "vf-button": LocalJSX.VfButton & JSXBase.HTMLAttributes<HTMLVfButtonElement>;
-            "vf-card": LocalJSX.VfCard & JSXBase.HTMLAttributes<HTMLVfCardElement>;
-            "vf-card-content": LocalJSX.VfCardContent & JSXBase.HTMLAttributes<HTMLVfCardContentElement>;
-            "vf-card-description": LocalJSX.VfCardDescription & JSXBase.HTMLAttributes<HTMLVfCardDescriptionElement>;
-            "vf-card-footer": LocalJSX.VfCardFooter & JSXBase.HTMLAttributes<HTMLVfCardFooterElement>;
-            "vf-card-header": LocalJSX.VfCardHeader & JSXBase.HTMLAttributes<HTMLVfCardHeaderElement>;
-            "vf-card-title": LocalJSX.VfCardTitle & JSXBase.HTMLAttributes<HTMLVfCardTitleElement>;
-            "vf-divider": LocalJSX.VfDivider & JSXBase.HTMLAttributes<HTMLVfDividerElement>;
-            "vf-flex": LocalJSX.VfFlex & JSXBase.HTMLAttributes<HTMLVfFlexElement>;
-            "vf-google-one-tap": LocalJSX.VfGoogleOneTap & JSXBase.HTMLAttributes<HTMLVfGoogleOneTapElement>;
-            "vf-icon": LocalJSX.VfIcon & JSXBase.HTMLAttributes<HTMLVfIconElement>;
-            "vf-label": LocalJSX.VfLabel & JSXBase.HTMLAttributes<HTMLVfLabelElement>;
-            "vf-link": LocalJSX.VfLink & JSXBase.HTMLAttributes<HTMLVfLinkElement>;
-            "vf-logo": LocalJSX.VfLogo & JSXBase.HTMLAttributes<HTMLVfLogoElement>;
-            "vf-powered-by": LocalJSX.VfPoweredBy & JSXBase.HTMLAttributes<HTMLVfPoweredByElement>;
-            "vf-signin": LocalJSX.VfSignin & JSXBase.HTMLAttributes<HTMLVfSigninElement>;
-            "vf-signup": LocalJSX.VfSignup & JSXBase.HTMLAttributes<HTMLVfSignupElement>;
-            "vf-textbox": LocalJSX.VfTextbox & JSXBase.HTMLAttributes<HTMLVfTextboxElement>;
-            "vf-theme-toggle": LocalJSX.VfThemeToggle & JSXBase.HTMLAttributes<HTMLVfThemeToggleElement>;
+            "vui-button": LocalJSX.VuiButton & JSXBase.HTMLAttributes<HTMLVuiButtonElement>;
+            "vui-card": LocalJSX.VuiCard & JSXBase.HTMLAttributes<HTMLVuiCardElement>;
+            "vui-card-content": LocalJSX.VuiCardContent & JSXBase.HTMLAttributes<HTMLVuiCardContentElement>;
+            "vui-card-description": LocalJSX.VuiCardDescription & JSXBase.HTMLAttributes<HTMLVuiCardDescriptionElement>;
+            "vui-card-footer": LocalJSX.VuiCardFooter & JSXBase.HTMLAttributes<HTMLVuiCardFooterElement>;
+            "vui-card-header": LocalJSX.VuiCardHeader & JSXBase.HTMLAttributes<HTMLVuiCardHeaderElement>;
+            "vui-card-title": LocalJSX.VuiCardTitle & JSXBase.HTMLAttributes<HTMLVuiCardTitleElement>;
+            "vui-divider": LocalJSX.VuiDivider & JSXBase.HTMLAttributes<HTMLVuiDividerElement>;
+            "vui-dropdown-menu": LocalJSX.VuiDropdownMenu & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuElement>;
+            "vui-dropdown-menu-content": LocalJSX.VuiDropdownMenuContent & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuContentElement>;
+            "vui-dropdown-menu-item": LocalJSX.VuiDropdownMenuItem & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuItemElement>;
+            "vui-dropdown-menu-separator": LocalJSX.VuiDropdownMenuSeparator & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuSeparatorElement>;
+            "vui-dropdown-menu-trigger": LocalJSX.VuiDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuTriggerElement>;
+            "vui-flex": LocalJSX.VuiFlex & JSXBase.HTMLAttributes<HTMLVuiFlexElement>;
+            "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;
+            "vui-icon": LocalJSX.VuiIcon & JSXBase.HTMLAttributes<HTMLVuiIconElement>;
+            "vui-label": LocalJSX.VuiLabel & JSXBase.HTMLAttributes<HTMLVuiLabelElement>;
+            "vui-link": LocalJSX.VuiLink & JSXBase.HTMLAttributes<HTMLVuiLinkElement>;
+            "vui-logo": LocalJSX.VuiLogo & JSXBase.HTMLAttributes<HTMLVuiLogoElement>;
+            "vui-otp": LocalJSX.VuiOtp & JSXBase.HTMLAttributes<HTMLVuiOtpElement>;
+            "vui-powered-by": LocalJSX.VuiPoweredBy & JSXBase.HTMLAttributes<HTMLVuiPoweredByElement>;
+            "vui-signin": LocalJSX.VuiSignin & JSXBase.HTMLAttributes<HTMLVuiSigninElement>;
+            "vui-signup": LocalJSX.VuiSignup & JSXBase.HTMLAttributes<HTMLVuiSignupElement>;
+            "vui-textbox": LocalJSX.VuiTextbox & JSXBase.HTMLAttributes<HTMLVuiTextboxElement>;
+            "vui-theme-toggle": LocalJSX.VuiThemeToggle & JSXBase.HTMLAttributes<HTMLVuiThemeToggleElement>;
+            "vui-user-menu": LocalJSX.VuiUserMenu & JSXBase.HTMLAttributes<HTMLVuiUserMenuElement>;
         }
     }
 }

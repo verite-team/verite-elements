@@ -1,6 +1,4 @@
-# vf-card-title
-
-
+# vui-card-title
 
 <!-- Auto Generated Below -->
 
@@ -9,7 +7,7 @@
 
 | Property | Attribute | Description | Type                            | Default  |
 | -------- | --------- | ----------- | ------------------------------- | -------- |
-| `align`  | `align`   |             | `"center" \| "left"`            | `'left'` |
+| `halign` | `halign`  |             | `"center" \| "left"`            | `'left'` |
 | `size`   | `size`    |             | `"lg" \| "md" \| "sm"`          | `'md'`   |
 | `weight` | `weight`  |             | `"bold" \| "light" \| "medium"` | `'bold'` |
 

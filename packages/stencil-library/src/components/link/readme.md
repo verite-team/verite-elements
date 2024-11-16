@@ -1,6 +1,4 @@
-# vf-link
-
-
+# vui-link
 
 <!-- Auto Generated Below -->
 
@@ -26,15 +24,15 @@
 
 ### Used by
 
- - [verite-otp](../verite-otp)
- - [vf-signin](../vf-signin)
+ - [vui-otp](../otp)
+ - [vui-signin](../signin)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-link
-  vf-signin --> vf-link
-  style vf-link fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-link
+  vui-signin --> vui-link
+  style vui-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

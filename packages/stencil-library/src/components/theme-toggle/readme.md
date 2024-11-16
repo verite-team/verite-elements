@@ -1,6 +1,4 @@
-# vf-theme-toggle
-
-
+# vui-theme-toggle
 
 <!-- Auto Generated Below -->
 
@@ -9,13 +7,13 @@
 
 ### Depends on
 
-- [vf-icon](../vf-icon)
+- [vui-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  vf-theme-toggle --> vf-icon
-  style vf-theme-toggle fill:#f9f,stroke:#333,stroke-width:4px
+  vui-theme-toggle --> vui-icon
+  style vui-theme-toggle fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -11,14 +11,12 @@
   --background: 0 0% 8.5%;
   --foreground: 0 0% 98%;
 }
-
 /* Base theme (light) */
-vf-signin,
-vf-signup,
-vf-otp,
-.vf-card--signin,
-.vf-card--signup,
-.vf-card--otp {
+
+/* .vui-card--signin,
+.vui-card--signup,
+.vui-card--otp { */
+:root {
   --background: 0 0% 100%;
   --background-dark: 0 0% 14%;
   --foreground: 222.2 84% 4.9%;
@@ -50,13 +48,11 @@ vf-otp,
   --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
 }
 
-/* Dark theme */
-[data-theme='dark'] vf-signin,
-[data-theme='dark'] vf-signup,
-[data-theme='dark'] vf-otp,
-[data-theme='dark'] .vf-card--signin,
-[data-theme='dark'] .vf-card--signup,
-[data-theme='dark'] .vf-card--otp {
+/* Dark theme
+[data-theme='dark'] .vui-card--signin,
+[data-theme='dark'] .vui-card--signup,
+[data-theme='dark'] .vui-card--otp { */
+:root[data-theme='dark'] {
   --background: 0 0% 8.5%;
   --foreground: 0 0% 98%;
   --card: 0 0% 10.3%;
@@ -108,49 +104,50 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: hsl(var(--background));
+  /* background-color: hsl(var(--background)); */
+  background-color: #efefef;
   color: hsl(var(--foreground));
 }
 
 /* Style all vf-link components */
-vf-link::part(link) {
+vui-link::part(link) {
   color: hsl(var(--primary));
   text-decoration: none;
 }
 
 /* Add hover state */
-vf-link::part(link):hover {
+vui-link::part(link):hover {
   text-decoration: underline;
 }
 
 /* Test style - add this to verify it's working */
-vf-link::part(link) {
+vui-link::part(link) {
   border: 3px solid red !important;
   padding: 10px !important;
   background: yellow !important;
 }
 
-/* .vf-card--signin-container::part(card) {
+/* .vui-card--signin-container::part(card) {
   width: 100%;
   max-width: 400px;
   background-color: #f9f9f9;
   padding: 0;
 } */
 
-/* This will now work for links inside vf-signin */
-vf-signin::part(link),
-vf-signup::part(link) {
+/* This will now work for links inside vui-signin */
+.vui-card--signin::part(link),
+.vui-card--signup::part(link) {
   color: hsl(var(--primary));
   text-decoration: none;
   font-size: 0.875rem;
 }
 
-vf-signin::part(link):hover,
-vf-signup::part(link):hover {
+.vui-card--signin::part(link):hover,
+.vui-card--signup::part(link):hover {
   text-decoration: underline;
 }
 
-.vf-card--signin::part(card),
-.vf-card--signup::part(card) {
+.vui-card--signin::part(card),
+.vui-card--signup::part(card) {
   box-shadow: var(--elevation-3);
 }

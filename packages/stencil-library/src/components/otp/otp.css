@@ -1,0 +1,79 @@
+:host {
+  display: block;
+}
+
+/* .container {
+  display: grid;
+  gap: 0.75rem;
+} */
+
+.form-field {
+  position: relative;
+}
+
+/* .code-input {
+  width: 100%;
+} */
+/* 
+.resend-code {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.resend-code > vui-link {
+  text-decoration: underline;
+}
+
+.resend-code > vui-label {
+  margin: 0;
+} */
+
+vui-card-content::part(content) {
+  padding-bottom: 0rem;
+}
+
+vui-card-footer::part(footer) {
+  margin-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.verify-button {
+  width: 100%;
+}
+
+.code-input {
+  width: 40px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--vui-color-border-secondary);
+}
+
+.code-input::part(input) {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.code-input:readonly::part(input) {
+  cursor: default;
+}
+
+.code-input.active {
+  background-color: hsl(var(--highlight));
+}
+
+.code-input.active::part(input) {
+  background-color: transparent;
+}
+
+.code-input::part(input) {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: default;
+}

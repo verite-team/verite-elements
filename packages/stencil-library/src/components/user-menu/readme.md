@@ -1,0 +1,34 @@
+# verite-user-menu
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Dependencies
+
+### Depends on
+
+- [vui-dropdown-menu](../dropdown-menu)
+- [vui-dropdown-menu-trigger](../dropdown-menu)
+- [vui-button](../button)
+- [vui-icon](../icon)
+- [vui-dropdown-menu-item](../dropdown-menu)
+- [vui-dropdown-menu-separator](../dropdown-menu)
+
+### Graph
+```mermaid
+graph TD;
+  vui-user-menu --> vui-dropdown-menu
+  vui-user-menu --> vui-dropdown-menu-trigger
+  vui-user-menu --> vui-button
+  vui-user-menu --> vui-icon
+  vui-user-menu --> vui-dropdown-menu-item
+  vui-user-menu --> vui-dropdown-menu-separator
+  vui-dropdown-menu --> vui-dropdown-menu-content
+  style vui-user-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

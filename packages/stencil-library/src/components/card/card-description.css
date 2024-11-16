@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  color: hsl(var(--muted-foreground));
+}
+
+.card-description--center {
+  text-align: center;
+}

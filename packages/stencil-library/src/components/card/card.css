@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  /* background-color: yellowgreen; */
+  /* background-color: hsl(var(--card)); */
+}
+
+.card {
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+/* Dark mode using data-theme */
+/* :host-context([data-theme='dark']) .card {
+  background-color: var(--background);
+  border-color: hsl(var(--border));
+} */
+
+/* Dark mode using class */
+/* :host-context(.dark) .card,
+.dark .card {
+  background-color: var(--background);
+  border-color: hsl(var(--border));
+} */
+
+/* System dark mode preference */
+/* @media (prefers-color-scheme: dark) {
+  :host .card {
+    background-color: var(--background);
+    border-color: hsl(var(--border));
+  }
+} */

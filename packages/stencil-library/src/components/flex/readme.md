@@ -1,6 +1,4 @@
-# vf-flex
-
-
+# vui-flex
 
 <!-- Auto Generated Below -->
 
@@ -22,15 +20,15 @@
 
 ### Used by
 
- - [verite-otp](../verite-otp)
- - [vf-signup](../vf-signup)
+ - [vui-otp](../otp)
+ - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
-  verite-otp --> vf-flex
-  vf-signup --> vf-flex
-  style vf-flex fill:#f9f,stroke:#333,stroke-width:4px
+  vui-otp --> vui-flex
+  vui-signup --> vui-flex
+  style vui-flex fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

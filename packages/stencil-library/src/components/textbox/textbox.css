@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+.vui-textbox {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vui-textbox:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.vui-textbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: hsl(var(--muted));
+}
+
+.vui-textbox::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* For password type */
+/* .vui-textbox[type='password'] {
+  letter-spacing: 0.1em;
+} */
+
+/* Invalid state */
+.vui-textbox:invalid {
+  border-color: hsl(var(--destructive));
+}
+
+.vui-textbox:invalid:focus {
+  box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+}
+
+/* Read-only state */
+.vui-textbox:read-only {
+  background-color: hsl(var(--muted));
+  cursor: default;
+}

@@ -1,0 +1,63 @@
+:host {
+  display: inline;
+}
+
+.vui-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* text-decoration-line: underline; */
+  text-decoration: none;
+  text-underline-offset: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Default variant */
+.vui-link {
+  color: hsl(var(--primary));
+  text-decoration-color: hsl(var(--primary) / 0.4);
+}
+
+.vui-link:hover {
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--primary));
+}
+
+/* Muted variant */
+.vui-link--muted {
+  color: hsl(var(--muted-foreground));
+  text-decoration-color: hsl(var(--muted-foreground) / 0.4);
+}
+
+.vui-link--muted:hover {
+  color: hsl(var(--foreground));
+  text-decoration-color: hsl(var(--foreground));
+}
+
+/* Destructive variant */
+.vui-link--destructive {
+  color: hsl(var(--destructive));
+  text-decoration-color: hsl(var(--destructive) / 0.4);
+}
+
+.vui-link--destructive:hover {
+  text-decoration-color: hsl(var(--destructive));
+}
+
+/* Focus state */
+.vui-link:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--ring));
+  border-radius: 2px;
+}
+
+/* Disabled state */
+.vui-link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

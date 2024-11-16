@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.card-title {
+  /* font-size: 1rem;
+  font-weight: 600; */
+  line-height: 1.2;
+  margin: 0;
+  color: hsl(var(--card-foreground));
+}
+
+.card-title--sm {
+  font-size: 0.875rem;
+}
+
+.card-title--md {
+  font-size: 1rem;
+}
+
+.card-title--lg {
+  font-size: 1.25rem;
+}
+
+.card-title--center {
+  text-align: center;
+}
+
+.card-title--medium {
+  font-weight: 500;
+}
+
+.card-title--light {
+  font-weight: 300;
+}
+
+/* :host-context([data-theme='dark']) .card-title,
+.dark .card-title {
+  color: hsl(var(--foreground));
+} */
