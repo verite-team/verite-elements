@@ -224,6 +224,116 @@ export declare interface TodoListItem extends Components.TodoListItem {
 @ProxyCmp({
 })
 @Component({
+  selector: 'verite-dropdown-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteDropdownMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteDropdownMenu extends Components.VeriteDropdownMenu {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'verite-dropdown-menu-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteDropdownMenuContent {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteDropdownMenuContent extends Components.VeriteDropdownMenuContent {}
+
+
+@ProxyCmp({
+  inputs: ['disabled']
+})
+@Component({
+  selector: 'verite-dropdown-menu-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['disabled'],
+})
+export class VeriteDropdownMenuItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['itemClick']);
+  }
+}
+
+
+export declare interface VeriteDropdownMenuItem extends Components.VeriteDropdownMenuItem {
+
+  itemClick: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'verite-dropdown-menu-separator',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteDropdownMenuSeparator {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteDropdownMenuSeparator extends Components.VeriteDropdownMenuSeparator {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'verite-dropdown-menu-trigger',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteDropdownMenuTrigger {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteDropdownMenuTrigger extends Components.VeriteDropdownMenuTrigger {}
+
+
+@ProxyCmp({
+})
+@Component({
   selector: 'verite-otp',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -244,6 +354,27 @@ export declare interface VeriteOtp extends Components.VeriteOtp {
 
   formSubmit: EventEmitter<CustomEvent<any>>;
 }
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'verite-user-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class VeriteUserMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteUserMenu extends Components.VeriteUserMenu {}
 
 
 @ProxyCmp({

@@ -20,6 +20,11 @@
 }
 
 /* Size variants */
+
+.vf-icon--xs {
+  font-size: 12px;
+}
+
 .vf-icon--sm {
   font-size: 18px;
 }

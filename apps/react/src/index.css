@@ -15,8 +15,10 @@
 /* Base theme (light) */
 vf-signin,
 vf-signup,
+vf-otp,
 .vf-card--signin,
-.vf-card--signup {
+.vf-card--signup,
+.vf-card--otp {
   --background: 0 0% 100%;
   --background-dark: 0 0% 14%;
   --foreground: 222.2 84% 4.9%;
@@ -51,8 +53,10 @@ vf-signup,
 /* Dark theme */
 [data-theme='dark'] vf-signin,
 [data-theme='dark'] vf-signup,
+[data-theme='dark'] vf-otp,
 [data-theme='dark'] .vf-card--signin,
-[data-theme='dark'] .vf-card--signup {
+[data-theme='dark'] .vf-card--signup,
+[data-theme='dark'] .vf-card--otp {
   --background: 0 0% 8.5%;
   --foreground: 0 0% 98%;
   --card: 0 0% 10.3%;

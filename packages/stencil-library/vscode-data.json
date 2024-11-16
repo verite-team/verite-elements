@@ -634,11 +634,19 @@
           "description": ""
         },
         {
+          "name": "maxlength",
+          "description": ""
+        },
+        {
           "name": "name",
           "description": ""
         },
         {
           "name": "placeholder",
+          "description": ""
+        },
+        {
+          "name": "readonly",
           "description": ""
         },
         {

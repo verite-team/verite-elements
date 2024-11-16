@@ -12,8 +12,10 @@
 | `autocomplete` | `autocomplete` |             | `string`        | `undefined` |
 | `autocorrect`  | `autocorrect`  |             | `"off" \| "on"` | `undefined` |
 | `disabled`     | `disabled`     |             | `boolean`       | `undefined` |
+| `maxlength`    | `maxlength`    |             | `number`        | `undefined` |
 | `name`         | `name`         |             | `string`        | `undefined` |
 | `placeholder`  | `placeholder`  |             | `string`        | `undefined` |
+| `readonly`     | `readonly`     |             | `boolean`       | `undefined` |
 | `required`     | `required`     |             | `boolean`       | `undefined` |
 | `type`         | `type`         |             | `string`        | `'text'`    |
 | `value`        | `value`        |             | `string`        | `''`        |
@@ -26,6 +28,13 @@
 | `enterKey`    |             | `CustomEvent<void>`   |
 | `inputChange` |             | `CustomEvent<string>` |
 | `valueChange` |             | `CustomEvent<string>` |
+
+
+## Shadow Parts
+
+| Part      | Description |
+| --------- | ----------- |
+| `"input"` |             |
 
 
 ## Dependencies

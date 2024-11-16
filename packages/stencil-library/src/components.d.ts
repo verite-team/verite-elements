@@ -40,7 +40,20 @@ export namespace Components {
     interface TodoListItem {
         "checked": boolean;
     }
+    interface VeriteDropdownMenu {
+    }
+    interface VeriteDropdownMenuContent {
+    }
+    interface VeriteDropdownMenuItem {
+        "disabled"?: boolean;
+    }
+    interface VeriteDropdownMenuSeparator {
+    }
+    interface VeriteDropdownMenuTrigger {
+    }
     interface VeriteOtp {
+    }
+    interface VeriteUserMenu {
     }
     interface VfButton {
         "busy"?: boolean;
@@ -88,7 +101,7 @@ export namespace Components {
     interface VfIcon {
         "color"?: string;
         "name": string;
-        "size"?: 'sm' | 'md' | 'lg';
+        "size"?: 'xs' | 'sm' | 'md' | 'lg';
     }
     interface VfLabel {
         "for"?: string;
@@ -151,6 +164,10 @@ export interface TodoListCustomEvent<T> extends CustomEvent<T> {
 export interface TodoListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTodoListItemElement;
+}
+export interface VeriteDropdownMenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVeriteDropdownMenuItemElement;
 }
 export interface VeriteOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -290,6 +307,47 @@ declare global {
         prototype: HTMLTodoListItemElement;
         new (): HTMLTodoListItemElement;
     };
+    interface HTMLVeriteDropdownMenuElement extends Components.VeriteDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLVeriteDropdownMenuElement: {
+        prototype: HTMLVeriteDropdownMenuElement;
+        new (): HTMLVeriteDropdownMenuElement;
+    };
+    interface HTMLVeriteDropdownMenuContentElement extends Components.VeriteDropdownMenuContent, HTMLStencilElement {
+    }
+    var HTMLVeriteDropdownMenuContentElement: {
+        prototype: HTMLVeriteDropdownMenuContentElement;
+        new (): HTMLVeriteDropdownMenuContentElement;
+    };
+    interface HTMLVeriteDropdownMenuItemElementEventMap {
+        "itemClick": void;
+    }
+    interface HTMLVeriteDropdownMenuItemElement extends Components.VeriteDropdownMenuItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVeriteDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVeriteDropdownMenuItemElement, ev: VeriteDropdownMenuItemCustomEvent<HTMLVeriteDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVeriteDropdownMenuItemElementEventMap>(type: K, listener: (this: HTMLVeriteDropdownMenuItemElement, ev: VeriteDropdownMenuItemCustomEvent<HTMLVeriteDropdownMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVeriteDropdownMenuItemElement: {
+        prototype: HTMLVeriteDropdownMenuItemElement;
+        new (): HTMLVeriteDropdownMenuItemElement;
+    };
+    interface HTMLVeriteDropdownMenuSeparatorElement extends Components.VeriteDropdownMenuSeparator, HTMLStencilElement {
+    }
+    var HTMLVeriteDropdownMenuSeparatorElement: {
+        prototype: HTMLVeriteDropdownMenuSeparatorElement;
+        new (): HTMLVeriteDropdownMenuSeparatorElement;
+    };
+    interface HTMLVeriteDropdownMenuTriggerElement extends Components.VeriteDropdownMenuTrigger, HTMLStencilElement {
+    }
+    var HTMLVeriteDropdownMenuTriggerElement: {
+        prototype: HTMLVeriteDropdownMenuTriggerElement;
+        new (): HTMLVeriteDropdownMenuTriggerElement;
+    };
     interface HTMLVeriteOtpElementEventMap {
         "formSubmit": any;
     }
@@ -306,6 +364,12 @@ declare global {
     var HTMLVeriteOtpElement: {
         prototype: HTMLVeriteOtpElement;
         new (): HTMLVeriteOtpElement;
+    };
+    interface HTMLVeriteUserMenuElement extends Components.VeriteUserMenu, HTMLStencilElement {
+    }
+    var HTMLVeriteUserMenuElement: {
+        prototype: HTMLVeriteUserMenuElement;
+        new (): HTMLVeriteUserMenuElement;
     };
     interface HTMLVfButtonElementEventMap {
         "buttonClick": MouseEvent;
@@ -490,7 +554,13 @@ declare global {
         "roc-clock": HTMLRocClockElement;
         "todo-list": HTMLTodoListElement;
         "todo-list-item": HTMLTodoListItemElement;
+        "verite-dropdown-menu": HTMLVeriteDropdownMenuElement;
+        "verite-dropdown-menu-content": HTMLVeriteDropdownMenuContentElement;
+        "verite-dropdown-menu-item": HTMLVeriteDropdownMenuItemElement;
+        "verite-dropdown-menu-separator": HTMLVeriteDropdownMenuSeparatorElement;
+        "verite-dropdown-menu-trigger": HTMLVeriteDropdownMenuTriggerElement;
         "verite-otp": HTMLVeriteOtpElement;
+        "verite-user-menu": HTMLVeriteUserMenuElement;
         "vf-button": HTMLVfButtonElement;
         "vf-card": HTMLVfCardElement;
         "vf-card-content": HTMLVfCardContentElement;
@@ -556,8 +626,22 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "onCheckedChange"?: (event: TodoListItemCustomEvent<boolean>) => void;
     }
+    interface VeriteDropdownMenu {
+    }
+    interface VeriteDropdownMenuContent {
+    }
+    interface VeriteDropdownMenuItem {
+        "disabled"?: boolean;
+        "onItemClick"?: (event: VeriteDropdownMenuItemCustomEvent<void>) => void;
+    }
+    interface VeriteDropdownMenuSeparator {
+    }
+    interface VeriteDropdownMenuTrigger {
+    }
     interface VeriteOtp {
         "onFormSubmit"?: (event: VeriteOtpCustomEvent<any>) => void;
+    }
+    interface VeriteUserMenu {
     }
     interface VfButton {
         "busy"?: boolean;
@@ -608,7 +692,7 @@ declare namespace LocalJSX {
     interface VfIcon {
         "color"?: string;
         "name": string;
-        "size"?: 'sm' | 'md' | 'lg';
+        "size"?: 'xs' | 'sm' | 'md' | 'lg';
     }
     interface VfLabel {
         "for"?: string;
@@ -667,7 +751,13 @@ declare namespace LocalJSX {
         "roc-clock": RocClock;
         "todo-list": TodoList;
         "todo-list-item": TodoListItem;
+        "verite-dropdown-menu": VeriteDropdownMenu;
+        "verite-dropdown-menu-content": VeriteDropdownMenuContent;
+        "verite-dropdown-menu-item": VeriteDropdownMenuItem;
+        "verite-dropdown-menu-separator": VeriteDropdownMenuSeparator;
+        "verite-dropdown-menu-trigger": VeriteDropdownMenuTrigger;
         "verite-otp": VeriteOtp;
+        "verite-user-menu": VeriteUserMenu;
         "vf-button": VfButton;
         "vf-card": VfCard;
         "vf-card-content": VfCardContent;
@@ -702,7 +792,13 @@ declare module "@stencil/core" {
             "roc-clock": LocalJSX.RocClock & JSXBase.HTMLAttributes<HTMLRocClockElement>;
             "todo-list": LocalJSX.TodoList & JSXBase.HTMLAttributes<HTMLTodoListElement>;
             "todo-list-item": LocalJSX.TodoListItem & JSXBase.HTMLAttributes<HTMLTodoListItemElement>;
+            "verite-dropdown-menu": LocalJSX.VeriteDropdownMenu & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuElement>;
+            "verite-dropdown-menu-content": LocalJSX.VeriteDropdownMenuContent & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuContentElement>;
+            "verite-dropdown-menu-item": LocalJSX.VeriteDropdownMenuItem & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuItemElement>;
+            "verite-dropdown-menu-separator": LocalJSX.VeriteDropdownMenuSeparator & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuSeparatorElement>;
+            "verite-dropdown-menu-trigger": LocalJSX.VeriteDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVeriteDropdownMenuTriggerElement>;
             "verite-otp": LocalJSX.VeriteOtp & JSXBase.HTMLAttributes<HTMLVeriteOtpElement>;
+            "verite-user-menu": LocalJSX.VeriteUserMenu & JSXBase.HTMLAttributes<HTMLVeriteUserMenuElement>;
             "vf-button": LocalJSX.VfButton & JSXBase.HTMLAttributes<HTMLVfButtonElement>;
             "vf-card": LocalJSX.VfCard & JSXBase.HTMLAttributes<HTMLVfCardElement>;
             "vf-card-content": LocalJSX.VfCardContent & JSXBase.HTMLAttributes<HTMLVfCardContentElement>;

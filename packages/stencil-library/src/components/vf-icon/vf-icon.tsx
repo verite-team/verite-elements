@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vf-icon',
@@ -6,9 +6,9 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class VfIcon {
-  @Prop() name!: string;
-  @Prop() size?: 'sm' | 'md' | 'lg' = 'md';
-  @Prop() color?: string;
+  @Prop() name!: string
+  @Prop() size?: 'xs' | 'sm' | 'md' | 'lg' = 'md'
+  @Prop() color?: string
 
   render() {
     return (
@@ -22,6 +22,6 @@ export class VfIcon {
       >
         {this.name}
       </span>
-    );
+    )
   }
 }
