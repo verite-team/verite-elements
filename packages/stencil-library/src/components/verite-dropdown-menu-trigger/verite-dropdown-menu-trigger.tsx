@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core'
 
 @Component({
   tag: 'verite-dropdown-menu-trigger',
@@ -11,6 +11,6 @@ export class VeriteDropdownMenuTrigger {
       <Host>
         <slot></slot>
       </Host>
-    );
+    )
   }
 }

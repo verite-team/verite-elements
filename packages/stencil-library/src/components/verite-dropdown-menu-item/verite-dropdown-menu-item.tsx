@@ -9,20 +9,31 @@ export class VeriteDropdownMenuItem {
   @Prop() disabled?: boolean = false
   @Event() itemClick: EventEmitter<void>
 
-  componentDidLoad() {
-    console.log('Menu item loaded')
+  private handleClick = (e: MouseEvent) => {
+    if (!this.disabled) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.itemClick.emit()
+    }
   }
 
-  private handleClick = (e: MouseEvent) => {
-    console.log('Menu item clicked')
-    if (!this.disabled) {
+  private handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      e.stopPropagation()
       this.itemClick.emit()
     }
   }
 
   render() {
     return (
-      <Host onClick={this.handleClick} role="menuitem" tabindex="0" aria-disabled={this.disabled}>
+      <Host
+        onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
+        role="menuitem"
+        tabindex="0"
+        aria-disabled={this.disabled}
+      >
         <slot></slot>
       </Host>
     )

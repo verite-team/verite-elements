@@ -222,13 +222,14 @@ export declare interface TodoListItem extends Components.TodoListItem {
 
 
 @ProxyCmp({
+  inputs: ['position']
 })
 @Component({
   selector: 'verite-dropdown-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['position'],
 })
 export class VeriteDropdownMenu {
   protected el: HTMLElement;

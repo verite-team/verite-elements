@@ -41,6 +41,7 @@ export namespace Components {
         "checked": boolean;
     }
     interface VeriteDropdownMenu {
+        "position": 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
     }
     interface VeriteDropdownMenuContent {
     }
@@ -627,6 +628,7 @@ declare namespace LocalJSX {
         "onCheckedChange"?: (event: TodoListItemCustomEvent<boolean>) => void;
     }
     interface VeriteDropdownMenu {
+        "position"?: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start';
     }
     interface VeriteDropdownMenuContent {
     }

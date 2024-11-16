@@ -1,4 +1,4 @@
-import { Component, Element, Host, Listen, State, h } from '@stencil/core'
+import { Component, Element, Host, Listen, Prop, State, h } from '@stencil/core'
 
 @Component({
   tag: 'verite-dropdown-menu',
@@ -7,24 +7,14 @@ import { Component, Element, Host, Listen, State, h } from '@stencil/core'
 })
 export class VeriteDropdownMenu {
   @Element() el!: HTMLElement
-
   @State() isOpen = false
-
-  componentDidLoad() {
-    console.log('Dropdown menu loaded')
-  }
+  @Prop() position: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start' = 'bottom-end'
 
   @Listen('click', { target: 'window' })
   handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement
     const isInside =
       this.el.contains(target) || target.closest('verite-user-menu') || target.closest('verite-dropdown-menu-item')
-
-    console.log('Click event:', {
-      target,
-      isInside,
-      currentState: this.isOpen,
-    })
 
     if (!isInside && this.isOpen) {
       this.isOpen = false
@@ -34,19 +24,16 @@ export class VeriteDropdownMenu {
   private handleTriggerClick = (event: MouseEvent) => {
     event.stopPropagation()
     this.isOpen = !this.isOpen
-    console.log('Trigger clicked, isOpen:', this.isOpen)
   }
 
   render() {
-    console.log('Rendering dropdown, isOpen:', this.isOpen)
-
     return (
       <Host>
-        <div onClick={this.handleTriggerClick}>
+        <div class="anchor" onClick={this.handleTriggerClick}>
           <slot name="trigger"></slot>
         </div>
         {this.isOpen && (
-          <div class="content" onClick={e => e.stopPropagation()}>
+          <div class={`content ${this.position}`} onClick={e => e.stopPropagation()}>
             <verite-dropdown-menu-content>
               <slot></slot>
             </verite-dropdown-menu-content>
