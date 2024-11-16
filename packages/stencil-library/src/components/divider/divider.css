@@ -5,20 +5,20 @@
 }
 
 /* Basic divider without content */
-:host(.divider--horizontal) {
+:host([orientation='horizontal']) {
   height: 1px;
   width: 100%;
   background-color: hsl(var(--border));
 }
 
-:host(.divider--vertical) {
+:host([orientation='vertical']) {
   height: 100%;
   width: 1px;
   background-color: hsl(var(--border));
 }
 
 /* Divider with content */
-:host(.divider--horizontal:not(:empty)) {
+:host([orientation='horizontal']:not(:empty)) {
   height: auto;
   background: none;
   display: flex;
@@ -26,8 +26,8 @@
   text-align: center;
 }
 
-:host(.divider--horizontal:not(:empty))::before,
-:host(.divider--horizontal:not(:empty))::after {
+:host([orientation='horizontal']:not(:empty))::before,
+:host([orientation='horizontal']:not(:empty))::after {
   content: '';
   flex: 1;
   height: 1px;

@@ -5,6 +5,27 @@
 <!-- Auto Generated Below -->
 
 
+## Events
+
+| Event        | Description | Type                                               |
+| ------------ | ----------- | -------------------------------------------------- |
+| `menuAction` |             | `CustomEvent<"logout" \| "profile" \| "settings">` |
+
+
+## Shadow Parts
+
+| Part          | Description |
+| ------------- | ----------- |
+| `"button"`    |             |
+| `"item-icon"` |             |
+| `"item-text"` |             |
+| `"menu"`      |             |
+| `"menu-item"` |             |
+| `"separator"` |             |
+| `"trigger"`   |             |
+| `"user-icon"` |             |
+
+
 ## Dependencies
 
 ### Depends on

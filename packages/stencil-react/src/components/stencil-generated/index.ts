@@ -27,6 +27,7 @@ export const VuiLabel = /*@__PURE__*/createReactComponent<JSX.VuiLabel, HTMLVuiL
 export const VuiLink = /*@__PURE__*/createReactComponent<JSX.VuiLink, HTMLVuiLinkElement>('vui-link');
 export const VuiLogo = /*@__PURE__*/createReactComponent<JSX.VuiLogo, HTMLVuiLogoElement>('vui-logo');
 export const VuiOtp = /*@__PURE__*/createReactComponent<JSX.VuiOtp, HTMLVuiOtpElement>('vui-otp');
+export const VuiPlaceholder = /*@__PURE__*/createReactComponent<JSX.VuiPlaceholder, HTMLVuiPlaceholderElement>('vui-placeholder');
 export const VuiPoweredBy = /*@__PURE__*/createReactComponent<JSX.VuiPoweredBy, HTMLVuiPoweredByElement>('vui-powered-by');
 export const VuiSignin = /*@__PURE__*/createReactComponent<JSX.VuiSignin, HTMLVuiSigninElement>('vui-signin');
 export const VuiSignup = /*@__PURE__*/createReactComponent<JSX.VuiSignup, HTMLVuiSignupElement>('vui-signup');

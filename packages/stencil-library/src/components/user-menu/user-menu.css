@@ -2,16 +2,16 @@
   display: inline-block;
 }
 
+vui-dropdown-menu-item {
+  display: flex;
+  align-items: center;
+}
+
 vui-dropdown-menu-item vui-icon {
   display: inline-flex;
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;
-}
-
-vui-dropdown-menu-item {
-  display: flex;
-  align-items: center;
 }
 
 vui-button {

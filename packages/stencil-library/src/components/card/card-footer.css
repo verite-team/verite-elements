@@ -1,10 +1,14 @@
 :host {
+  display: block;
+}
+
+div {
   display: flex;
   flex-direction: column;
   padding: 24px;
 }
 
-:host(.card-footer--inset) {
+:host([variant='inset']) div {
   padding: 0px;
   border-top: 1px solid hsl(var(--border));
   background-color: hsl(var(--muted) / 0.5);

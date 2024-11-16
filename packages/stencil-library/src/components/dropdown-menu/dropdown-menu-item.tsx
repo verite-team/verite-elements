@@ -6,7 +6,7 @@ import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class DropdownMenuItem {
-  @Prop() disabled?: boolean = false
+  @Prop({ reflect: true }) disabled?: boolean = false
   @Event() itemClick: EventEmitter<void>
 
   private handleClick = (e: MouseEvent) => {

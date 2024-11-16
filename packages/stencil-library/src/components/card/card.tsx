@@ -6,13 +6,14 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class Card {
-  @Prop() elevation?: string
+  @Prop({ reflect: true }) elevation?: string
 
   render() {
-    console.log('elevation', this.elevation)
     return (
-      <Host part="card" style={{ 'box-shadow': `var(--elevation-${this.elevation})` }}>
-        <slot></slot>
+      <Host>
+        <div part="card" style={{ 'box-shadow': `var(--elevation-${this.elevation})` }}>
+          <slot></slot>
+        </div>
       </Host>
     )
   }

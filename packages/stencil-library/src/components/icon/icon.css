@@ -4,7 +4,7 @@
   line-height: 1;
 }
 
-.icon {
+span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -12,30 +12,29 @@
   height: 100%;
 }
 
-.icon svg {
+span svg {
   width: 100%;
   height: 100%;
   fill: currentColor;
-  /* stroke: currentColor; */
 }
 
 /* Size variants */
-.icon--xs {
+:host([size='xs']) {
   width: 12px;
   height: 12px;
 }
 
-.icon--sm {
+:host([size='sm']) {
   width: 18px;
   height: 18px;
 }
 
-.icon--md {
+:host([size='md']) {
   width: 24px;
   height: 24px;
 }
 
-.icon--lg {
+:host([size='lg']) {
   width: 36px;
   height: 36px;
 }

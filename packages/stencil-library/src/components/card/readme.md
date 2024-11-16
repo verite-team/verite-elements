@@ -19,6 +19,21 @@
 | `"card-title"` |             |
 
 
+## Dependencies
+
+### Used by
+
+ - [vui-signin](../signin)
+ - [vui-signup](../signup)
+
+### Graph
+```mermaid
+graph TD;
+  vui-signin --> vui-card-title
+  vui-signup --> vui-card-title
+  style vui-card-title fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

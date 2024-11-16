@@ -1,90 +1,55 @@
+/* @import 'stencil-react/css/global.css'; */
+@import 'stencil-react/dist/themes/index.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-}
-
-:root[data-theme='dark'] {
-  --background: 0 0% 8.5%;
-  --foreground: 0 0% 98%;
-}
-/* Base theme (light) */
-
-/* .vui-card--signin,
-.vui-card--signup,
-.vui-card--otp { */
-:root {
-  --background: 0 0% 100%;
-  --background-dark: 0 0% 14%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 211.29 100% 50%;
-  --primary-foreground: 211.29 100% 95%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 211.29 100% 50%;
+  --background: 262.1 100% 95%;
+  --foreground: 262.1 5% 0%;
+  --card: 262.1 50% 90%;
+  --card-foreground: 262.1 5% 10%;
+  --popover: 262.1 100% 95%;
+  --popover-foreground: 262.1 100% 0%;
+  --primary: 262.1 88.3% 57.8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 262.1 30% 70%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 224.10000000000002 30% 85%;
+  --muted-foreground: 262.1 5% 35%;
+  --accent: 224.10000000000002 30% 80%;
+  --accent-foreground: 262.1 5% 10%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 262.1 5% 90%;
+  --border: 262.1 30% 50%;
+  --input: 262.1 30% 18%;
+  --ring: 262.1 88.3% 57.8%;
   --radius: 0.5rem;
-  --success: 144 84% 38%;
-  --success-foreground: 211.29 100% 95%;
-  --shadow-color: 0deg 0% 0%;
-  --shadow-strength: 2%;
-  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
-  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
-  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
-  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
 }
-
-/* Dark theme
-[data-theme='dark'] .vui-card--signin,
-[data-theme='dark'] .vui-card--signup,
-[data-theme='dark'] .vui-card--otp { */
-:root[data-theme='dark'] {
-  --background: 0 0% 8.5%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 10.3%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 8%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 211.29 100% 50%;
-  --primary-foreground: 211.29 100% 95%;
-  --secondary: 0 0% 14%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 11%;
-  --muted-foreground: 0 0% 68%;
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 23.1%;
+.dark {
+  --background: 262.1 50% 5%;
+  --foreground: 262.1 5% 90%;
+  --card: 262.1 50% 0%;
+  --card-foreground: 262.1 5% 90%;
+  --popover: 262.1 50% 5%;
+  --popover-foreground: 262.1 5% 90%;
+  --primary: 262.1 88.3% 57.8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 262.1 30% 10%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 224.10000000000002 30% 15%;
+  --muted-foreground: 262.1 5% 60%;
+  --accent: 224.10000000000002 30% 15%;
+  --accent-foreground: 262.1 5% 90%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 262.1 5% 90%;
+  --border: 262.1 30% 18%;
+  --input: 262.1 30% 18%;
+  --ring: 262.1 88.3% 57.8%;
   --radius: 0.5rem;
-  --success: 144 84% 38%;
-  --success-foreground: 211.29 100% 95%;
-  --shadow-color: 0deg 0% 0%;
-  --shadow-strength: 2%;
-  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
-  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
-  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
-  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
-  --transparent: 0 0% 100% / 0;
-  --color-foreground: 0 0% 98%;
 }
 
+/* stencil-react/dist/themes/default.css */
 /* Apply colors when data-theme is on html tag */
 html[data-theme='dark'] body {
   background-color: hsl(var(--background));
@@ -104,50 +69,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* background-color: hsl(var(--background)); */
-  background-color: #efefef;
+  background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-}
-
-/* Style all vf-link components */
-vui-link::part(link) {
-  color: hsl(var(--primary));
-  text-decoration: none;
-}
-
-/* Add hover state */
-vui-link::part(link):hover {
-  text-decoration: underline;
-}
-
-/* Test style - add this to verify it's working */
-vui-link::part(link) {
-  border: 3px solid red !important;
-  padding: 10px !important;
-  background: yellow !important;
-}
-
-/* .vui-card--signin-container::part(card) {
-  width: 100%;
-  max-width: 400px;
-  background-color: #f9f9f9;
-  padding: 0;
-} */
-
-/* This will now work for links inside vui-signin */
-.vui-card--signin::part(link),
-.vui-card--signup::part(link) {
-  color: hsl(var(--primary));
-  text-decoration: none;
-  font-size: 0.875rem;
-}
-
-.vui-card--signin::part(link):hover,
-.vui-card--signup::part(link):hover {
-  text-decoration: underline;
-}
-
-.vui-card--signin::part(card),
-.vui-card--signup::part(card) {
-  box-shadow: var(--elevation-3);
 }

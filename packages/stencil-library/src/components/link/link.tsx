@@ -8,18 +8,13 @@ import { Component, Prop, h } from '@stencil/core'
 export class Link {
   @Prop() href?: string
   @Prop() target?: '_blank' | '_self' | '_parent' | '_top'
-  @Prop() variant?: 'default' | 'muted' | 'destructive' = 'default'
-  @Prop() disabled?: boolean = false
+  @Prop({ reflect: true }) variant?: 'default' | 'muted' | 'destructive' = 'default'
+  @Prop({ reflect: true }) disabled?: boolean = false
 
   render() {
     return (
       <a
         part="link"
-        class={{
-          'vui-link': true,
-          [`vui-link--${this.variant}`]: true,
-          'vui-link--disabled': this.disabled,
-        }}
         href={this.disabled ? undefined : this.href}
         target={this.target}
         rel={this.target === '_blank' ? 'noopener noreferrer' : undefined}

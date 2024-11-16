@@ -8,7 +8,7 @@ import { Component, Element, Host, Listen, Prop, State, h } from '@stencil/core'
 export class DropdownMenu {
   @Element() el!: HTMLElement
   @State() isOpen = false
-  @Prop() position: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start' = 'bottom-end'
+  @Prop({ reflect: true }) position: 'bottom-end' | 'bottom-start' | 'top-end' | 'top-start' = 'bottom-end'
 
   @Listen('click', { target: 'window' })
   handleClickOutside(event: MouseEvent) {
@@ -33,7 +33,7 @@ export class DropdownMenu {
           <slot name="trigger"></slot>
         </div>
         {this.isOpen && (
-          <div class={`content ${this.position}`} onClick={e => e.stopPropagation()}>
+          <div class="content" data-position={this.position} onClick={e => e.stopPropagation()}>
             <vui-dropdown-menu-content>
               <slot></slot>
             </vui-dropdown-menu-content>

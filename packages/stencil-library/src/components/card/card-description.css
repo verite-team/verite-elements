@@ -1,10 +1,14 @@
-.card-description {
+:host {
+  display: block;
+}
+
+p {
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
   color: hsl(var(--muted-foreground));
 }
 
-.card-description--center {
+:host([halign='center']) p {
   text-align: center;
 }

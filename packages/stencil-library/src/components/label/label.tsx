@@ -7,13 +7,13 @@ import { Component, Prop, h } from '@stencil/core'
 })
 export class Label {
   @Prop() for?: string
-  @Prop() required?: boolean = false
+  @Prop({ reflect: true }) required?: boolean = false
 
   render() {
     return (
-      <label part="label" class="vui-label" htmlFor={this.for}>
+      <label part="label" htmlFor={this.for}>
         <slot></slot>
-        {this.required && <span class="vui-label-required">*</span>}
+        {this.required && <span part="required">*</span>}
       </label>
     )
   }

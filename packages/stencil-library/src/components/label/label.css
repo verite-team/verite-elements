@@ -2,7 +2,7 @@
   display: block;
 }
 
-.vui-label {
+label {
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
@@ -12,12 +12,12 @@
   pointer-events: none;
 }
 
-.vui-label-required {
+span {
   margin-left: 4px;
   color: hsl(var(--destructive));
 }
 
-.vui-label[disabled] {
+:host([disabled]) label {
   opacity: 0.5;
   cursor: not-allowed;
 }

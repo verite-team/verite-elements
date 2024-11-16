@@ -13,9 +13,10 @@
 
 ## Shadow Parts
 
-| Part      | Description |
-| --------- | ----------- |
-| `"label"` |             |
+| Part         | Description |
+| ------------ | ----------- |
+| `"label"`    |             |
+| `"required"` |             |
 
 
 ## Dependencies

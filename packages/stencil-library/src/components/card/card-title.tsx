@@ -6,21 +6,13 @@ import { Component, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardTitle {
-  @Prop() size: 'sm' | 'md' | 'lg' = 'md'
-  @Prop() weight: 'bold' | 'medium' | 'light' = 'bold'
-  @Prop() halign: 'left' | 'center' = 'left'
+  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'md'
+  @Prop({ reflect: true }) weight: 'bold' | 'medium' | 'light' = 'bold'
+  @Prop({ reflect: true }) halign: 'left' | 'center' = 'left'
 
   render() {
     return (
-      <h3
-        part="card-title"
-        class={{
-          'card-title': true,
-          [`card-title--${this.size}`]: true,
-          [`card-title--${this.weight}`]: true,
-          [`card-title--${this.halign}`]: true,
-        }}
-      >
+      <h3 part="card-title">
         <slot></slot>
       </h3>
     )

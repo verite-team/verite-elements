@@ -48,8 +48,8 @@ function App() {
       <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
       <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu>
 
-      <VuiCard class="vui-card--signin" style={{ width: '360px' }}>
-        <VuiCardHeader>
+      <VuiCard class="card--signin" style={{ width: '360px' }} elevation="3">
+        {/* <VuiCardHeader>
           <div
             style={{
               display: 'flex',
@@ -71,7 +71,7 @@ function App() {
           </div>
           <VuiCardTitle halign="center">Sign in to Acme Co</VuiCardTitle>
           <VuiCardDescription halign="center">Welcome back! Please sign in to continue</VuiCardDescription>
-        </VuiCardHeader>
+        </VuiCardHeader> */}
         <VuiSignin onSubmit={() => console.log('Signin clicked')}>
           <div slot="providers">
             <VuiFlex direction="column" gap={2} style={{ width: '100%' }}>
@@ -96,8 +96,8 @@ function App() {
         </VuiSignin>
       </VuiCard>
 
-      <VuiCard class="vui-card--signin" style={{ width: '360px' }}>
-        <VuiCardHeader>
+      <VuiCard style={{ width: '360px' }}>
+        {/* <VuiCardHeader>
           <div
             style={{
               display: 'flex',
@@ -119,7 +119,7 @@ function App() {
           </div>
           <VuiCardTitle halign="center">Sign up to Acme Co</VuiCardTitle>
           <VuiCardDescription halign="center">Welcome! Please fill in the details to get started.</VuiCardDescription>
-        </VuiCardHeader>
+        </VuiCardHeader> */}
         <VuiSignup onSubmit={() => console.log('Signin clicked')}>
           <div slot="providers">
             <VuiFlex direction="column" gap={2} style={{ width: '100%' }}>
@@ -145,7 +145,7 @@ function App() {
       </VuiCard>
 
       <div id="otp-container" style={{ width: '100%', maxWidth: '360px' }}>
-        <VuiCard class="vui-card--otp">
+        <VuiCard class="card--otp" elevation="3">
           <VuiCardHeader>
             <div
               style={{

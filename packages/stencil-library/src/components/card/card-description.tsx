@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-card-description',
@@ -6,19 +6,15 @@ import { Component, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardDescription {
-  @Prop() halign: 'left' | 'center' = 'left'
+  @Prop({ reflect: true }) halign: 'left' | 'center' = 'left'
 
   render() {
     return (
-      <p
-        part="card-description"
-        class={{
-          'card-description': true,
-          [`card-description--${this.halign}`]: true,
-        }}
-      >
-        <slot></slot>
-      </p>
+      <Host>
+        <p part="card-description">
+          <slot></slot>
+        </p>
+      </Host>
     )
   }
 }

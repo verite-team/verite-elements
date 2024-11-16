@@ -14,6 +14,7 @@
 
 | Part           | Description |
 | -------------- | ----------- |
+| `"label"`      |             |
 | `"powered-by"` |             |
 
 

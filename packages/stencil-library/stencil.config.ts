@@ -13,10 +13,16 @@ export const config: Config = {
     enableImportInjection: true,
   },
   srcDir: 'src',
+  globalStyle: 'src/themes/index.css',
   outputTargets: [
     {
       type: 'dist',
-      copy: [],
+      copy: [
+        {
+          src: 'themes', // This will copy the entire global directory
+          dest: 'themes',
+        },
+      ],
       // esmLoaderPath: '../loader',
     },
     {

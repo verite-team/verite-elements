@@ -6,18 +6,11 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class Divider {
-  @Prop() orientation?: 'horizontal' | 'vertical' = 'horizontal'
+  @Prop({ reflect: true }) orientation?: 'horizontal' | 'vertical' = 'horizontal'
 
   render() {
     return (
-      <Host
-        part="divider"
-        class={{
-          [`divider--${this.orientation}`]: true,
-        }}
-        role="separator"
-        aria-orientation={this.orientation}
-      >
+      <Host part="divider" role="separator" aria-orientation={this.orientation}>
         <slot></slot>
       </Host>
     )

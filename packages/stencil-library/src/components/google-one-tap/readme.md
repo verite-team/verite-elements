@@ -12,10 +12,10 @@
 
 ## Events
 
-| Event              | Description | Type               |
-| ------------------ | ----------- | ------------------ |
-| `googleCredential` |             | `CustomEvent<any>` |
-| `googleError`      |             | `CustomEvent<any>` |
+| Event              | Description | Type                                        |
+| ------------------ | ----------- | ------------------------------------------- |
+| `googleCredential` |             | `CustomEvent<SignInWithIdTokenCredentials>` |
+| `googleError`      |             | `CustomEvent<Error>`                        |
 
 
 ----------------------------------------------

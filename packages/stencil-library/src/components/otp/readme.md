@@ -5,9 +5,9 @@
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `formSubmit` |             | `CustomEvent<any>` |
+| Event        | Description | Type                |
+| ------------ | ----------- | ------------------- |
+| `formSubmit` |             | `CustomEvent<void>` |
 
 
 ## Shadow Parts

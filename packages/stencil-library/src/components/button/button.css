@@ -1,9 +1,9 @@
 :host {
   --transparent: 0 0% 100% / 0;
-  --color-foreground: 222.2 47.4% 11.2%;
+  display: inline-block;
 }
 
-.vui-button {
+button {
   width: 100%;
   display: inline-flex;
   align-items: center;
@@ -21,69 +21,69 @@
   user-select: none;
 }
 
-.vui-button:hover {
+button:hover {
   opacity: 0.9;
 }
 
-.vui-button:focus-visible {
+button:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px hsl(var(--background)),
     0 0 0 4px hsl(var(--ring));
 }
 
-.vui-button:disabled {
+button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Variants */
-.vui-button--secondary {
+:host([variant='secondary']) button {
   background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
 }
 
-.vui-button--outline {
+:host([variant='outline']) button {
   background-color: transparent;
   border-color: hsl(var(--border, var(--transparent)));
-  color: hsl(var(--foreground, var(--color-foreground)));
+  color: hsl(var(--foreground));
 }
 
-.vui-button--outline:hover {
+:host([variant='outline']) button:hover {
   background-color: hsl(var(--muted));
 }
 
-.vui-button--ghost {
+:host([variant='ghost']) button {
   background-color: transparent;
   color: hsl(var(--foreground));
 }
 
-.vui-button--ghost:hover {
+:host([variant='ghost']) button:hover {
   background-color: hsl(var(--muted));
 }
 
-.vui-button--destructive {
+:host([variant='destructive']) button {
   background-color: hsl(var(--destructive));
   color: hsl(var(--destructive-foreground));
 }
 
 /* Sizes */
-.vui-button--icon {
+:host([size='icon']) button {
   padding: 0;
   width: 32px;
   height: 32px;
 }
 
-.vui-button--sm {
+:host([size='sm']) button {
   height: 32px;
   padding: 0 12px;
 }
 
-.vui-button--lg {
+:host([size='lg']) button {
   height: 48px;
   padding: 0 20px;
 }
 
-.vui-button--busy {
+:host([size='busy']) button {
   pointer-events: none;
 }

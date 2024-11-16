@@ -102,7 +102,12 @@
         "kind": "markdown",
         "value": ""
       },
-      "attributes": []
+      "attributes": [
+        {
+          "name": "elevation",
+          "description": ""
+        }
+      ]
     },
     {
       "name": "vui-card-content",
@@ -497,7 +502,7 @@
       "attributes": [
         {
           "name": "name",
-          "description": "",
+          "description": "The name of the logo to display",
           "values": [
             {
               "name": "apple"
@@ -518,7 +523,7 @@
         },
         {
           "name": "size",
-          "description": ""
+          "description": "The size of the logo in pixels"
         }
       ]
     },

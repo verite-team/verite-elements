@@ -1,4 +1,4 @@
-.card-title {
+h3 {
   line-height: 1.2;
   margin: 0;
   color: hsl(var(--card-foreground));
@@ -6,28 +6,28 @@
 }
 
 /* Sizes */
-.card-title--sm {
+:host([size='sm']) h3 {
   font-size: 0.875rem;
 }
 
-.card-title--md {
+:host([size='md']) h3 {
   font-size: 1rem;
 }
 
-.card-title--lg {
+:host([size='lg']) h3 {
   font-size: 1.25rem;
 }
 
 /* Alignment */
-.card-title--center {
+:host([halign='center']) h3 {
   text-align: center;
 }
 
 /* Weights */
-.card-title--medium {
+:host([weight='medium']) h3 {
   font-weight: 500;
 }
 
-.card-title--light {
+:host([weight='light']) h3 {
   font-weight: 300;
 }

@@ -5,6 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+import { LogoName } from "./components/logo/logo";
+import { SignInFormData } from "./components/signin/signin-interfaces";
+import { SignUpFormData } from "./components/signup/signup-interfaces";
+import { MenuAction } from "./components/user-menu/user-menu-interfaces";
+export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+export { LogoName } from "./components/logo/logo";
+export { SignInFormData } from "./components/signin/signin-interfaces";
+export { SignUpFormData } from "./components/signup/signup-interfaces";
+export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
     interface VuiButton {
         "busy"?: boolean;
@@ -78,10 +88,30 @@ export namespace Components {
         "variant"?: 'default' | 'muted' | 'destructive';
     }
     interface VuiLogo {
-        "name": 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
+        /**
+          * The name of the logo to display
+         */
+        "name": LogoName;
+        /**
+          * The size of the logo in pixels
+         */
         "size": number;
     }
     interface VuiOtp {
+    }
+    interface VuiPlaceholder {
+        /**
+          * Height of the placeholder in pixels
+         */
+        "height": number;
+        /**
+          * Border radius in pixels. Use 9999 for fully rounded
+         */
+        "radius": number;
+        /**
+          * Width of the placeholder in pixels
+         */
+        "width": number;
     }
     interface VuiPoweredBy {
         "label": string;
@@ -140,6 +170,10 @@ export interface VuiSignupCustomEvent<T> extends CustomEvent<T> {
 export interface VuiTextboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiTextboxElement;
+}
+export interface VuiUserMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiUserMenuElement;
 }
 declare global {
     interface HTMLVuiButtonElementEventMap {
@@ -249,8 +283,8 @@ declare global {
         new (): HTMLVuiFlexElement;
     };
     interface HTMLVuiGoogleOneTapElementEventMap {
-        "googleCredential": any;
-        "googleError": any;
+        "googleCredential": SignInWithIdTokenCredentials;
+        "googleError": Error;
     }
     interface HTMLVuiGoogleOneTapElement extends Components.VuiGoogleOneTap, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiGoogleOneTapElementEventMap>(type: K, listener: (this: HTMLVuiGoogleOneTapElement, ev: VuiGoogleOneTapCustomEvent<HTMLVuiGoogleOneTapElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -291,7 +325,7 @@ declare global {
         new (): HTMLVuiLogoElement;
     };
     interface HTMLVuiOtpElementEventMap {
-        "formSubmit": any;
+        "formSubmit": void;
     }
     interface HTMLVuiOtpElement extends Components.VuiOtp, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiOtpElementEventMap>(type: K, listener: (this: HTMLVuiOtpElement, ev: VuiOtpCustomEvent<HTMLVuiOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -307,6 +341,12 @@ declare global {
         prototype: HTMLVuiOtpElement;
         new (): HTMLVuiOtpElement;
     };
+    interface HTMLVuiPlaceholderElement extends Components.VuiPlaceholder, HTMLStencilElement {
+    }
+    var HTMLVuiPlaceholderElement: {
+        prototype: HTMLVuiPlaceholderElement;
+        new (): HTMLVuiPlaceholderElement;
+    };
     interface HTMLVuiPoweredByElement extends Components.VuiPoweredBy, HTMLStencilElement {
     }
     var HTMLVuiPoweredByElement: {
@@ -314,7 +354,7 @@ declare global {
         new (): HTMLVuiPoweredByElement;
     };
     interface HTMLVuiSigninElementEventMap {
-        "formSubmit": { email: string; password: string };
+        "formSubmit": SignInFormData;
         "ready": void;
     }
     interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
@@ -332,6 +372,7 @@ declare global {
         new (): HTMLVuiSigninElement;
     };
     interface HTMLVuiSignupElementEventMap {
+        "formSubmit": SignUpFormData;
         "ready": void;
     }
     interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
@@ -373,7 +414,18 @@ declare global {
         prototype: HTMLVuiThemeToggleElement;
         new (): HTMLVuiThemeToggleElement;
     };
+    interface HTMLVuiUserMenuElementEventMap {
+        "menuAction": MenuAction;
+    }
     interface HTMLVuiUserMenuElement extends Components.VuiUserMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiUserMenuElementEventMap>(type: K, listener: (this: HTMLVuiUserMenuElement, ev: VuiUserMenuCustomEvent<HTMLVuiUserMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiUserMenuElementEventMap>(type: K, listener: (this: HTMLVuiUserMenuElement, ev: VuiUserMenuCustomEvent<HTMLVuiUserMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLVuiUserMenuElement: {
         prototype: HTMLVuiUserMenuElement;
@@ -400,6 +452,7 @@ declare global {
         "vui-link": HTMLVuiLinkElement;
         "vui-logo": HTMLVuiLogoElement;
         "vui-otp": HTMLVuiOtpElement;
+        "vui-placeholder": HTMLVuiPlaceholderElement;
         "vui-powered-by": HTMLVuiPoweredByElement;
         "vui-signin": HTMLVuiSigninElement;
         "vui-signup": HTMLVuiSignupElement;
@@ -466,8 +519,8 @@ declare namespace LocalJSX {
     }
     interface VuiGoogleOneTap {
         "googleClientId": string;
-        "onGoogleCredential"?: (event: VuiGoogleOneTapCustomEvent<any>) => void;
-        "onGoogleError"?: (event: VuiGoogleOneTapCustomEvent<any>) => void;
+        "onGoogleCredential"?: (event: VuiGoogleOneTapCustomEvent<SignInWithIdTokenCredentials>) => void;
+        "onGoogleError"?: (event: VuiGoogleOneTapCustomEvent<Error>) => void;
     }
     interface VuiIcon {
         "color"?: string;
@@ -485,23 +538,44 @@ declare namespace LocalJSX {
         "variant"?: 'default' | 'muted' | 'destructive';
     }
     interface VuiLogo {
-        "name"?: 'twitter' | 'gitHub' | 'google' | 'apple' | 'paypal';
+        /**
+          * The name of the logo to display
+         */
+        "name": LogoName;
+        /**
+          * The size of the logo in pixels
+         */
         "size"?: number;
     }
     interface VuiOtp {
-        "onFormSubmit"?: (event: VuiOtpCustomEvent<any>) => void;
+        "onFormSubmit"?: (event: VuiOtpCustomEvent<void>) => void;
+    }
+    interface VuiPlaceholder {
+        /**
+          * Height of the placeholder in pixels
+         */
+        "height"?: number;
+        /**
+          * Border radius in pixels. Use 9999 for fully rounded
+         */
+        "radius"?: number;
+        /**
+          * Width of the placeholder in pixels
+         */
+        "width"?: number;
     }
     interface VuiPoweredBy {
         "label"?: string;
     }
     interface VuiSignin {
-        "onFormSubmit"?: (event: VuiSigninCustomEvent<{ email: string; password: string }>) => void;
+        "onFormSubmit"?: (event: VuiSigninCustomEvent<SignInFormData>) => void;
         "onReady"?: (event: VuiSigninCustomEvent<void>) => void;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
     }
     interface VuiSignup {
+        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
         "onReady"?: (event: VuiSignupCustomEvent<void>) => void;
         "styles"?: {
     link?: { [key: string]: string | number }
@@ -525,6 +599,7 @@ declare namespace LocalJSX {
     interface VuiThemeToggle {
     }
     interface VuiUserMenu {
+        "onMenuAction"?: (event: VuiUserMenuCustomEvent<MenuAction>) => void;
     }
     interface IntrinsicElements {
         "vui-button": VuiButton;
@@ -547,6 +622,7 @@ declare namespace LocalJSX {
         "vui-link": VuiLink;
         "vui-logo": VuiLogo;
         "vui-otp": VuiOtp;
+        "vui-placeholder": VuiPlaceholder;
         "vui-powered-by": VuiPoweredBy;
         "vui-signin": VuiSignin;
         "vui-signup": VuiSignup;
@@ -579,6 +655,7 @@ declare module "@stencil/core" {
             "vui-link": LocalJSX.VuiLink & JSXBase.HTMLAttributes<HTMLVuiLinkElement>;
             "vui-logo": LocalJSX.VuiLogo & JSXBase.HTMLAttributes<HTMLVuiLogoElement>;
             "vui-otp": LocalJSX.VuiOtp & JSXBase.HTMLAttributes<HTMLVuiOtpElement>;
+            "vui-placeholder": LocalJSX.VuiPlaceholder & JSXBase.HTMLAttributes<HTMLVuiPlaceholderElement>;
             "vui-powered-by": LocalJSX.VuiPoweredBy & JSXBase.HTMLAttributes<HTMLVuiPoweredByElement>;
             "vui-signin": LocalJSX.VuiSignin & JSXBase.HTMLAttributes<HTMLVuiSigninElement>;
             "vui-signup": LocalJSX.VuiSignup & JSXBase.HTMLAttributes<HTMLVuiSignupElement>;

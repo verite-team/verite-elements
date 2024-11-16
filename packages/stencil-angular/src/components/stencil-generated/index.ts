@@ -338,11 +338,13 @@ export class VuiGoogleOneTap {
 }
 
 
+import type { SignInWithIdTokenCredentials as IVuiGoogleOneTapSignInWithIdTokenCredentials } from 'stencil-library';
+
 export declare interface VuiGoogleOneTap extends Components.VuiGoogleOneTap {
 
-  googleCredential: EventEmitter<CustomEvent<any>>;
+  googleCredential: EventEmitter<CustomEvent<IVuiGoogleOneTapSignInWithIdTokenCredentials>>;
 
-  googleError: EventEmitter<CustomEvent<any>>;
+  googleError: EventEmitter<CustomEvent<Error>>;
 }
 
 
@@ -455,8 +457,30 @@ export class VuiOtp {
 
 export declare interface VuiOtp extends Components.VuiOtp {
 
-  formSubmit: EventEmitter<CustomEvent<any>>;
+  formSubmit: EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  inputs: ['height', 'radius', 'width']
+})
+@Component({
+  selector: 'vui-placeholder',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['height', 'radius', 'width'],
+})
+export class VuiPlaceholder {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiPlaceholder extends Components.VuiPlaceholder {}
 
 
 @ProxyCmp({
@@ -501,9 +525,11 @@ export class VuiSignin {
 }
 
 
+import type { SignInFormData as IVuiSigninSignInFormData } from 'stencil-library';
+
 export declare interface VuiSignin extends Components.VuiSignin {
 
-  formSubmit: EventEmitter<CustomEvent<{ email: string; password: string }>>;
+  formSubmit: EventEmitter<CustomEvent<IVuiSigninSignInFormData>>;
 
   ready: EventEmitter<CustomEvent<void>>;
 }
@@ -524,12 +550,16 @@ export class VuiSignup {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['ready']);
+    proxyOutputs(this, this.el, ['formSubmit', 'ready']);
   }
 }
 
 
+import type { SignUpFormData as IVuiSignupSignUpFormData } from 'stencil-library';
+
 export declare interface VuiSignup extends Components.VuiSignup {
+
+  formSubmit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
 
   ready: EventEmitter<CustomEvent<void>>;
 }
@@ -600,10 +630,16 @@ export class VuiUserMenu {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['menuAction']);
   }
 }
 
 
-export declare interface VuiUserMenu extends Components.VuiUserMenu {}
+import type { MenuAction as IVuiUserMenuMenuAction } from 'stencil-library';
+
+export declare interface VuiUserMenu extends Components.VuiUserMenu {
+
+  menuAction: EventEmitter<CustomEvent<IVuiUserMenuMenuAction>>;
+}
 
 

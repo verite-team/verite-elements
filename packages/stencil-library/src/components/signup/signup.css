@@ -56,6 +56,5 @@ form {
 }
 
 .powered-by {
-  margin-top: 8px;
-  margin-bottom: 14px;
+  margin-block: 8px 14px;
 }

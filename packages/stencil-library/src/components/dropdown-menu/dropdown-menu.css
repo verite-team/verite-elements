@@ -8,75 +8,60 @@
 }
 
 .content {
-  position: absolute; /* Fallback */
+  position: absolute;
   z-index: 50;
   animation: scaleIn 0.2s ease-out;
 }
 
-/* Modern anchor positioning */
 @supports (anchor-name: --dropdown-anchor) {
   .content {
-    position: absolute;
     anchor-name: --dropdown-content;
   }
 
-  /* Bottom positions */
-  .content.bottom-end {
+  .content[data-position='bottom-end'] {
     position: absolute;
     top: anchor(--dropdown-anchor bottom);
     right: anchor(--dropdown-anchor right);
   }
 
-  .content.bottom-start {
+  .content[data-position='bottom-start'] {
     position: absolute;
     top: anchor(--dropdown-anchor bottom);
     left: anchor(--dropdown-anchor left);
   }
 
-  /* Top positions */
-  .content.top-end {
+  .content[data-position='top-end'] {
     position: absolute;
     bottom: anchor(--dropdown-anchor top);
     right: anchor(--dropdown-anchor right);
   }
 
-  .content.top-start {
+  .content[data-position='top-start'] {
     position: absolute;
     bottom: anchor(--dropdown-anchor top);
     left: anchor(--dropdown-anchor left);
   }
 }
 
-/* Fallback positioning for browsers without anchor support */
 @supports not (anchor-name: --dropdown-anchor) {
-  .content.bottom-end {
+  .content[data-position='bottom-end'] {
     top: 100%;
     right: 0;
   }
 
-  .content.bottom-start {
+  .content[data-position='bottom-start'] {
     top: 100%;
     left: 0;
   }
 
-  .content.top-end {
+  .content[data-position='top-end'] {
     bottom: 100%;
     right: 0;
   }
 
-  .content.top-start {
+  .content[data-position='top-start'] {
     bottom: 100%;
     left: 0;
-  }
-}
-
-/* Auto-positioning with anchor */
-@container (block-size < 100px) {
-  .content.bottom-end,
-  .content.bottom-start {
-    position: absolute;
-    bottom: anchor(--dropdown-anchor top);
-    transform-origin: bottom;
   }
 }
 

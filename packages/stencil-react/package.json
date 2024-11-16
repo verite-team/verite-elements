@@ -10,7 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run tsc",
+    "build": "npm run tsc && npm run copy:global",
+    "copy:global": "cp -r ./node_modules/stencil-library/dist/stencil-library/themes dist",
     "clean": "rm -rf node_modules .turbo dist",
     "test": "node ./__tests__/react-library.test.js",
     "tsc": "tsc -p . --outDir ./dist"

@@ -1,29 +1,20 @@
 import { Component, Event, EventEmitter, Prop } from '@stencil/core'
-
-type SignInWithIdTokenCredentials = {
-  /** Provider name or OIDC `iss` value identifying which provider should be used to verify the provided token. Supported names: `google`, `apple`, `azure`, `facebook`, `kakao`, `keycloak` (deprecated). */
-  provider: 'google'
-  /** OIDC ID token issued by the specified provider. The `iss` claim in the ID token must match the supplied provider. Some ID tokens contain an `at_hash` which require that you provide an `access_token` value to be accepted properly. If the token contains a `nonce` claim you must supply the nonce used to obtain the ID token. */
-  token: string
-  /** If the ID token contains an `at_hash` claim, then the hash of this value is compared to the value in the ID token. */
-  access_token?: string
-  /** If the ID token contains a `nonce` claim, then the hash of this value is compared to the value in the ID token. */
-  nonce?: string
-  options?: {
-    /** Verification token received when the user completes the captcha on the site. */
-    captchaToken?: string
-  }
-}
+import {
+  GoogleCredentialResponse,
+  GoogleTokenResponse,
+  SignInWithIdTokenCredentials,
+} from './google-one-tap-interfaces'
 
 @Component({
   tag: 'vui-google-one-tap',
+  styleUrl: 'google-one-tap.css',
   shadow: true,
 })
 export class GoogleOneTap {
   @Prop() googleClientId!: string
 
-  @Event() googleCredential: EventEmitter
-  @Event() googleError: EventEmitter
+  @Event() googleCredential: EventEmitter<SignInWithIdTokenCredentials>
+  @Event() googleError: EventEmitter<Error>
 
   private cleanup: (() => void) | null = null
 
@@ -60,20 +51,15 @@ export class GoogleOneTap {
     globalThis.google.accounts.id.prompt()
   }
 
-  private handleCredentialResponse(response: any) {
-    // One Tap Sign in returns a JWT token.
+  private handleCredentialResponse(response: GoogleCredentialResponse) {
     const responsePayload = this.decodeJWT(response.credential)
-    if (!responsePayload.email_verified) {
+    if (!responsePayload?.email_verified) {
       this.oneTapSignInPrompt()
     } else {
-      // We are passing the signed in email id to oAuth.
-      // If we pass an email id to oAuth consent.
-      // If the user has already given the oAuth consent. it will get auto selected.
       this.oauthSignIn(responsePayload.email)
     }
   }
 
-  // Utility function to decode the JWT token
   private decodeJWT(token: string) {
     try {
       const base64Url = token.split('.')[1]
@@ -87,12 +73,9 @@ export class GoogleOneTap {
       return JSON.parse(jsonPayload)
     } catch (err) {
       console.error('Error decoding JWT:', err)
+      this.googleError.emit(err instanceof Error ? err : new Error('Failed to decode JWT'))
       return null
     }
-  }
-
-  render() {
-    return null // Google One Tap UI is injected by the Google script
   }
 
   private oauthSignIn(googleId: string) {
@@ -100,15 +83,18 @@ export class GoogleOneTap {
       client_id: this.googleClientId,
       scope: 'https://www.googleapis.com/auth/userinfo.profile',
       hint: googleId,
-      prompt: '', // Specified as an empty string to auto select the account which we have already consented for use.
-      callback: (tokenResponse: SignInWithIdTokenCredentials) => {
-        const access_token = tokenResponse.access_token
+      prompt: '',
+      callback: (tokenResponse: GoogleTokenResponse) => {
         this.googleCredential.emit({
           provider: 'google',
-          token: access_token,
+          token: tokenResponse.access_token,
         })
       },
     })
     client.requestAccessToken()
+  }
+
+  render() {
+    return null // Google One Tap UI is injected by the Google script
   }
 }

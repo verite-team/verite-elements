@@ -7,7 +7,7 @@ import { Component, Prop, State, Watch, h } from '@stencil/core'
 })
 export class Icon {
   @Prop() name!: string
-  @Prop() size?: 'xs' | 'sm' | 'md' | 'lg' = 'md'
+  @Prop({ reflect: true }) size?: 'xs' | 'sm' | 'md' | 'lg' = 'md'
   @Prop() color?: string
 
   @State() private svgContent: string = ''
@@ -23,7 +23,6 @@ export class Icon {
         return
       }
 
-      // Fetch SVG directly from Iconify API
       const response = await fetch(`https://api.iconify.design/${prefix}/${iconName}.svg`)
       if (!response.ok) throw new Error(`Failed to load icon: ${this.name}`)
 
@@ -39,27 +38,8 @@ export class Icon {
   }
 
   render() {
-    const sizeMap = {
-      xs: '12px',
-      sm: '18px',
-      md: '24px',
-      lg: '36px',
-    }
-
     return (
-      <span
-        part="icon"
-        class={{
-          icon: true,
-          [`icon--${this.size}`]: true,
-        }}
-        style={{
-          color: this.color,
-          width: sizeMap[this.size],
-          height: sizeMap[this.size],
-        }}
-        innerHTML={this.svgContent}
-      >
+      <span part="icon" style={{ color: this.color }} innerHTML={this.svgContent}>
         {!this.svgContent && <slot></slot>}
       </span>
     )

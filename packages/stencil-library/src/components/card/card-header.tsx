@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core'
 export class CardHeader {
   render() {
     return (
-      <Host part="card-header" class="card-header">
+      <Host part="card-header">
         <slot></slot>
       </Host>
     )

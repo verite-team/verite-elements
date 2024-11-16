@@ -6,18 +6,14 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardFooter {
-  @Prop() variant: 'normal' | 'inset' = 'normal'
+  @Prop({ reflect: true }) variant: 'normal' | 'inset' = 'normal'
 
   render() {
     return (
-      <Host
-        part="card-footer"
-        class={{
-          'card-footer': true,
-          [`card-footer--${this.variant}`]: true,
-        }}
-      >
-        <slot></slot>
+      <Host>
+        <div part="card-footer">
+          <slot></slot>
+        </div>
       </Host>
     )
   }

@@ -12,16 +12,28 @@
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `formSubmit` |             | `CustomEvent<any>` |
-| `ready`      |             | `CustomEvent<any>` |
+| Event        | Description | Type                          |
+| ------------ | ----------- | ----------------------------- |
+| `formSubmit` |             | `CustomEvent<SignInFormData>` |
+| `ready`      |             | `CustomEvent<void>`           |
+
+
+## Shadow Parts
+
+| Part               | Description |
+| ------------------ | ----------- |
+| `"logo"`           |             |
+| `"logo-container"` |             |
+| `"signin"`         |             |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [vui-card-header](../card)
+- [vui-card-title](../card)
+- [vui-card-description](../card)
 - [vui-card-content](../card)
 - [vui-textbox](../textbox)
 - [vui-button](../button)
@@ -34,6 +46,9 @@
 ### Graph
 ```mermaid
 graph TD;
+  vui-signin --> vui-card-header
+  vui-signin --> vui-card-title
+  vui-signin --> vui-card-description
   vui-signin --> vui-card-content
   vui-signin --> vui-textbox
   vui-signin --> vui-button

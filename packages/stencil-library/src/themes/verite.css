@@ -1,0 +1,23 @@
+:root {
+  --success: 144 84% 38%;
+  --success-foreground: 211.29 100% 95%;
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 2%;
+  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --transparent: 0 0% 100% / 0;
+}
+
+.dark {
+  --success: 144 84% 38%;
+  --success-foreground: 211.29 100% 95%;
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 2%;
+  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --transparent: 0 0% 100% / 0;
+}
