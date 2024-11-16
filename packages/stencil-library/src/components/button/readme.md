@@ -39,6 +39,7 @@
  - [vui-otp](../otp)
  - [vui-signin](../signin)
  - [vui-signup](../signup)
+ - [vui-theme-toggle](../theme-toggle)
  - [vui-user-menu](../user-menu)
 
 ### Graph
@@ -47,6 +48,7 @@ graph TD;
   vui-otp --> vui-button
   vui-signin --> vui-button
   vui-signup --> vui-button
+  vui-theme-toggle --> vui-button
   vui-user-menu --> vui-button
   style vui-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -10,6 +10,13 @@
 | `orientation` | `orientation` |             | `"horizontal" \| "vertical"` | `'horizontal'` |
 
 
+## Shadow Parts
+
+| Part        | Description |
+| ----------- | ----------- |
+| `"divider"` |             |
+
+
 ## Dependencies
 
 ### Used by

@@ -10,11 +10,9 @@ export class PoweredBy {
 
   render() {
     return (
-      <Host>
-        <div class="vui-powered-by">
-          <span>{this.label}</span>
-          <slot></slot>
-        </div>
+      <Host part="powered-by" class="vui-powered-by">
+        <span>{this.label}</span>
+        <slot></slot>
       </Host>
     )
   }

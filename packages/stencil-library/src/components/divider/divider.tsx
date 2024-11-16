@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-divider',
@@ -10,16 +10,16 @@ export class Divider {
 
   render() {
     return (
-      <div
+      <Host
+        part="divider"
         class={{
-          divider: true,
           [`divider--${this.orientation}`]: true,
         }}
         role="separator"
         aria-orientation={this.orientation}
       >
         <slot></slot>
-      </div>
+      </Host>
     )
   }
 }

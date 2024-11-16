@@ -12,6 +12,13 @@
 | `size`              | `size`    |             | `"lg" \| "md" \| "sm" \| "xs"` | `'md'`      |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"icon"` |             |
+
+
 ## Dependencies
 
 ### Used by

@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-signup',
@@ -58,7 +58,7 @@ export class Signup {
 
   render() {
     return (
-      <div class="container">
+      <Host part="signup">
         <vui-card-content>
           <slot name="providers"></slot>
 
@@ -133,7 +133,7 @@ export class Signup {
                 type="button"
                 onClick={this.togglePasswordVisibility}
               >
-                <vui-icon name={this.showPassword ? 'visibility' : 'visibility_off'} size="sm" />
+                <vui-icon name={this.showPassword ? 'ic:outline-visibility' : 'ic:outline-visibility-off'} size="sm" />
               </vui-button>
             </div>
             {/* <div class="forgot-password">
@@ -168,7 +168,7 @@ export class Signup {
             </svg>
           </vui-powered-by>
         </vui-card-footer>
-      </div>
+      </Host>
     )
   }
 }

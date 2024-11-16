@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core'
 export class DropdownMenuSeparator {
   render() {
     return (
-      <Host>
+      <Host part="dropdown-menu-separator">
         <slot></slot>
       </Host>
     )

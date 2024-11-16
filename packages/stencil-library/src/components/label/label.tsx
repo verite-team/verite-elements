@@ -11,7 +11,7 @@ export class Label {
 
   render() {
     return (
-      <label class="vui-label" htmlFor={this.for}>
+      <label part="label" class="vui-label" htmlFor={this.for}>
         <slot></slot>
         {this.required && <span class="vui-label-required">*</span>}
       </label>

@@ -43,13 +43,14 @@ export class ThemeToggle {
 
   render() {
     return (
-      <button
-        class="theme-toggle"
+      <vui-button
+        variant="ghost"
+        size="icon"
         onClick={this.handleClick}
         aria-label={`Switch to ${this.theme === 'dark' ? 'light' : 'dark'} theme`}
       >
-        <vui-icon name={this.theme === 'dark' ? 'light_mode' : 'dark_mode'} size="md"></vui-icon>
-      </button>
+        <vui-icon name={this.theme === 'dark' ? 'ic:outline-light-mode' : 'ic:outline-dark-mode'} size="md"></vui-icon>
+      </vui-button>
     )
   }
 }

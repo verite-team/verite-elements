@@ -10,6 +10,13 @@
 | `formSubmit` |             | `CustomEvent<any>` |
 
 
+## Shadow Parts
+
+| Part    | Description |
+| ------- | ----------- |
+| `"otp"` |             |
+
+
 ## Dependencies
 
 ### Depends on

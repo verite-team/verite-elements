@@ -1,7 +1,6 @@
 :host {
   display: flex;
   align-items: center;
-  /* position: relative; */
   user-select: none;
   border-radius: calc(var(--radius) - 2px);
   padding: 0.375rem 0.5rem;
@@ -10,8 +9,6 @@
   cursor: pointer;
   color: hsl(var(--popover-foreground));
   background-color: transparent;
-  /* width: 100%; */
-  /* min-height: 32px; */
   gap: 0.5rem;
 }
 
@@ -25,9 +22,3 @@
   pointer-events: none;
   opacity: 0.5;
 }
-
-/* .material-icons {
-  font-size: 1rem;
-  height: 1rem;
-  width: 1rem;
-} */

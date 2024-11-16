@@ -161,8 +161,9 @@
         text-decoration: underline;
       }
 
-      .card--signin::part(card),
-      .card--signup::part(card) {
+      .card--signin,
+      .card--signup,
+      .card--otp {
         box-shadow: var(--elevation-3);
       }
 
@@ -181,7 +182,7 @@
       Stencil Library
     </div>
     <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
-    <vui-user-menu style="position: fixed; top: 1rem; right: 3rem"></vui-user-menu>
+    <vui-user-menu style="position: fixed; top: 1rem; right: 4rem"></vui-user-menu>
 
     <div id="signin-container" style="width: 100%; max-width: 360px">
       <vui-card class="card--signin">
@@ -245,12 +246,12 @@
         <vui-signup onsubmit="console.log('Signup clicked')">
           <div slot="providers">
             <vui-flex direction="column" gap="2" style="width: 100%">
-              <!-- <vui-button class="google-button" variant="outline" style="width: 100%">
+              <vui-button class="google-button" variant="outline" style="width: 100%">
                 <vui-flex valign="center" gap="2">
                   <vui-logo name="apple" size="20"></vui-logo>
                   <vui-label>Sign up with Apple</vui-label>
                 </vui-flex>
-              </vui-button> -->
+              </vui-button>
 
               <vui-button class="google-button" variant="outline" style="width: 100%">
                 <vui-flex valign="center" gap="2">

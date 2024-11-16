@@ -111,7 +111,7 @@ export class Otp {
 
   render() {
     return (
-      <Host onKeyDown={this.handleKeyDown}>
+      <Host part="otp" onKeyDown={this.handleKeyDown}>
         <div class="otp">
           <vui-card-content>
             <form onSubmit={this.handleSubmit}>

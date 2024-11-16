@@ -11,6 +11,13 @@
 | `size`   | `size`    |             | `number`                                                   | `20`        |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"logo"` |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

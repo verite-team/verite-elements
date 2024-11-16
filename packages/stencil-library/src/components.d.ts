@@ -313,8 +313,8 @@ declare global {
         new (): HTMLVuiPoweredByElement;
     };
     interface HTMLVuiSigninElementEventMap {
-        "formSubmit": any;
-        "ready": any;
+        "formSubmit": { email: string; password: string };
+        "ready": void;
     }
     interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -493,8 +493,8 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface VuiSignin {
-        "onFormSubmit"?: (event: VuiSigninCustomEvent<any>) => void;
-        "onReady"?: (event: VuiSigninCustomEvent<any>) => void;
+        "onFormSubmit"?: (event: VuiSigninCustomEvent<{ email: string; password: string }>) => void;
+        "onReady"?: (event: VuiSigninCustomEvent<void>) => void;
         "styles"?: {
     link?: { [key: string]: string | number }
   };

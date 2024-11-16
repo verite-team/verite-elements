@@ -28,7 +28,7 @@ export class DropdownMenu {
 
   render() {
     return (
-      <Host>
+      <Host part="dropdown-menu">
         <div class="anchor" onClick={this.handleTriggerClick}>
           <slot name="trigger"></slot>
         </div>

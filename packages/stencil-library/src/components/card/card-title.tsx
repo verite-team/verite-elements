@@ -13,6 +13,7 @@ export class CardTitle {
   render() {
     return (
       <h3
+        part="card-title"
         class={{
           'card-title': true,
           [`card-title--${this.size}`]: true,

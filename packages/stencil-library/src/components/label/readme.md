@@ -11,6 +11,13 @@
 | `required` | `required` |             | `boolean` | `false`     |
 
 
+## Shadow Parts
+
+| Part      | Description |
+| --------- | ----------- |
+| `"label"` |             |
+
+
 ## Dependencies
 
 ### Used by

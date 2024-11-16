@@ -12,6 +12,13 @@
 | `weight` | `weight`  |             | `"bold" \| "light" \| "medium"` | `'bold'` |
 
 
+## Shadow Parts
+
+| Part           | Description |
+| -------------- | ----------- |
+| `"card-title"` |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

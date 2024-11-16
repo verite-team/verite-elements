@@ -1,18 +1,12 @@
 :host {
-  display: block;
-}
-
-.card-footer {
   display: flex;
   flex-direction: column;
-  /* gap: 8px; */
   padding: 24px;
 }
 
-.card-footer--inset {
+:host(.card-footer--inset) {
   padding: 0px;
   border-top: 1px solid hsl(var(--border));
-  /* margin-top: 16px; */
   background-color: hsl(var(--muted) / 0.5);
   box-shadow: inset 0 1px 2px hsl(var(--foreground) / 0.1);
 }

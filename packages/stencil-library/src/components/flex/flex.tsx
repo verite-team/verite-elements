@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-flex',
@@ -20,9 +20,9 @@ export class Flex {
 
   render() {
     return (
-      <div
+      <Host
+        part="flex"
         class={{
-          flex: true,
           [`flex-${this.direction}`]: true,
           [`align-${this.valign}`]: true,
           [`justify-${this.halign}`]: true,
@@ -32,7 +32,7 @@ export class Flex {
         style={{ gap: this.getGapStyle() }}
       >
         <slot></slot>
-      </div>
+      </Host>
     )
   }
 }

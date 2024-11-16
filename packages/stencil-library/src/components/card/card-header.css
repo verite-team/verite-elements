@@ -1,5 +1,8 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
 }
 
 .card-header {

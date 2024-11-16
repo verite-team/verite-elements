@@ -502,9 +502,9 @@ export class VuiSignin {
 
 export declare interface VuiSignin extends Components.VuiSignin {
 
-  formSubmit: EventEmitter<CustomEvent<any>>;
+  formSubmit: EventEmitter<CustomEvent<{ email: string; password: string }>>;
 
-  ready: EventEmitter<CustomEvent<any>>;
+  ready: EventEmitter<CustomEvent<void>>;
 }
 
 

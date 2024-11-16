@@ -10,6 +10,13 @@
 | `label`  | `label`   |             | `string` | `'Powered by Verite'` |
 
 
+## Shadow Parts
+
+| Part           | Description |
+| -------------- | ----------- |
+| `"powered-by"` |             |
+
+
 ## Dependencies
 
 ### Used by

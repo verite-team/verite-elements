@@ -46,7 +46,7 @@ function App() {
       </div>
 
       <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
-      <VuiUserMenu className="fixed top-4 right-12"></VuiUserMenu>
+      <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu>
 
       <VuiCard class="vui-card--signin" style={{ width: '360px' }}>
         <VuiCardHeader>

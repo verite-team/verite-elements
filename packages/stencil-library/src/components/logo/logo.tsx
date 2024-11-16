@@ -12,6 +12,6 @@ export class Logo {
   @Prop() size: number = 20
 
   render() {
-    return <Host>{Icons[this.name]({ width: this.size, height: this.size })}</Host>
+    return <Host part="logo">{Icons[this.name]({ width: this.size, height: this.size })}</Host>
   }
 }

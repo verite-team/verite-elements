@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-card-footer',
@@ -10,15 +10,15 @@ export class CardFooter {
 
   render() {
     return (
-      <div
-        part="footer"
+      <Host
+        part="card-footer"
         class={{
           'card-footer': true,
           [`card-footer--${this.variant}`]: true,
         }}
       >
         <slot></slot>
-      </div>
+      </Host>
     )
   }
 }

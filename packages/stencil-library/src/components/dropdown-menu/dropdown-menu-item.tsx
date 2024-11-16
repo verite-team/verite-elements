@@ -28,6 +28,7 @@ export class DropdownMenuItem {
   render() {
     return (
       <Host
+        part="dropdown-menu-item"
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         role="menuitem"

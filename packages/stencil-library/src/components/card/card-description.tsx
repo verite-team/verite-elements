@@ -11,6 +11,7 @@ export class CardDescription {
   render() {
     return (
       <p
+        part="card-description"
         class={{
           'card-description': true,
           [`card-description--${this.halign}`]: true,

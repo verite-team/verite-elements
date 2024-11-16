@@ -16,6 +16,13 @@
 | `width`     | `width`      |             | `"auto" \| "full"`             | `'auto'`  |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"flex"` |             |
+
+
 ## Dependencies
 
 ### Used by

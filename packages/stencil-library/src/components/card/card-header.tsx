@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core'
+import { Component, Host, h } from '@stencil/core'
 
 @Component({
   tag: 'vui-card-header',
@@ -8,9 +8,9 @@ import { Component, h } from '@stencil/core'
 export class CardHeader {
   render() {
     return (
-      <div class="card-header">
+      <Host part="card-header" class="card-header">
         <slot></slot>
-      </div>
+      </Host>
     )
   }
 }
