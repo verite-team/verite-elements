@@ -1,9 +1,0 @@
-:host {
-  display: flex;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-  /* hide disc li */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
