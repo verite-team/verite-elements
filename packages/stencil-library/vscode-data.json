@@ -536,6 +536,27 @@
       "attributes": []
     },
     {
+      "name": "vui-placeholder",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "height",
+          "description": "Height of the placeholder in pixels"
+        },
+        {
+          "name": "radius",
+          "description": "Border radius in pixels. Use 9999 for fully rounded"
+        },
+        {
+          "name": "width",
+          "description": "Width of the placeholder in pixels"
+        }
+      ]
+    },
+    {
       "name": "vui-powered-by",
       "description": {
         "kind": "markdown",

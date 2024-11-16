@@ -1,9 +1,13 @@
 :host {
-  display: block;
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
 }
 
-.container {
-  display: block;
+[part='logo-container'] {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .form-field {
@@ -35,18 +39,21 @@
   background-color: transparent;
 }
 
-vui-card-content::part(content) {
-  padding-bottom: 0;
-}
-
-vui-card-footer::part(footer) {
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
 .verify-button {
   width: 100%;
+  margin-top: 1rem;
+}
+
+.footer-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.powered-by {
+  margin-block: 8px 14px;
 }

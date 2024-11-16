@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                               | Default     |
-| -------- | --------- | ----------- | -------------------------------------------------- | ----------- |
-| `styles` | --        |             | `{ link?: { [key: string]: string \| number; }; }` | `undefined` |
+| Property | Attribute | Description             | Type                                               | Default                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| -------- | --------- | ----------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `labels` | --        | Labels for localization | `SignUpLabels`                                     | `{     title: 'Sign up to Acme Co',     description: 'Welcome! Please fill in the details to get started.',     firstNameLabel: 'First name',     firstNamePlaceholder: 'First name',     lastNameLabel: 'Last name',     lastNamePlaceholder: 'Last name',     emailLabel: 'Email',     emailPlaceholder: 'Email',     passwordLabel: 'Password',     passwordPlaceholder: 'Password',     showPasswordLabel: 'Show password',     hidePasswordLabel: 'Hide password',     signUpButtonText: 'Sign up',     haveAccountText: 'Already have an account?',     signInButtonText: 'Sign in',   }` |
+| `styles` | --        |                         | `{ link?: { [key: string]: string \| number; }; }` | `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 
 ## Events
@@ -16,13 +17,13 @@
 | ------------ | ----------- | ----------------------------- |
 | `formSubmit` |             | `CustomEvent<SignUpFormData>` |
 | `ready`      |             | `CustomEvent<void>`           |
+| `signIn`     |             | `CustomEvent<void>`           |
 
 
 ## Shadow Parts
 
 | Part               | Description |
 | ------------------ | ----------- |
-| `"logo"`           |             |
 | `"logo-container"` |             |
 | `"signup"`         |             |
 
@@ -32,6 +33,7 @@
 ### Depends on
 
 - [vui-card-header](../card)
+- [vui-placeholder](../placeholder)
 - [vui-card-title](../card)
 - [vui-card-description](../card)
 - [vui-card-content](../card)
@@ -47,6 +49,7 @@
 ```mermaid
 graph TD;
   vui-signup --> vui-card-header
+  vui-signup --> vui-placeholder
   vui-signup --> vui-card-title
   vui-signup --> vui-card-description
   vui-signup --> vui-card-content

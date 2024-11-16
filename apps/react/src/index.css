@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: 262.1 100% 95%;
   --foreground: 262.1 5% 0%;
   --card: 262.1 50% 90%;
@@ -25,7 +25,7 @@
   --input: 262.1 30% 18%;
   --ring: 262.1 88.3% 57.8%;
   --radius: 0.5rem;
-}
+} */
 .dark {
   --background: 262.1 50% 5%;
   --foreground: 262.1 5% 90%;
@@ -59,16 +59,20 @@ html[data-theme='dark'] body {
 /* Base styles */
 body {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 20px;
-  gap: 10px;
+  min-height: 100vh;
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  padding: 20px;
+  gap: 10px;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  overflow-y: auto;
+}
+
+.container {
+  @apply flex flex-col items-center lg:flex-row;
+  width: 100%;
+  min-height: 100%;
 }

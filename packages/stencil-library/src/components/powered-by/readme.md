@@ -22,12 +22,14 @@
 
 ### Used by
 
+ - [vui-otp](../otp)
  - [vui-signin](../signin)
  - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-otp --> vui-powered-by
   vui-signin --> vui-powered-by
   vui-signup --> vui-powered-by
   style vui-powered-by fill:#f9f,stroke:#333,stroke-width:4px

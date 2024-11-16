@@ -7,13 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
-import { SignInFormData } from "./components/signin/signin-interfaces";
-import { SignUpFormData } from "./components/signup/signup-interfaces";
+import { OtpLabels } from "./components/otp/otp-interfaces";
+import { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
+import { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
-export { SignInFormData } from "./components/signin/signin-interfaces";
-export { SignUpFormData } from "./components/signup/signup-interfaces";
+export { OtpLabels } from "./components/otp/otp-interfaces";
+export { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
+export { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
     interface VuiButton {
@@ -98,6 +100,7 @@ export namespace Components {
         "size": number;
     }
     interface VuiOtp {
+        "labels": OtpLabels;
     }
     interface VuiPlaceholder {
         /**
@@ -117,11 +120,19 @@ export namespace Components {
         "label": string;
     }
     interface VuiSignin {
+        /**
+          * Labels for localization
+         */
+        "labels": SignInLabels;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
     }
     interface VuiSignup {
+        /**
+          * Labels for localization
+         */
+        "labels": SignUpLabels;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
@@ -325,7 +336,9 @@ declare global {
         new (): HTMLVuiLogoElement;
     };
     interface HTMLVuiOtpElementEventMap {
-        "formSubmit": void;
+        "formSubmit": string;
+        "ready": void;
+        "resend": void;
     }
     interface HTMLVuiOtpElement extends Components.VuiOtp, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiOtpElementEventMap>(type: K, listener: (this: HTMLVuiOtpElement, ev: VuiOtpCustomEvent<HTMLVuiOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -356,6 +369,7 @@ declare global {
     interface HTMLVuiSigninElementEventMap {
         "formSubmit": SignInFormData;
         "ready": void;
+        "signUp": void;
     }
     interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -374,6 +388,7 @@ declare global {
     interface HTMLVuiSignupElementEventMap {
         "formSubmit": SignUpFormData;
         "ready": void;
+        "signIn": void;
     }
     interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -548,7 +563,10 @@ declare namespace LocalJSX {
         "size"?: number;
     }
     interface VuiOtp {
-        "onFormSubmit"?: (event: VuiOtpCustomEvent<void>) => void;
+        "labels"?: OtpLabels;
+        "onFormSubmit"?: (event: VuiOtpCustomEvent<string>) => void;
+        "onReady"?: (event: VuiOtpCustomEvent<void>) => void;
+        "onResend"?: (event: VuiOtpCustomEvent<void>) => void;
     }
     interface VuiPlaceholder {
         /**
@@ -568,15 +586,25 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface VuiSignin {
+        /**
+          * Labels for localization
+         */
+        "labels"?: SignInLabels;
         "onFormSubmit"?: (event: VuiSigninCustomEvent<SignInFormData>) => void;
         "onReady"?: (event: VuiSigninCustomEvent<void>) => void;
+        "onSignUp"?: (event: VuiSigninCustomEvent<void>) => void;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
     }
     interface VuiSignup {
+        /**
+          * Labels for localization
+         */
+        "labels"?: SignUpLabels;
         "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
         "onReady"?: (event: VuiSignupCustomEvent<void>) => void;
+        "onSignIn"?: (event: VuiSignupCustomEvent<void>) => void;
         "styles"?: {
     link?: { [key: string]: string | number }
   };

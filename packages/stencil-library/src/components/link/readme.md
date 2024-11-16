@@ -24,13 +24,11 @@
 
 ### Used by
 
- - [vui-otp](../otp)
  - [vui-signin](../signin)
 
 ### Graph
 ```mermaid
 graph TD;
-  vui-otp --> vui-link
   vui-signin --> vui-link
   style vui-link fill:#f9f,stroke:#333,stroke-width:4px
 ```

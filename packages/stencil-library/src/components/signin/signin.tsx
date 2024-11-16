@@ -1,6 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
-
-import { SignInFormData } from './signin-interfaces'
+import { SignInFormData, SignInLabels } from './signin-interfaces'
 
 @Component({
   tag: 'vui-signin',
@@ -17,9 +16,25 @@ export class Signin {
     link?: { [key: string]: string | number }
   }
 
+  /** Labels for localization */
+  @Prop() labels: SignInLabels = {
+    title: 'Sign in to Acme Co',
+    description: 'Welcome back! Please sign in to continue',
+    emailLabel: 'Email',
+    emailPlaceholder: 'Email',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Password',
+    showPasswordLabel: 'Show password',
+    hidePasswordLabel: 'Hide password',
+    forgotPasswordText: 'Forgot your password?',
+    signInButtonText: 'Sign in',
+    noAccountText: "Don't have an account?",
+    signUpButtonText: 'Sign up',
+  }
+
   @Event() formSubmit: EventEmitter<SignInFormData>
   @Event() ready: EventEmitter<void>
-
+  @Event() signUp: EventEmitter<void>
   private togglePasswordVisibility = () => {
     this.showPassword = !this.showPassword
   }
@@ -39,6 +54,10 @@ export class Signin {
     this.password = input.value
   }
 
+  private handleSignUp = () => {
+    this.signUp.emit()
+  }
+
   componentDidLoad() {
     this.ready.emit()
   }
@@ -49,10 +68,12 @@ export class Signin {
         <slot name="header">
           <vui-card-header>
             <div part="logo-container">
-              <vui-placeholder width={40} height={41}></vui-placeholder>
+              <slot name="logo">
+                <vui-placeholder width={40} height={41}></vui-placeholder>
+              </slot>
             </div>
-            <vui-card-title halign="center">Sign in to Acme Co</vui-card-title>
-            <vui-card-description halign="center">Welcome back! Please sign in to continue</vui-card-description>
+            <vui-card-title halign="center">{this.labels.title}</vui-card-title>
+            <vui-card-description halign="center">{this.labels.description}</vui-card-description>
           </vui-card-header>
         </slot>
 
@@ -62,11 +83,11 @@ export class Signin {
           <form onSubmit={this.handleSubmit}>
             <div class="form-field">
               <label class="sr-only" htmlFor="signin-email">
-                Email
+                {this.labels.emailLabel}
               </label>
               <vui-textbox
                 id="signin-email"
-                placeholder="Email"
+                placeholder={this.labels.emailPlaceholder}
                 type="email"
                 autocapitalize="none"
                 autocomplete="email"
@@ -79,11 +100,11 @@ export class Signin {
 
             <div class="form-field password-field">
               <label class="sr-only" htmlFor="signin-password">
-                Password
+                {this.labels.passwordLabel}
               </label>
               <vui-textbox
                 id="signin-password"
-                placeholder="Password"
+                placeholder={this.labels.passwordPlaceholder}
                 type={this.showPassword ? 'text' : 'password'}
                 autocomplete="current-password"
                 autocorrect="off"
@@ -96,7 +117,7 @@ export class Signin {
                 class="visibility-toggle"
                 type="button"
                 onClick={this.togglePasswordVisibility}
-                aria-label={this.showPassword ? 'Hide password' : 'Show password'}
+                aria-label={this.showPassword ? this.labels.hidePasswordLabel : this.labels.showPasswordLabel}
               >
                 <vui-icon name={this.showPassword ? 'ic:outline-visibility' : 'ic:outline-visibility-off'} size="sm" />
               </vui-button>
@@ -104,12 +125,12 @@ export class Signin {
 
             <div class="forgot-password">
               <vui-link href="/forgot-password" exportparts="link">
-                Forgot your password?
+                {this.labels.forgotPasswordText}
               </vui-link>
             </div>
 
             <vui-button type="submit" class="submit-button" disabled={this.isLoading}>
-              Sign in
+              {this.labels.signInButtonText}
             </vui-button>
           </form>
         </vui-card-content>
@@ -117,15 +138,13 @@ export class Signin {
         <slot name="footer">
           <vui-card-footer variant="inset">
             <div class="signup-prompt">
-              <span>Don't have an account?</span>
-              <vui-button variant="outline" size="sm">
-                Sign up
+              <span>{this.labels.noAccountText}</span>
+              <vui-button variant="outline" size="sm" onClick={this.handleSignUp}>
+                {this.labels.signUpButtonText}
               </vui-button>
             </div>
             <vui-divider orientation="horizontal"></vui-divider>
-            <vui-powered-by label="Secured by Verite" class="powered-by">
-              {/* SVG logo */}
-            </vui-powered-by>
+            <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
           </vui-card-footer>
         </slot>
       </Host>

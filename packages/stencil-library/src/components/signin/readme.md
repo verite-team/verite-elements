@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                               | Default     |
-| -------- | --------- | ----------- | -------------------------------------------------- | ----------- |
-| `styles` | --        |             | `{ link?: { [key: string]: string \| number; }; }` | `undefined` |
+| Property | Attribute | Description             | Type                                               | Default                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| -------- | --------- | ----------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `labels` | --        | Labels for localization | `SignInLabels`                                     | `{     title: 'Sign in to Acme Co',     description: 'Welcome back! Please sign in to continue',     emailLabel: 'Email',     emailPlaceholder: 'Email',     passwordLabel: 'Password',     passwordPlaceholder: 'Password',     showPasswordLabel: 'Show password',     hidePasswordLabel: 'Hide password',     forgotPasswordText: 'Forgot your password?',     signInButtonText: 'Sign in',     noAccountText: "Don't have an account?",     signUpButtonText: 'Sign up',   }` |
+| `styles` | --        |                         | `{ link?: { [key: string]: string \| number; }; }` | `undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 
 ## Events
@@ -16,13 +17,13 @@
 | ------------ | ----------- | ----------------------------- |
 | `formSubmit` |             | `CustomEvent<SignInFormData>` |
 | `ready`      |             | `CustomEvent<void>`           |
+| `signUp`     |             | `CustomEvent<void>`           |
 
 
 ## Shadow Parts
 
 | Part               | Description |
 | ------------------ | ----------- |
-| `"logo"`           |             |
 | `"logo-container"` |             |
 | `"signin"`         |             |
 
@@ -32,6 +33,7 @@
 ### Depends on
 
 - [vui-card-header](../card)
+- [vui-placeholder](../placeholder)
 - [vui-card-title](../card)
 - [vui-card-description](../card)
 - [vui-card-content](../card)
@@ -47,6 +49,7 @@
 ```mermaid
 graph TD;
   vui-signin --> vui-card-header
+  vui-signin --> vui-placeholder
   vui-signin --> vui-card-title
   vui-signin --> vui-card-description
   vui-signin --> vui-card-content

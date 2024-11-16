@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
-
-import { SignUpFormData } from './signup-interfaces'
+import { SignUpFormData, SignUpLabels } from './signup-interfaces'
 
 @Component({
   tag: 'vui-signup',
@@ -19,10 +18,29 @@ export class Signup {
     link?: { [key: string]: string | number }
   }
 
+  /** Labels for localization */
+  @Prop() labels: SignUpLabels = {
+    title: 'Sign up to Acme Co',
+    description: 'Welcome! Please fill in the details to get started.',
+    firstNameLabel: 'First name',
+    firstNamePlaceholder: 'First name',
+    lastNameLabel: 'Last name',
+    lastNamePlaceholder: 'Last name',
+    emailLabel: 'Email',
+    emailPlaceholder: 'Email',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Password',
+    showPasswordLabel: 'Show password',
+    hidePasswordLabel: 'Hide password',
+    signUpButtonText: 'Sign up',
+    haveAccountText: 'Already have an account?',
+    signInButtonText: 'Sign in',
+  }
+
   @Element() el!: HTMLElement
   @Event() formSubmit: EventEmitter<SignUpFormData>
   @Event() ready: EventEmitter<void>
-
+  @Event() signIn: EventEmitter<void>
   private togglePasswordVisibility = () => {
     this.showPassword = !this.showPassword
   }
@@ -45,6 +63,10 @@ export class Signup {
     this[field] = input.value
   }
 
+  private handleSignIn = () => {
+    this.signIn.emit()
+  }
+
   componentDidLoad() {
     this.ready.emit()
   }
@@ -55,14 +77,12 @@ export class Signup {
         <slot name="header">
           <vui-card-header>
             <div part="logo-container">
-              <svg part="logo" width="40" height="41" viewBox="0 0 40 41" fill="none">
-                {/* SVG path data */}
-              </svg>
+              <slot name="logo">
+                <vui-placeholder width={40} height={41}></vui-placeholder>
+              </slot>
             </div>
-            <vui-card-title halign="center">Sign up to Acme Co</vui-card-title>
-            <vui-card-description halign="center">
-              Welcome! Please fill in the details to get started.
-            </vui-card-description>
+            <vui-card-title halign="center">{this.labels.title}</vui-card-title>
+            <vui-card-description halign="center">{this.labels.description}</vui-card-description>
           </vui-card-header>
         </slot>
 
@@ -73,12 +93,12 @@ export class Signup {
             <vui-flex gap={2}>
               <div class="form-field">
                 <label class="sr-only" htmlFor="first-name">
-                  First name
+                  {this.labels.firstNameLabel}
                 </label>
                 <vui-textbox
                   id="first-name"
                   name="firstName"
-                  placeholder="First name"
+                  placeholder={this.labels.firstNamePlaceholder}
                   autocapitalize="none"
                   autocomplete="given-name"
                   autocorrect="off"
@@ -90,12 +110,12 @@ export class Signup {
 
               <div class="form-field">
                 <label class="sr-only" htmlFor="last-name">
-                  Last name
+                  {this.labels.lastNameLabel}
                 </label>
                 <vui-textbox
                   id="last-name"
                   name="lastName"
-                  placeholder="Last name"
+                  placeholder={this.labels.lastNamePlaceholder}
                   autocomplete="family-name"
                   autocorrect="off"
                   disabled={this.isLoading}
@@ -107,12 +127,12 @@ export class Signup {
 
             <div class="form-field">
               <label class="sr-only" htmlFor="email">
-                Email
+                {this.labels.emailLabel}
               </label>
               <vui-textbox
                 id="email"
                 name="email"
-                placeholder="Email"
+                placeholder={this.labels.emailPlaceholder}
                 type="email"
                 autocapitalize="none"
                 autocomplete="email"
@@ -125,12 +145,12 @@ export class Signup {
 
             <div class="form-field password-field">
               <label class="sr-only" htmlFor="password">
-                Password
+                {this.labels.passwordLabel}
               </label>
               <vui-textbox
                 id="password"
                 name="password"
-                placeholder="Password"
+                placeholder={this.labels.passwordPlaceholder}
                 type={this.showPassword ? 'text' : 'password'}
                 autocorrect="off"
                 disabled={this.isLoading}
@@ -142,14 +162,14 @@ export class Signup {
                 class="visibility-toggle"
                 type="button"
                 onClick={this.togglePasswordVisibility}
-                aria-label={this.showPassword ? 'Hide password' : 'Show password'}
+                aria-label={this.showPassword ? this.labels.hidePasswordLabel : this.labels.showPasswordLabel}
               >
                 <vui-icon name={this.showPassword ? 'ic:outline-visibility' : 'ic:outline-visibility-off'} size="sm" />
               </vui-button>
             </div>
 
             <vui-button type="submit" class="submit-button" disabled={this.isLoading}>
-              Sign up
+              {this.labels.signUpButtonText}
             </vui-button>
           </form>
         </vui-card-content>
@@ -157,15 +177,13 @@ export class Signup {
         <slot name="footer">
           <vui-card-footer variant="inset">
             <div class="signup-prompt">
-              <span>Already have an account?</span>
-              <vui-button variant="outline" size="sm">
-                Sign in
+              <span>{this.labels.haveAccountText}</span>
+              <vui-button variant="outline" size="sm" onClick={this.handleSignIn}>
+                {this.labels.signInButtonText}
               </vui-button>
             </div>
             <vui-divider orientation="horizontal"></vui-divider>
-            <vui-powered-by label="Secured by Verite" class="powered-by">
-              {/* SVG logo */}
-            </vui-powered-by>
+            <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
           </vui-card-footer>
         </slot>
       </Host>
