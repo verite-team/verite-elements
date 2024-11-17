@@ -626,6 +626,33 @@ export declare interface VuiThemeToggle extends Components.VuiThemeToggle {}
 
 
 @ProxyCmp({
+  inputs: ['position'],
+  methods: ['show', 'update', 'dismissToast']
+})
+@Component({
+  selector: 'vui-toast',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['position'],
+})
+export class VuiToast {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['dismiss']);
+  }
+}
+
+
+export declare interface VuiToast extends Components.VuiToast {
+
+  dismiss: EventEmitter<CustomEvent<string>>;
+}
+
+
+@ProxyCmp({
 })
 @Component({
   selector: 'vui-user-menu',

@@ -33,4 +33,5 @@ export const VuiSignin = /*@__PURE__*/createReactComponent<JSX.VuiSignin, HTMLVu
 export const VuiSignup = /*@__PURE__*/createReactComponent<JSX.VuiSignup, HTMLVuiSignupElement>('vui-signup');
 export const VuiTextbox = /*@__PURE__*/createReactComponent<JSX.VuiTextbox, HTMLVuiTextboxElement>('vui-textbox');
 export const VuiThemeToggle = /*@__PURE__*/createReactComponent<JSX.VuiThemeToggle, HTMLVuiThemeToggleElement>('vui-theme-toggle');
+export const VuiToast = /*@__PURE__*/createReactComponent<JSX.VuiToast, HTMLVuiToastElement>('vui-toast');
 export const VuiUserMenu = /*@__PURE__*/createReactComponent<JSX.VuiUserMenu, HTMLVuiUserMenuElement>('vui-user-menu');

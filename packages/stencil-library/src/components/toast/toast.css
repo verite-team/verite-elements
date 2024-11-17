@@ -1,0 +1,190 @@
+:host {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+:host(.top-left) {
+  top: 0;
+  left: 0;
+  flex-direction: column;
+}
+
+:host(.top-center) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+:host(.top-right) {
+  top: 0;
+  right: 0;
+  flex-direction: column;
+}
+
+:host(.bottom-left) {
+  bottom: 0;
+  left: 0;
+  flex-direction: column-reverse;
+}
+
+:host(.bottom-center) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column-reverse;
+}
+
+:host(.bottom-right) {
+  bottom: 0;
+  right: 0;
+  flex-direction: column-reverse;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  width: 356px;
+  opacity: 0;
+  transform: translateY(var(--lift));
+  animation: toast-enter 0.2s ease forwards;
+  animation-delay: 100ms;
+  will-change: transform, opacity;
+}
+
+:host(.top-left) .toast,
+:host(.top-center) .toast,
+:host(.top-right) .toast {
+  --lift: -16px;
+}
+
+:host(.bottom-left) .toast,
+:host(.bottom-center) .toast,
+:host(.bottom-right) .toast {
+  --lift: 16px;
+}
+
+@keyframes toast-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--lift));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast.success {
+  border-color: hsl(var(--success));
+}
+
+.toast.error {
+  border-color: hsl(var(--destructive));
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.4;
+}
+
+.close {
+  color: hsl(var(--muted-foreground));
+}
+
+.success {
+  color: hsl(var(--success));
+}
+
+.error {
+  color: hsl(var(--destructive));
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down-center {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up-center {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

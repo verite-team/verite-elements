@@ -83,6 +83,12 @@
       }
 
     </style>
+    <script>
+      function showToast() {
+        const toast = document.querySelector('vui-toast')
+        toast.show({ title: 'Hello, world! ::' + Date.now(), type: 'success' })
+      }
+    </script>
   </head>
   <body>
     <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">
@@ -90,6 +96,7 @@
     </div>
     <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
     <vui-user-menu style="position: fixed; top: 1rem; right: 4rem"></vui-user-menu>
+    <vui-button style="position: fixed; top: 1rem; right: 6rem" onClick="showToast()">Show Toast</vui-button>
 
     <div id="signin-container" style="width: 100%; max-width: 360px">
       <vui-card class="card--signin">
@@ -160,6 +167,9 @@
     </div>
     <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
+
+
+    <vui-toast position="top-center"></vui-toast>
     <!-- <script>
       const signupContainer = document.getElementById('signup-container')
       signupContainer.addEventListener('ready', () => {

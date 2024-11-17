@@ -10,12 +10,14 @@ import { LogoName } from "./components/logo/logo";
 import { OtpLabels } from "./components/otp/otp-interfaces";
 import { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
 import { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
+import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
 export { OtpLabels } from "./components/otp/otp-interfaces";
 export { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
 export { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
+export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
     interface VuiButton {
@@ -151,6 +153,12 @@ export namespace Components {
     }
     interface VuiThemeToggle {
     }
+    interface VuiToast {
+        "dismissToast": (id: string) => Promise<void>;
+        "position": 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+        "show": (toast: Omit<ToastProps, 'id'>) => Promise<string>;
+        "update": (id: string, toast: Partial<ToastProps>) => Promise<void>;
+    }
     interface VuiUserMenu {
     }
 }
@@ -181,6 +189,10 @@ export interface VuiSignupCustomEvent<T> extends CustomEvent<T> {
 export interface VuiTextboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiTextboxElement;
+}
+export interface VuiToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiToastElement;
 }
 export interface VuiUserMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -429,6 +441,23 @@ declare global {
         prototype: HTMLVuiThemeToggleElement;
         new (): HTMLVuiThemeToggleElement;
     };
+    interface HTMLVuiToastElementEventMap {
+        "dismiss": string;
+    }
+    interface HTMLVuiToastElement extends Components.VuiToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiToastElementEventMap>(type: K, listener: (this: HTMLVuiToastElement, ev: VuiToastCustomEvent<HTMLVuiToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiToastElementEventMap>(type: K, listener: (this: HTMLVuiToastElement, ev: VuiToastCustomEvent<HTMLVuiToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiToastElement: {
+        prototype: HTMLVuiToastElement;
+        new (): HTMLVuiToastElement;
+    };
     interface HTMLVuiUserMenuElementEventMap {
         "menuAction": MenuAction;
     }
@@ -473,6 +502,7 @@ declare global {
         "vui-signup": HTMLVuiSignupElement;
         "vui-textbox": HTMLVuiTextboxElement;
         "vui-theme-toggle": HTMLVuiThemeToggleElement;
+        "vui-toast": HTMLVuiToastElement;
         "vui-user-menu": HTMLVuiUserMenuElement;
     }
 }
@@ -626,6 +656,10 @@ declare namespace LocalJSX {
     }
     interface VuiThemeToggle {
     }
+    interface VuiToast {
+        "onDismiss"?: (event: VuiToastCustomEvent<string>) => void;
+        "position"?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+    }
     interface VuiUserMenu {
         "onMenuAction"?: (event: VuiUserMenuCustomEvent<MenuAction>) => void;
     }
@@ -656,6 +690,7 @@ declare namespace LocalJSX {
         "vui-signup": VuiSignup;
         "vui-textbox": VuiTextbox;
         "vui-theme-toggle": VuiThemeToggle;
+        "vui-toast": VuiToast;
         "vui-user-menu": VuiUserMenu;
     }
 }
@@ -689,6 +724,7 @@ declare module "@stencil/core" {
             "vui-signup": LocalJSX.VuiSignup & JSXBase.HTMLAttributes<HTMLVuiSignupElement>;
             "vui-textbox": LocalJSX.VuiTextbox & JSXBase.HTMLAttributes<HTMLVuiTextboxElement>;
             "vui-theme-toggle": LocalJSX.VuiThemeToggle & JSXBase.HTMLAttributes<HTMLVuiThemeToggleElement>;
+            "vui-toast": LocalJSX.VuiToast & JSXBase.HTMLAttributes<HTMLVuiToastElement>;
             "vui-user-menu": LocalJSX.VuiUserMenu & JSXBase.HTMLAttributes<HTMLVuiUserMenuElement>;
         }
     }
