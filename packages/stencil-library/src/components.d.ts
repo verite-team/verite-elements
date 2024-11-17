@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ValidationRule } from "./utils/validation";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
 import { OtpLabels } from "./components/otp/otp-interfaces";
@@ -12,6 +13,7 @@ import { SignInFormData, SignInLabels } from "./components/signin/signin-interfa
 import { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
+export { ValidationRule } from "./utils/validation";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
 export { OtpLabels } from "./components/otp/otp-interfaces";
@@ -72,6 +74,10 @@ export namespace Components {
         "spaceUnit"?: number;
         "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
+    }
+    interface VuiFormControl {
+        "rules": ValidationRule[];
+        "value": any;
     }
     interface VuiGoogleOneTap {
         "googleClientId": string;
@@ -305,6 +311,12 @@ declare global {
         prototype: HTMLVuiFlexElement;
         new (): HTMLVuiFlexElement;
     };
+    interface HTMLVuiFormControlElement extends Components.VuiFormControl, HTMLStencilElement {
+    }
+    var HTMLVuiFormControlElement: {
+        prototype: HTMLVuiFormControlElement;
+        new (): HTMLVuiFormControlElement;
+    };
     interface HTMLVuiGoogleOneTapElementEventMap {
         "googleCredential": SignInWithIdTokenCredentials;
         "googleError": Error;
@@ -490,6 +502,7 @@ declare global {
         "vui-dropdown-menu-separator": HTMLVuiDropdownMenuSeparatorElement;
         "vui-dropdown-menu-trigger": HTMLVuiDropdownMenuTriggerElement;
         "vui-flex": HTMLVuiFlexElement;
+        "vui-form-control": HTMLVuiFormControlElement;
         "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
         "vui-icon": HTMLVuiIconElement;
         "vui-label": HTMLVuiLabelElement;
@@ -561,6 +574,10 @@ declare namespace LocalJSX {
         "spaceUnit"?: number;
         "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
+    }
+    interface VuiFormControl {
+        "rules"?: ValidationRule[];
+        "value"?: any;
     }
     interface VuiGoogleOneTap {
         "googleClientId": string;
@@ -678,6 +695,7 @@ declare namespace LocalJSX {
         "vui-dropdown-menu-separator": VuiDropdownMenuSeparator;
         "vui-dropdown-menu-trigger": VuiDropdownMenuTrigger;
         "vui-flex": VuiFlex;
+        "vui-form-control": VuiFormControl;
         "vui-google-one-tap": VuiGoogleOneTap;
         "vui-icon": VuiIcon;
         "vui-label": VuiLabel;
@@ -712,6 +730,7 @@ declare module "@stencil/core" {
             "vui-dropdown-menu-separator": LocalJSX.VuiDropdownMenuSeparator & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuSeparatorElement>;
             "vui-dropdown-menu-trigger": LocalJSX.VuiDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuTriggerElement>;
             "vui-flex": LocalJSX.VuiFlex & JSXBase.HTMLAttributes<HTMLVuiFlexElement>;
+            "vui-form-control": LocalJSX.VuiFormControl & JSXBase.HTMLAttributes<HTMLVuiFormControlElement>;
             "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;
             "vui-icon": LocalJSX.VuiIcon & JSXBase.HTMLAttributes<HTMLVuiIconElement>;
             "vui-label": LocalJSX.VuiLabel & JSXBase.HTMLAttributes<HTMLVuiLabelElement>;

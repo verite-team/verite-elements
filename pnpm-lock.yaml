@@ -177,6 +177,10 @@ importers:
         version: 5.5.4
 
   packages/stencil-library:
+    dependencies:
+      valibot:
+        specifier: 1.0.0-beta.7
+        version: 1.0.0-beta.7
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.6.1
@@ -12525,6 +12529,15 @@ packages:
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
     dev: true
+
+  /valibot@1.0.0-beta.7:
+    resolution: {integrity: sha512-8CsDu3tqyg7quEHMzCOYdQ/d9NlmVQKtd4AlFje6oJpvqo70EIZjSakKIeWltJyNAiUtdtLe0LAk4625gavoeQ==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dev: false
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}

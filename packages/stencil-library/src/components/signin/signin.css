@@ -17,6 +17,7 @@ form {
 
 .form-field {
   position: relative;
+  /* margin-bottom: 1rem; */
 }
 
 .sr-only {
@@ -37,10 +38,13 @@ form {
 
 .visibility-toggle {
   position: absolute;
-  right: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 9999px;
+  right: 0rem;
+  top: 0px;
+}
+
+.visibility-toggle::part(button) {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .forgot-password {
@@ -63,4 +67,11 @@ form {
 
 .powered-by {
   margin-block: 8px 14px;
+}
+
+.error-message {
+  color: hsl(var(--error));
+  font-size: 0.875rem;
+  margin-top: 4px;
+  margin-left: 0.25rem;
 }

@@ -319,6 +319,28 @@ export declare interface VuiFlex extends Components.VuiFlex {}
 
 
 @ProxyCmp({
+  inputs: ['rules', 'value']
+})
+@Component({
+  selector: 'vui-form-control',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['rules', 'value'],
+})
+export class VuiFormControl {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiFormControl extends Components.VuiFormControl {}
+
+
+@ProxyCmp({
   inputs: ['googleClientId']
 })
 @Component({
