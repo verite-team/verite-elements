@@ -11,7 +11,7 @@ export class Label {
 
   render() {
     return (
-      <label part="label" htmlFor={this.for}>
+      <label part="label root" htmlFor={this.for}>
         <slot></slot>
         {this.required && <span part="required">*</span>}
       </label>

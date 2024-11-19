@@ -104,6 +104,80 @@
       >Show Toast</vui-button
     >
 
+    <!-- <div
+      style="
+        width: 150px;
+        resize: horizontal;
+        overflow: auto;
+        min-width: 100px;
+        max-width: 500px;
+        border: 1px solid #ccc;
+      "
+    >
+      <vui-flex breakpoint="200" breakpointDirection="column">
+        <div style="flex: 1; padding: 10px; border: 1px solid red">Test content</div>
+        <div style="flex: 1; padding: 10px; border: 1px solid blue">Test content</div>
+        <div style="flex: 1; padding: 10px; border: 1px solid green">Test content</div>
+      </vui-flex>
+    </div> -->
+
+    <!-- <div
+      style="
+        width: 300px;
+        resize: horizontal;
+        overflow: auto;
+        min-width: 100px;
+        max-width: 600px;
+        border: 1px solid #ccc;
+      "
+    >
+      <vui-flex direction="row" breakpoint="200" breakpointDirection="column" gap="2">
+        <div style="padding: 10px; border: 2px solid blue; flex: 1">First item</div>
+        <div style="padding: 10px; border: 2px solid red; flex: 1">Second item</div>
+      </vui-flex>
+    </div> -->
+
+    <!-- <div
+      style="
+        width: 600px;
+        resize: horizontal;
+        overflow: auto;
+        min-width: 100px;
+        max-width: 600px;
+        border: 2px solid red;
+        padding: 16px;
+      "
+    >
+      <vui-flex direction="row" breakpoint="400">
+        <div style="padding: 10px; background: lightblue; flex: 1; width: 100%">
+          First item (should stack below 200px width)
+        </div>
+        <div style="padding: 10px; background: lightgreen; flex: 1; width: 100%">
+          Second item (should stack below 200px width)
+        </div>
+      </vui-flex>
+    </div> -->
+
+    <!-- <div style="container-type: inline-size; border: 1px solid black">
+      <div style="padding: 20px; border: 2px solid blue">Test content</div>
+      <style>
+        @container (max-width: 200px) {
+          div {
+            border-color: green !important;
+            background: yellow;
+          }
+        }
+      </style>
+    </div> -->
+
+    <vui-button variant="destructive" width="full">
+      <vui-flex valign="center" gap="2">
+        <vui-logo name="apple" size="20"></vui-logo>
+        <vui-label>Test</vui-label>
+        <span>Test</span>
+      </vui-flex>
+    </vui-button>
+
     <div id="signin-container" style="width: 100%; max-width: 360px">
       <verite-connector type="signin">
         <vui-card class="card--signin">
@@ -115,12 +189,12 @@
             <!-- <span slot="header"></span> -->
             <div slot="providers">
               <vui-flex direction="column" gap="2" style="width: 100%">
-                <!-- <vui-button class="google-button" variant="outline" style="width: 100%">
-                <vui-flex valign="center" gap="2">
-                  <vui-logo name="apple" size="20"></vui-logo>
-                  <vui-label>Sign in with Apple</vui-label>
-                </vui-flex>
-              </vui-button> -->
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex valign="center" gap="2">
+                    <vui-logo name="apple" size="20"></vui-logo>
+                    <vui-label>Sign in with Apple</vui-label>
+                  </vui-flex>
+                </vui-button>
 
                 <vui-button class="google-button" variant="outline" style="width: 100%">
                   <vui-flex valign="center" gap="2">

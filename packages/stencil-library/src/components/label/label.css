@@ -1,5 +1,6 @@
 :host {
-  display: block;
+  display: inline-block;
+  color: inherit;
 }
 
 label {
@@ -7,7 +8,7 @@ label {
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: hsl(var(--foreground));
+  color: inherit;
   user-select: none;
   pointer-events: none;
 }

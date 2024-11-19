@@ -22,9 +22,11 @@ export { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfa
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
+    interface VeriteConnector {
+        "type": 'signup' | 'signin';
+    }
     interface VuiButton {
         "busy"?: boolean;
-        "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
@@ -77,6 +79,8 @@ export namespace Components {
         "showIcon": boolean;
     }
     interface VuiFlex {
+        "breakpoint"?: string;
+        "breakpointDirection"?: 'row' | 'column';
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
@@ -141,7 +145,7 @@ export namespace Components {
         /**
           * Email validation options
          */
-        "emailValidation"?: EmailValidationOptions;
+        "emailValidation"?: EmailValidationOptions | string;
         /**
           * Labels for localization
          */
@@ -156,12 +160,24 @@ export namespace Components {
     }
     interface VuiSignup {
         /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions | string;
+        /**
           * Labels for localization
          */
         "labels": SignUpLabels;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
+    }
+    interface VuiSpinner {
+        "color": string;
+        "size": 'small' | 'medium' | 'large';
     }
     interface VuiTextbox {
         "autocomplete"?: string;
@@ -223,6 +239,12 @@ export interface VuiUserMenuCustomEvent<T> extends CustomEvent<T> {
     target: HTMLVuiUserMenuElement;
 }
 declare global {
+    interface HTMLVeriteConnectorElement extends Components.VeriteConnector, HTMLStencilElement {
+    }
+    var HTMLVeriteConnectorElement: {
+        prototype: HTMLVeriteConnectorElement;
+        new (): HTMLVeriteConnectorElement;
+    };
     interface HTMLVuiButtonElementEventMap {
         "buttonClick": MouseEvent;
     }
@@ -452,6 +474,12 @@ declare global {
         prototype: HTMLVuiSignupElement;
         new (): HTMLVuiSignupElement;
     };
+    interface HTMLVuiSpinnerElement extends Components.VuiSpinner, HTMLStencilElement {
+    }
+    var HTMLVuiSpinnerElement: {
+        prototype: HTMLVuiSpinnerElement;
+        new (): HTMLVuiSpinnerElement;
+    };
     interface HTMLVuiTextboxElementEventMap {
         "valueChange": string;
         "inputChange": string;
@@ -512,6 +540,7 @@ declare global {
         new (): HTMLVuiUserMenuElement;
     };
     interface HTMLElementTagNameMap {
+        "verite-connector": HTMLVeriteConnectorElement;
         "vui-button": HTMLVuiButtonElement;
         "vui-card": HTMLVuiCardElement;
         "vui-card-content": HTMLVuiCardContentElement;
@@ -538,6 +567,7 @@ declare global {
         "vui-powered-by": HTMLVuiPoweredByElement;
         "vui-signin": HTMLVuiSigninElement;
         "vui-signup": HTMLVuiSignupElement;
+        "vui-spinner": HTMLVuiSpinnerElement;
         "vui-textbox": HTMLVuiTextboxElement;
         "vui-theme-toggle": HTMLVuiThemeToggleElement;
         "vui-toast": HTMLVuiToastElement;
@@ -545,9 +575,11 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface VeriteConnector {
+        "type"?: 'signup' | 'signin';
+    }
     interface VuiButton {
         "busy"?: boolean;
-        "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
         "onButtonClick"?: (event: VuiButtonCustomEvent<MouseEvent>) => void;
@@ -602,6 +634,8 @@ declare namespace LocalJSX {
         "showIcon"?: boolean;
     }
     interface VuiFlex {
+        "breakpoint"?: string;
+        "breakpointDirection"?: 'row' | 'column';
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
@@ -671,7 +705,7 @@ declare namespace LocalJSX {
         /**
           * Email validation options
          */
-        "emailValidation"?: EmailValidationOptions;
+        "emailValidation"?: EmailValidationOptions | string;
         /**
           * Labels for localization
          */
@@ -689,15 +723,27 @@ declare namespace LocalJSX {
     }
     interface VuiSignup {
         /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions | string;
+        /**
           * Labels for localization
          */
         "labels"?: SignUpLabels;
         "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
         "onReady"?: (event: VuiSignupCustomEvent<void>) => void;
         "onSignIn"?: (event: VuiSignupCustomEvent<void>) => void;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
+    }
+    interface VuiSpinner {
+        "color"?: string;
+        "size"?: 'small' | 'medium' | 'large';
     }
     interface VuiTextbox {
         "autocomplete"?: string;
@@ -724,6 +770,7 @@ declare namespace LocalJSX {
         "onMenuAction"?: (event: VuiUserMenuCustomEvent<MenuAction>) => void;
     }
     interface IntrinsicElements {
+        "verite-connector": VeriteConnector;
         "vui-button": VuiButton;
         "vui-card": VuiCard;
         "vui-card-content": VuiCardContent;
@@ -750,6 +797,7 @@ declare namespace LocalJSX {
         "vui-powered-by": VuiPoweredBy;
         "vui-signin": VuiSignin;
         "vui-signup": VuiSignup;
+        "vui-spinner": VuiSpinner;
         "vui-textbox": VuiTextbox;
         "vui-theme-toggle": VuiThemeToggle;
         "vui-toast": VuiToast;
@@ -760,6 +808,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "verite-connector": LocalJSX.VeriteConnector & JSXBase.HTMLAttributes<HTMLVeriteConnectorElement>;
             "vui-button": LocalJSX.VuiButton & JSXBase.HTMLAttributes<HTMLVuiButtonElement>;
             "vui-card": LocalJSX.VuiCard & JSXBase.HTMLAttributes<HTMLVuiCardElement>;
             "vui-card-content": LocalJSX.VuiCardContent & JSXBase.HTMLAttributes<HTMLVuiCardContentElement>;
@@ -786,6 +835,7 @@ declare module "@stencil/core" {
             "vui-powered-by": LocalJSX.VuiPoweredBy & JSXBase.HTMLAttributes<HTMLVuiPoweredByElement>;
             "vui-signin": LocalJSX.VuiSignin & JSXBase.HTMLAttributes<HTMLVuiSigninElement>;
             "vui-signup": LocalJSX.VuiSignup & JSXBase.HTMLAttributes<HTMLVuiSignupElement>;
+            "vui-spinner": LocalJSX.VuiSpinner & JSXBase.HTMLAttributes<HTMLVuiSpinnerElement>;
             "vui-textbox": LocalJSX.VuiTextbox & JSXBase.HTMLAttributes<HTMLVuiTextboxElement>;
             "vui-theme-toggle": LocalJSX.VuiThemeToggle & JSXBase.HTMLAttributes<HTMLVuiThemeToggleElement>;
             "vui-toast": LocalJSX.VuiToast & JSXBase.HTMLAttributes<HTMLVuiToastElement>;

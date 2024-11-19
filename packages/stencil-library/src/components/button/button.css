@@ -87,3 +87,11 @@ button:disabled {
 :host([size='busy']) button {
   pointer-events: none;
 }
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+  color: inherit;
+}

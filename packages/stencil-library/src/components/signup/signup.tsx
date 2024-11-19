@@ -180,7 +180,7 @@ export class Signup {
           <slot name="providers"></slot>
 
           <form onSubmit={this.handleSubmit}>
-            <vui-flex gap={2} breakpoint={400} breakpointDirection="column">
+            <vui-flex gap={2} breakpoint="300" breakpointDirection="column">
               <div class="form-field" style={{ flex: '1' }}>
                 <label class="sr-only" htmlFor="first-name">
                   {this.labels.firstNameLabel}
