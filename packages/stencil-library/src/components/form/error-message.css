@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  margin-block-start: 0.25rem;
+  padding-inline-start: 0.5rem;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: hsl(var(--error));
+  font-size: var(--vui-text-sm, 0.775rem);
+  line-height: var(--vui-leading-5, 1.25rem);
+}
+
+.error-icon {
+  flex-shrink: 0;
+}

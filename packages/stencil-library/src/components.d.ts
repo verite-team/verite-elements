@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ValidationRule } from "./utils/validation";
+import { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
 import { OtpLabels } from "./components/otp/otp-interfaces";
@@ -13,7 +13,7 @@ import { SignInFormData, SignInLabels } from "./components/signin/signin-interfa
 import { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
-export { ValidationRule } from "./utils/validation";
+export { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
 export { OtpLabels } from "./components/otp/otp-interfaces";
@@ -65,6 +65,16 @@ export namespace Components {
     interface VuiDropdownMenuSeparator {
     }
     interface VuiDropdownMenuTrigger {
+    }
+    interface VuiErrorMessage {
+        /**
+          * The error message to display
+         */
+        "message": string;
+        /**
+          * Whether to show the error icon
+         */
+        "showIcon": boolean;
     }
     interface VuiFlex {
         "direction"?: 'row' | 'column';
@@ -129,9 +139,17 @@ export namespace Components {
     }
     interface VuiSignin {
         /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions;
+        /**
           * Labels for localization
          */
         "labels": SignInLabels;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
@@ -304,6 +322,12 @@ declare global {
     var HTMLVuiDropdownMenuTriggerElement: {
         prototype: HTMLVuiDropdownMenuTriggerElement;
         new (): HTMLVuiDropdownMenuTriggerElement;
+    };
+    interface HTMLVuiErrorMessageElement extends Components.VuiErrorMessage, HTMLStencilElement {
+    }
+    var HTMLVuiErrorMessageElement: {
+        prototype: HTMLVuiErrorMessageElement;
+        new (): HTMLVuiErrorMessageElement;
     };
     interface HTMLVuiFlexElement extends Components.VuiFlex, HTMLStencilElement {
     }
@@ -501,6 +525,7 @@ declare global {
         "vui-dropdown-menu-item": HTMLVuiDropdownMenuItemElement;
         "vui-dropdown-menu-separator": HTMLVuiDropdownMenuSeparatorElement;
         "vui-dropdown-menu-trigger": HTMLVuiDropdownMenuTriggerElement;
+        "vui-error-message": HTMLVuiErrorMessageElement;
         "vui-flex": HTMLVuiFlexElement;
         "vui-form-control": HTMLVuiFormControlElement;
         "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
@@ -565,6 +590,16 @@ declare namespace LocalJSX {
     interface VuiDropdownMenuSeparator {
     }
     interface VuiDropdownMenuTrigger {
+    }
+    interface VuiErrorMessage {
+        /**
+          * The error message to display
+         */
+        "message"?: string;
+        /**
+          * Whether to show the error icon
+         */
+        "showIcon"?: boolean;
     }
     interface VuiFlex {
         "direction"?: 'row' | 'column';
@@ -634,12 +669,20 @@ declare namespace LocalJSX {
     }
     interface VuiSignin {
         /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions;
+        /**
           * Labels for localization
          */
         "labels"?: SignInLabels;
         "onFormSubmit"?: (event: VuiSigninCustomEvent<SignInFormData>) => void;
         "onReady"?: (event: VuiSigninCustomEvent<void>) => void;
         "onSignUp"?: (event: VuiSigninCustomEvent<void>) => void;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
@@ -694,6 +737,7 @@ declare namespace LocalJSX {
         "vui-dropdown-menu-item": VuiDropdownMenuItem;
         "vui-dropdown-menu-separator": VuiDropdownMenuSeparator;
         "vui-dropdown-menu-trigger": VuiDropdownMenuTrigger;
+        "vui-error-message": VuiErrorMessage;
         "vui-flex": VuiFlex;
         "vui-form-control": VuiFormControl;
         "vui-google-one-tap": VuiGoogleOneTap;
@@ -729,6 +773,7 @@ declare module "@stencil/core" {
             "vui-dropdown-menu-item": LocalJSX.VuiDropdownMenuItem & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuItemElement>;
             "vui-dropdown-menu-separator": LocalJSX.VuiDropdownMenuSeparator & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuSeparatorElement>;
             "vui-dropdown-menu-trigger": LocalJSX.VuiDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuTriggerElement>;
+            "vui-error-message": LocalJSX.VuiErrorMessage & JSXBase.HTMLAttributes<HTMLVuiErrorMessageElement>;
             "vui-flex": LocalJSX.VuiFlex & JSXBase.HTMLAttributes<HTMLVuiFlexElement>;
             "vui-form-control": LocalJSX.VuiFormControl & JSXBase.HTMLAttributes<HTMLVuiFormControlElement>;
             "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;

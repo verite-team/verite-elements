@@ -7,6 +7,7 @@ import type { JSX } from 'stencil-library';
 
 
 
+export const VeriteConnector = /*@__PURE__*/createReactComponent<JSX.VeriteConnector, HTMLVeriteConnectorElement>('verite-connector');
 export const VuiButton = /*@__PURE__*/createReactComponent<JSX.VuiButton, HTMLVuiButtonElement>('vui-button');
 export const VuiCard = /*@__PURE__*/createReactComponent<JSX.VuiCard, HTMLVuiCardElement>('vui-card');
 export const VuiCardContent = /*@__PURE__*/createReactComponent<JSX.VuiCardContent, HTMLVuiCardContentElement>('vui-card-content');
@@ -20,6 +21,7 @@ export const VuiDropdownMenuContent = /*@__PURE__*/createReactComponent<JSX.VuiD
 export const VuiDropdownMenuItem = /*@__PURE__*/createReactComponent<JSX.VuiDropdownMenuItem, HTMLVuiDropdownMenuItemElement>('vui-dropdown-menu-item');
 export const VuiDropdownMenuSeparator = /*@__PURE__*/createReactComponent<JSX.VuiDropdownMenuSeparator, HTMLVuiDropdownMenuSeparatorElement>('vui-dropdown-menu-separator');
 export const VuiDropdownMenuTrigger = /*@__PURE__*/createReactComponent<JSX.VuiDropdownMenuTrigger, HTMLVuiDropdownMenuTriggerElement>('vui-dropdown-menu-trigger');
+export const VuiErrorMessage = /*@__PURE__*/createReactComponent<JSX.VuiErrorMessage, HTMLVuiErrorMessageElement>('vui-error-message');
 export const VuiFlex = /*@__PURE__*/createReactComponent<JSX.VuiFlex, HTMLVuiFlexElement>('vui-flex');
 export const VuiFormControl = /*@__PURE__*/createReactComponent<JSX.VuiFormControl, HTMLVuiFormControlElement>('vui-form-control');
 export const VuiGoogleOneTap = /*@__PURE__*/createReactComponent<JSX.VuiGoogleOneTap, HTMLVuiGoogleOneTapElement>('vui-google-one-tap');
@@ -32,6 +34,7 @@ export const VuiPlaceholder = /*@__PURE__*/createReactComponent<JSX.VuiPlacehold
 export const VuiPoweredBy = /*@__PURE__*/createReactComponent<JSX.VuiPoweredBy, HTMLVuiPoweredByElement>('vui-powered-by');
 export const VuiSignin = /*@__PURE__*/createReactComponent<JSX.VuiSignin, HTMLVuiSigninElement>('vui-signin');
 export const VuiSignup = /*@__PURE__*/createReactComponent<JSX.VuiSignup, HTMLVuiSignupElement>('vui-signup');
+export const VuiSpinner = /*@__PURE__*/createReactComponent<JSX.VuiSpinner, HTMLVuiSpinnerElement>('vui-spinner');
 export const VuiTextbox = /*@__PURE__*/createReactComponent<JSX.VuiTextbox, HTMLVuiTextboxElement>('vui-textbox');
 export const VuiThemeToggle = /*@__PURE__*/createReactComponent<JSX.VuiThemeToggle, HTMLVuiThemeToggleElement>('vui-theme-toggle');
 export const VuiToast = /*@__PURE__*/createReactComponent<JSX.VuiToast, HTMLVuiToastElement>('vui-toast');

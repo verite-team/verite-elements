@@ -8,14 +8,36 @@ import { Components } from 'stencil-library';
 
 
 @ProxyCmp({
-  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
+  inputs: ['type']
+})
+@Component({
+  selector: 'verite-connector',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['type'],
+})
+export class VeriteConnector {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VeriteConnector extends Components.VeriteConnector {}
+
+
+@ProxyCmp({
+  inputs: ['busy', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
 })
 @Component({
   selector: 'vui-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
+  inputs: ['busy', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
 })
 export class VuiButton {
   protected el: HTMLElement;
@@ -297,14 +319,36 @@ export declare interface VuiDropdownMenuTrigger extends Components.VuiDropdownMe
 
 
 @ProxyCmp({
-  inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width']
+  inputs: ['message', 'showIcon']
+})
+@Component({
+  selector: 'vui-error-message',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['message', 'showIcon'],
+})
+export class VuiErrorMessage {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiErrorMessage extends Components.VuiErrorMessage {}
+
+
+@ProxyCmp({
+  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width']
 })
 @Component({
   selector: 'vui-flex',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width'],
+  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width'],
 })
 export class VuiFlex {
   protected el: HTMLElement;
@@ -533,14 +577,14 @@ export declare interface VuiPoweredBy extends Components.VuiPoweredBy {}
 
 
 @ProxyCmp({
-  inputs: ['labels', 'styles']
+  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['labels', 'styles'],
+  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles'],
 })
 export class VuiSignin {
   protected el: HTMLElement;
@@ -565,14 +609,14 @@ export declare interface VuiSignin extends Components.VuiSignin {
 
 
 @ProxyCmp({
-  inputs: ['labels', 'styles']
+  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['labels', 'styles'],
+  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles'],
 })
 export class VuiSignup {
   protected el: HTMLElement;
@@ -594,6 +638,28 @@ export declare interface VuiSignup extends Components.VuiSignup {
 
   signIn: EventEmitter<CustomEvent<void>>;
 }
+
+
+@ProxyCmp({
+  inputs: ['color', 'size']
+})
+@Component({
+  selector: 'vui-spinner',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['color', 'size'],
+})
+export class VuiSpinner {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiSpinner extends Components.VuiSpinner {}
 
 
 @ProxyCmp({

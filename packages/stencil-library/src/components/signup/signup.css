@@ -17,6 +17,9 @@ form {
 
 .form-field {
   position: relative;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
 .sr-only {
@@ -38,9 +41,12 @@ form {
 .visibility-toggle {
   position: absolute;
   right: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 9999px;
+  top: 0;
+}
+
+.visibility-toggle::part(button) {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .forgot-password {

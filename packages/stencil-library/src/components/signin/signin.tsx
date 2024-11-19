@@ -1,7 +1,11 @@
 import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
+import {
+  EmailValidationOptions,
+  PasswordValidationOptions,
+  ValidationRule,
+  ValidationRules,
+} from '../../utils/validation'
 import { SignInFormData, SignInLabels } from './signin-interfaces'
-
-import { ValidationRules } from '../../utils/validation'
 
 @Component({
   tag: 'vui-signin',
@@ -15,6 +19,7 @@ export class Signin {
   @State() private isLoading: boolean = false
   @State() private emailError: string = ''
   @State() private passwordError: string = ''
+  @State() private isSubmitted: boolean = false
 
   @Prop() styles?: {
     link?: { [key: string]: string | number }
@@ -36,43 +41,74 @@ export class Signin {
     signUpButtonText: 'Sign up',
   }
 
+  /** Password validation options */
+  @Prop() passwordValidation?: PasswordValidationOptions = {
+    minLength: 8,
+    requireUppercase: false,
+    requireLowercase: false,
+    requireNumbers: false,
+    requireSpecialChars: false,
+  }
+
+  /** Email validation options */
+  @Prop() emailValidation?: EmailValidationOptions | string
+
   @Event() formSubmit: EventEmitter<SignInFormData>
   @Event() ready: EventEmitter<void>
   @Event() signUp: EventEmitter<void>
+
   private togglePasswordVisibility = () => {
     this.showPassword = !this.showPassword
   }
 
-  private emailRules = [
-    ValidationRules.required('Email is required'),
-    ValidationRules.email('Please enter a valid email address'),
-  ]
+  private parsedEmailValidation(): EmailValidationOptions {
+    try {
+      if (typeof this.emailValidation === 'string') {
+        return JSON.parse(this.emailValidation)
+      }
+      return this.emailValidation || {}
+    } catch (error) {
+      return {}
+    }
+  }
 
-  private passwordRules = [ValidationRules.required('Password is required')]
+  componentWillLoad() {
+    this.parsedEmailValidation()
+    this.ready.emit()
+  }
+
+  private get emailRules(): ValidationRule[] {
+    const rules = ValidationRules.createEmailRules(this.parsedEmailValidation())
+    return rules
+  }
+
+  private get passwordRules(): ValidationRule[] {
+    return ValidationRules.createPasswordRules(this.passwordValidation)
+  }
+
+  private validateField(value: string, rules: ValidationRule[]): string {
+    for (const rule of rules) {
+      if (!rule.validate(value)) {
+        return rule.message
+      }
+    }
+    return ''
+  }
+
+  private isFormValid(): boolean {
+    const emailError = this.validateField(this.email, this.emailRules)
+    const passwordError = this.validateField(this.password, this.passwordRules)
+    return !emailError && !passwordError
+  }
 
   private handleSubmit = (e: Event) => {
     e.preventDefault()
+    this.isSubmitted = true
 
-    // Validate both fields before submitting
-    let hasErrors = false
+    this.emailError = this.validateField(this.email, this.emailRules)
+    this.passwordError = this.validateField(this.password, this.passwordRules)
 
-    for (const rule of this.emailRules) {
-      if (!rule.validate(this.email)) {
-        this.emailError = rule.message
-        hasErrors = true
-        break
-      }
-    }
-
-    for (const rule of this.passwordRules) {
-      if (!rule.validate(this.password)) {
-        this.passwordError = rule.message
-        hasErrors = true
-        break
-      }
-    }
-
-    if (!hasErrors) {
+    if (this.isFormValid()) {
       this.formSubmit.emit({ email: this.email, password: this.password })
     }
   }
@@ -81,15 +117,8 @@ export class Signin {
     const input = e.target as HTMLInputElement
     this.email = input.value
 
-    // Clear error when user starts typing
-    this.emailError = ''
-
-    // Validate on input (optional)
-    for (const rule of this.emailRules) {
-      if (!rule.validate(this.email)) {
-        this.emailError = rule.message
-        break
-      }
+    if (this.isSubmitted) {
+      this.emailError = this.validateField(this.email, this.emailRules)
     }
   }
 
@@ -97,24 +126,14 @@ export class Signin {
     const input = e.target as HTMLInputElement
     this.password = input.value
 
-    // Clear error when user starts typing
-    this.passwordError = ''
-
-    // Validate on input (optional)
-    for (const rule of this.passwordRules) {
-      if (!rule.validate(this.password)) {
-        this.passwordError = rule.message
-        break
-      }
+    // Only validate if the form has been submitted once
+    if (this.isSubmitted) {
+      this.passwordError = this.validateField(this.password, this.passwordRules)
     }
   }
 
   private handleSignUp = () => {
     this.signUp.emit()
-  }
-
-  componentDidLoad() {
-    this.ready.emit()
   }
 
   render() {
@@ -150,12 +169,9 @@ export class Signin {
                 disabled={this.isLoading}
                 value={this.email}
                 onInput={this.handleEmailInput}
+                onEnterKey={this.handleSubmit}
               />
-              {this.emailError && (
-                <div class="error-message" role="alert">
-                  {this.emailError}
-                </div>
-              )}
+              <vui-error-message message={this.emailError} />
             </div>
 
             <div class="form-field password-field">
@@ -171,12 +187,9 @@ export class Signin {
                 disabled={this.isLoading}
                 value={this.password}
                 onInput={this.handlePasswordInput}
+                onEnterKey={this.handleSubmit}
               />
-              {this.passwordError && (
-                <div class="error-message" role="alert">
-                  {this.passwordError}
-                </div>
-              )}
+              <vui-error-message message={this.passwordError} />
               <vui-button
                 variant="ghost"
                 class="visibility-toggle"
@@ -194,7 +207,7 @@ export class Signin {
               </vui-link>
             </div>
 
-            <vui-button type="submit" class="submit-button" disabled={this.isLoading}>
+            <vui-button type="submit" class="submit-button" busy={this.isLoading}>
               {this.labels.signInButtonText}
             </vui-button>
           </form>

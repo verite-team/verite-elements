@@ -11,7 +11,6 @@ export class Button {
   @Prop({ reflect: true }) size?: 'default' | 'sm' | 'lg' | 'icon' = 'default'
   @Prop({ reflect: true }) width?: 'full' | 'auto' = 'auto'
   @Prop({ reflect: true }) busy?: boolean = false
-  @Prop({ reflect: true }) disabled?: boolean = false
 
   // Essential button props
   @Prop() type: 'button' | 'submit' | 'reset' = 'button'
@@ -25,7 +24,7 @@ export class Button {
   @Event() buttonClick: EventEmitter<MouseEvent>
 
   private handleClick = (event: MouseEvent) => {
-    if (!this.disabled && !this.busy) {
+    if (!this.busy) {
       this.buttonClick.emit(event)
       if (this.type === 'submit') {
         // perform form submission
@@ -39,7 +38,6 @@ export class Button {
       <button
         part="button"
         type={this.type}
-        disabled={this.disabled || this.busy}
         name={this.name}
         value={this.value}
         form={this.form}
@@ -47,13 +45,12 @@ export class Button {
         onClick={this.handleClick}
       >
         {this.busy ? (
-          <div class="spinner">
-            <div class="spinner-inner"></div>
+          <vui-spinner size="small" />
+        ) : (
+          <div class="content">
+            <slot></slot>
           </div>
-        ) : null}
-        <div class="content">
-          <slot></slot>
-        </div>
+        )}
       </button>
     )
   }

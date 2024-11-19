@@ -1,4 +1,10 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
+import {
+  EmailValidationOptions,
+  PasswordValidationOptions,
+  ValidationRule,
+  ValidationRules,
+} from '../../utils/validation'
 import { SignUpFormData, SignUpLabels } from './signup-interfaces'
 
 @Component({
@@ -13,6 +19,11 @@ export class Signup {
   @State() private password: string = ''
   @State() private showPassword: boolean = false
   @State() private isLoading: boolean = false
+  @State() private firstNameError: string = ''
+  @State() private lastNameError: string = ''
+  @State() private emailError: string = ''
+  @State() private passwordError: string = ''
+  @State() private isSubmitted: boolean = false
 
   @Prop() styles?: {
     link?: { [key: string]: string | number }
@@ -37,6 +48,18 @@ export class Signup {
     signInButtonText: 'Sign in',
   }
 
+  /** Password validation options */
+  @Prop() passwordValidation?: PasswordValidationOptions = {
+    minLength: 8,
+    requireUppercase: false,
+    requireLowercase: false,
+    requireNumbers: false,
+    requireSpecialChars: false,
+  }
+
+  /** Email validation options */
+  @Prop() emailValidation?: EmailValidationOptions | string
+
   @Element() el!: HTMLElement
   @Event() formSubmit: EventEmitter<SignUpFormData>
   @Event() ready: EventEmitter<void>
@@ -45,22 +68,89 @@ export class Signup {
     this.showPassword = !this.showPassword
   }
 
-  private handleSubmit = async (e: Event) => {
-    e.preventDefault()
-
-    const formData: SignUpFormData = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      password: this.password,
+  private parsedEmailValidation(): EmailValidationOptions {
+    try {
+      if (typeof this.emailValidation === 'string') {
+        return JSON.parse(this.emailValidation)
+      }
+      return this.emailValidation || {}
+    } catch (error) {
+      return {}
     }
+  }
 
-    this.formSubmit.emit(formData)
+  private get firstNameRules(): ValidationRule[] {
+    return ValidationRules.createNameRules('First name')
+  }
+
+  private get lastNameRules(): ValidationRule[] {
+    return ValidationRules.createNameRules('Last name')
+  }
+
+  private get emailRules(): ValidationRule[] {
+    return ValidationRules.createEmailRules(this.parsedEmailValidation())
+  }
+
+  private get passwordRules(): ValidationRule[] {
+    return ValidationRules.createPasswordRules(this.passwordValidation)
+  }
+
+  private validateField(value: string, rules: ValidationRule[]): string {
+    for (const rule of rules) {
+      if (!rule.validate(value)) {
+        return rule.message
+      }
+    }
+    return ''
+  }
+
+  private isFormValid(): boolean {
+    const firstNameError = this.validateField(this.firstName, this.firstNameRules)
+    const lastNameError = this.validateField(this.lastName, this.lastNameRules)
+    const emailError = this.validateField(this.email, this.emailRules)
+    const passwordError = this.validateField(this.password, this.passwordRules)
+    return !firstNameError && !lastNameError && !emailError && !passwordError
+  }
+
+  private handleSubmit = (e: Event) => {
+    e.preventDefault()
+    this.isSubmitted = true
+
+    this.firstNameError = this.validateField(this.firstName, this.firstNameRules)
+    this.lastNameError = this.validateField(this.lastName, this.lastNameRules)
+    this.emailError = this.validateField(this.email, this.emailRules)
+    this.passwordError = this.validateField(this.password, this.passwordRules)
+
+    if (this.isFormValid()) {
+      this.formSubmit.emit({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+      })
+    }
   }
 
   private handleInput = (field: keyof SignUpFormData) => (e: Event) => {
     const input = e.target as HTMLInputElement
     this[field] = input.value
+
+    if (this.isSubmitted) {
+      switch (field) {
+        case 'firstName':
+          this.firstNameError = this.validateField(this.firstName, this.firstNameRules)
+          break
+        case 'lastName':
+          this.lastNameError = this.validateField(this.lastName, this.lastNameRules)
+          break
+        case 'email':
+          this.emailError = this.validateField(this.email, this.emailRules)
+          break
+        case 'password':
+          this.passwordError = this.validateField(this.password, this.passwordRules)
+          break
+      }
+    }
   }
 
   private handleSignIn = () => {
@@ -90,8 +180,8 @@ export class Signup {
           <slot name="providers"></slot>
 
           <form onSubmit={this.handleSubmit}>
-            <vui-flex gap={2}>
-              <div class="form-field">
+            <vui-flex gap={2} breakpoint={400} breakpointDirection="column">
+              <div class="form-field" style={{ flex: '1' }}>
                 <label class="sr-only" htmlFor="first-name">
                   {this.labels.firstNameLabel}
                 </label>
@@ -105,10 +195,12 @@ export class Signup {
                   disabled={this.isLoading}
                   value={this.firstName}
                   onInput={this.handleInput('firstName')}
+                  onEnterKey={this.handleSubmit}
                 />
+                <vui-error-message message={this.firstNameError} />
               </div>
 
-              <div class="form-field">
+              <div class="form-field" style={{ flex: '1' }}>
                 <label class="sr-only" htmlFor="last-name">
                   {this.labels.lastNameLabel}
                 </label>
@@ -121,7 +213,9 @@ export class Signup {
                   disabled={this.isLoading}
                   value={this.lastName}
                   onInput={this.handleInput('lastName')}
+                  onEnterKey={this.handleSubmit}
                 />
+                <vui-error-message message={this.lastNameError} />
               </div>
             </vui-flex>
 
@@ -140,7 +234,9 @@ export class Signup {
                 disabled={this.isLoading}
                 value={this.email}
                 onInput={this.handleInput('email')}
+                onEnterKey={this.handleSubmit}
               />
+              <vui-error-message message={this.emailError} />
             </div>
 
             <div class="form-field password-field">
@@ -156,7 +252,9 @@ export class Signup {
                 disabled={this.isLoading}
                 value={this.password}
                 onInput={this.handleInput('password')}
+                onEnterKey={this.handleSubmit}
               />
+              <vui-error-message message={this.passwordError} />
               <vui-button
                 variant="ghost"
                 class="visibility-toggle"
@@ -168,7 +266,7 @@ export class Signup {
               </vui-button>
             </div>
 
-            <vui-button type="submit" class="submit-button" disabled={this.isLoading}>
+            <vui-button type="submit" class="submit-button" busy={this.isLoading}>
               {this.labels.signUpButtonText}
             </vui-button>
           </form>
