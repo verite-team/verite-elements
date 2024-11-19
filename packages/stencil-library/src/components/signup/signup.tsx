@@ -18,7 +18,7 @@ export class Signup {
   @State() private email: string = ''
   @State() private password: string = ''
   @State() private showPassword: boolean = false
-  @State() private isLoading: boolean = false
+  // @State() private isLoading: boolean = false
   @State() private firstNameError: string = ''
   @State() private lastNameError: string = ''
   @State() private emailError: string = ''
@@ -59,6 +59,9 @@ export class Signup {
 
   /** Email validation options */
   @Prop() emailValidation?: EmailValidationOptions | string
+
+  /** Controls the loading state of the component */
+  @Prop() isLoading?: boolean
 
   @Element() el!: HTMLElement
   @Event() formSubmit: EventEmitter<SignUpFormData>
@@ -158,6 +161,7 @@ export class Signup {
   }
 
   componentDidLoad() {
+    console.log('isLoading', this.isLoading)
     this.ready.emit()
   }
 
@@ -259,6 +263,7 @@ export class Signup {
                 variant="ghost"
                 class="visibility-toggle"
                 type="button"
+                disabled={this.isLoading}
                 onClick={this.togglePasswordVisibility}
                 aria-label={this.showPassword ? this.labels.hidePasswordLabel : this.labels.showPasswordLabel}
               >

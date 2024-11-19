@@ -10,6 +10,7 @@ export class Button {
   @Prop({ reflect: true }) variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' = 'default'
   @Prop({ reflect: true }) size?: 'default' | 'sm' | 'lg' | 'icon' = 'default'
   @Prop({ reflect: true }) width?: 'full' | 'auto' = 'auto'
+  @Prop({ reflect: true }) disabled?: boolean = false
   @Prop({ reflect: true }) busy?: boolean = false
 
   // Essential button props
@@ -42,6 +43,7 @@ export class Button {
         value={this.value}
         form={this.form}
         aria-busy={this.busy}
+        disabled={this.disabled}
         onClick={this.handleClick}
       >
         {this.busy ? (

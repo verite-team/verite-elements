@@ -184,6 +184,7 @@
           <vui-signin
             id="signin"
             email-validation='{"blockedDomains": ["gmail.com"]}'
+            is-loading="true"
             onFormSubmit="console.log('Signin clicked')"
           >
             <!-- <span slot="header"></span> -->
@@ -208,6 +209,24 @@
               </vui-divider>
             </div>
             <!-- <span slot="footer"></span> -->
+
+            <div slot="footer">
+              <vui-card-footer variant="inset">
+                <vui-flex
+                  direction="column"
+                  valign="center"
+                  halign="center"
+                  gap="4"
+                  style="padding: 20px 0; color: hsl(var(--muted-foreground)); font-size: 0.875rem"
+                >
+                  <span>By signing up, you agree to the following</span>
+                  <vui-flex gap="4" halign="center">
+                    <vui-link href="/terms-of-service">Terms of Service</vui-link>
+                    <vui-link href="/privacy-policy">Privacy Policy</vui-link>
+                  </vui-flex>
+                </vui-flex>
+              </vui-card-footer>
+            </div>
           </vui-signin>
         </vui-card>
       </verite-connector>
@@ -244,7 +263,7 @@
       </verite-connector>
     </div>
 
-    <div class="flex flex-col items-center justify-center gap-4">
+    <!-- <div class="flex flex-col items-center justify-center gap-4">
       <div id="otp-container" style="width: 100%; max-width: 360px">
         <verite-connector type="otp">
           <vui-card class="card--otp" elevation="3">
@@ -252,7 +271,7 @@
           </vui-card>
         </verite-connector>
       </div>
-    </div>
+    </div> -->
     <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
     <vui-toast position="top-center"></vui-toast>

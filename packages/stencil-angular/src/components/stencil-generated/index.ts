@@ -30,14 +30,14 @@ export declare interface VeriteConnector extends Components.VeriteConnector {}
 
 
 @ProxyCmp({
-  inputs: ['busy', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
+  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
 })
 @Component({
   selector: 'vui-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['busy', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
+  inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width'],
 })
 export class VuiButton {
   protected el: HTMLElement;
@@ -577,14 +577,14 @@ export declare interface VuiPoweredBy extends Components.VuiPoweredBy {}
 
 
 @ProxyCmp({
-  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles']
+  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles'],
+  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles'],
 })
 export class VuiSignin {
   protected el: HTMLElement;
@@ -609,14 +609,14 @@ export declare interface VuiSignin extends Components.VuiSignin {
 
 
 @ProxyCmp({
-  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles']
+  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['emailValidation', 'labels', 'passwordValidation', 'styles'],
+  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles'],
 })
 export class VuiSignup {
   protected el: HTMLElement;

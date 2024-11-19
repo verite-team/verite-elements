@@ -1,0 +1,75 @@
+import type { Meta, StoryObj } from '@storybook/web-components'
+
+const meta: Meta = {
+  title: 'Design System/Typography',
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
+}
+
+export default meta
+
+type Story = StoryObj
+
+export const Typography: Story = {
+  render: () => `
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h1 style="margin-bottom: 2rem;">Typography</h1>
+      
+      <section style="margin-bottom: 3rem;">
+        <h2 style="margin-bottom: 1rem;">Font Families</h2>
+        <div style="display: grid; gap: 1rem;">
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Base Font</h3>
+            <p style="font-family: var(--font-family-base);">
+              The quick brown fox jumps over the lazy dog.
+              Used for general text content throughout the application.
+            </p>
+          </div>
+          
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Heading Font</h3>
+            <p style="font-family: var(--font-family-heading);">
+              The quick brown fox jumps over the lazy dog.
+              Used for headings and titles.
+            </p>
+          </div>
+          
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Monospace Font</h3>
+            <p style="font-family: var(--font-family-mono);">
+              The quick brown fox jumps over the lazy dog.
+              Used for code and technical content.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom: 3rem;">
+        <h2 style="margin-bottom: 1rem;">Font Variables</h2>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; font-family: var(--font-family-mono);">
+:root {
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 
+                      'Segoe UI', Roboto, 'Helvetica Neue', 
+                      Arial, sans-serif;
+  --font-family-heading: var(--font-family-base);
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, 
+                      Monaco, Consolas, monospace;
+}</pre>
+      </section>
+
+      <section>
+        <h2 style="margin-bottom: 1rem;">Usage</h2>
+        <p>Components automatically inherit the base font family. Specific components like headings or code blocks use their respective font families through CSS variables.</p>
+        
+        <div style="margin-top: 1rem;">
+          <h3 style="margin-bottom: 0.5rem;">Example:</h3>
+          <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; font-family: var(--font-family-mono);">
+:host {
+  font-family: var(--font-family-heading);
+}</pre>
+        </div>
+      </section>
+    </div>
+  `,
+}

@@ -16,7 +16,7 @@ export class Signin {
   @State() private email: string = ''
   @State() private password: string = ''
   @State() private showPassword: boolean = false
-  @State() private isLoading: boolean = false
+  // @State() private isLoading: boolean = false
   @State() private emailError: string = ''
   @State() private passwordError: string = ''
   @State() private isSubmitted: boolean = false
@@ -52,6 +52,9 @@ export class Signin {
 
   /** Email validation options */
   @Prop() emailValidation?: EmailValidationOptions | string
+
+  /** Controls the loading state of the component */
+  @Prop() isLoading?: boolean
 
   @Event() formSubmit: EventEmitter<SignInFormData>
   @Event() ready: EventEmitter<void>

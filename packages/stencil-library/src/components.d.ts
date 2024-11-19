@@ -27,6 +27,7 @@ export namespace Components {
     }
     interface VuiButton {
         "busy"?: boolean;
+        "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
@@ -147,6 +148,10 @@ export namespace Components {
          */
         "emailValidation"?: EmailValidationOptions | string;
         /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
+        /**
           * Labels for localization
          */
         "labels": SignInLabels;
@@ -163,6 +168,10 @@ export namespace Components {
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
+        /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
         /**
           * Labels for localization
          */
@@ -580,6 +589,7 @@ declare namespace LocalJSX {
     }
     interface VuiButton {
         "busy"?: boolean;
+        "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
         "onButtonClick"?: (event: VuiButtonCustomEvent<MouseEvent>) => void;
@@ -707,6 +717,10 @@ declare namespace LocalJSX {
          */
         "emailValidation"?: EmailValidationOptions | string;
         /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
+        /**
           * Labels for localization
          */
         "labels"?: SignInLabels;
@@ -726,6 +740,10 @@ declare namespace LocalJSX {
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
+        /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
         /**
           * Labels for localization
          */

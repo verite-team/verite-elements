@@ -1,0 +1,39 @@
+import { Canvas, Meta, Story, Source } from '@storybook/blocks'
+
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+A button component that renders a native HTML button element.
+
+<Canvas>
+  <Story of={ButtonStories.Primary} />
+</Canvas>
+
+## Usage
+
+```jsx
+<vui-button variant="default" size="default" width="auto" busy={false} type="button">
+  Button
+</vui-button>
+```
+
+<Source
+  dark
+  language="jsx"
+  code={`<vui-button 
+  variant="default" 
+  size="default" 
+  width="auto" 
+  busy={false} 
+  type="button"
+>
+  Button
+</vui-button>`}
+/>
+
+<Canvas>
+  <Story of={ButtonStories.Secondary} />
+</Canvas>

@@ -37,7 +37,6 @@ export class Flex {
     this.observer = new ResizeObserver(entries => {
       const entry = entries[0]
       const breakpointValue = parseInt(this.breakpoint || '0')
-      console.log(entry.contentRect.width, breakpointValue)
       if (entry.contentRect.width < breakpointValue) {
         this.container?.style.setProperty('flex-direction', this.breakpointDirection || 'column')
       } else {
