@@ -6,7 +6,7 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class Card {
-  @Prop({ reflect: true }) elevation?: string
+  @Prop({ reflect: true }) elevation?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 
   render() {
     return (

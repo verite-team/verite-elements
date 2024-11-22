@@ -8,8 +8,9 @@ import { Component, Element, Host, Prop, h } from '@stencil/core'
 export class Flex {
   @Element() el!: HTMLElement
   @Prop({ reflect: true }) direction?: 'row' | 'column' = 'row'
-  @Prop({ reflect: true }) valign?: 'start' | 'center' | 'end' = 'start'
-  @Prop({ reflect: true }) halign?: 'start' | 'center' | 'end' = 'start'
+  @Prop({ reflect: true }) items?: 'start' | 'center' | 'end' | 'stretch' | 'baseline' = 'start'
+  @Prop({ reflect: true }) justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' = 'start'
+  @Prop({ reflect: true }) wrap?: 'nowrap' | 'wrap' | 'wrap-reverse' = 'nowrap'
   @Prop({ reflect: true }) width?: 'full' | 'auto' = 'auto'
   @Prop({ reflect: true }) grow?: boolean = false
   @Prop() gap?: number = 0
@@ -56,6 +57,29 @@ export class Flex {
       width: this.width === 'full' ? '100%' : 'auto',
     }
 
+    const getJustifyContent = (justify: string) => {
+      const map = {
+        start: 'flex-start',
+        end: 'flex-end',
+        center: 'center',
+        between: 'space-between',
+        around: 'space-around',
+        evenly: 'space-evenly',
+      }
+      return map[justify] || 'flex-start'
+    }
+
+    const getAlignItems = (items: string) => {
+      const map = {
+        start: 'flex-start',
+        end: 'flex-end',
+        center: 'center',
+        stretch: 'stretch',
+        baseline: 'baseline',
+      }
+      return map[items] || 'flex-start'
+    }
+
     return (
       <Host style={styles}>
         <div
@@ -63,6 +87,9 @@ export class Flex {
           style={{
             gap: this.getGapStyle(),
             flexDirection: this.direction,
+            justifyContent: getJustifyContent(this.justify),
+            alignItems: getAlignItems(this.items),
+            flexWrap: this.wrap,
           }}
         >
           <slot></slot>

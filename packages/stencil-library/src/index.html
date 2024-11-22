@@ -170,35 +170,33 @@
       </style>
     </div> -->
 
-    <vui-button variant="destructive" width="full">
+    <!-- <vui-button variant="destructive" width="full">
       <vui-flex valign="center" gap="2">
         <vui-logo name="apple" size="20"></vui-logo>
         <vui-label>Test</vui-label>
-        <span>Test</span>
       </vui-flex>
-    </vui-button>
+    </vui-button> -->
 
     <div id="signin-container" style="width: 100%; max-width: 360px">
       <verite-connector type="signin">
-        <vui-card class="card--signin">
+        <vui-card class="card--signin" elevation="lg">
           <vui-signin
             id="signin"
             email-validation='{"blockedDomains": ["gmail.com"]}'
-            is-loading="true"
             onFormSubmit="console.log('Signin clicked')"
           >
             <!-- <span slot="header"></span> -->
             <div slot="providers">
-              <vui-flex direction="column" gap="2" style="width: 100%">
+              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
                 <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex valign="center" gap="2">
+                  <vui-flex items="center" gap="2">
                     <vui-logo name="apple" size="20"></vui-logo>
                     <vui-label>Sign in with Apple</vui-label>
                   </vui-flex>
                 </vui-button>
 
                 <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex valign="center" gap="2">
+                  <vui-flex items="center" gap="2">
                     <vui-logo name="google" size="20"></vui-logo>
                     <vui-label>Sign in with Google</vui-label>
                   </vui-flex>
@@ -214,13 +212,13 @@
               <vui-card-footer variant="inset">
                 <vui-flex
                   direction="column"
-                  valign="center"
-                  halign="center"
+                  items="center"
+                  justify="center"
                   gap="4"
                   style="padding: 20px 0; color: hsl(var(--muted-foreground)); font-size: 0.875rem"
                 >
                   <span>By signing up, you agree to the following</span>
-                  <vui-flex gap="4" halign="center">
+                  <vui-flex gap="4" justify="center">
                     <vui-link href="/terms-of-service">Terms of Service</vui-link>
                     <vui-link href="/privacy-policy">Privacy Policy</vui-link>
                   </vui-flex>
@@ -234,20 +232,20 @@
 
     <div id="signup-container" style="width: 100%; max-width: 360px">
       <verite-connector type="signup">
-        <vui-card class="card--signup" elevation="3">
+        <vui-card class="card--signup" elevation="lg">
           <vui-signup onsubmit="console.log('Signup clicked')">
             <!-- <span slot="header"></span> -->
             <div slot="providers">
-              <vui-flex direction="column" gap="2" style="width: 100%">
+              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
                 <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex valign="center" gap="2">
+                  <vui-flex items="center" gap="2">
                     <vui-logo name="apple" size="20"></vui-logo>
                     <vui-label>Sign up with Apple</vui-label>
                   </vui-flex>
                 </vui-button>
 
                 <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex valign="center" gap="2">
+                  <vui-flex items="center" gap="2">
                     <vui-logo name="google" size="20"></vui-logo>
                     <vui-label>Sign up with Google</vui-label>
                   </vui-flex>
@@ -263,7 +261,7 @@
       </verite-connector>
     </div>
 
-    <!-- <div class="flex flex-col items-center justify-center gap-4">
+    <div class="flex flex-col items-center justify-center gap-4">
       <div id="otp-container" style="width: 100%; max-width: 360px">
         <verite-connector type="otp">
           <vui-card class="card--otp" elevation="3">
@@ -271,7 +269,7 @@
           </vui-card>
         </verite-connector>
       </div>
-    </div> -->
+    </div>
     <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
     <vui-toast position="top-center"></vui-toast>

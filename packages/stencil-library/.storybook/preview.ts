@@ -13,7 +13,7 @@ const preview: Preview = {
       // classTarget: 'html',
       darkClass: 'dark',
       lightClass: 'light',
-      current: 'light',
+      // current: 'dark',
       stylePreview: true,
     },
     backgrounds: {
@@ -25,16 +25,16 @@ const preview: Preview = {
     // actions: { disable: true },
     // controls: { disable: true },
   },
-  decorators: [
-    (Story, context) => {
-      const isDark = context.globals.previewTheme === 'dark'
+  // decorators: [
+  //   (Story, context) => {
+  //     const isDark = context.globals.previewTheme === 'dark'
 
-      document.documentElement.classList.remove('light', 'dark')
-      document.documentElement.classList.add(isDark ? 'dark' : 'light')
+  //     document.documentElement.classList.remove('light', 'dark')
+  //     document.documentElement.classList.add(isDark ? 'dark' : 'light')
 
-      return Story()
-    },
-  ],
+  //     return Story()
+  //   },
+  // ],
 }
 
 export default preview

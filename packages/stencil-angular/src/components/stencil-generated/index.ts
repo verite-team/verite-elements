@@ -341,14 +341,14 @@ export declare interface VuiErrorMessage extends Components.VuiErrorMessage {}
 
 
 @ProxyCmp({
-  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width']
+  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'items', 'justify', 'spaceUnit', 'width', 'wrap']
 })
 @Component({
   selector: 'vui-flex',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'halign', 'spaceUnit', 'valign', 'width'],
+  inputs: ['breakpoint', 'breakpointDirection', 'direction', 'gap', 'grow', 'items', 'justify', 'spaceUnit', 'width', 'wrap'],
 })
 export class VuiFlex {
   protected el: HTMLElement;

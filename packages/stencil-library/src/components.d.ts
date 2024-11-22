@@ -37,7 +37,7 @@ export namespace Components {
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
-        "elevation"?: string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface VuiCardContent {
     }
@@ -85,10 +85,11 @@ export namespace Components {
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
-        "halign"?: 'start' | 'center' | 'end';
+        "items"?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
+        "justify"?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
         "spaceUnit"?: number;
-        "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
+        "wrap"?: 'nowrap' | 'wrap' | 'wrap-reverse';
     }
     interface VuiFormControl {
         "rules": ValidationRule[];
@@ -600,7 +601,7 @@ declare namespace LocalJSX {
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
-        "elevation"?: string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
     }
     interface VuiCardContent {
     }
@@ -649,10 +650,11 @@ declare namespace LocalJSX {
         "direction"?: 'row' | 'column';
         "gap"?: number;
         "grow"?: boolean;
-        "halign"?: 'start' | 'center' | 'end';
+        "items"?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
+        "justify"?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
         "spaceUnit"?: number;
-        "valign"?: 'start' | 'center' | 'end';
         "width"?: 'full' | 'auto';
+        "wrap"?: 'nowrap' | 'wrap' | 'wrap-reverse';
     }
     interface VuiFormControl {
         "rules"?: ValidationRule[];

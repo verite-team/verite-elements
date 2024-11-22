@@ -62,5 +62,8 @@
         "./css.css-data.json"
       ]
     }
+  },
+  "dependencies": {
+    "markdown-to-jsx": "^7.6.2"
   }
 }

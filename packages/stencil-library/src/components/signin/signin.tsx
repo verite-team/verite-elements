@@ -144,13 +144,15 @@ export class Signin {
       <Host part="signin">
         <slot name="header">
           <vui-card-header>
-            <div part="logo-container">
-              <slot name="logo">
-                <vui-placeholder width={40} height={41}></vui-placeholder>
-              </slot>
-            </div>
-            <vui-card-title halign="center">{this.labels.title}</vui-card-title>
-            <vui-card-description halign="center">{this.labels.description}</vui-card-description>
+            <vui-flex direction="column" items="center" gap={4}>
+              <div part="logo-container">
+                <slot name="logo">
+                  <vui-placeholder width={40} height={41}></vui-placeholder>
+                </slot>
+              </div>
+              <vui-card-title halign="center">{this.labels.title}</vui-card-title>
+              <vui-card-description halign="center">{this.labels.description}</vui-card-description>
+            </vui-flex>
           </vui-card-header>
         </slot>
 
@@ -218,14 +220,16 @@ export class Signin {
 
         <slot name="footer">
           <vui-card-footer variant="inset">
-            <div class="signup-prompt">
-              <span>{this.labels.noAccountText}</span>
-              <vui-button variant="outline" size="sm" onClick={this.handleSignUp}>
-                {this.labels.signUpButtonText}
-              </vui-button>
-            </div>
-            <vui-divider orientation="horizontal"></vui-divider>
-            <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
+            <vui-flex direction="column" items="center" gap={4}>
+              <div class="signup-prompt">
+                <span>{this.labels.noAccountText}</span>
+                <vui-button variant="outline" size="sm" onClick={this.handleSignUp}>
+                  {this.labels.signUpButtonText}
+                </vui-button>
+              </div>
+              <vui-divider orientation="horizontal"></vui-divider>
+              <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
+            </vui-flex>
           </vui-card-footer>
         </slot>
       </Host>

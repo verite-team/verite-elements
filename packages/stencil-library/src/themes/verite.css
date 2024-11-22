@@ -11,11 +11,13 @@
   --error-foreground: 0 0% 100%;
   --shadow-color: 0deg 0% 0%;
   --shadow-strength: 2%;
-  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
-  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
-  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
-  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --elevation-sm: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-md: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-lg: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-xl: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
   --transparent: 0 0% 100% / 0;
+  --card-padding: 1.5rem;
+  --box-shadow: inset 0 1px 2px hsl(var(--foreground) / 0.1);
 }
 
 .dark {
@@ -25,9 +27,10 @@
   --error-foreground: 0 0% 100%;
   --shadow-color: 0deg 0% 0%;
   --shadow-strength: 2%;
-  --elevation-1: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
-  --elevation-2: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
-  --elevation-3: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
-  --elevation-4: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --elevation-sm: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-md: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-lg: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-xl: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
   --transparent: 0 0% 100% / 0;
+  --box-shadow: none;
 }

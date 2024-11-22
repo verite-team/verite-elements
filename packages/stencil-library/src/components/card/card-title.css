@@ -1,4 +1,4 @@
-h3 {
+:host {
   line-height: 1.2;
   margin: 0;
   color: hsl(var(--card-foreground));
@@ -6,28 +6,28 @@ h3 {
 }
 
 /* Sizes */
-:host([size='sm']) h3 {
+:host([size='sm']) {
   font-size: 0.875rem;
 }
 
-:host([size='md']) h3 {
+:host([size='md']) {
   font-size: 1rem;
 }
 
-:host([size='lg']) h3 {
+:host([size='lg']) {
   font-size: 1.25rem;
 }
 
 /* Alignment */
-:host([halign='center']) h3 {
+:host([halign='center']) {
   text-align: center;
 }
 
 /* Weights */
-:host([weight='medium']) h3 {
+:host([weight='medium']) {
   font-weight: 500;
 }
 
-:host([weight='light']) h3 {
+:host([weight='light']) {
   font-weight: 300;
 }

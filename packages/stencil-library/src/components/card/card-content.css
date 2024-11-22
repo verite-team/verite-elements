@@ -1,8 +1,6 @@
 :host {
   display: block;
-}
-
-p {
   margin: 0;
-  padding: 1rem;
+  padding: var(--card-padding);
+  padding-top: 0;
 }

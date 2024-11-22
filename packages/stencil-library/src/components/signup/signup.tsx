@@ -184,8 +184,8 @@ export class Signup {
           <slot name="providers"></slot>
 
           <form onSubmit={this.handleSubmit}>
-            <vui-flex gap={2} breakpoint="300" breakpointDirection="column">
-              <div class="form-field" style={{ flex: '1' }}>
+            <vui-flex gap={2} direction="row" items="stretch" wrap="wrap">
+              <div class="form-field" style={{ flex: '1', minWidth: '300px' }}>
                 <label class="sr-only" htmlFor="first-name">
                   {this.labels.firstNameLabel}
                 </label>
@@ -204,7 +204,7 @@ export class Signup {
                 <vui-error-message message={this.firstNameError} />
               </div>
 
-              <div class="form-field" style={{ flex: '1' }}>
+              <div class="form-field" style={{ flex: '1', minWidth: '300px' }}>
                 <label class="sr-only" htmlFor="last-name">
                   {this.labels.lastNameLabel}
                 </label>
@@ -279,14 +279,16 @@ export class Signup {
 
         <slot name="footer">
           <vui-card-footer variant="inset">
-            <div class="signup-prompt">
-              <span>{this.labels.haveAccountText}</span>
-              <vui-button variant="outline" size="sm" onClick={this.handleSignIn}>
-                {this.labels.signInButtonText}
-              </vui-button>
-            </div>
-            <vui-divider orientation="horizontal"></vui-divider>
-            <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
+            <vui-flex direction="column" items="center">
+              <div class="signup-prompt">
+                <span>{this.labels.haveAccountText}</span>
+                <vui-button variant="outline" size="sm" onClick={this.handleSignIn}>
+                  {this.labels.signInButtonText}
+                </vui-button>
+              </div>
+              <vui-divider orientation="horizontal"></vui-divider>
+              <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
+            </vui-flex>
           </vui-card-footer>
         </slot>
       </Host>

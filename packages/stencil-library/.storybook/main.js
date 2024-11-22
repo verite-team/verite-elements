@@ -11,22 +11,13 @@ const config = {
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
-    // getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('storybook-dark-mode'),
     '@storybook/addon-actions',
-    '@ljcl/storybook-addon-cssprops',
   ],
   framework: {
     name: getAbsolutePath('@storybook/web-components-vite'),
     options: {},
   },
-  // parameters: {
-  //   docs: {
-  //     source: {
-  //       transform: code => code.replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
-  //     },
-  //   },
-  // },
   docs: {
     autodocs: true,
     defaultName: 'Documentation',
@@ -37,5 +28,22 @@ const config = {
     <link rel="stylesheet" href="../src/themes/index.css">
     <link rel="stylesheet" href="../.storybook/index.css">
   `,
+  viteFinal: async config => {
+    config.plugins = [
+      ...config.plugins,
+      {
+        name: 'markdown-loader',
+        transform(code, id) {
+          if (id.endsWith('.md')) {
+            return {
+              code: `export default ${JSON.stringify(code)}`,
+              map: null,
+            }
+          }
+        },
+      },
+    ]
+    return config
+  },
 }
 export default config

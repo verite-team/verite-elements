@@ -109,7 +109,7 @@ export class Otp {
 
         <vui-card-content>
           <form onSubmit={this.handleSubmit}>
-            <vui-flex direction="row" halign="center" gap={2}>
+            <vui-flex direction="row" justify="center" gap={2}>
               {Array.from({ length: this.codeLength }).map((_, index) => (
                 <div class="form-field">
                   <vui-textbox

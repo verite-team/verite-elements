@@ -11,6 +11,8 @@ div {
 :host([variant='inset']) div {
   padding: 0px;
   border-top: 1px solid hsl(var(--border));
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   background-color: hsl(var(--muted) / 0.5);
-  box-shadow: inset 0 1px 2px hsl(var(--foreground) / 0.1);
+  box-shadow: var(--box-shadow);
 }
