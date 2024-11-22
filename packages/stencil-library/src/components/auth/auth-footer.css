@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* padding: 0.5rem; */
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  width: 100%;
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.powered-by {
+  margin-block: 8px 14px;
+}

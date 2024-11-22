@@ -8,6 +8,9 @@ import type { JSX } from 'stencil-library';
 
 
 export const VeriteConnector = /*@__PURE__*/createReactComponent<JSX.VeriteConnector, HTMLVeriteConnectorElement>('verite-connector');
+export const VuiAuthCard = /*@__PURE__*/createReactComponent<JSX.VuiAuthCard, HTMLVuiAuthCardElement>('vui-auth-card');
+export const VuiAuthFooter = /*@__PURE__*/createReactComponent<JSX.VuiAuthFooter, HTMLVuiAuthFooterElement>('vui-auth-footer');
+export const VuiAuthHeader = /*@__PURE__*/createReactComponent<JSX.VuiAuthHeader, HTMLVuiAuthHeaderElement>('vui-auth-header');
 export const VuiButton = /*@__PURE__*/createReactComponent<JSX.VuiButton, HTMLVuiButtonElement>('vui-button');
 export const VuiCard = /*@__PURE__*/createReactComponent<JSX.VuiCard, HTMLVuiCardElement>('vui-card');
 export const VuiCardContent = /*@__PURE__*/createReactComponent<JSX.VuiCardContent, HTMLVuiCardContentElement>('vui-card-content');

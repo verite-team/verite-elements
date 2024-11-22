@@ -25,6 +25,25 @@ export namespace Components {
     interface VeriteConnector {
         "type": 'signup' | 'signin';
     }
+    interface VuiAuthCard {
+        "action": string;
+        "description": string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+        "heading": string;
+        "prompt": string;
+        "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthFooter {
+        "action"?: string;
+        "prompt"?: string;
+        "showDivider"?: boolean;
+        "showPoweredBy"?: boolean;
+        "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthHeader {
+        "description": string;
+        "heading": string;
+    }
     interface VuiButton {
         "busy"?: boolean;
         "disabled"?: boolean;
@@ -45,7 +64,7 @@ export namespace Components {
         "halign": 'left' | 'center';
     }
     interface VuiCardFooter {
-        "variant": 'normal' | 'inset';
+        "variant": 'default' | 'inset';
     }
     interface VuiCardHeader {
     }
@@ -165,10 +184,12 @@ export namespace Components {
   };
     }
     interface VuiSignup {
+        "email"?: string;
         /**
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
+        "firstName"?: string;
         /**
           * Controls the loading state of the component
          */
@@ -177,6 +198,8 @@ export namespace Components {
           * Labels for localization
          */
         "labels": SignUpLabels;
+        "lastName"?: string;
+        "password"?: string;
         /**
           * Password validation options
          */
@@ -211,6 +234,10 @@ export namespace Components {
     }
     interface VuiUserMenu {
     }
+}
+export interface VuiAuthFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiAuthFooterElement;
 }
 export interface VuiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -254,6 +281,35 @@ declare global {
     var HTMLVeriteConnectorElement: {
         prototype: HTMLVeriteConnectorElement;
         new (): HTMLVeriteConnectorElement;
+    };
+    interface HTMLVuiAuthCardElement extends Components.VuiAuthCard, HTMLStencilElement {
+    }
+    var HTMLVuiAuthCardElement: {
+        prototype: HTMLVuiAuthCardElement;
+        new (): HTMLVuiAuthCardElement;
+    };
+    interface HTMLVuiAuthFooterElementEventMap {
+        "actionClick": any;
+    }
+    interface HTMLVuiAuthFooterElement extends Components.VuiAuthFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiAuthFooterElementEventMap>(type: K, listener: (this: HTMLVuiAuthFooterElement, ev: VuiAuthFooterCustomEvent<HTMLVuiAuthFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiAuthFooterElementEventMap>(type: K, listener: (this: HTMLVuiAuthFooterElement, ev: VuiAuthFooterCustomEvent<HTMLVuiAuthFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiAuthFooterElement: {
+        prototype: HTMLVuiAuthFooterElement;
+        new (): HTMLVuiAuthFooterElement;
+    };
+    interface HTMLVuiAuthHeaderElement extends Components.VuiAuthHeader, HTMLStencilElement {
+    }
+    var HTMLVuiAuthHeaderElement: {
+        prototype: HTMLVuiAuthHeaderElement;
+        new (): HTMLVuiAuthHeaderElement;
     };
     interface HTMLVuiButtonElementEventMap {
         "buttonClick": MouseEvent;
@@ -466,9 +522,7 @@ declare global {
         new (): HTMLVuiSigninElement;
     };
     interface HTMLVuiSignupElementEventMap {
-        "formSubmit": SignUpFormData;
-        "ready": void;
-        "signIn": void;
+        "submit": SignUpFormData;
     }
     interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -551,6 +605,9 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "verite-connector": HTMLVeriteConnectorElement;
+        "vui-auth-card": HTMLVuiAuthCardElement;
+        "vui-auth-footer": HTMLVuiAuthFooterElement;
+        "vui-auth-header": HTMLVuiAuthHeaderElement;
         "vui-button": HTMLVuiButtonElement;
         "vui-card": HTMLVuiCardElement;
         "vui-card-content": HTMLVuiCardContentElement;
@@ -588,6 +645,26 @@ declare namespace LocalJSX {
     interface VeriteConnector {
         "type"?: 'signup' | 'signin';
     }
+    interface VuiAuthCard {
+        "action"?: string;
+        "description"?: string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+        "heading"?: string;
+        "prompt"?: string;
+        "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthFooter {
+        "action"?: string;
+        "onActionClick"?: (event: VuiAuthFooterCustomEvent<any>) => void;
+        "prompt"?: string;
+        "showDivider"?: boolean;
+        "showPoweredBy"?: boolean;
+        "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthHeader {
+        "description"?: string;
+        "heading"?: string;
+    }
     interface VuiButton {
         "busy"?: boolean;
         "disabled"?: boolean;
@@ -609,7 +686,7 @@ declare namespace LocalJSX {
         "halign"?: 'left' | 'center';
     }
     interface VuiCardFooter {
-        "variant"?: 'normal' | 'inset';
+        "variant"?: 'default' | 'inset';
     }
     interface VuiCardHeader {
     }
@@ -738,10 +815,12 @@ declare namespace LocalJSX {
   };
     }
     interface VuiSignup {
+        "email"?: string;
         /**
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
+        "firstName"?: string;
         /**
           * Controls the loading state of the component
          */
@@ -750,9 +829,9 @@ declare namespace LocalJSX {
           * Labels for localization
          */
         "labels"?: SignUpLabels;
-        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
-        "onReady"?: (event: VuiSignupCustomEvent<void>) => void;
-        "onSignIn"?: (event: VuiSignupCustomEvent<void>) => void;
+        "lastName"?: string;
+        "onSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
+        "password"?: string;
         /**
           * Password validation options
          */
@@ -791,6 +870,9 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "verite-connector": VeriteConnector;
+        "vui-auth-card": VuiAuthCard;
+        "vui-auth-footer": VuiAuthFooter;
+        "vui-auth-header": VuiAuthHeader;
         "vui-button": VuiButton;
         "vui-card": VuiCard;
         "vui-card-content": VuiCardContent;
@@ -829,6 +911,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "verite-connector": LocalJSX.VeriteConnector & JSXBase.HTMLAttributes<HTMLVeriteConnectorElement>;
+            "vui-auth-card": LocalJSX.VuiAuthCard & JSXBase.HTMLAttributes<HTMLVuiAuthCardElement>;
+            "vui-auth-footer": LocalJSX.VuiAuthFooter & JSXBase.HTMLAttributes<HTMLVuiAuthFooterElement>;
+            "vui-auth-header": LocalJSX.VuiAuthHeader & JSXBase.HTMLAttributes<HTMLVuiAuthHeaderElement>;
             "vui-button": LocalJSX.VuiButton & JSXBase.HTMLAttributes<HTMLVuiButtonElement>;
             "vui-card": LocalJSX.VuiCard & JSXBase.HTMLAttributes<HTMLVuiCardElement>;
             "vui-card-content": LocalJSX.VuiCardContent & JSXBase.HTMLAttributes<HTMLVuiCardContentElement>;

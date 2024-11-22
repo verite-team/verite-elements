@@ -30,6 +30,76 @@ export declare interface VeriteConnector extends Components.VeriteConnector {}
 
 
 @ProxyCmp({
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'variant']
+})
+@Component({
+  selector: 'vui-auth-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'variant'],
+})
+export class VuiAuthCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiAuthCard extends Components.VuiAuthCard {}
+
+
+@ProxyCmp({
+  inputs: ['action', 'prompt', 'showDivider', 'showPoweredBy', 'variant']
+})
+@Component({
+  selector: 'vui-auth-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['action', 'prompt', 'showDivider', 'showPoweredBy', 'variant'],
+})
+export class VuiAuthFooter {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['actionClick']);
+  }
+}
+
+
+export declare interface VuiAuthFooter extends Components.VuiAuthFooter {
+
+  actionClick: EventEmitter<CustomEvent<any>>;
+}
+
+
+@ProxyCmp({
+  inputs: ['description', 'heading']
+})
+@Component({
+  selector: 'vui-auth-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['description', 'heading'],
+})
+export class VuiAuthHeader {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiAuthHeader extends Components.VuiAuthHeader {}
+
+
+@ProxyCmp({
   inputs: ['busy', 'disabled', 'form', 'name', 'size', 'type', 'value', 'variant', 'width']
 })
 @Component({
@@ -609,21 +679,21 @@ export declare interface VuiSignin extends Components.VuiSignin {
 
 
 @ProxyCmp({
-  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles']
+  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'labels', 'lastName', 'password', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles'],
+  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'labels', 'lastName', 'password', 'passwordValidation', 'styles'],
 })
 export class VuiSignup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit', 'ready', 'signIn']);
+    proxyOutputs(this, this.el, ['submit']);
   }
 }
 
@@ -632,11 +702,7 @@ import type { SignUpFormData as IVuiSignupSignUpFormData } from 'stencil-library
 
 export declare interface VuiSignup extends Components.VuiSignup {
 
-  formSubmit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
-
-  ready: EventEmitter<CustomEvent<void>>;
-
-  signIn: EventEmitter<CustomEvent<void>>;
+  submit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
 }
 
 

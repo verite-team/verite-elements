@@ -2,5 +2,8 @@
   display: block;
   margin: 0;
   padding: var(--card-padding);
+}
+
+:host(:not(:first-child)) {
   padding-top: 0;
 }

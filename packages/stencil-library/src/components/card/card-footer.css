@@ -1,14 +1,12 @@
 :host {
   display: block;
-}
-
-div {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  /* padding: 24px; */
+  width: 100%;
 }
 
-:host([variant='inset']) div {
+:host([variant='inset']) {
   padding: 0px;
   border-top: 1px solid hsl(var(--border));
   border-bottom-left-radius: var(--radius);

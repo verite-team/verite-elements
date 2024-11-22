@@ -177,7 +177,7 @@
       </vui-flex>
     </vui-button> -->
 
-    <div id="signin-container" style="width: 100%; max-width: 360px">
+    <!-- <div id="signin-container" style="width: 100%; max-width: 360px">
       <verite-connector type="signin">
         <vui-card class="card--signin" elevation="lg">
           <vui-signin
@@ -185,7 +185,6 @@
             email-validation='{"blockedDomains": ["gmail.com"]}'
             onFormSubmit="console.log('Signin clicked')"
           >
-            <!-- <span slot="header"></span> -->
             <div slot="providers">
               <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
                 <vui-button class="google-button" variant="outline" style="width: 100%">
@@ -206,8 +205,6 @@
                 <span>or</span>
               </vui-divider>
             </div>
-            <!-- <span slot="footer"></span> -->
-
             <div slot="footer">
               <vui-card-footer variant="inset">
                 <vui-flex
@@ -228,36 +225,29 @@
           </vui-signin>
         </vui-card>
       </verite-connector>
-    </div>
+    </div> -->
 
     <div id="signup-container" style="width: 100%; max-width: 360px">
       <verite-connector type="signup">
         <vui-card class="card--signup" elevation="lg">
-          <vui-signup onsubmit="console.log('Signup clicked')">
-            <!-- <span slot="header"></span> -->
-            <div slot="providers">
-              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="apple" size="20"></vui-logo>
-                    <vui-label>Sign up with Apple</vui-label>
-                  </vui-flex>
-                </vui-button>
-
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="google" size="20"></vui-logo>
-                    <vui-label>Sign up with Google</vui-label>
-                  </vui-flex>
-                </vui-button>
-              </vui-flex>
-              <vui-divider orientation="horizontal" style="margin: 16px 0">
-                <span>or</span>
-              </vui-divider>
-            </div>
-            <!-- <span slot="footer"></span> -->
-          </vui-signup>
+          <vui-card-content>
+            <vui-signup onsubmit="console.log('Signup clicked')"></vui-signup>
+          </vui-card-content>
         </vui-card>
+      </verite-connector>
+    </div>
+
+    <div id="signup-container" style="width: 100%; max-width: 360px"></div>
+      <verite-connector type="signup">
+          <vui-auth-card class="card--signup" elevation="lg" heading="Sign up to Acme Co" description="Welcome! Please fill in the details to get started." prompt="Already have an account?" action="Sign in">
+          <vui-signup
+            first-name="Test"
+            last-name="User"
+            email="test@test.com"
+            password="test1234"
+            onsubmit="console.log('Signup clicked')"
+          ></vui-signup>
+        </vui-auth-card>
       </verite-connector>
     </div>
 

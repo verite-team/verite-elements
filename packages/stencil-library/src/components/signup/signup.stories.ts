@@ -17,9 +17,7 @@ const meta: Meta = {
   decorators: [
     Story => `
       <div style="width: 100%; max-width: 360px;">
-        <vui-card elevation="3">
-          ${Story()}
-        </vui-card>
+        ${Story()}
       </div>
     `,
   ],
@@ -28,6 +26,19 @@ export default meta
 
 type Story = StoryObj
 
+// Move StoryWithCard definition before stories
+const StoryWithCard = {
+  render: (args: Record<string, string> = {}) => `
+    <vui-card>
+      <vui-signup ${Object.entries(args)
+        .map(([key, value]) => `${key}='${value}'`)
+        .join(' ')}>
+        ${args.children}
+      </vui-signup>
+    </vui-card>
+  `,
+}
+
 // Default configuration
 export const Default: Story = {
   render: () => `
@@ -35,10 +46,22 @@ export const Default: Story = {
   `,
 }
 
+export const Minimal: Story = {
+  render: () => `
+    <vui-signup>
+      <span slot="header"></span>
+      <span slot="providers"></span>
+      <span slot="footer"></span>
+    </vui-signup>
+  `,
+}
+
 // With Social Providers
 export const WithSocialProviders: Story = {
-  render: args => `
-    <vui-signup>
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      children: `
       <div slot="providers">
         <vui-flex direction="column" gap="2" style="width: 100%">
           <vui-button variant="outline" style="width: 100%">
@@ -59,69 +82,72 @@ export const WithSocialProviders: Story = {
           <span>or</span>
         </vui-divider>
       </div>
-    </vui-signup>
-  `,
+    `,
+    }),
 }
 
 // With Custom Logo
 export const WithCustomLogo: Story = {
-  render: args => `
-    <vui-signup>
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      children: `
       <div slot="logo">
         <img src="https://via.placeholder.com/40" alt="Company Logo" />
       </div>
-    </vui-signup>
-  `,
+    `,
+    }),
 }
 
 // With Custom Password Validation
 export const WithPasswordValidation: Story = {
-  render: () => `
-    <vui-signup
-      password-validation='{
-        "minLength": 8,
-        "requireUppercase": true,
-        "requireLowercase": true,
-        "requireNumbers": true,
-        "requireSpecialChars": true
-      }'
-    ></vui-signup>
-  `,
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      'password-validation': JSON.stringify({
+        minLength: 8,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireNumbers: true,
+        requireSpecialChars: true,
+      }),
+    }),
 }
 
 // With Email Domain Validation
 export const WithEmailValidation: Story = {
-  render: () => `
-    <vui-signup
-      email-validation='{
-        "blockedDomains": ["gmail.com", "hotmail.com"]
-      }'
-    ></vui-signup>
-  `,
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      'email-validation': JSON.stringify({
+        blockedDomains: ['gmail.com', 'hotmail.com'],
+      }),
+    }),
 }
 
 // With Custom Labels
 export const CustomLabels: Story = {
-  render: () => `
-    <vui-signup
-      labels='{
-        "title": "Join Our Platform",
-        "description": "Create your account in seconds",
-        "firstNameLabel": "Given Name",
-        "firstNamePlaceholder": "Enter your given name",
-        "lastNameLabel": "Family Name",
-        "lastNamePlaceholder": "Enter your family name",
-        "emailLabel": "Email Address",
-        "emailPlaceholder": "Enter your email address",
-        "passwordLabel": "Create Password",
-        "passwordPlaceholder": "Enter a secure password",
-        "showPasswordLabel": "Show password",
-        "hidePasswordLabel": "Hide password",
-        "signUpButtonText": "Create Account",
-        "haveAccountText": "Already registered?",
-        "signInButtonText": "Login here"
-      }'
-    >
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      labels: JSON.stringify({
+        title: 'Join Our Platform',
+        description: 'Create your account in seconds',
+        firstNameLabel: 'Given Name',
+        firstNamePlaceholder: 'Enter your given name',
+        lastNameLabel: 'Family Name',
+        lastNamePlaceholder: 'Enter your family name',
+        emailLabel: 'Email Address',
+        emailPlaceholder: 'Enter your email address',
+        passwordLabel: 'Create Password',
+        passwordPlaceholder: 'Enter a secure password',
+        showPasswordLabel: 'Show password',
+        hidePasswordLabel: 'Hide password',
+        signUpButtonText: 'Create Account',
+        haveAccountText: 'Already registered?',
+        signInButtonText: 'Login here',
+      }),
+      children: `
       <div slot="providers">
         <vui-flex direction="column" gap="2" style="width: 100%">
           <vui-button variant="outline" style="width: 100%">
@@ -142,14 +168,16 @@ export const CustomLabels: Story = {
           <span>or</span>
         </vui-divider>
       </div>
-    </vui-signup>
-  `,
+    `,
+    }),
 }
 
 // With Custom Footer
 export const CustomFooter: Story = {
-  render: args => `
-    <vui-signup>
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      children: `
       <div slot="footer">
         <vui-card-footer variant="inset">
           <vui-flex
@@ -167,49 +195,52 @@ export const CustomFooter: Story = {
           </vui-flex>
         </vui-card-footer>
       </div>
-    </vui-signup>
-  `,
+    `,
+    }),
 }
 
 // Loading State
 export const LoadingState: Story = {
-  render: () => `
-    <vui-signup is-loading="true"></vui-signup>
-  `,
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      'is-loading': 'true',
+    }),
 }
 
 // All Features Combined
 export const FullFeatured: Story = {
-  render: () => `
-    <vui-signup
-      labels='{
-        "title": "Join Our Platform",
-        "description": "Create your account in seconds",
-        "firstNameLabel": "Given Name",
-        "firstNamePlaceholder": "Enter your given name",
-        "lastNameLabel": "Family Name",
-        "lastNamePlaceholder": "Enter your family name",
-        "emailLabel": "Email Address",
-        "emailPlaceholder": "Enter your work email",
-        "passwordLabel": "Create Password",
-        "passwordPlaceholder": "Enter a secure password",
-        "showPasswordLabel": "Show password",
-        "hidePasswordLabel": "Hide password",
-        "signUpButtonText": "Create Account",
-        "haveAccountText": "Already registered?",
-        "signInButtonText": "Login here"
-      }'
-      password-validation='{
-        "minLength": 8,
-        "requireUppercase": true,
-        "requireLowercase": true,
-        "requireNumbers": true,
-        "requireSpecialChars": true
-      }'
-      email-validation='{
-        "blockedDomains": ["gmail.com", "hotmail.com"]
-      }'
-    >
+  ...StoryWithCard,
+  render: () =>
+    StoryWithCard.render({
+      labels: JSON.stringify({
+        title: 'Join Our Platform',
+        description: 'Create your account in seconds',
+        firstNameLabel: 'Given Name',
+        firstNamePlaceholder: 'Enter your given name',
+        lastNameLabel: 'Family Name',
+        lastNamePlaceholder: 'Enter your family name',
+        emailLabel: 'Email Address',
+        emailPlaceholder: 'Enter your work email',
+        passwordLabel: 'Create Password',
+        passwordPlaceholder: 'Enter a secure password',
+        showPasswordLabel: 'Show password',
+        hidePasswordLabel: 'Hide password',
+        signUpButtonText: 'Create Account',
+        haveAccountText: 'Already registered?',
+        signInButtonText: 'Login here',
+      }),
+      'password-validation': JSON.stringify({
+        minLength: 8,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireNumbers: true,
+        requireSpecialChars: true,
+      }),
+      'email-validation': JSON.stringify({
+        blockedDomains: ['gmail.com', 'hotmail.com'],
+      }),
+      children: `
       <div slot="logo">
         <img src="https://via.placeholder.com/40" alt="Company Logo" />
       </div>
@@ -234,6 +265,6 @@ export const FullFeatured: Story = {
           <span>or</span>
         </vui-divider>
       </div>
-    </vui-signup>
-  `,
+    `,
+    }),
 }

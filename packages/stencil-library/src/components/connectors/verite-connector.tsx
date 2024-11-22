@@ -8,16 +8,18 @@ export class VeriteConnector {
   @Element() element!: HTMLElement
   @Prop() type: 'signup' | 'signin' = 'signup' // Allow different auth types
 
-  @Listen('ready')
-  handleReady(event: CustomEvent) {
-    // Could initialize any necessary auth state or services
-    console.log('Auth component ready', this.type, event)
-  }
+  // @Listen('ready')
+  // handleReady(event: CustomEvent) {
+  //   // Could initialize any necessary auth state or services
+  //   console.log('Auth component ready', this.type, event)
+  // }
 
-  @Listen('formSubmit')
+  @Listen('submit')
   async handleFormSubmit(event: CustomEvent<{ email: string; password: string }>) {
-    const vuiComponent = event.target as HTMLElement
-    console.log('vuiComponent on submit', this.type, vuiComponent)
+    event.stopPropagation()
+    // const vuiComponent = event.target as HTMLElement
+    console.log('type -->', this.type)
+    console.log('vuiComponent on submit -->', event.detail)
 
     // try {
     //   // Set loading state on the vui component

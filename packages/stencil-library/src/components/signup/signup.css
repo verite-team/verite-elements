@@ -13,14 +13,14 @@
 
 form {
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .form-field {
   position: relative;
-  flex: 1;
+  /* flex: 1; */
   min-width: 0;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .sr-only {
@@ -66,8 +66,4 @@ form {
   padding: 0.5rem;
   font-size: 0.875rem;
   color: hsl(var(--muted-foreground));
-}
-
-.powered-by {
-  margin-block: 8px 14px;
 }

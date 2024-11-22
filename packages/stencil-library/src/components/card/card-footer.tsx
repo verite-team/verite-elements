@@ -6,14 +6,12 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardFooter {
-  @Prop({ reflect: true }) variant: 'normal' | 'inset' = 'normal'
+  @Prop({ reflect: true }) variant: 'default' | 'inset' = 'default'
 
   render() {
     return (
-      <Host>
-        <div part="card-footer">
-          <slot></slot>
-        </div>
+      <Host part="card-footer">
+        <slot></slot>
       </Host>
     )
   }
