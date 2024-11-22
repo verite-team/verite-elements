@@ -32,6 +32,7 @@
     "@stencil/angular-output-target": "^0.10.0",
     "@stencil/core": "^4.7.0",
     "@stencil/react-output-target": "^0.5.3",
+    "@stencil/store": "^2.0.16",
     "@storybook/addon-actions": "^8.4.4",
     "@storybook/addon-docs": "^8.4.4",
     "@storybook/addon-essentials": "^8.4.4",

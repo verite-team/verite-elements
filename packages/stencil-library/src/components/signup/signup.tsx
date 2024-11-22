@@ -5,7 +5,11 @@ import {
   ValidationRule,
   ValidationRules,
 } from '../../utils/validation'
-import { SignUpFormData, SignUpLabels } from './signup-interfaces'
+
+import { i18n } from '../../stores/i18n'
+import { SignUpFormData } from './signup-interfaces'
+
+const t = i18n.t
 
 @Component({
   tag: 'vui-signup',
@@ -29,27 +33,8 @@ export class Signup {
     link?: { [key: string]: string | number }
   }
 
-  /** Labels for localization */
-  @Prop() labels: SignUpLabels = {
-    // title: 'Sign up to Acme Co',
-    // description: 'Welcome! Please fill in the details to get started.',
-    firstNameLabel: 'First name',
-    firstNamePlaceholder: 'First name',
-    lastNameLabel: 'Last name',
-    lastNamePlaceholder: 'Last name',
-    emailLabel: 'Email',
-    emailPlaceholder: 'Email',
-    passwordLabel: 'Password',
-    passwordPlaceholder: 'Password',
-    showPasswordLabel: 'Show password',
-    hidePasswordLabel: 'Hide password',
-    signUpButtonText: 'Sign up',
-    // haveAccountText: 'Already have an account?',
-    // signInButtonText: 'Sign in',
-  }
-
   @Element() el!: HTMLElement
-  @Event({ bubbles: true }) submit: EventEmitter<SignUpFormData>
+  @Event({ eventName: 'formSubmit', bubbles: true }) formSubmit: EventEmitter<SignUpFormData>
   // @Event({ bubbles: true }) ready: EventEmitter<void>
   private togglePasswordVisibility = () => {
     this.showPassword = !this.showPassword
@@ -124,7 +109,7 @@ export class Signup {
     this.passwordError = this.validateField(this.password, this.passwordRules)
 
     if (this.isFormValid()) {
-      this.submit.emit({
+      this.formSubmit.emit({
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
@@ -155,8 +140,8 @@ export class Signup {
     }
   }
 
-  componentDidLoad() {
-    console.log('componentDidLoad - labels:', this.labels)
+  async componentWillLoad() {
+    await i18n.waitUntilReady
   }
 
   render() {
@@ -165,12 +150,12 @@ export class Signup {
         <vui-flex gap={2} direction="row" items="stretch" breakpointDirection="column" breakpoint="300px">
           <div class="form-field">
             <label class="sr-only" htmlFor="first-name">
-              {this.labels.firstNameLabel}
+              {t('signup.firstName.label')}
             </label>
             <vui-textbox
               id="first-name"
               name="firstName"
-              placeholder={this.labels.firstNamePlaceholder}
+              placeholder={t('signup.firstName.placeholder')}
               autocapitalize="none"
               autocomplete="given-name"
               autocorrect="off"
@@ -184,12 +169,12 @@ export class Signup {
 
           <div class="form-field">
             <label class="sr-only" htmlFor="last-name">
-              {this.labels.lastNameLabel}
+              {t('signup.lastName.label')}
             </label>
             <vui-textbox
               id="last-name"
               name="lastName"
-              placeholder={this.labels.lastNamePlaceholder}
+              placeholder={t('signup.lastName.placeholder')}
               autocomplete="family-name"
               autocorrect="off"
               disabled={this.isLoading}
@@ -203,12 +188,12 @@ export class Signup {
 
         <div class="form-field">
           <label class="sr-only" htmlFor="email">
-            {this.labels.emailLabel}
+            {t('signup.email.label')}
           </label>
           <vui-textbox
             id="email"
             name="email"
-            placeholder={this.labels.emailPlaceholder}
+            placeholder={t('signup.email.placeholder')}
             type="email"
             autocapitalize="none"
             autocomplete="email"
@@ -223,12 +208,12 @@ export class Signup {
 
         <div class="form-field password-field">
           <label class="sr-only" htmlFor="password">
-            {this.labels.passwordLabel}
+            {t('signup.password.label')}
           </label>
           <vui-textbox
             id="password"
             name="password"
-            placeholder={this.labels.passwordPlaceholder}
+            placeholder={t('signup.password.placeholder')}
             type={this.showPassword ? 'text' : 'password'}
             autocorrect="off"
             disabled={this.isLoading}
@@ -243,14 +228,14 @@ export class Signup {
             type="button"
             disabled={this.isLoading}
             onClick={this.togglePasswordVisibility}
-            aria-label={this.showPassword ? this.labels.hidePasswordLabel : this.labels.showPasswordLabel}
+            aria-label={this.showPassword ? t('signup.password.hide') : t('signup.password.show')}
           >
             <vui-icon name={this.showPassword ? 'ic:outline-visibility' : 'ic:outline-visibility-off'} size="sm" />
           </vui-button>
         </div>
 
         <vui-button type="submit" class="submit-button" busy={this.isLoading}>
-          {this.labels.signUpButtonText}
+          {t('signup.submit')}
         </vui-button>
       </form>
     )

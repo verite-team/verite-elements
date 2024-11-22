@@ -10,7 +10,7 @@ import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google
 import { LogoName } from "./components/logo/logo";
 import { OtpLabels } from "./components/otp/otp-interfaces";
 import { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
-import { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
+import { SignUpFormData } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
@@ -18,7 +18,7 @@ export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google
 export { LogoName } from "./components/logo/logo";
 export { OtpLabels } from "./components/otp/otp-interfaces";
 export { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
-export { SignUpFormData, SignUpLabels } from "./components/signup/signup-interfaces";
+export { SignUpFormData } from "./components/signup/signup-interfaces";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
@@ -194,10 +194,6 @@ export namespace Components {
           * Controls the loading state of the component
          */
         "isLoading"?: boolean;
-        /**
-          * Labels for localization
-         */
-        "labels": SignUpLabels;
         "lastName"?: string;
         "password"?: string;
         /**
@@ -522,7 +518,7 @@ declare global {
         new (): HTMLVuiSigninElement;
     };
     interface HTMLVuiSignupElementEventMap {
-        "submit": SignUpFormData;
+        "formSubmit": SignUpFormData;
     }
     interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -825,12 +821,8 @@ declare namespace LocalJSX {
           * Controls the loading state of the component
          */
         "isLoading"?: boolean;
-        /**
-          * Labels for localization
-         */
-        "labels"?: SignUpLabels;
         "lastName"?: string;
-        "onSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
+        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
         "password"?: string;
         /**
           * Password validation options

@@ -679,21 +679,21 @@ export declare interface VuiSignin extends Components.VuiSignin {
 
 
 @ProxyCmp({
-  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'labels', 'lastName', 'password', 'passwordValidation', 'styles']
+  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'styles']
 })
 @Component({
   selector: 'vui-signup',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'labels', 'lastName', 'password', 'passwordValidation', 'styles'],
+  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'styles'],
 })
 export class VuiSignup {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['submit']);
+    proxyOutputs(this, this.el, ['formSubmit']);
   }
 }
 
@@ -702,7 +702,7 @@ import type { SignUpFormData as IVuiSignupSignUpFormData } from 'stencil-library
 
 export declare interface VuiSignup extends Components.VuiSignup {
 
-  submit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
+  formSubmit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
 }
 
 

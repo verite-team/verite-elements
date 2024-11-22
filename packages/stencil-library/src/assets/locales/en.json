@@ -1,0 +1,23 @@
+{
+  "signup": {
+    "firstName": {
+      "label": "First name",
+      "placeholder": "First name"
+    },
+    "lastName": {
+      "label": "Last name",
+      "placeholder": "Last name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Password",
+      "show": "Show password",
+      "hide": "Hide password"
+    },
+    "submit": "Sign up"
+  }
+}

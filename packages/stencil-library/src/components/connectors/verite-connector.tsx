@@ -14,7 +14,7 @@ export class VeriteConnector {
   //   console.log('Auth component ready', this.type, event)
   // }
 
-  @Listen('submit')
+  @Listen('formSubmit')
   async handleFormSubmit(event: CustomEvent<{ email: string; password: string }>) {
     event.stopPropagation()
     // const vuiComponent = event.target as HTMLElement
