@@ -47,6 +47,7 @@ graph TD;
   vui-user-menu --> vui-dropdown-menu-item
   vui-user-menu --> vui-dropdown-menu-separator
   vui-dropdown-menu --> vui-dropdown-menu-content
+  vui-button --> vui-spinner
   style vui-user-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

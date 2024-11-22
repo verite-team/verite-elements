@@ -117,6 +117,10 @@ export namespace Components {
     interface VuiGoogleOneTap {
         "googleClientId": string;
     }
+    interface VuiI18n {
+        "params"?: Record<string, string> | string;
+        "text": string;
+    }
     interface VuiIcon {
         "color"?: string;
         "name": string;
@@ -443,6 +447,12 @@ declare global {
         prototype: HTMLVuiGoogleOneTapElement;
         new (): HTMLVuiGoogleOneTapElement;
     };
+    interface HTMLVuiI18nElement extends Components.VuiI18n, HTMLStencilElement {
+    }
+    var HTMLVuiI18nElement: {
+        prototype: HTMLVuiI18nElement;
+        new (): HTMLVuiI18nElement;
+    };
     interface HTMLVuiIconElement extends Components.VuiIcon, HTMLStencilElement {
     }
     var HTMLVuiIconElement: {
@@ -621,6 +631,7 @@ declare global {
         "vui-flex": HTMLVuiFlexElement;
         "vui-form-control": HTMLVuiFormControlElement;
         "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
+        "vui-i18n": HTMLVuiI18nElement;
         "vui-icon": HTMLVuiIconElement;
         "vui-label": HTMLVuiLabelElement;
         "vui-link": HTMLVuiLinkElement;
@@ -737,6 +748,10 @@ declare namespace LocalJSX {
         "googleClientId": string;
         "onGoogleCredential"?: (event: VuiGoogleOneTapCustomEvent<SignInWithIdTokenCredentials>) => void;
         "onGoogleError"?: (event: VuiGoogleOneTapCustomEvent<Error>) => void;
+    }
+    interface VuiI18n {
+        "params"?: Record<string, string> | string;
+        "text"?: string;
     }
     interface VuiIcon {
         "color"?: string;
@@ -882,6 +897,7 @@ declare namespace LocalJSX {
         "vui-flex": VuiFlex;
         "vui-form-control": VuiFormControl;
         "vui-google-one-tap": VuiGoogleOneTap;
+        "vui-i18n": VuiI18n;
         "vui-icon": VuiIcon;
         "vui-label": VuiLabel;
         "vui-link": VuiLink;
@@ -923,6 +939,7 @@ declare module "@stencil/core" {
             "vui-flex": LocalJSX.VuiFlex & JSXBase.HTMLAttributes<HTMLVuiFlexElement>;
             "vui-form-control": LocalJSX.VuiFormControl & JSXBase.HTMLAttributes<HTMLVuiFormControlElement>;
             "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;
+            "vui-i18n": LocalJSX.VuiI18n & JSXBase.HTMLAttributes<HTMLVuiI18nElement>;
             "vui-icon": LocalJSX.VuiIcon & JSXBase.HTMLAttributes<HTMLVuiIconElement>;
             "vui-label": LocalJSX.VuiLabel & JSXBase.HTMLAttributes<HTMLVuiLabelElement>;
             "vui-link": LocalJSX.VuiLink & JSXBase.HTMLAttributes<HTMLVuiLinkElement>;

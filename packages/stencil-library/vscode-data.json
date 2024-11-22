@@ -2,6 +2,139 @@
   "version": 1.1,
   "tags": [
     {
+      "name": "verite-connector",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "type",
+          "description": "",
+          "values": [
+            {
+              "name": "signin"
+            },
+            {
+              "name": "signup"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vui-auth-card",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "description": ""
+        },
+        {
+          "name": "elevation",
+          "description": "",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "description": ""
+        },
+        {
+          "name": "prompt",
+          "description": ""
+        },
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "inset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vui-auth-footer",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": ""
+        },
+        {
+          "name": "prompt",
+          "description": ""
+        },
+        {
+          "name": "show-divider",
+          "description": ""
+        },
+        {
+          "name": "show-powered-by",
+          "description": ""
+        },
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "inset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vui-auth-header",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "description",
+          "description": ""
+        },
+        {
+          "name": "heading",
+          "description": ""
+        }
+      ]
+    },
+    {
       "name": "vui-button",
       "description": {
         "kind": "markdown",
@@ -105,7 +238,24 @@
       "attributes": [
         {
           "name": "elevation",
-          "description": ""
+          "description": "",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            }
+          ]
         }
       ]
     },
@@ -150,10 +300,10 @@
           "description": "",
           "values": [
             {
-              "name": "inset"
+              "name": "default"
             },
             {
-              "name": "normal"
+              "name": "inset"
             }
           ]
         }
@@ -304,12 +454,45 @@
       "attributes": []
     },
     {
+      "name": "vui-error-message",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "message",
+          "description": "The error message to display"
+        },
+        {
+          "name": "show-icon",
+          "description": "Whether to show the error icon"
+        }
+      ]
+    },
+    {
       "name": "vui-flex",
       "description": {
         "kind": "markdown",
         "value": ""
       },
       "attributes": [
+        {
+          "name": "breakpoint",
+          "description": ""
+        },
+        {
+          "name": "breakpoint-direction",
+          "description": "",
+          "values": [
+            {
+              "name": "column"
+            },
+            {
+              "name": "row"
+            }
+          ]
+        },
         {
           "name": "direction",
           "description": "",
@@ -331,14 +514,44 @@
           "description": ""
         },
         {
-          "name": "halign",
+          "name": "items",
           "description": "",
           "values": [
+            {
+              "name": "baseline"
+            },
             {
               "name": "center"
             },
             {
               "name": "end"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "stretch"
+            }
+          ]
+        },
+        {
+          "name": "justify",
+          "description": "",
+          "values": [
+            {
+              "name": "around"
+            },
+            {
+              "name": "between"
+            },
+            {
+              "name": "center"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "evenly"
             },
             {
               "name": "start"
@@ -348,21 +561,6 @@
         {
           "name": "space-unit",
           "description": ""
-        },
-        {
-          "name": "valign",
-          "description": "",
-          "values": [
-            {
-              "name": "center"
-            },
-            {
-              "name": "end"
-            },
-            {
-              "name": "start"
-            }
-          ]
         },
         {
           "name": "width",
@@ -375,6 +573,34 @@
               "name": "full"
             }
           ]
+        },
+        {
+          "name": "wrap",
+          "description": "",
+          "values": [
+            {
+              "name": "nowrap"
+            },
+            {
+              "name": "wrap"
+            },
+            {
+              "name": "wrap-reverse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vui-form-control",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "value",
+          "description": ""
         }
       ]
     },
@@ -575,7 +801,16 @@
         "kind": "markdown",
         "value": ""
       },
-      "attributes": []
+      "attributes": [
+        {
+          "name": "email-validation",
+          "description": "Email validation options"
+        },
+        {
+          "name": "is-loading",
+          "description": "Controls the loading state of the component"
+        }
+      ]
     },
     {
       "name": "vui-signup",
@@ -583,7 +818,60 @@
         "kind": "markdown",
         "value": ""
       },
-      "attributes": []
+      "attributes": [
+        {
+          "name": "email",
+          "description": ""
+        },
+        {
+          "name": "email-validation",
+          "description": "Email validation options"
+        },
+        {
+          "name": "first-name",
+          "description": ""
+        },
+        {
+          "name": "is-loading",
+          "description": "Controls the loading state of the component"
+        },
+        {
+          "name": "last-name",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "vui-spinner",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "description": ""
+        },
+        {
+          "name": "size",
+          "description": "",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "medium"
+            },
+            {
+              "name": "small"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "vui-textbox",
@@ -649,6 +937,39 @@
         "value": ""
       },
       "attributes": []
+    },
+    {
+      "name": "vui-toast",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "position",
+          "description": "",
+          "values": [
+            {
+              "name": "bottom-center"
+            },
+            {
+              "name": "bottom-left"
+            },
+            {
+              "name": "bottom-right"
+            },
+            {
+              "name": "top-center"
+            },
+            {
+              "name": "top-left"
+            },
+            {
+              "name": "top-right"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "vui-user-menu",

@@ -105,7 +105,10 @@ export const createI18nStore = (givenOptions: TranslatorOptions) => {
 
     if (key in translations) {
       const translatedValue = translations[key]
-      return options.interpolateValues(translatedValue, interpolations)
+      if (interpolations) {
+        return options.interpolateValues(translatedValue, interpolations)
+      }
+      return translatedValue
     }
 
     return options.translationForMissingKey(currentLocale, key, translations)

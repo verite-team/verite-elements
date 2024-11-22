@@ -238,15 +238,38 @@
     </div>
 
     <div id="signup-container" style="width: 100%; max-width: 360px"></div>
+    <vui-i18n text="hello"></vui-i18n>
       <verite-connector type="signup">
           <vui-auth-card class="card--signup" elevation="lg" heading="Sign up to Acme Co" description="Welcome! Please fill in the details to get started." prompt="Already have an account?" action="Sign in">
+            <div slot="providers">
+              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="apple" size="20"></vui-logo>
+                    <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
+   
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="google" size="20"></vui-logo>
+                    <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
+              </vui-flex>
+              <vui-divider orientation="horizontal" style="margin: 16px 0">
+                <!-- <span>or</span> -->
+                <vui-i18n text="signup.or"></vui-i18n>
+            </vui-divider>
+          </div>
           <vui-signup
             first-name="Test"
             last-name="User"
             email="test@test.com"
             password="test1234"
             onsubmit="console.log('Signup clicked')"
-          ></vui-signup>
+          >
+        </vui-signup>
         </vui-auth-card>
       </verite-connector>
     </div>

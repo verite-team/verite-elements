@@ -485,6 +485,28 @@ export declare interface VuiGoogleOneTap extends Components.VuiGoogleOneTap {
 
 
 @ProxyCmp({
+  inputs: ['params', 'text']
+})
+@Component({
+  selector: 'vui-i18n',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['params', 'text'],
+})
+export class VuiI18n {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiI18n extends Components.VuiI18n {}
+
+
+@ProxyCmp({
   inputs: ['color', 'name', 'size']
 })
 @Component({

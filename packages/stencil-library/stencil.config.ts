@@ -22,6 +22,10 @@ export const config: Config = {
           src: 'themes', // This will copy the entire global directory
           dest: 'themes',
         },
+        {
+          src: 'assets', // This will copy the entire global directory
+          dest: 'assets',
+        },
       ],
       // esmLoaderPath: '../loader',
     },

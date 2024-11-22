@@ -28,6 +28,7 @@ export const VuiErrorMessage = /*@__PURE__*/createReactComponent<JSX.VuiErrorMes
 export const VuiFlex = /*@__PURE__*/createReactComponent<JSX.VuiFlex, HTMLVuiFlexElement>('vui-flex');
 export const VuiFormControl = /*@__PURE__*/createReactComponent<JSX.VuiFormControl, HTMLVuiFormControlElement>('vui-form-control');
 export const VuiGoogleOneTap = /*@__PURE__*/createReactComponent<JSX.VuiGoogleOneTap, HTMLVuiGoogleOneTapElement>('vui-google-one-tap');
+export const VuiI18n = /*@__PURE__*/createReactComponent<JSX.VuiI18n, HTMLVuiI18nElement>('vui-i18n');
 export const VuiIcon = /*@__PURE__*/createReactComponent<JSX.VuiIcon, HTMLVuiIconElement>('vui-icon');
 export const VuiLabel = /*@__PURE__*/createReactComponent<JSX.VuiLabel, HTMLVuiLabelElement>('vui-label');
 export const VuiLink = /*@__PURE__*/createReactComponent<JSX.VuiLink, HTMLVuiLinkElement>('vui-link');

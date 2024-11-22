@@ -36,19 +36,28 @@
 
 ### Used by
 
+ - [vui-auth-footer](../auth)
  - [vui-otp](../otp)
  - [vui-signin](../signin)
  - [vui-signup](../signup)
  - [vui-theme-toggle](../theme-toggle)
+ - [vui-toast](../toast)
  - [vui-user-menu](../user-menu)
+
+### Depends on
+
+- [vui-spinner](../spinner)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-button --> vui-spinner
+  vui-auth-footer --> vui-button
   vui-otp --> vui-button
   vui-signin --> vui-button
   vui-signup --> vui-button
   vui-theme-toggle --> vui-button
+  vui-toast --> vui-button
   vui-user-menu --> vui-button
   style vui-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

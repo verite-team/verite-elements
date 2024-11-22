@@ -20,6 +20,7 @@ export class AuthCard {
           <vui-auth-header heading={this.heading} description={this.description}></vui-auth-header>
         </slot>
         <vui-card-content>
+          <slot name="providers"></slot>
           <slot></slot>
         </vui-card-content>
         <slot name="footer">

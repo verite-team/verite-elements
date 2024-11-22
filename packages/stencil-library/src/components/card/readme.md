@@ -23,16 +23,16 @@
 
 ### Used by
 
+ - [vui-auth-header](../auth)
  - [vui-otp](../otp)
  - [vui-signin](../signin)
- - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-auth-header --> vui-card-title
   vui-otp --> vui-card-title
   vui-signin --> vui-card-title
-  vui-signup --> vui-card-title
   style vui-card-title fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

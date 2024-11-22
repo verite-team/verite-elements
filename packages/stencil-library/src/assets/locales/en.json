@@ -1,4 +1,6 @@
 {
+  "hello": "Hello, world!",
+  "poweredBy": "Secured by Verite",
   "signup": {
     "firstName": {
       "label": "First name",
@@ -18,6 +20,30 @@
       "show": "Show password",
       "hide": "Hide password"
     },
+    "signin": {
+      "prompt": "Already have an account?",
+      "action": "Sign in"
+    },
+    "with": "Sign up with {provider}",
+    "or": "or",
     "submit": "Sign up"
+  },
+  "validation": {
+    "required": "{fieldName} is required",
+    "email": {
+      "invalid": "Please enter a valid email",
+      "required": "Email is required",
+      "allowedDomains": "Email domain must be one of: {{domains}}",
+      "blockedDomains": "Email domain cannot be: {{domains}}"
+    },
+    "password": {
+      "required": "Password is required",
+      "minLength": "Must be at least {length} characters",
+      "maxLength": "Must not exceed {length} characters",
+      "uppercase": "Must contain at least one uppercase letter",
+      "lowercase": "Must contain at least one lowercase letter",
+      "number": "Must contain at least one number",
+      "specialChar": "Must contain at least one special character"
+    }
   }
 }

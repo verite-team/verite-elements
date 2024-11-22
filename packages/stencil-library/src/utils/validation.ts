@@ -1,3 +1,5 @@
+import { i18n } from '../stores/i18n'
+
 export interface ValidationRule {
   message: string
   validate: (value: any) => boolean
@@ -18,8 +20,8 @@ export interface EmailValidationOptions {
 }
 
 export const ValidationRules = {
-  required: (message = 'This field is required'): ValidationRule => ({
-    message,
+  required: (message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.required'),
     validate: (value: any) => {
       if (value === null || value === undefined) return false
       if (typeof value === 'string') return value.trim().length > 0
@@ -27,7 +29,7 @@ export const ValidationRules = {
     },
   }),
 
-  email: (message = 'Please enter a valid email'): ValidationRule => ({
+  email: (message: string): ValidationRule => ({
     message,
     validate: (value: string) => {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
@@ -35,7 +37,7 @@ export const ValidationRules = {
   }),
 
   allowedDomains: (domains: string[], message?: string): ValidationRule => ({
-    message: message || `Email domain must be one of: ${domains.join(', ')}`,
+    message: message || i18n.t('validation.email.allowedDomains', { domains: domains.join(', ') }),
     validate: (value: string) => {
       const domain = value.split('@')[1]?.toLowerCase()
       return domain ? domains.includes(domain) : false
@@ -43,7 +45,7 @@ export const ValidationRules = {
   }),
 
   blockedDomains: (domains: string[], message?: string): ValidationRule => ({
-    message: message || `Email domain cannot be: ${domains.join(', ')}`,
+    message: message || i18n.t('validation.email.blockedDomains', { domains: domains.join(', ') }),
     validate: (value: string) => {
       const domain = value.split('@')[1]?.toLowerCase()
       return domain ? !domains.includes(domain) : true
@@ -51,38 +53,38 @@ export const ValidationRules = {
   }),
 
   minLength: (length: number, message?: string): ValidationRule => ({
-    message: message || `Must be at least ${length} characters`,
+    message: message || i18n.t('validation.password.minLength', { length: length.toString() }),
     validate: (value: string) => value.length >= length,
   }),
 
   maxLength: (length: number, message?: string): ValidationRule => ({
-    message: message || `Must not exceed ${length} characters`,
+    message: message || i18n.t('validation.password.maxLength', { length: length.toString() }),
     validate: (value: string) => value.length <= length,
   }),
 
-  hasUppercase: (message = 'Must contain at least one uppercase letter'): ValidationRule => ({
-    message,
+  hasUppercase: (message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.password.uppercase'),
     validate: (value: string) => /[A-Z]/.test(value),
   }),
 
-  hasLowercase: (message = 'Must contain at least one lowercase letter'): ValidationRule => ({
-    message,
+  hasLowercase: (message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.password.lowercase'),
     validate: (value: string) => /[a-z]/.test(value),
   }),
 
-  hasNumber: (message = 'Must contain at least one number'): ValidationRule => ({
-    message,
+  hasNumber: (message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.password.number'),
     validate: (value: string) => /\d/.test(value),
   }),
 
-  hasSpecialChar: (message = 'Must contain at least one special character'): ValidationRule => ({
-    message,
+  hasSpecialChar: (message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.password.specialChar'),
     validate: (value: string) => /[!@#$%^&*(),.?":{}|<>]/.test(value),
   }),
 
   // Helper function to create password validation rules
   createPasswordRules: (options: PasswordValidationOptions = {}): ValidationRule[] => {
-    const rules: ValidationRule[] = [ValidationRules.required('Password is required')]
+    const rules: ValidationRule[] = [ValidationRules.required(i18n.t('validation.password.required'))]
 
     if (options.minLength) {
       rules.push(ValidationRules.minLength(options.minLength))
@@ -114,8 +116,8 @@ export const ValidationRules = {
   // Helper function to create email validation rules
   createEmailRules: (options?: EmailValidationOptions): ValidationRule[] => {
     const rules: ValidationRule[] = [
-      ValidationRules.required('Email is required'),
-      ValidationRules.email('Please enter a valid email address'),
+      ValidationRules.required(i18n.t('validation.email.required')),
+      ValidationRules.email(i18n.t('validation.email.invalid')),
     ]
 
     if (options?.allowedDomains?.length) {
@@ -129,8 +131,8 @@ export const ValidationRules = {
     return rules
   },
 
-  name: (fieldName: string, message?: string): ValidationRule => ({
-    message: message || `${fieldName} is required`,
+  name: (fieldName: string, message = ''): ValidationRule => ({
+    message: message || i18n.t('validation.required', { fieldName }),
     validate: (value: string) => {
       return value.trim().length > 0
     },
@@ -138,6 +140,10 @@ export const ValidationRules = {
 
   // Add helper function for name validation
   createNameRules: (fieldName: string): ValidationRule[] => {
-    return [ValidationRules.required(`${fieldName} is required`), ValidationRules.name(fieldName)]
+    const fieldNameTranslation = i18n.t(fieldName)
+    return [
+      ValidationRules.required(i18n.t('validation.required', { fieldName: fieldNameTranslation })),
+      ValidationRules.name(fieldNameTranslation),
+    ]
   },
 }

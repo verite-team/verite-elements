@@ -57,6 +57,7 @@ graph TD;
   vui-otp --> vui-card-footer
   vui-otp --> vui-divider
   vui-otp --> vui-powered-by
+  vui-button --> vui-spinner
   style vui-otp fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

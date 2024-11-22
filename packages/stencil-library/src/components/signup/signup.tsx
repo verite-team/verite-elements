@@ -67,11 +67,11 @@ export class Signup {
   }
 
   private get firstNameRules(): ValidationRule[] {
-    return ValidationRules.createNameRules('First name')
+    return ValidationRules.createNameRules('signup.firstName.label')
   }
 
   private get lastNameRules(): ValidationRule[] {
-    return ValidationRules.createNameRules('Last name')
+    return ValidationRules.createNameRules('signup.lastName.label')
   }
 
   private get emailRules(): ValidationRule[] {

@@ -26,16 +26,16 @@
 
 ### Used by
 
+ - [vui-auth-header](../auth)
  - [vui-otp](../otp)
  - [vui-signin](../signin)
- - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-auth-header --> vui-placeholder
   vui-otp --> vui-placeholder
   vui-signin --> vui-placeholder
-  vui-signup --> vui-placeholder
   style vui-placeholder fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
