@@ -65,5 +65,14 @@
       "prompt": "Don't have an account?",
       "action": "Sign up"
     }
+  },
+  "otp": {
+    "title": "Verify your email",
+    "description": "We sent a verification code to your email. Please enter it below.",
+    "verify": "Verify",
+    "noCode": "Didn't receive the code?",
+    "resend": "Resend",
+    "backToSignIn": "Back to sign in",
+    "signIn": "Sign in"
   }
 }

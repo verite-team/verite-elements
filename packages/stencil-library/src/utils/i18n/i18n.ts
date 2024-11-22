@@ -24,10 +24,8 @@ const fetchLocale = Build?.isTesting
   : async (locale: string): Promise<Record<string, string>> => {
       const response = await fetch(getAssetPath(`/assets/locales/${locale}.json`))
       const data = await response.json()
-      console.log('data', data)
       // Flatten the nested structure
       const flattened = flattenObject(data)
-      console.log('flattened', flattened)
       return flattened
     }
 

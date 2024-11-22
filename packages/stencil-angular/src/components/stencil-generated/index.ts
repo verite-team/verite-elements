@@ -595,21 +595,20 @@ export declare interface VuiLogo extends Components.VuiLogo {}
 
 
 @ProxyCmp({
-  inputs: ['labels']
 })
 @Component({
   selector: 'vui-otp',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['labels'],
+  inputs: [],
 })
 export class VuiOtp {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit', 'ready', 'resend']);
+    proxyOutputs(this, this.el, ['formSubmit']);
   }
 }
 
@@ -617,10 +616,6 @@ export class VuiOtp {
 export declare interface VuiOtp extends Components.VuiOtp {
 
   formSubmit: EventEmitter<CustomEvent<string>>;
-
-  ready: EventEmitter<CustomEvent<void>>;
-
-  resend: EventEmitter<CustomEvent<void>>;
 }
 
 

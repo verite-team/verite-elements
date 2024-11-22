@@ -12,7 +12,7 @@ export class AuthFooter {
   @Prop() action?: string
   @Prop() variant?: 'default' | 'inset' = 'default'
 
-  @Event({ bubbles: true }) actionClick: EventEmitter
+  @Event() actionClick: EventEmitter
 
   handleActionClick = () => {
     this.actionClick.emit()

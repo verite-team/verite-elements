@@ -1,6 +1,8 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, Host, State, h } from '@stencil/core'
 
-import { OtpLabels } from './otp-interfaces'
+import { i18n } from '../../stores/i18n'
+
+const t = i18n.t
 
 @Component({
   tag: 'vui-otp',
@@ -10,21 +12,10 @@ import { OtpLabels } from './otp-interfaces'
 export class Otp {
   @Element() el!: HTMLElement
 
-  @Prop() labels: OtpLabels = {
-    title: 'Verify your email',
-    description: 'We sent a verification code to your email. Please enter it below.',
-    verifyButtonText: 'Verify',
-    noCodeText: "Didn't receive the code?",
-    resendText: 'Resend',
-    backToSignInText: 'Back to sign in',
-    signInButtonText: 'Sign in',
-  }
-
-  @Event() formSubmit: EventEmitter<string>
-  @Event() ready: EventEmitter<void>
-  @Event() resend: EventEmitter<void>
   @State() code: string[] = []
   @State() activeIndex: number = 0
+
+  @Event() formSubmit: EventEmitter<string>
 
   private readonly codeLength = 6
 
@@ -80,80 +71,47 @@ export class Otp {
 
   private handleSubmit = (e: Event) => {
     e.preventDefault()
-    this.formSubmit.emit()
+    if (this.code.length === this.codeLength) {
+      this.formSubmit.emit(this.code.join(''))
+    }
   }
 
-  private handleResend = () => {
-    this.resend.emit()
+  async componentWillLoad() {
+    await i18n.waitUntilReady
   }
 
   componentDidLoad() {
     this.focusActive()
-    this.ready.emit()
   }
 
   render() {
     return (
       <Host part="otp" onKeyDown={this.handleKeyDown}>
-        <slot name="header">
-          <vui-card-header>
-            <div part="logo-container">
-              <slot name="logo">
-                <vui-placeholder width={40} height={41}></vui-placeholder>
-              </slot>
-            </div>
-            <vui-card-title halign="center">{this.labels.title}</vui-card-title>
-            <vui-card-description halign="center">{this.labels.description}</vui-card-description>
-          </vui-card-header>
-        </slot>
+        <form onSubmit={this.handleSubmit}>
+          <vui-flex direction="row" justify="center" gap={2}>
+            {Array.from({ length: this.codeLength }).map((_, index) => (
+              <div class="form-field">
+                <vui-textbox
+                  part={`input-${index}`}
+                  name={`code-${index}`}
+                  class={{
+                    'code-input': true,
+                    active: index === this.activeIndex,
+                  }}
+                  value={this.code[index] || ''}
+                  readonly
+                  tabindex="-1"
+                  onMouseDown={this.handleMouseDown}
+                  onClick={this.handleMouseDown}
+                />
+              </div>
+            ))}
+          </vui-flex>
 
-        <vui-card-content>
-          <form onSubmit={this.handleSubmit}>
-            <vui-flex direction="row" justify="center" gap={2}>
-              {Array.from({ length: this.codeLength }).map((_, index) => (
-                <div class="form-field">
-                  <vui-textbox
-                    part={`input-${index}`}
-                    name={`code-${index}`}
-                    class={{
-                      'code-input': true,
-                      active: index === this.activeIndex,
-                    }}
-                    value={this.code[index] || ''}
-                    readonly
-                    tabindex="-1"
-                    onMouseDown={this.handleMouseDown}
-                    onClick={this.handleMouseDown}
-                  />
-                </div>
-              ))}
-            </vui-flex>
-
-            <vui-button class="verify-button" type="submit" onClick={this.handleSubmit}>
-              {this.labels.verifyButtonText}
-            </vui-button>
-          </form>
-        </vui-card-content>
-
-        <slot name="footer">
-          <vui-card-footer variant="inset">
-            <div class="footer-prompt">
-              <span>{this.labels.noCodeText}</span>
-              <vui-button variant="outline" size="sm" onClick={this.handleResend}>
-                {this.labels.resendText}
-              </vui-button>
-            </div>
-            <vui-divider orientation="horizontal"></vui-divider>
-            {/* <div class="footer-prompt">
-              <span>{this.labels.backToSignInText}</span>
-              <vui-button variant="outline" size="sm">
-                {this.labels.signInButtonText}
-              </vui-button>
-            </div> */}
-            {/* <vui-divider orientation="horizontal"></vui-divider> */}
-            <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>
-          </vui-card-footer>
-        </slot>
+          <vui-button class="verify-button" type="submit" onClick={this.handleSubmit}>
+            {t('otp.verify')}
+          </vui-button>
+        </form>
       </Host>
     )
   }

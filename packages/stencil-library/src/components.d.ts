@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
-import { OtpLabels } from "./components/otp/otp-interfaces";
 import { SignInFormData } from "./components/signin/signin-interfaces";
 import { SignUpFormData } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
@@ -16,7 +15,6 @@ import { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
-export { OtpLabels } from "./components/otp/otp-interfaces";
 export { SignInFormData } from "./components/signin/signin-interfaces";
 export { SignUpFormData } from "./components/signup/signup-interfaces";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
@@ -147,7 +145,6 @@ export namespace Components {
         "size": number;
     }
     interface VuiOtp {
-        "labels": OtpLabels;
     }
     interface VuiPlaceholder {
         /**
@@ -473,8 +470,6 @@ declare global {
     };
     interface HTMLVuiOtpElementEventMap {
         "formSubmit": string;
-        "ready": void;
-        "resend": void;
     }
     interface HTMLVuiOtpElement extends Components.VuiOtp, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiOtpElementEventMap>(type: K, listener: (this: HTMLVuiOtpElement, ev: VuiOtpCustomEvent<HTMLVuiOtpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -772,10 +767,7 @@ declare namespace LocalJSX {
         "size"?: number;
     }
     interface VuiOtp {
-        "labels"?: OtpLabels;
         "onFormSubmit"?: (event: VuiOtpCustomEvent<string>) => void;
-        "onReady"?: (event: VuiOtpCustomEvent<void>) => void;
-        "onResend"?: (event: VuiOtpCustomEvent<void>) => void;
     }
     interface VuiPlaceholder {
         /**

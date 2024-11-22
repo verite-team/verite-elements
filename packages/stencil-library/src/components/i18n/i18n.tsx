@@ -14,9 +14,7 @@ export class Translate {
   @Watch('text')
   @Watch('params')
   async translateText() {
-    console.log('translateText', this.text, this.params)
     const params = typeof this.params === 'string' ? JSON.parse(this.params) : this.params
-    console.log('params', typeof params, params)
     this.translatedText = i18n.t(this.text, params)
   }
 

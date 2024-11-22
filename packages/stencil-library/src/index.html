@@ -103,6 +103,22 @@
     <vui-button style="position: fixed; top: 1rem; right: 7rem" size="sm" variant="outline" onClick="showToast()"
       >Show Toast</vui-button
     >
+    <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
+
+    <div id="otp-container" style="width: 100%; max-width: 360px">
+      <verite-connector type="otp">
+        <vui-auth-card
+          class="card--otp"
+          elevation="lg"
+          heading="Verify your email"
+          description="We sent a verification code to your email. Please enter it below."
+          prompt="Didn't receive the code?"
+          action="Resend"
+        >
+          <vui-otp></vui-otp>
+        </vui-auth-card>
+      </verite-connector>
+    </div>
 
     <div id="signin-container" style="width: 100%; max-width: 360px">
       <!-- Verite connector -->
@@ -113,6 +129,8 @@
           elevation="lg"
           heading="Sign in to Acme Co"
           description="Welcome back! Please sign in to continue"
+          prompt="Don't have an account?"
+          action="Sign up"
         >
           <!-- Providers -->
           <div slot="providers">
@@ -189,27 +207,6 @@
       </verite-connector>
     </div>
 
-    <!-- <div class="flex flex-col items-center justify-center gap-4">
-      <div id="otp-container" style="width: 100%; max-width: 360px">
-        <verite-connector type="otp">
-          <vui-card class="card--otp" elevation="3">
-            <vui-otp></vui-otp>
-          </vui-card>
-        </verite-connector>
-      </div>
-    </div> -->
-    <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
-
     <vui-toast position="top-center"></vui-toast>
-    <!-- <script>
-      const signupContainer = document.getElementById('signup-container')
-      signupContainer.addEventListener('ready', () => {
-        signupContainer.style.visibility = 'visible'
-      })
-      const signinContainer = document.getElementById('signin-container')
-      signinContainer.addEventListener('ready', () => {
-        signinContainer.style.visibility = 'visible'
-      })
-    </script> -->
   </body>
 </html>
