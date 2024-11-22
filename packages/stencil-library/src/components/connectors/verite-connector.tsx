@@ -14,6 +14,11 @@ export class VeriteConnector {
   //   console.log('Auth component ready', this.type, event)
   // }
 
+  @Listen('forgotPassword')
+  handleForgotPassword(event: CustomEvent) {
+    console.log('Forgot password clicked', event)
+  }
+
   @Listen('formSubmit')
   async handleFormSubmit(event: CustomEvent<{ email: string; password: string }>) {
     event.stopPropagation()

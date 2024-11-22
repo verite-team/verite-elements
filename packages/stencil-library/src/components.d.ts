@@ -9,7 +9,7 @@ import { EmailValidationOptions, PasswordValidationOptions, ValidationRule } fro
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
 import { OtpLabels } from "./components/otp/otp-interfaces";
-import { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
+import { SignInFormData } from "./components/signin/signin-interfaces";
 import { SignUpFormData } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
@@ -17,7 +17,7 @@ export { EmailValidationOptions, PasswordValidationOptions, ValidationRule } fro
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
 export { OtpLabels } from "./components/otp/otp-interfaces";
-export { SignInFormData, SignInLabels } from "./components/signin/signin-interfaces";
+export { SignInFormData } from "./components/signin/signin-interfaces";
 export { SignUpFormData } from "./components/signup/signup-interfaces";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
@@ -176,16 +176,10 @@ export namespace Components {
          */
         "isLoading"?: boolean;
         /**
-          * Labels for localization
-         */
-        "labels": SignInLabels;
-        /**
           * Password validation options
          */
         "passwordValidation"?: PasswordValidationOptions;
-        "styles"?: {
-    link?: { [key: string]: string | number }
-  };
+        "showForgotPassword"?: boolean;
     }
     interface VuiSignup {
         "email"?: string;
@@ -509,9 +503,8 @@ declare global {
         new (): HTMLVuiPoweredByElement;
     };
     interface HTMLVuiSigninElementEventMap {
+        "forgotPassword": void;
         "formSubmit": SignInFormData;
-        "ready": void;
-        "signUp": void;
     }
     interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -810,20 +803,13 @@ declare namespace LocalJSX {
           * Controls the loading state of the component
          */
         "isLoading"?: boolean;
-        /**
-          * Labels for localization
-         */
-        "labels"?: SignInLabels;
+        "onForgotPassword"?: (event: VuiSigninCustomEvent<void>) => void;
         "onFormSubmit"?: (event: VuiSigninCustomEvent<SignInFormData>) => void;
-        "onReady"?: (event: VuiSigninCustomEvent<void>) => void;
-        "onSignUp"?: (event: VuiSigninCustomEvent<void>) => void;
         /**
           * Password validation options
          */
         "passwordValidation"?: PasswordValidationOptions;
-        "styles"?: {
-    link?: { [key: string]: string | number }
-  };
+        "showForgotPassword"?: boolean;
     }
     interface VuiSignup {
         "email"?: string;

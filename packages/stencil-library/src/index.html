@@ -104,164 +104,79 @@
       >Show Toast</vui-button
     >
 
-    <!-- <div
-      style="
-        width: 150px;
-        resize: horizontal;
-        overflow: auto;
-        min-width: 100px;
-        max-width: 500px;
-        border: 1px solid #ccc;
-      "
-    >
-      <vui-flex breakpoint="200" breakpointDirection="column">
-        <div style="flex: 1; padding: 10px; border: 1px solid red">Test content</div>
-        <div style="flex: 1; padding: 10px; border: 1px solid blue">Test content</div>
-        <div style="flex: 1; padding: 10px; border: 1px solid green">Test content</div>
-      </vui-flex>
-    </div> -->
-
-    <!-- <div
-      style="
-        width: 300px;
-        resize: horizontal;
-        overflow: auto;
-        min-width: 100px;
-        max-width: 600px;
-        border: 1px solid #ccc;
-      "
-    >
-      <vui-flex direction="row" breakpoint="200" breakpointDirection="column" gap="2">
-        <div style="padding: 10px; border: 2px solid blue; flex: 1">First item</div>
-        <div style="padding: 10px; border: 2px solid red; flex: 1">Second item</div>
-      </vui-flex>
-    </div> -->
-
-    <!-- <div
-      style="
-        width: 600px;
-        resize: horizontal;
-        overflow: auto;
-        min-width: 100px;
-        max-width: 600px;
-        border: 2px solid red;
-        padding: 16px;
-      "
-    >
-      <vui-flex direction="row" breakpoint="400">
-        <div style="padding: 10px; background: lightblue; flex: 1; width: 100%">
-          First item (should stack below 200px width)
-        </div>
-        <div style="padding: 10px; background: lightgreen; flex: 1; width: 100%">
-          Second item (should stack below 200px width)
-        </div>
-      </vui-flex>
-    </div> -->
-
-    <!-- <div style="container-type: inline-size; border: 1px solid black">
-      <div style="padding: 20px; border: 2px solid blue">Test content</div>
-      <style>
-        @container (max-width: 200px) {
-          div {
-            border-color: green !important;
-            background: yellow;
-          }
-        }
-      </style>
-    </div> -->
-
-    <!-- <vui-button variant="destructive" width="full">
-      <vui-flex valign="center" gap="2">
-        <vui-logo name="apple" size="20"></vui-logo>
-        <vui-label>Test</vui-label>
-      </vui-flex>
-    </vui-button> -->
-
-    <!-- <div id="signin-container" style="width: 100%; max-width: 360px">
+    <div id="signin-container" style="width: 100%; max-width: 360px">
+      <!-- Verite connector -->
       <verite-connector type="signin">
-        <vui-card class="card--signin" elevation="lg">
-          <vui-signin
-            id="signin"
-            email-validation='{"blockedDomains": ["gmail.com"]}'
-            onFormSubmit="console.log('Signin clicked')"
-          >
-            <div slot="providers">
-              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="apple" size="20"></vui-logo>
-                    <vui-label>Sign in with Apple</vui-label>
-                  </vui-flex>
-                </vui-button>
-
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="google" size="20"></vui-logo>
-                    <vui-label>Sign in with Google</vui-label>
-                  </vui-flex>
-                </vui-button>
-              </vui-flex>
-              <vui-divider orientation="horizontal" style="margin: 16px 0">
-                <span>or</span>
-              </vui-divider>
-            </div>
-            <div slot="footer">
-              <vui-card-footer variant="inset">
-                <vui-flex
-                  direction="column"
-                  items="center"
-                  justify="center"
-                  gap="4"
-                  style="padding: 20px 0; color: hsl(var(--muted-foreground)); font-size: 0.875rem"
-                >
-                  <span>By signing up, you agree to the following</span>
-                  <vui-flex gap="4" justify="center">
-                    <vui-link href="/terms-of-service">Terms of Service</vui-link>
-                    <vui-link href="/privacy-policy">Privacy Policy</vui-link>
-                  </vui-flex>
+        <!-- Auth card -->
+        <vui-auth-card
+          class="card--signin"
+          elevation="lg"
+          heading="Sign in to Acme Co"
+          description="Welcome back! Please sign in to continue"
+        >
+          <!-- Providers -->
+          <div slot="providers">
+            <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex items="center" gap="2">
+                  <vui-logo name="apple" size="20"></vui-logo>
+                  <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
                 </vui-flex>
-              </vui-card-footer>
-            </div>
-          </vui-signin>
-        </vui-card>
-      </verite-connector>
-    </div> -->
+              </vui-button>
 
-    <div id="signup-container" style="width: 100%; max-width: 360px">
-      <verite-connector type="signup">
-        <vui-card class="card--signup" elevation="lg">
-          <vui-card-content>
-            <vui-signup onsubmit="console.log('Signup clicked')"></vui-signup>
-          </vui-card-content>
-        </vui-card>
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex items="center" gap="2">
+                  <vui-logo name="google" size="20"></vui-logo>
+                  <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
+                </vui-flex>
+              </vui-button>
+            </vui-flex>
+            <vui-divider orientation="horizontal" style="margin: 16px 0">
+              <vui-i18n text="signup.or"></vui-i18n>
+            </vui-divider>
+          </div>
+
+          <!-- Signin form -->
+          <vui-signin></vui-signin>
+        </vui-auth-card>
       </verite-connector>
     </div>
 
-    <div id="signup-container" style="width: 100%; max-width: 360px"></div>
-    <vui-i18n text="hello"></vui-i18n>
+    <div id="signup-container" style="width: 100%; max-width: 360px">
+      <!-- Verite connector -->
       <verite-connector type="signup">
-          <vui-auth-card class="card--signup" elevation="lg" heading="Sign up to Acme Co" description="Welcome! Please fill in the details to get started." prompt="Already have an account?" action="Sign in">
-            <div slot="providers">
-              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="apple" size="20"></vui-logo>
-                    <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
-                  </vui-flex>
-                </vui-button>
-   
-                <vui-button class="google-button" variant="outline" style="width: 100%">
-                  <vui-flex items="center" gap="2">
-                    <vui-logo name="google" size="20"></vui-logo>
-                    <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
-                  </vui-flex>
-                </vui-button>
-              </vui-flex>
-              <vui-divider orientation="horizontal" style="margin: 16px 0">
-                <!-- <span>or</span> -->
-                <vui-i18n text="signup.or"></vui-i18n>
+        <!-- Auth card -->
+        <vui-auth-card
+          class="card--signup"
+          elevation="lg"
+          heading="Sign up to Acme Co"
+          description="Welcome! Please fill in the details to get started."
+          prompt="Already have an account?"
+          action="Sign in"
+        >
+          <!-- Providers -->
+          <div slot="providers">
+            <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex items="center" gap="2">
+                  <vui-logo name="apple" size="20"></vui-logo>
+                  <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
+                </vui-flex>
+              </vui-button>
+
+              <vui-button class="google-button" variant="outline" style="width: 100%">
+                <vui-flex items="center" gap="2">
+                  <vui-logo name="google" size="20"></vui-logo>
+                  <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
+                </vui-flex>
+              </vui-button>
+            </vui-flex>
+            <vui-divider orientation="horizontal" style="margin: 16px 0">
+              <vui-i18n text="signup.or"></vui-i18n>
             </vui-divider>
           </div>
+
+          <!-- Signup form -->
           <vui-signup
             first-name="Test"
             last-name="User"
@@ -269,12 +184,12 @@
             password="test1234"
             onsubmit="console.log('Signup clicked')"
           >
-        </vui-signup>
+          </vui-signup>
         </vui-auth-card>
       </verite-connector>
     </div>
 
-    <div class="flex flex-col items-center justify-center gap-4">
+    <!-- <div class="flex flex-col items-center justify-center gap-4">
       <div id="otp-container" style="width: 100%; max-width: 360px">
         <verite-connector type="otp">
           <vui-card class="card--otp" elevation="3">
@@ -282,7 +197,7 @@
           </vui-card>
         </verite-connector>
       </div>
-    </div>
+    </div> -->
     <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
     <vui-toast position="top-center"></vui-toast>

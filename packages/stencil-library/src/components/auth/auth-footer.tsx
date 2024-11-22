@@ -21,12 +21,14 @@ export class AuthFooter {
   render() {
     return (
       <vui-card-footer part="footer" variant={this.variant}>
-        <div class="prompt">
-          <span>{this.prompt}</span>
-          <vui-button variant="outline" size="sm" onClick={this.handleActionClick}>
-            {this.action}
-          </vui-button>
-        </div>
+        {this.prompt && (
+          <div class="prompt">
+            <span>{this.prompt}</span>
+            <vui-button variant="outline" size="sm" onClick={this.handleActionClick}>
+              {this.action}
+            </vui-button>
+          </div>
+        )}
         {this.showDivider && <vui-divider orientation="horizontal"></vui-divider>}
         {this.showPoweredBy && <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>}
       </vui-card-footer>

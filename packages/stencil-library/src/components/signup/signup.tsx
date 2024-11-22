@@ -34,8 +34,8 @@ export class Signup {
   }
 
   @Element() el!: HTMLElement
-  @Event({ eventName: 'formSubmit', bubbles: true }) formSubmit: EventEmitter<SignUpFormData>
-  // @Event({ bubbles: true }) ready: EventEmitter<void>
+  @Event() formSubmit: EventEmitter<SignUpFormData>
+
   private togglePasswordVisibility = () => {
     this.showPassword = !this.showPassword
   }

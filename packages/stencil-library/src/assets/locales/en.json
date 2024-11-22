@@ -45,5 +45,25 @@
       "number": "Must contain at least one number",
       "specialChar": "Must contain at least one special character"
     }
+  },
+  "signin": {
+    "title": "Sign in to Acme Co",
+    "description": "Welcome back! Please sign in to continue",
+    "email": {
+      "label": "Email",
+      "placeholder": "Email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Password",
+      "show": "Show password",
+      "hide": "Hide password"
+    },
+    "forgotPassword": "Forgot your password?",
+    "submit": "Sign in",
+    "signup": {
+      "prompt": "Don't have an account?",
+      "action": "Sign up"
+    }
   }
 }

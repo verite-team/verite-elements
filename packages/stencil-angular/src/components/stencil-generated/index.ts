@@ -669,21 +669,21 @@ export declare interface VuiPoweredBy extends Components.VuiPoweredBy {}
 
 
 @ProxyCmp({
-  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles']
+  inputs: ['emailValidation', 'isLoading', 'passwordValidation', 'showForgotPassword']
 })
 @Component({
   selector: 'vui-signin',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['emailValidation', 'isLoading', 'labels', 'passwordValidation', 'styles'],
+  inputs: ['emailValidation', 'isLoading', 'passwordValidation', 'showForgotPassword'],
 })
 export class VuiSignin {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit', 'ready', 'signUp']);
+    proxyOutputs(this, this.el, ['forgotPassword', 'formSubmit']);
   }
 }
 
@@ -692,11 +692,9 @@ import type { SignInFormData as IVuiSigninSignInFormData } from 'stencil-library
 
 export declare interface VuiSignin extends Components.VuiSignin {
 
+  forgotPassword: EventEmitter<CustomEvent<void>>;
+
   formSubmit: EventEmitter<CustomEvent<IVuiSigninSignInFormData>>;
-
-  ready: EventEmitter<CustomEvent<void>>;
-
-  signUp: EventEmitter<CustomEvent<void>>;
 }
 
 
