@@ -1,5 +1,6 @@
 :host {
   display: inline;
+  font-family: var(--font-family);
 }
 
 a {

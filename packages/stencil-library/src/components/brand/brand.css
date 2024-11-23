@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.75rem;
+  font-family: var(--font-family);
   color: hsl(var(--muted-foreground));
 }
 
@@ -11,7 +12,7 @@ span {
   display: inline-block;
 }
 
-::slotted(*) {
-  display: inline-flex;
-  align-items: center;
+img {
+  display: inline-block;
+  object-fit: contain;
 }

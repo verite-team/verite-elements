@@ -1,6 +1,7 @@
 :host {
   display: inline-block;
   color: inherit;
+  font-family: var(--font-family);
 }
 
 label {

@@ -10,8 +10,6 @@ import { EmailValidationOptions, PasswordValidationOptions } from "./utils/valid
 import { SignUpFormData } from "./components/auth/types";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
-import { SignInFormData } from "./components/signin/signin-interfaces";
-import { SignUpFormData as SignUpFormData1 } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export { Element } from "@stencil/core";
@@ -19,8 +17,6 @@ export { EmailValidationOptions, PasswordValidationOptions } from "./utils/valid
 export { SignUpFormData } from "./components/auth/types";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
-export { SignInFormData } from "./components/signin/signin-interfaces";
-export { SignUpFormData as SignUpFormData1 } from "./components/signup/signup-interfaces";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
@@ -38,8 +34,8 @@ export namespace Components {
     interface VuiAuthFooter {
         "action"?: string;
         "prompt"?: string;
+        "showBrand"?: boolean;
         "showDivider"?: boolean;
-        "showPoweredBy"?: boolean;
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthForm {
@@ -65,10 +61,15 @@ export namespace Components {
         "styles"?: {
     link?: { [key: string]: string | number }
   };
+        "submitLabel"?: string;
     }
     interface VuiAuthHeader {
         "description": string;
         "heading": string;
+    }
+    interface VuiBrand {
+        "label": string;
+        "logo": string;
     }
     interface VuiButton {
         "busy"?: boolean;
@@ -189,45 +190,6 @@ export namespace Components {
          */
         "width": number;
     }
-    interface VuiPoweredBy {
-        "label": string;
-    }
-    interface VuiSignin {
-        /**
-          * Email validation options
-         */
-        "emailValidation"?: EmailValidationOptions | string;
-        /**
-          * Controls the loading state of the component
-         */
-        "isLoading"?: boolean;
-        /**
-          * Password validation options
-         */
-        "passwordValidation"?: PasswordValidationOptions;
-        "showForgotPassword"?: boolean;
-    }
-    interface VuiSignup {
-        "email"?: string;
-        /**
-          * Email validation options
-         */
-        "emailValidation"?: EmailValidationOptions | string;
-        "firstName"?: string;
-        /**
-          * Controls the loading state of the component
-         */
-        "isLoading"?: boolean;
-        "lastName"?: string;
-        "password"?: string;
-        /**
-          * Password validation options
-         */
-        "passwordValidation"?: PasswordValidationOptions;
-        "styles"?: {
-    link?: { [key: string]: string | number }
-  };
-    }
     interface VuiSpinner {
         "color": string;
         "size": 'small' | 'medium' | 'large';
@@ -278,14 +240,6 @@ export interface VuiGoogleOneTapCustomEvent<T> extends CustomEvent<T> {
 export interface VuiOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiOtpElement;
-}
-export interface VuiSigninCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLVuiSigninElement;
-}
-export interface VuiSignupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLVuiSignupElement;
 }
 export interface VuiTextboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -352,6 +306,12 @@ declare global {
     var HTMLVuiAuthHeaderElement: {
         prototype: HTMLVuiAuthHeaderElement;
         new (): HTMLVuiAuthHeaderElement;
+    };
+    interface HTMLVuiBrandElement extends Components.VuiBrand, HTMLStencilElement {
+    }
+    var HTMLVuiBrandElement: {
+        prototype: HTMLVuiBrandElement;
+        new (): HTMLVuiBrandElement;
     };
     interface HTMLVuiButtonElementEventMap {
         "buttonClick": MouseEvent;
@@ -542,47 +502,6 @@ declare global {
         prototype: HTMLVuiPlaceholderElement;
         new (): HTMLVuiPlaceholderElement;
     };
-    interface HTMLVuiPoweredByElement extends Components.VuiPoweredBy, HTMLStencilElement {
-    }
-    var HTMLVuiPoweredByElement: {
-        prototype: HTMLVuiPoweredByElement;
-        new (): HTMLVuiPoweredByElement;
-    };
-    interface HTMLVuiSigninElementEventMap {
-        "forgotPassword": void;
-        "formSubmit": SignInFormData;
-    }
-    interface HTMLVuiSigninElement extends Components.VuiSignin, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVuiSigninElementEventMap>(type: K, listener: (this: HTMLVuiSigninElement, ev: VuiSigninCustomEvent<HTMLVuiSigninElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLVuiSigninElement: {
-        prototype: HTMLVuiSigninElement;
-        new (): HTMLVuiSigninElement;
-    };
-    interface HTMLVuiSignupElementEventMap {
-        "formSubmit": SignUpFormData1;
-    }
-    interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLVuiSignupElement: {
-        prototype: HTMLVuiSignupElement;
-        new (): HTMLVuiSignupElement;
-    };
     interface HTMLVuiSpinnerElement extends Components.VuiSpinner, HTMLStencilElement {
     }
     var HTMLVuiSpinnerElement: {
@@ -654,6 +573,7 @@ declare global {
         "vui-auth-footer": HTMLVuiAuthFooterElement;
         "vui-auth-form": HTMLVuiAuthFormElement;
         "vui-auth-header": HTMLVuiAuthHeaderElement;
+        "vui-brand": HTMLVuiBrandElement;
         "vui-button": HTMLVuiButtonElement;
         "vui-card": HTMLVuiCardElement;
         "vui-card-content": HTMLVuiCardContentElement;
@@ -678,9 +598,6 @@ declare global {
         "vui-logo": HTMLVuiLogoElement;
         "vui-otp": HTMLVuiOtpElement;
         "vui-placeholder": HTMLVuiPlaceholderElement;
-        "vui-powered-by": HTMLVuiPoweredByElement;
-        "vui-signin": HTMLVuiSigninElement;
-        "vui-signup": HTMLVuiSignupElement;
         "vui-spinner": HTMLVuiSpinnerElement;
         "vui-textbox": HTMLVuiTextboxElement;
         "vui-theme-toggle": HTMLVuiThemeToggleElement;
@@ -704,8 +621,8 @@ declare namespace LocalJSX {
         "action"?: string;
         "onActionClick"?: (event: VuiAuthFooterCustomEvent<any>) => void;
         "prompt"?: string;
+        "showBrand"?: boolean;
         "showDivider"?: boolean;
-        "showPoweredBy"?: boolean;
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthForm {
@@ -733,10 +650,15 @@ declare namespace LocalJSX {
         "styles"?: {
     link?: { [key: string]: string | number }
   };
+        "submitLabel"?: string;
     }
     interface VuiAuthHeader {
         "description"?: string;
         "heading"?: string;
+    }
+    interface VuiBrand {
+        "label"?: string;
+        "logo"?: string;
     }
     interface VuiButton {
         "busy"?: boolean;
@@ -862,48 +784,6 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
-    interface VuiPoweredBy {
-        "label"?: string;
-    }
-    interface VuiSignin {
-        /**
-          * Email validation options
-         */
-        "emailValidation"?: EmailValidationOptions | string;
-        /**
-          * Controls the loading state of the component
-         */
-        "isLoading"?: boolean;
-        "onForgotPassword"?: (event: VuiSigninCustomEvent<void>) => void;
-        "onFormSubmit"?: (event: VuiSigninCustomEvent<SignInFormData>) => void;
-        /**
-          * Password validation options
-         */
-        "passwordValidation"?: PasswordValidationOptions;
-        "showForgotPassword"?: boolean;
-    }
-    interface VuiSignup {
-        "email"?: string;
-        /**
-          * Email validation options
-         */
-        "emailValidation"?: EmailValidationOptions | string;
-        "firstName"?: string;
-        /**
-          * Controls the loading state of the component
-         */
-        "isLoading"?: boolean;
-        "lastName"?: string;
-        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData1>) => void;
-        "password"?: string;
-        /**
-          * Password validation options
-         */
-        "passwordValidation"?: PasswordValidationOptions;
-        "styles"?: {
-    link?: { [key: string]: string | number }
-  };
-    }
     interface VuiSpinner {
         "color"?: string;
         "size"?: 'small' | 'medium' | 'large';
@@ -938,6 +818,7 @@ declare namespace LocalJSX {
         "vui-auth-footer": VuiAuthFooter;
         "vui-auth-form": VuiAuthForm;
         "vui-auth-header": VuiAuthHeader;
+        "vui-brand": VuiBrand;
         "vui-button": VuiButton;
         "vui-card": VuiCard;
         "vui-card-content": VuiCardContent;
@@ -962,9 +843,6 @@ declare namespace LocalJSX {
         "vui-logo": VuiLogo;
         "vui-otp": VuiOtp;
         "vui-placeholder": VuiPlaceholder;
-        "vui-powered-by": VuiPoweredBy;
-        "vui-signin": VuiSignin;
-        "vui-signup": VuiSignup;
         "vui-spinner": VuiSpinner;
         "vui-textbox": VuiTextbox;
         "vui-theme-toggle": VuiThemeToggle;
@@ -981,6 +859,7 @@ declare module "@stencil/core" {
             "vui-auth-footer": LocalJSX.VuiAuthFooter & JSXBase.HTMLAttributes<HTMLVuiAuthFooterElement>;
             "vui-auth-form": LocalJSX.VuiAuthForm & JSXBase.HTMLAttributes<HTMLVuiAuthFormElement>;
             "vui-auth-header": LocalJSX.VuiAuthHeader & JSXBase.HTMLAttributes<HTMLVuiAuthHeaderElement>;
+            "vui-brand": LocalJSX.VuiBrand & JSXBase.HTMLAttributes<HTMLVuiBrandElement>;
             "vui-button": LocalJSX.VuiButton & JSXBase.HTMLAttributes<HTMLVuiButtonElement>;
             "vui-card": LocalJSX.VuiCard & JSXBase.HTMLAttributes<HTMLVuiCardElement>;
             "vui-card-content": LocalJSX.VuiCardContent & JSXBase.HTMLAttributes<HTMLVuiCardContentElement>;
@@ -1005,9 +884,6 @@ declare module "@stencil/core" {
             "vui-logo": LocalJSX.VuiLogo & JSXBase.HTMLAttributes<HTMLVuiLogoElement>;
             "vui-otp": LocalJSX.VuiOtp & JSXBase.HTMLAttributes<HTMLVuiOtpElement>;
             "vui-placeholder": LocalJSX.VuiPlaceholder & JSXBase.HTMLAttributes<HTMLVuiPlaceholderElement>;
-            "vui-powered-by": LocalJSX.VuiPoweredBy & JSXBase.HTMLAttributes<HTMLVuiPoweredByElement>;
-            "vui-signin": LocalJSX.VuiSignin & JSXBase.HTMLAttributes<HTMLVuiSigninElement>;
-            "vui-signup": LocalJSX.VuiSignup & JSXBase.HTMLAttributes<HTMLVuiSignupElement>;
             "vui-spinner": LocalJSX.VuiSpinner & JSXBase.HTMLAttributes<HTMLVuiSpinnerElement>;
             "vui-textbox": LocalJSX.VuiTextbox & JSXBase.HTMLAttributes<HTMLVuiTextboxElement>;
             "vui-theme-toggle": LocalJSX.VuiThemeToggle & JSXBase.HTMLAttributes<HTMLVuiThemeToggleElement>;
