@@ -1,6 +1,11 @@
+:root {
+  --font-family: system-ui;
+}
+
 body {
   padding: 1rem;
   margin: 0;
+  font-family: monospace;
 }
 
 *,

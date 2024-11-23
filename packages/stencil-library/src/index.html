@@ -8,10 +8,7 @@
     <script type="module" src="/build/stencil-library.esm.js"></script>
     <script nomodule src="/build/stencil-library.js"></script>
     <link rel="stylesheet" href="/build/stencil-library.css" />
-    <!-- This will include your global styles -->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> -->
     <link rel="stylesheet" href="index.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
@@ -40,15 +37,23 @@
       <verite-connector>
         <vui-auth-card
           elevation="lg"
-          heading="Enter your phone number"
-          description="Send a code to your phone number to continue."
+          heading="$signin.phone.title"
+          description="$signin.phone.description"
+          prompt="$signin.phone.prompt"
+          action="$signin.phone.action"
         >
           <vui-auth-form action="phone" elements='["phone"]'></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
 
       <verite-connector>
-        <vui-auth-card elevation="lg" heading="Enter your email" description="Send a code to your email to continue.">
+        <vui-auth-card
+          elevation="lg"
+          heading="$signin.email.title"
+          description="$signin.email.description"
+          prompt="$signin.email.prompt"
+          action="$signin.email.action"
+        >
           <vui-auth-form action="email" elements='["email"]'></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
@@ -56,10 +61,10 @@
       <verite-connector>
         <vui-auth-card
           elevation="lg"
-          heading="Sign in to Acme Co"
-          description="Welcome back! Please sign in to continue"
-          prompt="Don't have an account?"
-          action="Sign up"
+          heading="$signin.default.title"
+          description="$signin.default.description"
+          prompt="$signin.default.prompt"
+          action="$signin.default.action"
         >
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
@@ -89,10 +94,10 @@
       <verite-connector>
         <vui-auth-card
           elevation="lg"
-          heading="Sign up to Acme Co"
-          description="Welcome! Please fill in the details to get started."
-          prompt="Already have an account?"
-          action="Sign in"
+          heading="$signup.default.title"
+          description="$signup.default.description"
+          prompt="$signup.default.prompt"
+          action="$signup.default.action"
         >
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
@@ -120,18 +125,5 @@
       </verite-connector>
     </div>
     <vui-toast position="top-center"></vui-toast>
-    <!-- <script>
-      setTimeout(() => {
-        waterfall('.grid', {
-          gutter: '16px',
-        })
-
-        window.addEventListener('resize', function () {
-          waterfall('.grid', {
-            gutter: '16px',
-          })
-        })
-      }, 100)
-    </script> -->
   </body>
 </html>

@@ -2,6 +2,7 @@
   display: block;
   margin: 0;
   padding: var(--card-padding);
+  font-family: var(--font-family);
 }
 
 :host(:not(:first-child)) {

@@ -3,4 +3,5 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: var(--card-padding);
+  font-family: var(--font-family);
 }

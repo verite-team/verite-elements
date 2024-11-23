@@ -1,4 +1,5 @@
 :host {
   display: inline-flex;
   cursor: pointer;
+  font-family: var(--font-family);
 }

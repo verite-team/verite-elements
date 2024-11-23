@@ -3,6 +3,7 @@
   margin: 0;
   color: hsl(var(--card-foreground));
   font-weight: 600; /* default bold weight */
+  font-family: var(--font-family);
 }
 
 /* Sizes */

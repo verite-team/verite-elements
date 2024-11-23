@@ -52,14 +52,14 @@ export declare interface VuiAuthCard extends Components.VuiAuthCard {}
 
 
 @ProxyCmp({
-  inputs: ['action', 'prompt', 'showDivider', 'showPoweredBy', 'variant']
+  inputs: ['action', 'prompt', 'showBrand', 'showDivider', 'variant']
 })
 @Component({
   selector: 'vui-auth-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'prompt', 'showDivider', 'showPoweredBy', 'variant'],
+  inputs: ['action', 'prompt', 'showBrand', 'showDivider', 'variant'],
 })
 export class VuiAuthFooter {
   protected el: HTMLElement;
@@ -78,14 +78,14 @@ export declare interface VuiAuthFooter extends Components.VuiAuthFooter {
 
 
 @ProxyCmp({
-  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles']
+  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles', 'submitLabel']
 })
 @Component({
   selector: 'vui-auth-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles'],
+  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles', 'submitLabel'],
 })
 export class VuiAuthForm {
   protected el: HTMLElement;
@@ -127,6 +127,28 @@ export class VuiAuthHeader {
 
 
 export declare interface VuiAuthHeader extends Components.VuiAuthHeader {}
+
+
+@ProxyCmp({
+  inputs: ['label', 'logo']
+})
+@Component({
+  selector: 'vui-brand',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['label', 'logo'],
+})
+export class VuiBrand {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiBrand extends Components.VuiBrand {}
 
 
 @ProxyCmp({
@@ -669,86 +691,6 @@ export class VuiPlaceholder {
 
 
 export declare interface VuiPlaceholder extends Components.VuiPlaceholder {}
-
-
-@ProxyCmp({
-  inputs: ['label']
-})
-@Component({
-  selector: 'vui-powered-by',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['label'],
-})
-export class VuiPoweredBy {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface VuiPoweredBy extends Components.VuiPoweredBy {}
-
-
-@ProxyCmp({
-  inputs: ['emailValidation', 'isLoading', 'passwordValidation', 'showForgotPassword']
-})
-@Component({
-  selector: 'vui-signin',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['emailValidation', 'isLoading', 'passwordValidation', 'showForgotPassword'],
-})
-export class VuiSignin {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['forgotPassword', 'formSubmit']);
-  }
-}
-
-
-import type { SignInFormData as IVuiSigninSignInFormData } from 'stencil-library';
-
-export declare interface VuiSignin extends Components.VuiSignin {
-
-  forgotPassword: EventEmitter<CustomEvent<void>>;
-
-  formSubmit: EventEmitter<CustomEvent<IVuiSigninSignInFormData>>;
-}
-
-
-@ProxyCmp({
-  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'styles']
-})
-@Component({
-  selector: 'vui-signup',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'styles'],
-})
-export class VuiSignup {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit']);
-  }
-}
-
-
-import type { SignUpFormData as IVuiSignupSignUpFormData } from 'stencil-library';
-
-export declare interface VuiSignup extends Components.VuiSignup {
-
-  formSubmit: EventEmitter<CustomEvent<IVuiSignupSignUpFormData>>;
-}
 
 
 @ProxyCmp({
