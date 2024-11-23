@@ -5,18 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
+import { Element } from "@stencil/core";
+import { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
+import { SignUpFormData } from "./components/auth/types";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 import { LogoName } from "./components/logo/logo";
 import { SignInFormData } from "./components/signin/signin-interfaces";
-import { SignUpFormData } from "./components/signup/signup-interfaces";
+import { SignUpFormData as SignUpFormData1 } from "./components/signup/signup-interfaces";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
-export { EmailValidationOptions, PasswordValidationOptions, ValidationRule } from "./utils/validation";
+export { Element } from "@stencil/core";
+export { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
+export { SignUpFormData } from "./components/auth/types";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
 export { LogoName } from "./components/logo/logo";
 export { SignInFormData } from "./components/signin/signin-interfaces";
-export { SignUpFormData } from "./components/signup/signup-interfaces";
+export { SignUpFormData as SignUpFormData1 } from "./components/signup/signup-interfaces";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
 export namespace Components {
@@ -37,6 +41,30 @@ export namespace Components {
         "showDivider"?: boolean;
         "showPoweredBy"?: boolean;
         "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthForm {
+        "action": 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword';
+        "elements"?: Element[] | string;
+        "email"?: string;
+        /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions | string;
+        "firstName"?: string;
+        /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
+        "lastName"?: string;
+        "password"?: string;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
+        "phone"?: string;
+        "styles"?: {
+    link?: { [key: string]: string | number }
+  };
     }
     interface VuiAuthHeader {
         "description": string;
@@ -108,9 +136,10 @@ export namespace Components {
         "width"?: 'full' | 'auto';
         "wrap"?: 'nowrap' | 'wrap' | 'wrap-reverse';
     }
-    interface VuiFormControl {
-        "rules": ValidationRule[];
-        "value": any;
+    interface VuiFormInput {
+        "errorMessage"?: string;
+        "htmlFor": string;
+        "label": string;
     }
     interface VuiGoogleOneTap {
         "googleClientId": string;
@@ -230,6 +259,10 @@ export interface VuiAuthFooterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiAuthFooterElement;
 }
+export interface VuiAuthFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiAuthFormElement;
+}
 export interface VuiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiButtonElement;
@@ -295,6 +328,24 @@ declare global {
     var HTMLVuiAuthFooterElement: {
         prototype: HTMLVuiAuthFooterElement;
         new (): HTMLVuiAuthFooterElement;
+    };
+    interface HTMLVuiAuthFormElementEventMap {
+        "formSubmit": SignUpFormData;
+        "forgotPassword": void;
+    }
+    interface HTMLVuiAuthFormElement extends Components.VuiAuthForm, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiAuthFormElementEventMap>(type: K, listener: (this: HTMLVuiAuthFormElement, ev: VuiAuthFormCustomEvent<HTMLVuiAuthFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiAuthFormElementEventMap>(type: K, listener: (this: HTMLVuiAuthFormElement, ev: VuiAuthFormCustomEvent<HTMLVuiAuthFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiAuthFormElement: {
+        prototype: HTMLVuiAuthFormElement;
+        new (): HTMLVuiAuthFormElement;
     };
     interface HTMLVuiAuthHeaderElement extends Components.VuiAuthHeader, HTMLStencilElement {
     }
@@ -414,11 +465,11 @@ declare global {
         prototype: HTMLVuiFlexElement;
         new (): HTMLVuiFlexElement;
     };
-    interface HTMLVuiFormControlElement extends Components.VuiFormControl, HTMLStencilElement {
+    interface HTMLVuiFormInputElement extends Components.VuiFormInput, HTMLStencilElement {
     }
-    var HTMLVuiFormControlElement: {
-        prototype: HTMLVuiFormControlElement;
-        new (): HTMLVuiFormControlElement;
+    var HTMLVuiFormInputElement: {
+        prototype: HTMLVuiFormInputElement;
+        new (): HTMLVuiFormInputElement;
     };
     interface HTMLVuiGoogleOneTapElementEventMap {
         "googleCredential": SignInWithIdTokenCredentials;
@@ -516,7 +567,7 @@ declare global {
         new (): HTMLVuiSigninElement;
     };
     interface HTMLVuiSignupElementEventMap {
-        "formSubmit": SignUpFormData;
+        "formSubmit": SignUpFormData1;
     }
     interface HTMLVuiSignupElement extends Components.VuiSignup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiSignupElementEventMap>(type: K, listener: (this: HTMLVuiSignupElement, ev: VuiSignupCustomEvent<HTMLVuiSignupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -601,6 +652,7 @@ declare global {
         "verite-connector": HTMLVeriteConnectorElement;
         "vui-auth-card": HTMLVuiAuthCardElement;
         "vui-auth-footer": HTMLVuiAuthFooterElement;
+        "vui-auth-form": HTMLVuiAuthFormElement;
         "vui-auth-header": HTMLVuiAuthHeaderElement;
         "vui-button": HTMLVuiButtonElement;
         "vui-card": HTMLVuiCardElement;
@@ -617,7 +669,7 @@ declare global {
         "vui-dropdown-menu-trigger": HTMLVuiDropdownMenuTriggerElement;
         "vui-error-message": HTMLVuiErrorMessageElement;
         "vui-flex": HTMLVuiFlexElement;
-        "vui-form-control": HTMLVuiFormControlElement;
+        "vui-form-input": HTMLVuiFormInputElement;
         "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
         "vui-i18n": HTMLVuiI18nElement;
         "vui-icon": HTMLVuiIconElement;
@@ -655,6 +707,32 @@ declare namespace LocalJSX {
         "showDivider"?: boolean;
         "showPoweredBy"?: boolean;
         "variant"?: 'default' | 'inset';
+    }
+    interface VuiAuthForm {
+        "action"?: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword';
+        "elements"?: Element[] | string;
+        "email"?: string;
+        /**
+          * Email validation options
+         */
+        "emailValidation"?: EmailValidationOptions | string;
+        "firstName"?: string;
+        /**
+          * Controls the loading state of the component
+         */
+        "isLoading"?: boolean;
+        "lastName"?: string;
+        "onForgotPassword"?: (event: VuiAuthFormCustomEvent<void>) => void;
+        "onFormSubmit"?: (event: VuiAuthFormCustomEvent<SignUpFormData>) => void;
+        "password"?: string;
+        /**
+          * Password validation options
+         */
+        "passwordValidation"?: PasswordValidationOptions;
+        "phone"?: string;
+        "styles"?: {
+    link?: { [key: string]: string | number }
+  };
     }
     interface VuiAuthHeader {
         "description"?: string;
@@ -728,9 +806,10 @@ declare namespace LocalJSX {
         "width"?: 'full' | 'auto';
         "wrap"?: 'nowrap' | 'wrap' | 'wrap-reverse';
     }
-    interface VuiFormControl {
-        "rules"?: ValidationRule[];
-        "value"?: any;
+    interface VuiFormInput {
+        "errorMessage"?: string;
+        "htmlFor"?: string;
+        "label"?: string;
     }
     interface VuiGoogleOneTap {
         "googleClientId": string;
@@ -815,7 +894,7 @@ declare namespace LocalJSX {
          */
         "isLoading"?: boolean;
         "lastName"?: string;
-        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData>) => void;
+        "onFormSubmit"?: (event: VuiSignupCustomEvent<SignUpFormData1>) => void;
         "password"?: string;
         /**
           * Password validation options
@@ -857,6 +936,7 @@ declare namespace LocalJSX {
         "verite-connector": VeriteConnector;
         "vui-auth-card": VuiAuthCard;
         "vui-auth-footer": VuiAuthFooter;
+        "vui-auth-form": VuiAuthForm;
         "vui-auth-header": VuiAuthHeader;
         "vui-button": VuiButton;
         "vui-card": VuiCard;
@@ -873,7 +953,7 @@ declare namespace LocalJSX {
         "vui-dropdown-menu-trigger": VuiDropdownMenuTrigger;
         "vui-error-message": VuiErrorMessage;
         "vui-flex": VuiFlex;
-        "vui-form-control": VuiFormControl;
+        "vui-form-input": VuiFormInput;
         "vui-google-one-tap": VuiGoogleOneTap;
         "vui-i18n": VuiI18n;
         "vui-icon": VuiIcon;
@@ -899,6 +979,7 @@ declare module "@stencil/core" {
             "verite-connector": LocalJSX.VeriteConnector & JSXBase.HTMLAttributes<HTMLVeriteConnectorElement>;
             "vui-auth-card": LocalJSX.VuiAuthCard & JSXBase.HTMLAttributes<HTMLVuiAuthCardElement>;
             "vui-auth-footer": LocalJSX.VuiAuthFooter & JSXBase.HTMLAttributes<HTMLVuiAuthFooterElement>;
+            "vui-auth-form": LocalJSX.VuiAuthForm & JSXBase.HTMLAttributes<HTMLVuiAuthFormElement>;
             "vui-auth-header": LocalJSX.VuiAuthHeader & JSXBase.HTMLAttributes<HTMLVuiAuthHeaderElement>;
             "vui-button": LocalJSX.VuiButton & JSXBase.HTMLAttributes<HTMLVuiButtonElement>;
             "vui-card": LocalJSX.VuiCard & JSXBase.HTMLAttributes<HTMLVuiCardElement>;
@@ -915,7 +996,7 @@ declare module "@stencil/core" {
             "vui-dropdown-menu-trigger": LocalJSX.VuiDropdownMenuTrigger & JSXBase.HTMLAttributes<HTMLVuiDropdownMenuTriggerElement>;
             "vui-error-message": LocalJSX.VuiErrorMessage & JSXBase.HTMLAttributes<HTMLVuiErrorMessageElement>;
             "vui-flex": LocalJSX.VuiFlex & JSXBase.HTMLAttributes<HTMLVuiFlexElement>;
-            "vui-form-control": LocalJSX.VuiFormControl & JSXBase.HTMLAttributes<HTMLVuiFormControlElement>;
+            "vui-form-input": LocalJSX.VuiFormInput & JSXBase.HTMLAttributes<HTMLVuiFormInputElement>;
             "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;
             "vui-i18n": LocalJSX.VuiI18n & JSXBase.HTMLAttributes<HTMLVuiI18nElement>;
             "vui-icon": LocalJSX.VuiIcon & JSXBase.HTMLAttributes<HTMLVuiIconElement>;

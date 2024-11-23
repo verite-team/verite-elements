@@ -113,6 +113,10 @@ export const ValidationRules = {
     return rules
   },
 
+  createPhoneRules: (): ValidationRule[] => {
+    return [ValidationRules.required(i18n.t('validation.phone.required'))]
+  },
+
   // Helper function to create email validation rules
   createEmailRules: (options?: EmailValidationOptions): ValidationRule[] => {
     const rules: ValidationRule[] = [

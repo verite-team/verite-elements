@@ -24,7 +24,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   text-align: center;
-  cursor: default;
+  cursor: text;
 }
 
 .code-input:readonly::part(input) {

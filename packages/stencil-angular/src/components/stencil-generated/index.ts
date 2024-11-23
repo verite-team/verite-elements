@@ -78,6 +78,36 @@ export declare interface VuiAuthFooter extends Components.VuiAuthFooter {
 
 
 @ProxyCmp({
+  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles']
+})
+@Component({
+  selector: 'vui-auth-form',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles'],
+})
+export class VuiAuthForm {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['formSubmit', 'forgotPassword']);
+  }
+}
+
+
+import type { SignUpFormData as IVuiAuthFormSignUpFormData } from 'stencil-library';
+
+export declare interface VuiAuthForm extends Components.VuiAuthForm {
+
+  formSubmit: EventEmitter<CustomEvent<IVuiAuthFormSignUpFormData>>;
+
+  forgotPassword: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
   inputs: ['description', 'heading']
 })
 @Component({
@@ -433,16 +463,16 @@ export declare interface VuiFlex extends Components.VuiFlex {}
 
 
 @ProxyCmp({
-  inputs: ['rules', 'value']
+  inputs: ['errorMessage', 'htmlFor', 'label']
 })
 @Component({
-  selector: 'vui-form-control',
+  selector: 'vui-form-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['rules', 'value'],
+  inputs: ['errorMessage', 'htmlFor', 'label'],
 })
-export class VuiFormControl {
+export class VuiFormInput {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -451,7 +481,7 @@ export class VuiFormControl {
 }
 
 
-export declare interface VuiFormControl extends Components.VuiFormControl {}
+export declare interface VuiFormInput extends Components.VuiFormInput {}
 
 
 @ProxyCmp({

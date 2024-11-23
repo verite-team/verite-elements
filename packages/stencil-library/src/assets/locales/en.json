@@ -1,6 +1,43 @@
 {
   "hello": "Hello, world!",
   "poweredBy": "Secured by Verite",
+  "form": {
+    "firstName": {
+      "label": "First name",
+      "placeholder": "First name"
+    },
+    "lastName": {
+      "label": "Last name",
+      "placeholder": "Last name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Email"
+    },
+    "phone": {
+      "label": "Phone",
+      "placeholder": "Phone"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Password",
+      "show": "Show password",
+      "hide": "Hide password"
+    },
+    "forgotPassword": {
+      "label": "Send reset link",
+      "placeholder": "Send reset link"
+    },
+    "action": {
+      "signin": "Sign in",
+      "signup": "Sign up",
+      "phone": "Send code",
+      "email": "Send code",
+      "sendResetLink": "Send reset link",
+      "resetPassword": "Reset password",
+      "submit": "Submit"
+    }
+  },
   "signup": {
     "firstName": {
       "label": "First name",
@@ -35,6 +72,9 @@
       "required": "Email is required",
       "allowedDomains": "Email domain must be one of: {{domains}}",
       "blockedDomains": "Email domain cannot be: {{domains}}"
+    },
+    "phone": {
+      "required": "Phone is required"
     },
     "password": {
       "required": "Password is required",

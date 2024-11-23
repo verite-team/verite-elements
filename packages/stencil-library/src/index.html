@@ -9,92 +9,10 @@
     <script nomodule src="/build/stencil-library.js"></script>
     <link rel="stylesheet" href="/build/stencil-library.css" />
     <!-- This will include your global styles -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <style>
-      /* Base styles */
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 20px;
-        gap: 2rem;
-        font-family: sans-serif;
-        margin: 0;
-        padding: 20px;
-        min-height: 100vh;
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-      }
-
-      /* Add media query for small screens */
-      @media (max-width: 1200px) {
-        body {
-          flex-direction: column;
-        }
-      }
-
-      /* Apply colors when data-theme is on html tag */
-      html[data-theme='dark'] body {
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-      }
-
-      /* Style all vui-link components */
-      /* vui-link::part(link) {
-        color: hsl(var(--primary));
-        text-decoration: none;
-      } */
-
-      /* Add hover state */
-      /* vui-link::part(link):hover {
-        text-decoration: underline;
-        background-color: yellow;
-      } */
-
-      /* Test style - add this to verify it's working */
-      /* vui-link::part(link) {
-        border: 3px solid red !important;
-        padding: 10px !important;
-        background: yellow !important;
-      } */
-
-      /* .vui-card--signin-container::part(card) {
-        width: 100%;
-        max-width: 400px;
-        background-color: #f9f9f9;
-        padding: 0;
-      } */
-
-      /* This will now work for links inside vui-signin */
-      vui-signin::part(link),
-      vui-signup::part(link) {
-        color: hsl(var(--primary));
-        text-decoration: none;
-        font-size: 0.875rem;
-      }
-
-      vui-signin::part(link):hover,
-      vui-signup::part(link):hover {
-        text-decoration: underline;
-      }
-
-      /* .card--signin, */
-      /* .card--signup, */
-      /* .card--otp {
-        box-shadow: var(--elevation-3);
-      } */
-
-      .email-address {
-        font-weight: 600;
-      }
-    </style>
-    <script>
-      function showToast() {
-        const toast = document.querySelector('vui-toast')
-        toast.show({ title: 'Hello, world! ::' + Date.now(), type: 'success' })
-      }
-    </script>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="index.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
     <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">Stencil Library</div>
@@ -103,9 +21,9 @@
     <vui-button style="position: fixed; top: 1rem; right: 7rem" size="sm" variant="outline" onClick="showToast()"
       >Show Toast</vui-button
     >
-    <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
+    <div class="grid">
+      <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
 
-    <div id="otp-container" style="width: 100%; max-width: 360px">
       <verite-connector type="otp">
         <vui-auth-card
           class="card--otp"
@@ -118,21 +36,31 @@
           <vui-otp></vui-otp>
         </vui-auth-card>
       </verite-connector>
-    </div>
 
-    <div id="signin-container" style="width: 100%; max-width: 360px">
-      <!-- Verite connector -->
-      <verite-connector type="signin">
-        <!-- Auth card -->
+      <verite-connector>
         <vui-auth-card
-          class="card--signin"
+          elevation="lg"
+          heading="Enter your phone number"
+          description="Send a code to your phone number to continue."
+        >
+          <vui-auth-form action="phone" elements='["phone"]'></vui-auth-form>
+        </vui-auth-card>
+      </verite-connector>
+
+      <verite-connector>
+        <vui-auth-card elevation="lg" heading="Enter your email" description="Send a code to your email to continue.">
+          <vui-auth-form action="email" elements='["email"]'></vui-auth-form>
+        </vui-auth-card>
+      </verite-connector>
+
+      <verite-connector>
+        <vui-auth-card
           elevation="lg"
           heading="Sign in to Acme Co"
           description="Welcome back! Please sign in to continue"
           prompt="Don't have an account?"
           action="Sign up"
         >
-          <!-- Providers -->
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
               <vui-button class="google-button" variant="outline" style="width: 100%">
@@ -154,25 +82,18 @@
             </vui-divider>
           </div>
 
-          <!-- Signin form -->
-          <vui-signin></vui-signin>
+          <vui-auth-form action="signin" elements='["email", "password", "forgotPassword"]'></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
-    </div>
 
-    <div id="signup-container" style="width: 100%; max-width: 360px">
-      <!-- Verite connector -->
-      <verite-connector type="signup">
-        <!-- Auth card -->
+      <verite-connector>
         <vui-auth-card
-          class="card--signup"
           elevation="lg"
           heading="Sign up to Acme Co"
           description="Welcome! Please fill in the details to get started."
           prompt="Already have an account?"
           action="Sign in"
         >
-          <!-- Providers -->
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
               <vui-button class="google-button" variant="outline" style="width: 100%">
@@ -194,19 +115,23 @@
             </vui-divider>
           </div>
 
-          <!-- Signup form -->
-          <vui-signup
-            first-name="Test"
-            last-name="User"
-            email="test@test.com"
-            password="test1234"
-            onsubmit="console.log('Signup clicked')"
-          >
-          </vui-signup>
+          <vui-auth-form action="signup" elements='["name", "email", "password"]'></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
     </div>
-
     <vui-toast position="top-center"></vui-toast>
+    <!-- <script>
+      setTimeout(() => {
+        waterfall('.grid', {
+          gutter: '16px',
+        })
+
+        window.addEventListener('resize', function () {
+          waterfall('.grid', {
+            gutter: '16px',
+          })
+        })
+      }, 100)
+    </script> -->
   </body>
 </html>

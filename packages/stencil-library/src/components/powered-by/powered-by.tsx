@@ -6,13 +6,12 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class PoweredBy {
-  @Prop() label: string = 'Powered by Verite'
+  @Prop() label: string = ''
 
   render() {
     return (
       <Host part="powered-by">
         <span part="label">{this.label}</span>
-        {/* <slot></slot> */}
         <svg height="16" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             class="ccustom"

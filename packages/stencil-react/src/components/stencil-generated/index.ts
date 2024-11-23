@@ -10,6 +10,7 @@ import type { JSX } from 'stencil-library';
 export const VeriteConnector = /*@__PURE__*/createReactComponent<JSX.VeriteConnector, HTMLVeriteConnectorElement>('verite-connector');
 export const VuiAuthCard = /*@__PURE__*/createReactComponent<JSX.VuiAuthCard, HTMLVuiAuthCardElement>('vui-auth-card');
 export const VuiAuthFooter = /*@__PURE__*/createReactComponent<JSX.VuiAuthFooter, HTMLVuiAuthFooterElement>('vui-auth-footer');
+export const VuiAuthForm = /*@__PURE__*/createReactComponent<JSX.VuiAuthForm, HTMLVuiAuthFormElement>('vui-auth-form');
 export const VuiAuthHeader = /*@__PURE__*/createReactComponent<JSX.VuiAuthHeader, HTMLVuiAuthHeaderElement>('vui-auth-header');
 export const VuiButton = /*@__PURE__*/createReactComponent<JSX.VuiButton, HTMLVuiButtonElement>('vui-button');
 export const VuiCard = /*@__PURE__*/createReactComponent<JSX.VuiCard, HTMLVuiCardElement>('vui-card');
@@ -26,7 +27,7 @@ export const VuiDropdownMenuSeparator = /*@__PURE__*/createReactComponent<JSX.Vu
 export const VuiDropdownMenuTrigger = /*@__PURE__*/createReactComponent<JSX.VuiDropdownMenuTrigger, HTMLVuiDropdownMenuTriggerElement>('vui-dropdown-menu-trigger');
 export const VuiErrorMessage = /*@__PURE__*/createReactComponent<JSX.VuiErrorMessage, HTMLVuiErrorMessageElement>('vui-error-message');
 export const VuiFlex = /*@__PURE__*/createReactComponent<JSX.VuiFlex, HTMLVuiFlexElement>('vui-flex');
-export const VuiFormControl = /*@__PURE__*/createReactComponent<JSX.VuiFormControl, HTMLVuiFormControlElement>('vui-form-control');
+export const VuiFormInput = /*@__PURE__*/createReactComponent<JSX.VuiFormInput, HTMLVuiFormInputElement>('vui-form-input');
 export const VuiGoogleOneTap = /*@__PURE__*/createReactComponent<JSX.VuiGoogleOneTap, HTMLVuiGoogleOneTapElement>('vui-google-one-tap');
 export const VuiI18n = /*@__PURE__*/createReactComponent<JSX.VuiI18n, HTMLVuiI18nElement>('vui-i18n');
 export const VuiIcon = /*@__PURE__*/createReactComponent<JSX.VuiIcon, HTMLVuiIconElement>('vui-icon');

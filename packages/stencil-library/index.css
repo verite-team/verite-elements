@@ -1,0 +1,55 @@
+body {
+  padding: 1rem;
+  margin: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* Add media query for small screens */
+@media (max-width: 1200px) {
+  body {
+    flex-direction: column;
+  }
+}
+
+/* Apply colors when data-theme is on html tag */
+html[data-theme='dark'] body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.grid {
+  margin: 3rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-rows: masonry;
+}
+
+.grid verite-connector {
+  background-image: linear-gradient(
+      45deg,
+      hsl(var(--foreground) / 0.02) 25%,
+      transparent 25%,
+      transparent 75%,
+      hsl(var(--foreground) / 0.02) 75%,
+      hsl(var(--foreground) / 0.02)
+    ),
+    linear-gradient(
+      45deg,
+      hsl(var(--foreground) / 0.02) 25%,
+      transparent 25%,
+      transparent 75%,
+      hsl(var(--foreground) / 0.02) 75%,
+      hsl(var(--foreground) / 0.02)
+    );
+  background-position:
+    0 0,
+    10px 10px;
+  background-size: 20px 20px;
+}

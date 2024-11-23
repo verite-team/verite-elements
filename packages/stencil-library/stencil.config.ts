@@ -61,6 +61,16 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null, // disable service workers
+      copy: [
+        {
+          src: '../index.css',
+          dest: 'index.css',
+        },
+        {
+          src: '../index.js',
+          dest: 'index.js',
+        },
+      ],
     },
   ],
   testing: {

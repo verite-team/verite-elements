@@ -1,5 +1,8 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core'
 
+import { i18n } from '../../stores/i18n'
+
+const t = i18n.t
 @Component({
   tag: 'vui-auth-footer',
   styleUrl: 'auth-footer.css',
@@ -18,6 +21,10 @@ export class AuthFooter {
     this.actionClick.emit()
   }
 
+  async componentWillLoad() {
+    await i18n.waitUntilReady
+  }
+
   render() {
     return (
       <vui-card-footer part="footer" variant={this.variant}>
@@ -30,7 +37,7 @@ export class AuthFooter {
           </div>
         )}
         {this.showDivider && <vui-divider orientation="horizontal"></vui-divider>}
-        {this.showPoweredBy && <vui-powered-by label="Secured by Verite" class="powered-by"></vui-powered-by>}
+        {this.showPoweredBy && <vui-powered-by label={t('poweredBy')} class="powered-by"></vui-powered-by>}
       </vui-card-footer>
     )
   }
