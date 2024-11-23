@@ -1,6 +1,6 @@
-import { Build, getAssetPath } from '@stencil/core'
 import { PluralType, TranslateFn, TranslatorOptions } from './types'
 
+import { Build } from '@stencil/core'
 import { bestLocale } from './bestLocale'
 import { createLocale } from './locale'
 
@@ -19,20 +19,39 @@ const flattenObject = (obj: Record<string, any>, prefix = ''): Record<string, st
   }, {})
 }
 
-const fetchLocale = Build?.isTesting
-  ? async () => ({})
-  : async (locale: string): Promise<Record<string, string>> => {
-      const response = await fetch(getAssetPath(`/assets/locales/${locale}.json`))
-      const data = await response.json()
-      // Flatten the nested structure
-      const flattened = flattenObject(data)
-      return flattened
-    }
+export interface I18nConfig {
+  assetsPath?: string
+  translations?: Record<string, any>
+  locale?: string
+  // Add a custom fetch function option
+  fetchTranslations?: (locale: string) => Promise<Record<string, any>>
+}
+
+const defaultFetchLocale = (assetsPath: string) =>
+  Build?.isTesting
+    ? async () => ({})
+    : async (locale: string): Promise<Record<string, string>> => {
+        try {
+          // Use the provided path or fallback to a relative path
+          const path = assetsPath ? assetsPath.replace('{locale}', locale) : `/assets/locales/${locale}.json`
+
+          const response = await fetch(path)
+          if (!response.ok) {
+            console.warn(`Failed to fetch translations: ${response.statusText}`)
+            return {}
+          }
+          const data = await response.json()
+          return flattenObject(data)
+        } catch (error) {
+          console.warn('Error fetching translations:', error)
+          return {}
+        }
+      }
 
 const defaultOptions: Required<TranslatorOptions> = {
   availableLocales: ['en'],
   defaultLocale: 'en',
-  fetchLocale,
+  fetchLocale: defaultFetchLocale(''),
   interpolateValues: (str: string, interpolations: Record<string, string>): string =>
     str
       .replace(/\{([^}\s]+?)\}/g, (match, id, offset) => (str.charAt(offset - 1) === '\\' ? match : interpolations[id]))
@@ -59,11 +78,33 @@ const fillOptions = (options: TranslatorOptions): Required<TranslatorOptions> =>
   return fullOptions
 }
 
-export const createI18nStore = (givenOptions: TranslatorOptions) => {
-  const options = fillOptions(givenOptions)
+export const createI18nStore = (givenOptions: TranslatorOptions & I18nConfig) => {
+  const options = fillOptions({
+    ...givenOptions,
+    fetchLocale: givenOptions.fetchTranslations
+      ? givenOptions.fetchTranslations
+      : givenOptions.assetsPath
+        ? defaultFetchLocale(givenOptions.assetsPath)
+        : defaultOptions.fetchLocale,
+  })
 
-  // Flatten any provided translations
   let translations = givenOptions.translations ? flattenObject(givenOptions.translations) : {}
+
+  // Create a deferred promise that we can resolve later
+  let resolveReady: () => void
+  const waitUntilReady = new Promise<void>(resolve => {
+    resolveReady = resolve
+  })
+
+  const locale = createLocale(options.locale, async newLocale => {
+    loadTranslations(await options.fetchLocale(newLocale))
+  })
+
+  // Initialize translations only when explicitly called
+  const initialize = async () => {
+    await locale.set(locale.get(), true)
+    resolveReady()
+  }
 
   const loadTranslations = (newTranslations: Record<string, string>) => {
     // Flatten new translations before storing
@@ -78,13 +119,6 @@ export const createI18nStore = (givenOptions: TranslatorOptions) => {
   }
 
   const hasKey = (key: string) => key in translations
-
-  const locale = createLocale(options.locale, async newLocale => {
-    loadTranslations(await options.fetchLocale(newLocale))
-  })
-
-  // Initialize translations
-  const waitUntilReady: Promise<void> = locale.set(locale.get(), true)
 
   const translate: TranslateFn = (
     key: string,
@@ -110,6 +144,14 @@ export const createI18nStore = (givenOptions: TranslatorOptions) => {
     }
 
     return options.translationForMissingKey(currentLocale, key, translations)
+  }
+
+  const translateIfNeeded = (text: string): string => {
+    if (!text || typeof text !== 'string') return text
+    if (text.startsWith('$')) {
+      return translate(text.substring(1))
+    }
+    return text
   }
 
   return {
@@ -146,5 +188,12 @@ export const createI18nStore = (givenOptions: TranslatorOptions) => {
      * When top-level awaits are better supported, this will go.
      */
     waitUntilReady,
+
+    /**
+     * Translate a string if it starts with a dollar sign.
+     */
+    tif: translateIfNeeded,
+
+    initialize, // Export the initialize function
   }
 }

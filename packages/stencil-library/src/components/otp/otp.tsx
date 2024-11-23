@@ -1,8 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, State, h } from '@stencil/core'
 
-import { i18n } from '../../stores/i18n'
+import { getI18nStore } from '../../stores/i18n'
 
-const t = i18n.t
+const t = getI18nStore().t
 
 @Component({
   tag: 'vui-otp',
@@ -77,7 +77,7 @@ export class Otp {
   }
 
   async componentWillLoad() {
-    await i18n.waitUntilReady
+    await getI18nStore().waitUntilReady
   }
 
   componentDidLoad() {

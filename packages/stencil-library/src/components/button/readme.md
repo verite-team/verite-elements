@@ -37,9 +37,8 @@
 ### Used by
 
  - [vui-auth-footer](../auth)
+ - [vui-auth-form](../auth)
  - [vui-otp](../otp)
- - [vui-signin](../signin)
- - [vui-signup](../signup)
  - [vui-theme-toggle](../theme-toggle)
  - [vui-toast](../toast)
  - [vui-user-menu](../user-menu)
@@ -53,9 +52,8 @@
 graph TD;
   vui-button --> vui-spinner
   vui-auth-footer --> vui-button
+  vui-auth-form --> vui-button
   vui-otp --> vui-button
-  vui-signin --> vui-button
-  vui-signup --> vui-button
   vui-theme-toggle --> vui-button
   vui-toast --> vui-button
   vui-user-menu --> vui-button

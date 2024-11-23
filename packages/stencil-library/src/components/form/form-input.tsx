@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core'
 
-import { i18n } from '../../stores/i18n'
+import { getI18nStore } from '../../stores/i18n'
 
 @Component({
   tag: 'vui-form-input',
@@ -13,7 +13,7 @@ export class Label {
   @Prop() errorMessage?: string
 
   async componentWillLoad() {
-    await i18n.waitUntilReady
+    await getI18nStore().waitUntilReady
   }
 
   render() {

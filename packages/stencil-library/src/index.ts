@@ -7,10 +7,14 @@
  * DO NOT use this file to export your components. Instead, use the recommended approaches
  * to consume components of this package as outlined in the `README.md`.
  */
-import { initializeTheme } from './utils/theme';
 
 // Initialize theme before rendering
-initializeTheme();
+// initializeTheme()
 
-export { format } from './utils/utils';
-export type * from './components.d.ts';
+export type * from './components.d.ts'
+export { init } from './global'
+export { getI18nStore, setI18nStore } from './stores/i18n'
+export type { VeriteConfig } from './types'
+export { createI18nStore } from './utils/i18n'
+export type { TranslatorOptions } from './utils/i18n'
+console.log('you are here #3')

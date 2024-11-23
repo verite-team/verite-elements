@@ -2,9 +2,9 @@
   "name": "stencil-library",
   "version": "1.0.0",
   "description": "Stencil Component Starter",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.ts",
-  "types": "dist/types/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stencil-library/stencil-library.esm.js",
@@ -66,5 +66,16 @@
   },
   "dependencies": {
     "markdown-to-jsx": "^7.6.2"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./loader": {
+      "import": "./dist/loader/index.js",
+      "require": "./dist/loader/index.cjs.js"
+    }
   }
 }

@@ -14,9 +14,11 @@ export const config: Config = {
   },
   srcDir: 'src',
   globalStyle: 'src/themes/index.css',
+  globalScript: 'src/global.ts',
   outputTargets: [
     {
       type: 'dist',
+      // esmLoaderPath: '../loader',
       copy: [
         {
           src: 'themes', // This will copy the entire global directory
@@ -27,7 +29,6 @@ export const config: Config = {
           dest: 'assets',
         },
       ],
-      // esmLoaderPath: '../loader',
     },
     {
       type: 'docs-vscode',

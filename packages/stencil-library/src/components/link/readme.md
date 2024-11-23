@@ -24,12 +24,12 @@
 
 ### Used by
 
- - [vui-signin](../signin)
+ - [vui-auth-form](../auth)
 
 ### Graph
 ```mermaid
 graph TD;
-  vui-signin --> vui-link
+  vui-auth-form --> vui-link
   style vui-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

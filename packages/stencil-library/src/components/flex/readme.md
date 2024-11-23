@@ -23,16 +23,14 @@
 
 ### Used by
 
+ - [vui-auth-form](../auth)
  - [vui-otp](../otp)
- - [vui-signin](../signin)
- - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-auth-form --> vui-flex
   vui-otp --> vui-flex
-  vui-signin --> vui-flex
-  vui-signup --> vui-flex
   style vui-flex fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

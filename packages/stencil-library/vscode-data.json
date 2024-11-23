@@ -96,11 +96,11 @@
           "description": ""
         },
         {
-          "name": "show-divider",
+          "name": "show-brand",
           "description": ""
         },
         {
-          "name": "show-powered-by",
+          "name": "show-divider",
           "description": ""
         },
         {
@@ -118,6 +118,72 @@
       ]
     },
     {
+      "name": "vui-auth-form",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": "",
+          "values": [
+            {
+              "name": "forgotPassword"
+            },
+            {
+              "name": "resetPassword"
+            },
+            {
+              "name": "signin"
+            },
+            {
+              "name": "signup"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "elements",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "description": ""
+        },
+        {
+          "name": "email-validation",
+          "description": "Email validation options"
+        },
+        {
+          "name": "first-name",
+          "description": ""
+        },
+        {
+          "name": "is-loading",
+          "description": "Controls the loading state of the component"
+        },
+        {
+          "name": "last-name",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "description": ""
+        },
+        {
+          "name": "submit-label",
+          "description": ""
+        }
+      ]
+    },
+    {
       "name": "vui-auth-header",
       "description": {
         "kind": "markdown",
@@ -130,6 +196,23 @@
         },
         {
           "name": "heading",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "vui-brand",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "label",
+          "description": ""
+        },
+        {
+          "name": "logo",
           "description": ""
         }
       ]
@@ -592,14 +675,22 @@
       ]
     },
     {
-      "name": "vui-form-control",
+      "name": "vui-form-input",
       "description": {
         "kind": "markdown",
         "value": ""
       },
       "attributes": [
         {
-          "name": "value",
+          "name": "error-message",
+          "description": ""
+        },
+        {
+          "name": "html-for",
+          "description": ""
+        },
+        {
+          "name": "label",
           "description": ""
         }
       ]
@@ -613,6 +704,23 @@
       "attributes": [
         {
           "name": "google-client-id",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "vui-i18n",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "params",
+          "description": ""
+        },
+        {
+          "name": "text",
           "description": ""
         }
       ]
@@ -779,69 +887,6 @@
         {
           "name": "width",
           "description": "Width of the placeholder in pixels"
-        }
-      ]
-    },
-    {
-      "name": "vui-powered-by",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "label",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "vui-signin",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "email-validation",
-          "description": "Email validation options"
-        },
-        {
-          "name": "is-loading",
-          "description": "Controls the loading state of the component"
-        }
-      ]
-    },
-    {
-      "name": "vui-signup",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "email",
-          "description": ""
-        },
-        {
-          "name": "email-validation",
-          "description": "Email validation options"
-        },
-        {
-          "name": "first-name",
-          "description": ""
-        },
-        {
-          "name": "is-loading",
-          "description": "Controls the loading state of the component"
-        },
-        {
-          "name": "last-name",
-          "description": ""
-        },
-        {
-          "name": "password",
-          "description": ""
         }
       ]
     },
