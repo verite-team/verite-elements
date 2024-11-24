@@ -90,7 +90,7 @@
   },
   "signup": {
     "default": {
-      "title": "Sign up",
+      "title": "Sign up to {product}",
       "description": "Welcome! Please fill in the details to get started.",
       "prompt": "Already have an account?",
       "action": "Sign in",

@@ -1,6 +1,18 @@
 import './App.css'
 
-import { VuiButton, VuiI18n, VuiThemeToggle, VuiUserMenu, initialize } from 'stencil-react'
+import {
+  VeriteConnector,
+  VuiAuthCard,
+  VuiAuthForm,
+  VuiButton,
+  VuiDivider,
+  VuiFlex,
+  VuiI18n,
+  VuiLogo,
+  VuiThemeToggle,
+  VuiUserMenu,
+  initialize,
+} from 'stencil-react'
 
 import React from 'react'
 
@@ -44,6 +56,81 @@ function App() {
 
       <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
       <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu>
+
+      <VuiFlex direction="row" gap={8} width="full">
+        <VeriteConnector className="w-full max-w-[400px]">
+          <VuiAuthCard
+            elevation="lg"
+            heading="$signin.default.title|product:Acme Co"
+            description="$signin.default.description"
+            prompt="$signin.default.prompt"
+            action="$signin.default.action"
+          >
+            <div slot="providers">
+              <VuiFlex direction="column" gap={2} justify="start" items="stretch" width="full">
+                <VuiButton className="google-button" variant="outline" style={{ width: '100%' }}>
+                  <VuiFlex items="center" gap={2}>
+                    <VuiLogo name="apple" size={20}></VuiLogo>
+                    <VuiI18n text="signup.with" params={{ provider: 'Apple' }}></VuiI18n>
+                  </VuiFlex>
+                </VuiButton>
+
+                <VuiButton className="google-button" variant="outline" style={{ width: '100%' }}>
+                  <VuiFlex items="center" gap={2}>
+                    <VuiLogo name="google" size={20}></VuiLogo>
+                    <VuiI18n text="signup.with" params={{ provider: 'Google' }}></VuiI18n>
+                  </VuiFlex>
+                </VuiButton>
+              </VuiFlex>
+              <VuiDivider orientation="horizontal" style={{ margin: '16px 0' }}>
+                <VuiI18n text="signup.option"></VuiI18n>
+              </VuiDivider>
+            </div>
+
+            <VuiAuthForm
+              action="signin"
+              elements='["email", "password", "forgotPassword"]'
+              submit-label="$signin.default.submit"
+            ></VuiAuthForm>
+          </VuiAuthCard>
+        </VeriteConnector>
+
+        <VeriteConnector className="w-full max-w-[400px]">
+          <VuiAuthCard
+            elevation="lg"
+            heading="$signup.default.title|product:Acme Co"
+            description="$signup.default.description"
+            prompt="$signup.default.prompt"
+            action="$signup.default.action"
+          >
+            <div slot="providers">
+              <VuiFlex direction="column" gap={2} justify="start" items="stretch" width="full">
+                <VuiButton className="google-button" variant="outline">
+                  <VuiFlex items="center" gap={2}>
+                    <VuiLogo name="apple" size={20}></VuiLogo>
+                    <VuiI18n text="signup.with" params={{ provider: 'Apple' }}></VuiI18n>
+                  </VuiFlex>
+                </VuiButton>
+
+                <VuiButton className="google-button" variant="outline">
+                  <VuiFlex items="center" gap={2}>
+                    <VuiLogo name="google" size={20}></VuiLogo>
+                    <VuiI18n text="signup.with" params={{ provider: 'Google' }}></VuiI18n>
+                  </VuiFlex>
+                </VuiButton>
+              </VuiFlex>
+              <VuiDivider orientation="horizontal" style={{ margin: '16px 0' }}>
+                <VuiI18n text="signup.option"></VuiI18n>
+              </VuiDivider>
+            </div>
+            <VuiAuthForm
+              action="signup"
+              elements='["name", "email", "password"]'
+              submit-label="$signup.default.submit"
+            ></VuiAuthForm>
+          </VuiAuthCard>
+        </VeriteConnector>
+      </VuiFlex>
     </div>
   )
 }

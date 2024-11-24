@@ -65,7 +65,7 @@
       <verite-connector>
         <vui-auth-card
           elevation="lg"
-          heading="$signin.default.title"
+          heading="$signin.default.title|product:Acme Co"
           description="$signin.default.description"
           prompt="$signin.default.prompt"
           action="$signin.default.action"
@@ -102,7 +102,7 @@
       <verite-connector>
         <vui-auth-card
           elevation="lg"
-          heading="$signup.default.title"
+          heading="$signup.default.title|product:Acme Co"
           description="$signup.default.description"
           prompt="$signup.default.prompt"
           action="$signup.default.action"
@@ -127,7 +127,6 @@
               <vui-i18n text="signup.option"></vui-i18n>
             </vui-divider>
           </div>
-          i
           <vui-auth-form
             action="signup"
             elements='["name", "email", "password"]'

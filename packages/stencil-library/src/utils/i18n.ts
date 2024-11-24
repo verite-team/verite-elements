@@ -164,7 +164,18 @@ function createI18nStore(config: I18nConfig) {
     // if key starts with $ then it's a key from the translations file
     if (key.startsWith('$')) {
       key = key.slice(1)
-      return translate(key, params)
+
+      // $signin.default.title|product:Acme Co
+      const [translation, ...rest] = key.split('|')
+      params = rest.reduce(
+        (acc, param) => {
+          const [key, value] = param.split(':')
+          acc[key] = value
+          return acc
+        },
+        {} as Record<string, string>
+      )
+      return translate(translation, params)
     }
     return key
   }
