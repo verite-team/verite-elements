@@ -1,8 +1,9 @@
-import { Component, Element, Event, EventEmitter, Host, State, h } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
 
-import { i18n } from '../../stores/i18n'
+import { getI18n } from '../../utils/i18n'
 
-const t = i18n.t
+const t = getI18n().translate
+const ti = getI18n().translateInterpolated
 
 @Component({
   tag: 'vui-otp',
@@ -17,6 +18,8 @@ export class Otp {
 
   @Event() formSubmit: EventEmitter<string>
 
+  @Prop({ mutable: true }) submitLabel?: string = ''
+
   private readonly codeLength = 6
 
   private focusActive() {
@@ -28,7 +31,7 @@ export class Otp {
   }
 
   private handleKeyDown = (e: KeyboardEvent) => {
-    if (['Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault()
       return
     }
@@ -77,7 +80,7 @@ export class Otp {
   }
 
   async componentWillLoad() {
-    await i18n.waitUntilReady
+    await getI18n().waitUntilReady()
   }
 
   componentDidLoad() {
@@ -100,7 +103,7 @@ export class Otp {
                   }}
                   value={this.code[index] || ''}
                   readonly
-                  tabindex="-1"
+                  focusable={index === this.activeIndex}
                   onMouseDown={this.handleMouseDown}
                   onClick={this.handleMouseDown}
                 />
@@ -109,7 +112,7 @@ export class Otp {
           </vui-flex>
 
           <vui-button class="verify-button" type="submit" onClick={this.handleSubmit}>
-            {t('otp.verify')}
+            {ti(this.submitLabel) || t('form.submit.label')}
           </vui-button>
         </form>
       </Host>

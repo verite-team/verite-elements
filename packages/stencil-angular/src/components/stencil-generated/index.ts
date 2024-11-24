@@ -30,14 +30,14 @@ export declare interface VeriteConnector extends Components.VeriteConnector {}
 
 
 @ProxyCmp({
-  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'variant']
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant']
 })
 @Component({
   selector: 'vui-auth-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'variant'],
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant'],
 })
 export class VuiAuthCard {
   protected el: HTMLElement;
@@ -647,13 +647,14 @@ export declare interface VuiLogo extends Components.VuiLogo {}
 
 
 @ProxyCmp({
+  inputs: ['submitLabel']
 })
 @Component({
   selector: 'vui-otp',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['submitLabel'],
 })
 export class VuiOtp {
   protected el: HTMLElement;
@@ -716,14 +717,14 @@ export declare interface VuiSpinner extends Components.VuiSpinner {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
 })
 @Component({
   selector: 'vui-textbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
 })
 export class VuiTextbox {
   protected el: HTMLElement;

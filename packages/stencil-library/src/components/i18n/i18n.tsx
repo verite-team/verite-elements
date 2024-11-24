@@ -1,6 +1,6 @@
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 
-import { i18n } from '../../stores/i18n'
+import { getI18n } from '../../utils/i18n'
 
 @Component({
   tag: 'vui-i18n',
@@ -15,11 +15,11 @@ export class Translate {
   @Watch('params')
   async translateText() {
     const params = typeof this.params === 'string' ? JSON.parse(this.params) : this.params
-    this.translatedText = i18n.t(this.text, params)
+    this.translatedText = getI18n().translate(this.text, params)
   }
 
   async componentWillLoad() {
-    await i18n.waitUntilReady
+    await getI18n().waitUntilReady()
     this.translateText()
   }
 

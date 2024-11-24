@@ -3,14 +3,10 @@
  *
  * This is the entry point for your component library. Use this file to export utilities,
  * constants or data structure that accompany your components.
- *
- * DO NOT use this file to export your components. Instead, use the recommended approaches
- * to consume components of this package as outlined in the `README.md`.
  */
-import { initializeTheme } from './utils/theme';
 
-// Initialize theme before rendering
-initializeTheme();
-
-export { format } from './utils/utils';
-export type * from './components.d.ts';
+export type * from './components.d.ts'
+export { initialize } from './global'
+export type { VeriteConfig } from './types'
+export { getI18n } from './utils/i18n.js'
+export type { I18nConfig, PluralType, TranslationDictionary } from './utils/i18n.js'

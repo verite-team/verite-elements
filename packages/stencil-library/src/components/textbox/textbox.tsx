@@ -17,6 +17,7 @@ export class Textbox {
   @Prop() maxlength?: number
   @Prop({ reflect: true }) readonly?: boolean
   @Prop({ mutable: true, reflect: true }) value: string = ''
+  @Prop() focusable?: boolean = true
 
   // Events
   @Event() valueChange: EventEmitter<string>
@@ -55,6 +56,7 @@ export class Textbox {
         autocorrect={this.autocorrect}
         maxlength={this.maxlength}
         required={this.required}
+        tabindex={this.focusable ? '0' : '-1'}
         onInput={this.handleInput}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}

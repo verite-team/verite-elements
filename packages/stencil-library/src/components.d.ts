@@ -29,6 +29,7 @@ export namespace Components {
         "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
         "heading": string;
         "prompt": string;
+        "submitLabel": string;
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthFooter {
@@ -175,6 +176,7 @@ export namespace Components {
         "size": number;
     }
     interface VuiOtp {
+        "submitLabel"?: string;
     }
     interface VuiPlaceholder {
         /**
@@ -198,6 +200,7 @@ export namespace Components {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
+        "focusable"?: boolean;
         "maxlength"?: number;
         "name"?: string;
         "placeholder"?: string;
@@ -615,6 +618,7 @@ declare namespace LocalJSX {
         "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
         "heading"?: string;
         "prompt"?: string;
+        "submitLabel"?: string;
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthFooter {
@@ -769,6 +773,7 @@ declare namespace LocalJSX {
     }
     interface VuiOtp {
         "onFormSubmit"?: (event: VuiOtpCustomEvent<string>) => void;
+        "submitLabel"?: string;
     }
     interface VuiPlaceholder {
         /**
@@ -792,6 +797,7 @@ declare namespace LocalJSX {
         "autocomplete"?: string;
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
+        "focusable"?: boolean;
         "maxlength"?: number;
         "name"?: string;
         "onEnterKey"?: (event: VuiTextboxCustomEvent<void>) => void;

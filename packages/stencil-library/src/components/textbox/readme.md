@@ -10,6 +10,7 @@
 | `autocomplete` | `autocomplete` |             | `string`        | `undefined` |
 | `autocorrect`  | `autocorrect`  |             | `"off" \| "on"` | `undefined` |
 | `disabled`     | `disabled`     |             | `boolean`       | `undefined` |
+| `focusable`    | `focusable`    |             | `boolean`       | `true`      |
 | `maxlength`    | `maxlength`    |             | `number`        | `undefined` |
 | `name`         | `name`         |             | `string`        | `undefined` |
 | `placeholder`  | `placeholder`  |             | `string`        | `undefined` |
@@ -39,16 +40,14 @@
 
 ### Used by
 
+ - [vui-auth-form](../auth)
  - [vui-otp](../otp)
- - [vui-signin](../signin)
- - [vui-signup](../signup)
 
 ### Graph
 ```mermaid
 graph TD;
+  vui-auth-form --> vui-textbox
   vui-otp --> vui-textbox
-  vui-signin --> vui-textbox
-  vui-signup --> vui-textbox
   style vui-textbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

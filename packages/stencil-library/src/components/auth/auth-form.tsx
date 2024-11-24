@@ -6,10 +6,11 @@ import {
   ValidationRules,
 } from '../../utils/validation'
 
+import { getI18n } from '../../utils/i18n'
 import { SignUpFormData } from './types'
-import { i18n } from '../../stores/i18n'
 
-const t = i18n.t
+const t = getI18n().translate
+const ti = getI18n().translateInterpolated
 
 type Element = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
 
@@ -33,6 +34,7 @@ export class AuthForm {
   @Prop({ mutable: true }) email?: string = ''
   @Prop({ mutable: true }) phone?: string = ''
   @Prop({ mutable: true }) password?: string = ''
+  @Prop({ mutable: true }) submitLabel?: string = ''
 
   @Prop({ reflect: true, mutable: true }) elements?: Element[] | string = []
 
@@ -162,7 +164,7 @@ export class AuthForm {
   }
 
   async componentWillLoad() {
-    await i18n.waitUntilReady
+    await getI18n().waitUntilReady()
   }
 
   render() {
@@ -266,13 +268,13 @@ export class AuthForm {
         {this.elements.includes('forgotPassword') && (
           <div class="forgot-password">
             <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
-              {t('signin.forgotPassword')}
+              {t('form.forgotPassword.label')}
             </vui-link>
           </div>
         )}
 
         <vui-button type="submit" class="submit-button" busy={this.isLoading}>
-          {t(`form.action.${this.action}`)}
+          {ti(this.submitLabel) || t('form.submit.label')}
         </vui-button>
       </form>
     )

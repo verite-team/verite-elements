@@ -22,15 +22,11 @@
 ### Used by
 
  - [vui-auth-footer](../auth)
- - [vui-otp](../otp)
- - [vui-signin](../signin)
 
 ### Graph
 ```mermaid
 graph TD;
   vui-auth-footer --> vui-divider
-  vui-otp --> vui-divider
-  vui-signin --> vui-divider
   style vui-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
