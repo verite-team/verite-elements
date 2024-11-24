@@ -6,11 +6,11 @@ import {
   ValidationRules,
 } from '../../utils/validation'
 
+import { getI18n } from '../../utils/i18n'
 import { SignUpFormData } from './types'
-import { getI18nStore } from '../../stores/i18n'
 
-const t = getI18nStore().t
-const tif = getI18nStore().tif
+const t = getI18n().translate
+const ti = getI18n().translateInterpolated
 
 type Element = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
 
@@ -164,7 +164,7 @@ export class AuthForm {
   }
 
   async componentWillLoad() {
-    await getI18nStore().waitUntilReady
+    await getI18n().waitUntilReady()
   }
 
   render() {
@@ -274,7 +274,7 @@ export class AuthForm {
         )}
 
         <vui-button type="submit" class="submit-button" busy={this.isLoading}>
-          {tif(this.submitLabel) || t('form.submit.label')}
+          {ti(this.submitLabel) || t('form.submit.label')}
         </vui-button>
       </form>
     )

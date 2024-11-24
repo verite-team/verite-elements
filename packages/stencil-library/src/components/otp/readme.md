@@ -3,6 +3,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property      | Attribute      | Description | Type     | Default |
+| ------------- | -------------- | ----------- | -------- | ------- |
+| `submitLabel` | `submit-label` |             | `string` | `''`    |
+
+
 ## Events
 
 | Event        | Description | Type                  |

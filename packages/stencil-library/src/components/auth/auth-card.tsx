@@ -1,8 +1,8 @@
 import { Component, Prop, h } from '@stencil/core'
 
-import { getI18nStore } from '../../stores/i18n'
+import { getI18n } from '../../utils/i18n'
 
-const tif = getI18nStore().tif
+const ti = getI18n().translateInterpolated
 
 @Component({
   tag: 'vui-auth-card',
@@ -14,25 +14,26 @@ export class AuthCard {
   @Prop() description: string
   @Prop() prompt: string
   @Prop() action: string
+  @Prop() submitLabel: string
   @Prop() variant?: 'default' | 'inset' = 'inset'
   @Prop() elevation?: 'none' | 'sm' | 'md' | 'lg' | 'xl' = 'none'
 
   async componentWillLoad() {
-    await getI18nStore().waitUntilReady
+    await getI18n().waitUntilReady()
   }
 
   render() {
     return (
       <vui-card elevation={this.elevation}>
         <slot name="header">
-          <vui-auth-header heading={tif(this.heading)} description={tif(this.description)}></vui-auth-header>
+          <vui-auth-header heading={ti(this.heading)} description={ti(this.description)}></vui-auth-header>
         </slot>
         <vui-card-content>
           <slot name="providers"></slot>
           <slot></slot>
         </vui-card-content>
         <slot name="footer">
-          <vui-auth-footer prompt={tif(this.prompt)} action={tif(this.action)} variant={this.variant}></vui-auth-footer>
+          <vui-auth-footer prompt={ti(this.prompt)} action={ti(this.action)} variant={this.variant}></vui-auth-footer>
         </slot>
       </vui-card>
     )

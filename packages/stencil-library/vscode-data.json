@@ -67,6 +67,10 @@
           "description": ""
         },
         {
+          "name": "submit-label",
+          "description": ""
+        },
+        {
           "name": "variant",
           "description": "",
           "values": [
@@ -867,7 +871,12 @@
         "kind": "markdown",
         "value": ""
       },
-      "attributes": []
+      "attributes": [
+        {
+          "name": "submit-label",
+          "description": ""
+        }
+      ]
     },
     {
       "name": "vui-placeholder",
@@ -943,6 +952,10 @@
         },
         {
           "name": "disabled",
+          "description": ""
+        },
+        {
+          "name": "focusable",
           "description": ""
         },
         {

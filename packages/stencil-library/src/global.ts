@@ -1,52 +1,59 @@
-import { setI18nStore } from './stores/i18n'
+import type { I18nConfig } from './utils/i18n'
 import { VeriteConfig } from './types'
-import { createI18nStore } from './utils/i18n'
+import { getI18n } from './utils/i18n'
 
-declare global {
-  interface Window {
-    vui?: Vui
-  }
-}
+// declare global {
+//   interface Window {
+//     vui?: Vui
+//   }
+// }
 
 interface Vui {
   configure: (config?: VeriteConfig) => Promise<void>
   t: (key: string, interpolations?: Record<string, string>) => string
+  setLocale: (locale: string) => Promise<void>
 }
 
 class Vui implements Vui {
-  #isInitialized = false
+  #i18n: ReturnType<typeof getI18n>
 
-  get isInitialized() {
-    return this.#isInitialized
+  t = (key: string, interpolations?: Record<string, string>) => {
+    return this.#i18n.translate(key, interpolations)
+  }
+
+  setLocale = async (locale: string) => {
+    await this.#i18n.setLocale(locale)
   }
 
   configure = async (config?: VeriteConfig) => {
-    const i18nInstance = createI18nStore({ ...(config?.i18n ?? {}) })
-    setI18nStore(i18nInstance)
-    this.t = i18nInstance.t.bind(i18nInstance)
-    this.#isInitialized = true
-    await i18nInstance.waitUntilReady
+    const i18nConfig: Partial<I18nConfig> = {
+      availableLocales: config?.i18n?.availableLocales,
+      defaultLocale: config?.i18n?.defaultLocale,
+      locale: config?.i18n?.locale,
+      translationsPath: config?.i18n?.translationsPath,
+      translations: config?.i18n?.translations,
+      fetchTranslations: config?.i18n?.fetchTranslations,
+    }
+
+    // Initialize i18n with new config
+    this.#i18n = getI18n(i18nConfig)
+    await this.#i18n.initialize()
   }
 }
 
-// Create the global interface but don't initialize the i18n store yet
-if (typeof window !== 'undefined' && !window.vui) {
-  window.vui = new Vui()
+// Create the global interface
+// if (typeof window !== 'undefined' && !window.vui) {
+//   window.vui = new Vui()
+// }
+
+export const initialize = async (config?: VeriteConfig) => {
+  // console.log('[global] Initializing with config:', config)
+  const i18n = getI18n(config?.i18n)
+  await i18n.initialize()
+  // console.log('[global] Initialization complete')
+  return i18n
 }
 
-let initPromise: Promise<void> | null = null
+document.dispatchEvent(new CustomEvent('onVeriteReady', { detail: new Vui() }))
 
-export const init = async (config?: VeriteConfig) => {
-  if (!initPromise) {
-    initPromise = (async () => {
-      if (window.vui?.isInitialized) {
-        return
-      }
-
-      await window.vui?.configure(config)
-    })()
-  }
-  return initPromise
-}
-
-export default init
+// export default init

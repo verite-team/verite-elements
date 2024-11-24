@@ -1,9 +1,18 @@
 import './App.css'
 
-import React from 'react'
-import { VuiButton, defineCustomElements } from 'stencil-react'
+import { VuiButton, VuiI18n, VuiThemeToggle, VuiUserMenu, initialize } from 'stencil-react'
 
-defineCustomElements()
+import React from 'react'
+
+// defineCustomElements()
+initialize({
+  i18n: {
+    translationsPath: '/locales/{locale}.json',
+    translations: {
+      hello: 'Hello, world! :: {time}',
+    },
+  },
+})
 
 // const i18nStore = vui.getI18nStore()
 
@@ -25,14 +34,16 @@ function App() {
 
   return (
     <div className="container">
-      <VuiButton onClick={() => console.log('clicked')}>Click me</VuiButton>
+      <VuiButton onClick={() => console.log('clicked')}>
+        <VuiI18n text="hello" params={{ time: Date.now().toString() }} />
+      </VuiButton>
       <div className="fixed flex items-center gap-2 font-semibold top-4 left-4">
         <img src="/assets/react.svg" alt="React Logo" style={{ width: '32px' }} />
         React App Demo
       </div>
 
-      {/* <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
-      <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu> */}
+      <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
+      <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu>
     </div>
   )
 }

@@ -10,6 +10,7 @@
 | `autocomplete` | `autocomplete` |             | `string`        | `undefined` |
 | `autocorrect`  | `autocorrect`  |             | `"off" \| "on"` | `undefined` |
 | `disabled`     | `disabled`     |             | `boolean`       | `undefined` |
+| `focusable`    | `focusable`    |             | `boolean`       | `true`      |
 | `maxlength`    | `maxlength`    |             | `number`        | `undefined` |
 | `name`         | `name`         |             | `string`        | `undefined` |
 | `placeholder`  | `placeholder`  |             | `string`        | `undefined` |

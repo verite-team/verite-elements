@@ -1,8 +1,8 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core'
 
-import { getI18nStore } from '../../stores/i18n'
+import { getI18n } from '../../utils/i18n'
 
-const t = getI18nStore().t
+const t = getI18n().translate
 @Component({
   tag: 'vui-auth-footer',
   styleUrl: 'auth-footer.css',
@@ -22,7 +22,7 @@ export class AuthFooter {
   }
 
   async componentWillLoad() {
-    await getI18nStore().waitUntilReady
+    await getI18n().waitUntilReady()
   }
 
   render() {

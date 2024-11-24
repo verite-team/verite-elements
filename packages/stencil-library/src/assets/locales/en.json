@@ -69,38 +69,43 @@
       "title": "Sign in to {product}",
       "description": "Welcome back! Please sign in to continue",
       "prompt": "Don't have an account?",
-      "action": "Sign up"
+      "action": "Sign up",
+      "submit": "Sign in"
     },
     "phone": {
       "title": "Enter your phone number",
       "description": "Send a code to your phone number to continue.",
       "prompt": "Don't have an account?",
-      "action": "Sign up"
+      "action": "Sign up",
+      "submit": "Send code"
     },
     "email": {
       "title": "Enter your email",
       "description": "Send a code to your email to continue.",
       "prompt": "Don't have an account?",
-      "action": "Sign up"
-    }
+      "action": "Sign up",
+      "submit": "Send code"
+    },
+    "option": "or"
   },
   "signup": {
     "default": {
       "title": "Sign up",
       "description": "Welcome! Please fill in the details to get started.",
       "prompt": "Already have an account?",
-      "action": "Sign in"
+      "action": "Sign in",
+      "submit": "Sign up"
     },
     "with": "Sign up with {provider}",
-    "or": "or"
+    "option": "or"
   },
   "otp": {
     "title": "Verify your email",
     "description": "We sent a verification code to your email. Please enter it below.",
-    "verify": "Verify",
-    "noCode": "Didn't receive the code?",
-    "resend": "Resend",
+    "prompt": "Didn't receive the code?",
+    "action": "Resend",
     "backToSignIn": "Back to sign in",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "submit": "Verify"
   }
 }
