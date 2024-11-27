@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  width: 100%;
+  /* border-top: 1px solid hsl(var(--border)); */
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.request-container {
+  display: grid;
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.title {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.permissions-section,
+.redirect-section {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: var(--card-padding);
+  padding: var(--card-padding);
+}
+
+.permissions-section {
+  padding-bottom: 0;
+}
+
+.redirect-section {
+  padding: 0 var(--card-padding);
+}
+
+.section-title {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+}
+
+.permissions-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.permission-item {
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+.redirect-uri {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: calc(var(--card-padding) / 2);
+  border-top: 1px solid hsl(var(--border));
+}
+
+.approve-button::part(button) {
+  background-color: hsl(var(--success));
+}
+
+@media (max-width: 640px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}

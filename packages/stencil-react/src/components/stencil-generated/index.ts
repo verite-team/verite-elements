@@ -8,6 +8,7 @@ import type { JSX } from 'stencil-library';
 
 
 export const VeriteConnector = /*@__PURE__*/createReactComponent<JSX.VeriteConnector, HTMLVeriteConnectorElement>('verite-connector');
+export const VuiAuthAltCard = /*@__PURE__*/createReactComponent<JSX.VuiAuthAltCard, HTMLVuiAuthAltCardElement>('vui-auth-alt-card');
 export const VuiAuthCard = /*@__PURE__*/createReactComponent<JSX.VuiAuthCard, HTMLVuiAuthCardElement>('vui-auth-card');
 export const VuiAuthFooter = /*@__PURE__*/createReactComponent<JSX.VuiAuthFooter, HTMLVuiAuthFooterElement>('vui-auth-footer');
 export const VuiAuthForm = /*@__PURE__*/createReactComponent<JSX.VuiAuthForm, HTMLVuiAuthFormElement>('vui-auth-form');
@@ -37,6 +38,7 @@ export const VuiLink = /*@__PURE__*/createReactComponent<JSX.VuiLink, HTMLVuiLin
 export const VuiLogo = /*@__PURE__*/createReactComponent<JSX.VuiLogo, HTMLVuiLogoElement>('vui-logo');
 export const VuiOtp = /*@__PURE__*/createReactComponent<JSX.VuiOtp, HTMLVuiOtpElement>('vui-otp');
 export const VuiPlaceholder = /*@__PURE__*/createReactComponent<JSX.VuiPlaceholder, HTMLVuiPlaceholderElement>('vui-placeholder');
+export const VuiRequest = /*@__PURE__*/createReactComponent<JSX.VuiRequest, HTMLVuiRequestElement>('vui-request');
 export const VuiSpinner = /*@__PURE__*/createReactComponent<JSX.VuiSpinner, HTMLVuiSpinnerElement>('vui-spinner');
 export const VuiTextbox = /*@__PURE__*/createReactComponent<JSX.VuiTextbox, HTMLVuiTextboxElement>('vui-textbox');
 export const VuiThemeToggle = /*@__PURE__*/createReactComponent<JSX.VuiThemeToggle, HTMLVuiThemeToggleElement>('vui-theme-toggle');

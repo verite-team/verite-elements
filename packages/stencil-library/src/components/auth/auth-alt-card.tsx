@@ -5,11 +5,11 @@ import { getI18n } from '../../utils/i18n'
 const ti = getI18n().translateInterpolated
 
 @Component({
-  tag: 'vui-auth-card',
-  styleUrl: 'auth-card.css',
+  tag: 'vui-auth-alt-card',
+  styleUrl: 'auth-alt-card.css',
   shadow: true,
 })
-export class AuthCard {
+export class AuthAltCard {
   @Prop() heading: string
   @Prop() description: string
   @Prop() prompt: string
@@ -27,12 +27,15 @@ export class AuthCard {
       <vui-card elevation={this.elevation}>
         <slot name="logo"></slot>
         <slot name="header">
-          <vui-auth-header heading={ti(this.heading)} description={ti(this.description)}></vui-auth-header>
+          <vui-auth-header
+            heading={ti(this.heading)}
+            description={ti(this.description)}
+            size="xl"
+            halign="left"
+          ></vui-auth-header>
         </slot>
-        <vui-card-content>
-          <slot name="providers"></slot>
-          <slot></slot>
-        </vui-card-content>
+        <slot name="providers"></slot>
+        <slot></slot>
         <slot name="footer">
           <vui-auth-footer prompt={ti(this.prompt)} action={ti(this.action)} variant={this.variant}></vui-auth-footer>
         </slot>

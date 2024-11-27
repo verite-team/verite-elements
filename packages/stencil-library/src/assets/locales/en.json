@@ -64,6 +64,24 @@
       "specialChar": "Must contain at least one special character"
     }
   },
+  "request": {
+    "title": "Request permissions",
+    "description": "This app will be able to:",
+    "prompt": "Do you want to continue?",
+    "permissions": {
+      "title": "This app will be able to:"
+    },
+    "redirect": {
+      "title": "Redirect URI:"
+    },
+    "action": "Continue",
+    "deny": {
+      "label": "Deny"
+    },
+    "approve": {
+      "label": "Approve"
+    }
+  },
   "signin": {
     "default": {
       "title": "Sign in to {product}",

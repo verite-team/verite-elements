@@ -6,9 +6,9 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardTitle {
-  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'md'
+  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' | 'xl' = 'md'
   @Prop({ reflect: true }) weight: 'bold' | 'medium' | 'light' = 'bold'
-  @Prop({ reflect: true }) halign: 'left' | 'center' = 'left'
+  @Prop({ reflect: true }) halign: 'left' | 'center' | 'right' = 'left'
 
   render() {
     return (

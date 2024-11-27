@@ -13,3 +13,7 @@ p {
 :host([halign='center']) p {
   text-align: center;
 }
+
+:host([halign='right']) p {
+  text-align: right;
+}

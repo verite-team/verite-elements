@@ -7,7 +7,7 @@ import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stenc
   formAssociated: true,
 })
 export class Button {
-  @Prop({ reflect: true }) variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' = 'default'
+  @Prop({ reflect: true }) variant?: 'default' | 'soft' | 'outline' | 'ghost' | 'destructive' = 'default'
   @Prop({ reflect: true }) size?: 'default' | 'sm' | 'lg' | 'icon' = 'default'
   @Prop({ reflect: true }) width?: 'full' | 'auto' = 'auto'
   @Prop({ reflect: true }) disabled?: boolean = false

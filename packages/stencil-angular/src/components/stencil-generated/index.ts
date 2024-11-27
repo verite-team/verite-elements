@@ -33,6 +33,28 @@ export declare interface VeriteConnector extends Components.VeriteConnector {}
   inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant']
 })
 @Component({
+  selector: 'vui-auth-alt-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant'],
+})
+export class VuiAuthAltCard {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface VuiAuthAltCard extends Components.VuiAuthAltCard {}
+
+
+@ProxyCmp({
+  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant']
+})
+@Component({
   selector: 'vui-auth-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
@@ -108,14 +130,14 @@ export declare interface VuiAuthForm extends Components.VuiAuthForm {
 
 
 @ProxyCmp({
-  inputs: ['description', 'heading']
+  inputs: ['description', 'halign', 'heading', 'size']
 })
 @Component({
   selector: 'vui-auth-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['description', 'heading'],
+  inputs: ['description', 'halign', 'heading', 'size'],
 })
 export class VuiAuthHeader {
   protected el: HTMLElement;
@@ -692,6 +714,34 @@ export class VuiPlaceholder {
 
 
 export declare interface VuiPlaceholder extends Components.VuiPlaceholder {}
+
+
+@ProxyCmp({
+  inputs: ['application', 'isLoading', 'permissions', 'redirectUri', 'showRedirect']
+})
+@Component({
+  selector: 'vui-request',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['application', 'isLoading', 'permissions', 'redirectUri', 'showRedirect'],
+})
+export class VuiRequest {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['requestApprove', 'requestDeny']);
+  }
+}
+
+
+export declare interface VuiRequest extends Components.VuiRequest {
+
+  requestApprove: EventEmitter<CustomEvent<void>>;
+
+  requestDeny: EventEmitter<CustomEvent<void>>;
+}
 
 
 @ProxyCmp({

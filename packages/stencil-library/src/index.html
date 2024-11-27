@@ -25,6 +25,29 @@
       prompt="Didn't receive the code?"
       action="Resend"
       submit-label="Verify" -->
+
+      <verite-connector>
+        <vui-auth-alt-card
+          elevation="lg"
+          heading="Authorization Request"
+          description="Test Application is requesting access to your account"
+          size="xl"
+        >
+          <vui-request
+            application="Test Application111"
+            permissions='["read profile", "write posts", "openid"]'
+            redirect-uri="https://example.com"
+          >
+            <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+          </vui-request>
+          <vui-auth-footer slot="footer">
+            <div style="text-align: center; padding: 1.5rem; line-height: 1.5">
+              By continuing, you agree to our <vui-link href="https://example.com/terms">Terms of Service</vui-link> and
+              <vui-link href="https://example.com/privacy">Privacy Policy</vui-link>
+            </div>
+          </vui-auth-footer>
+        </vui-auth-alt-card>
+      </verite-connector>
       <verite-connector type="otp">
         <vui-auth-card
           class="card--otp"
@@ -34,6 +57,7 @@
           prompt="$otp.prompt"
           action="$otp.action"
         >
+          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
           <vui-otp submit-label="$otp.submit"></vui-otp>
         </vui-auth-card>
       </verite-connector>
@@ -46,6 +70,7 @@
           prompt="$signin.phone.prompt"
           action="$signin.phone.action"
         >
+          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
           <vui-auth-form action="phone" elements='["phone"]' submit-label="$signin.phone.submit"></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
@@ -58,6 +83,7 @@
           prompt="$signin.email.prompt"
           action="$signin.email.action"
         >
+          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
           <vui-auth-form action="email" elements='["email"]' submit-label="$signin.email.submit"></vui-auth-form>
         </vui-auth-card>
       </verite-connector>
@@ -70,6 +96,7 @@
           prompt="$signin.default.prompt"
           action="$signin.default.action"
         >
+          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
               <vui-button class="google-button" variant="outline" style="width: 100%">
@@ -107,6 +134,7 @@
           prompt="$signup.default.prompt"
           action="$signup.default.action"
         >
+          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
           <div slot="providers">
             <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
               <vui-button class="google-button" variant="outline" style="width: 100%">
@@ -135,6 +163,7 @@
         </vui-auth-card>
       </verite-connector>
     </div>
+
     <vui-toast position="top-center"></vui-toast>
   </body>
 </html>

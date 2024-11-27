@@ -23,6 +23,15 @@ export namespace Components {
     interface VeriteConnector {
         "type": 'signup' | 'signin';
     }
+    interface VuiAuthAltCard {
+        "action": string;
+        "description": string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+        "heading": string;
+        "prompt": string;
+        "submitLabel": string;
+        "variant"?: 'default' | 'inset';
+    }
     interface VuiAuthCard {
         "action": string;
         "description": string;
@@ -66,7 +75,9 @@ export namespace Components {
     }
     interface VuiAuthHeader {
         "description": string;
+        "halign": 'left' | 'center' | 'right';
         "heading": string;
+        "size": 'sm' | 'md' | 'lg' | 'xl';
     }
     interface VuiBrand {
         "label": string;
@@ -80,7 +91,7 @@ export namespace Components {
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
         "type": 'button' | 'submit' | 'reset';
         "value"?: string;
-        "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+        "variant"?: 'default' | 'soft' | 'outline' | 'ghost' | 'destructive';
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
@@ -89,7 +100,7 @@ export namespace Components {
     interface VuiCardContent {
     }
     interface VuiCardDescription {
-        "halign": 'left' | 'center';
+        "halign": 'left' | 'center' | 'right';
     }
     interface VuiCardFooter {
         "variant": 'default' | 'inset';
@@ -97,8 +108,8 @@ export namespace Components {
     interface VuiCardHeader {
     }
     interface VuiCardTitle {
-        "halign": 'left' | 'center';
-        "size": 'sm' | 'md' | 'lg';
+        "halign": 'left' | 'center' | 'right';
+        "size": 'sm' | 'md' | 'lg' | 'xl';
         "weight": 'bold' | 'medium' | 'light';
     }
     interface VuiDivider {
@@ -192,6 +203,13 @@ export namespace Components {
          */
         "width": number;
     }
+    interface VuiRequest {
+        "application"?: string;
+        "isLoading"?: boolean;
+        "permissions"?: string[] | string;
+        "redirectUri"?: string;
+        "showRedirect"?: boolean;
+    }
     interface VuiSpinner {
         "color": string;
         "size": 'small' | 'medium' | 'large';
@@ -244,6 +262,10 @@ export interface VuiOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiOtpElement;
 }
+export interface VuiRequestCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiRequestElement;
+}
 export interface VuiTextboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiTextboxElement;
@@ -262,6 +284,12 @@ declare global {
     var HTMLVeriteConnectorElement: {
         prototype: HTMLVeriteConnectorElement;
         new (): HTMLVeriteConnectorElement;
+    };
+    interface HTMLVuiAuthAltCardElement extends Components.VuiAuthAltCard, HTMLStencilElement {
+    }
+    var HTMLVuiAuthAltCardElement: {
+        prototype: HTMLVuiAuthAltCardElement;
+        new (): HTMLVuiAuthAltCardElement;
     };
     interface HTMLVuiAuthCardElement extends Components.VuiAuthCard, HTMLStencilElement {
     }
@@ -505,6 +533,24 @@ declare global {
         prototype: HTMLVuiPlaceholderElement;
         new (): HTMLVuiPlaceholderElement;
     };
+    interface HTMLVuiRequestElementEventMap {
+        "requestApprove": void;
+        "requestDeny": void;
+    }
+    interface HTMLVuiRequestElement extends Components.VuiRequest, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiRequestElementEventMap>(type: K, listener: (this: HTMLVuiRequestElement, ev: VuiRequestCustomEvent<HTMLVuiRequestElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiRequestElementEventMap>(type: K, listener: (this: HTMLVuiRequestElement, ev: VuiRequestCustomEvent<HTMLVuiRequestElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiRequestElement: {
+        prototype: HTMLVuiRequestElement;
+        new (): HTMLVuiRequestElement;
+    };
     interface HTMLVuiSpinnerElement extends Components.VuiSpinner, HTMLStencilElement {
     }
     var HTMLVuiSpinnerElement: {
@@ -572,6 +618,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "verite-connector": HTMLVeriteConnectorElement;
+        "vui-auth-alt-card": HTMLVuiAuthAltCardElement;
         "vui-auth-card": HTMLVuiAuthCardElement;
         "vui-auth-footer": HTMLVuiAuthFooterElement;
         "vui-auth-form": HTMLVuiAuthFormElement;
@@ -601,6 +648,7 @@ declare global {
         "vui-logo": HTMLVuiLogoElement;
         "vui-otp": HTMLVuiOtpElement;
         "vui-placeholder": HTMLVuiPlaceholderElement;
+        "vui-request": HTMLVuiRequestElement;
         "vui-spinner": HTMLVuiSpinnerElement;
         "vui-textbox": HTMLVuiTextboxElement;
         "vui-theme-toggle": HTMLVuiThemeToggleElement;
@@ -611,6 +659,15 @@ declare global {
 declare namespace LocalJSX {
     interface VeriteConnector {
         "type"?: 'signup' | 'signin';
+    }
+    interface VuiAuthAltCard {
+        "action"?: string;
+        "description"?: string;
+        "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+        "heading"?: string;
+        "prompt"?: string;
+        "submitLabel"?: string;
+        "variant"?: 'default' | 'inset';
     }
     interface VuiAuthCard {
         "action"?: string;
@@ -658,7 +715,9 @@ declare namespace LocalJSX {
     }
     interface VuiAuthHeader {
         "description"?: string;
+        "halign"?: 'left' | 'center' | 'right';
         "heading"?: string;
+        "size"?: 'sm' | 'md' | 'lg' | 'xl';
     }
     interface VuiBrand {
         "label"?: string;
@@ -673,7 +732,7 @@ declare namespace LocalJSX {
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
         "type"?: 'button' | 'submit' | 'reset';
         "value"?: string;
-        "variant"?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+        "variant"?: 'default' | 'soft' | 'outline' | 'ghost' | 'destructive';
         "width"?: 'full' | 'auto';
     }
     interface VuiCard {
@@ -682,7 +741,7 @@ declare namespace LocalJSX {
     interface VuiCardContent {
     }
     interface VuiCardDescription {
-        "halign"?: 'left' | 'center';
+        "halign"?: 'left' | 'center' | 'right';
     }
     interface VuiCardFooter {
         "variant"?: 'default' | 'inset';
@@ -690,8 +749,8 @@ declare namespace LocalJSX {
     interface VuiCardHeader {
     }
     interface VuiCardTitle {
-        "halign"?: 'left' | 'center';
-        "size"?: 'sm' | 'md' | 'lg';
+        "halign"?: 'left' | 'center' | 'right';
+        "size"?: 'sm' | 'md' | 'lg' | 'xl';
         "weight"?: 'bold' | 'medium' | 'light';
     }
     interface VuiDivider {
@@ -789,6 +848,15 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
+    interface VuiRequest {
+        "application"?: string;
+        "isLoading"?: boolean;
+        "onRequestApprove"?: (event: VuiRequestCustomEvent<void>) => void;
+        "onRequestDeny"?: (event: VuiRequestCustomEvent<void>) => void;
+        "permissions"?: string[] | string;
+        "redirectUri"?: string;
+        "showRedirect"?: boolean;
+    }
     interface VuiSpinner {
         "color"?: string;
         "size"?: 'small' | 'medium' | 'large';
@@ -820,6 +888,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "verite-connector": VeriteConnector;
+        "vui-auth-alt-card": VuiAuthAltCard;
         "vui-auth-card": VuiAuthCard;
         "vui-auth-footer": VuiAuthFooter;
         "vui-auth-form": VuiAuthForm;
@@ -849,6 +918,7 @@ declare namespace LocalJSX {
         "vui-logo": VuiLogo;
         "vui-otp": VuiOtp;
         "vui-placeholder": VuiPlaceholder;
+        "vui-request": VuiRequest;
         "vui-spinner": VuiSpinner;
         "vui-textbox": VuiTextbox;
         "vui-theme-toggle": VuiThemeToggle;
@@ -861,6 +931,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "verite-connector": LocalJSX.VeriteConnector & JSXBase.HTMLAttributes<HTMLVeriteConnectorElement>;
+            "vui-auth-alt-card": LocalJSX.VuiAuthAltCard & JSXBase.HTMLAttributes<HTMLVuiAuthAltCardElement>;
             "vui-auth-card": LocalJSX.VuiAuthCard & JSXBase.HTMLAttributes<HTMLVuiAuthCardElement>;
             "vui-auth-footer": LocalJSX.VuiAuthFooter & JSXBase.HTMLAttributes<HTMLVuiAuthFooterElement>;
             "vui-auth-form": LocalJSX.VuiAuthForm & JSXBase.HTMLAttributes<HTMLVuiAuthFormElement>;
@@ -890,6 +961,7 @@ declare module "@stencil/core" {
             "vui-logo": LocalJSX.VuiLogo & JSXBase.HTMLAttributes<HTMLVuiLogoElement>;
             "vui-otp": LocalJSX.VuiOtp & JSXBase.HTMLAttributes<HTMLVuiOtpElement>;
             "vui-placeholder": LocalJSX.VuiPlaceholder & JSXBase.HTMLAttributes<HTMLVuiPlaceholderElement>;
+            "vui-request": LocalJSX.VuiRequest & JSXBase.HTMLAttributes<HTMLVuiRequestElement>;
             "vui-spinner": LocalJSX.VuiSpinner & JSXBase.HTMLAttributes<HTMLVuiSpinnerElement>;
             "vui-textbox": LocalJSX.VuiTextbox & JSXBase.HTMLAttributes<HTMLVuiTextboxElement>;
             "vui-theme-toggle": LocalJSX.VuiThemeToggle & JSXBase.HTMLAttributes<HTMLVuiThemeToggleElement>;

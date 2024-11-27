@@ -160,7 +160,7 @@ function createI18nStore(config: I18nConfig) {
     return translation.replace(/\{(\w+)\}/g, (_, param) => params[param]?.toString() || `{${param}}`)
   }
 
-  const translateInterpolated = (key: string, params?: Record<string, string>): string => {
+  const translateInterpolated = (key = '', params?: Record<string, string>): string => {
     // if key starts with $ then it's a key from the translations file
     if (key.startsWith('$')) {
       key = key.slice(1)

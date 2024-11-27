@@ -6,8 +6,9 @@ import {
   ValidationRules,
 } from '../../utils/validation'
 
-import { getI18n } from '../../utils/i18n'
 import { SignUpFormData } from './types'
+import { getI18n } from '../../utils/i18n'
+import { toJSON } from '../../utils/toJSON'
 
 const t = getI18n().translate
 const ti = getI18n().translateInterpolated
@@ -27,6 +28,7 @@ export class AuthForm {
   @State() private phoneError: string = ''
   @State() private passwordError: string = ''
   @State() private isSubmitted: boolean = false
+  @State() elementsList: Element[] = []
 
   @Prop() action: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' = 'submit'
   @Prop({ mutable: true }) firstName?: string = ''
@@ -164,13 +166,18 @@ export class AuthForm {
   }
 
   async componentWillLoad() {
+    if (typeof this.elements === 'string') {
+      this.elementsList = toJSON<Element[]>(this.elements, [])
+    } else {
+      this.elementsList = this.elements
+    }
     await getI18n().waitUntilReady()
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.elements.includes('name') && (
+        {this.elementsList.includes('name') && (
           <vui-flex gap={2} direction="row" items="stretch" breakpointDirection="column" breakpoint="300px">
             <vui-form-input label={t('signup.firstName.label')} htmlFor="first-name" errorMessage={this.firstNameError}>
               <vui-textbox
@@ -203,7 +210,7 @@ export class AuthForm {
           </vui-flex>
         )}
 
-        {this.elements.includes('email') && (
+        {this.elementsList.includes('email') && (
           <vui-form-input label={t('signup.email.label')} htmlFor="email" errorMessage={this.emailError}>
             <vui-textbox
               id="email"
@@ -221,7 +228,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elements.includes('phone') && (
+        {this.elementsList.includes('phone') && (
           <vui-form-input label={t('signup.phone.label')} htmlFor="phone" errorMessage={this.phoneError}>
             <vui-textbox
               id="phone"
@@ -239,7 +246,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elements.includes('password') && (
+        {this.elementsList.includes('password') && (
           <vui-form-input label={t('form.password.label')} htmlFor="password" errorMessage={this.passwordError}>
             <vui-textbox
               id="password"
@@ -265,7 +272,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elements.includes('forgotPassword') && (
+        {this.elementsList.includes('forgotPassword') && (
           <div class="forgot-password">
             <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
               {t('form.forgotPassword.label')}

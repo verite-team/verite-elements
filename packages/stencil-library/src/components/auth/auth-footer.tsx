@@ -28,6 +28,9 @@ export class AuthFooter {
   render() {
     return (
       <vui-card-footer part="footer" variant={this.variant}>
+        <div class="footer-content">
+          <slot></slot>
+        </div>
         {this.prompt && (
           <div class="prompt">
             <span>{this.prompt}</span>

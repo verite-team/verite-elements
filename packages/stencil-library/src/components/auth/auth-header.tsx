@@ -8,17 +8,15 @@ import { Component, Prop, h } from '@stencil/core'
 export class AuthHeader {
   @Prop() heading: string
   @Prop() description: string
-
+  @Prop() halign: 'left' | 'center' | 'right' = 'center'
+  @Prop() size: 'sm' | 'md' | 'lg' | 'xl' = 'md'
   render() {
     return (
       <vui-card-header part="header">
-        <div class="logo-container">
-          <slot name="logo">
-            <vui-placeholder width={40} height={41}></vui-placeholder>
-          </slot>
-        </div>
-        <vui-card-title halign="center">{this.heading}</vui-card-title>
-        <vui-card-description halign="center">{this.description}</vui-card-description>
+        <vui-card-title size={this.size} halign={this.halign}>
+          {this.heading}
+        </vui-card-title>
+        <vui-card-description halign={this.halign}>{this.description}</vui-card-description>
       </vui-card-header>
     )
   }

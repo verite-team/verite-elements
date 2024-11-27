@@ -39,9 +39,14 @@ button:disabled {
 }
 
 /* Variants */
-:host([variant='secondary']) button {
-  background-color: hsl(var(--secondary));
-  color: hsl(var(--secondary-foreground));
+:host([variant='soft']) button {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+:host([variant='soft']) button:hover {
+  background-color: hsl(var(--background) / 0.8);
 }
 
 :host([variant='outline']) button {
