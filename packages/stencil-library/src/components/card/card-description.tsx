@@ -6,7 +6,7 @@ import { Component, Host, Prop, h } from '@stencil/core'
   shadow: true,
 })
 export class CardDescription {
-  @Prop({ reflect: true }) halign: 'left' | 'center' | 'right' = 'left'
+  @Prop({ reflect: true }) align: 'start' | 'center' | 'end' = 'center'
 
   render() {
     return (

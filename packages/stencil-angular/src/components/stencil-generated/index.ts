@@ -130,14 +130,14 @@ export declare interface VuiAuthForm extends Components.VuiAuthForm {
 
 
 @ProxyCmp({
-  inputs: ['description', 'halign', 'heading', 'size']
+  inputs: ['align', 'description', 'heading', 'size']
 })
 @Component({
   selector: 'vui-auth-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['description', 'halign', 'heading', 'size'],
+  inputs: ['align', 'description', 'heading', 'size'],
 })
 export class VuiAuthHeader {
   protected el: HTMLElement;
@@ -243,14 +243,14 @@ export declare interface VuiCardContent extends Components.VuiCardContent {}
 
 
 @ProxyCmp({
-  inputs: ['halign']
+  inputs: ['align']
 })
 @Component({
   selector: 'vui-card-description',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['halign'],
+  inputs: ['align'],
 })
 export class VuiCardDescription {
   protected el: HTMLElement;
@@ -308,14 +308,14 @@ export declare interface VuiCardHeader extends Components.VuiCardHeader {}
 
 
 @ProxyCmp({
-  inputs: ['halign', 'size', 'weight']
+  inputs: ['align', 'size', 'weight']
 })
 @Component({
   selector: 'vui-card-title',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['halign', 'size', 'weight'],
+  inputs: ['align', 'size', 'weight'],
 })
 export class VuiCardTitle {
   protected el: HTMLElement;

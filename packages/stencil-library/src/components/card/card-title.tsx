@@ -8,7 +8,7 @@ import { Component, Host, Prop, h } from '@stencil/core'
 export class CardTitle {
   @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' | 'xl' = 'md'
   @Prop({ reflect: true }) weight: 'bold' | 'medium' | 'light' = 'bold'
-  @Prop({ reflect: true }) halign: 'left' | 'center' | 'right' = 'left'
+  @Prop({ reflect: true }) align: 'start' | 'center' | 'end' = 'center'
 
   render() {
     return (

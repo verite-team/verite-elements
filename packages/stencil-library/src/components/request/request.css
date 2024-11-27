@@ -62,7 +62,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   padding: calc(var(--card-padding) / 2);
-  border-top: 1px solid hsl(var(--border));
+  border-block-start: 1px solid hsl(var(--border));
+}
+
+:host([dir='rtl']) .actions {
+  direction: rtl;
 }
 
 .approve-button::part(button) {
@@ -72,5 +76,6 @@
 @media (max-width: 640px) {
   .actions {
     grid-template-columns: 1fr;
+    direction: inherit;
   }
 }

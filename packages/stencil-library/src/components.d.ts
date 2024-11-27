@@ -74,8 +74,8 @@ export namespace Components {
         "submitLabel"?: string;
     }
     interface VuiAuthHeader {
+        "align": 'start' | 'center' | 'end';
         "description": string;
-        "halign": 'left' | 'center' | 'right';
         "heading": string;
         "size": 'sm' | 'md' | 'lg' | 'xl';
     }
@@ -100,7 +100,7 @@ export namespace Components {
     interface VuiCardContent {
     }
     interface VuiCardDescription {
-        "halign": 'left' | 'center' | 'right';
+        "align": 'start' | 'center' | 'end';
     }
     interface VuiCardFooter {
         "variant": 'default' | 'inset';
@@ -108,7 +108,7 @@ export namespace Components {
     interface VuiCardHeader {
     }
     interface VuiCardTitle {
-        "halign": 'left' | 'center' | 'right';
+        "align": 'start' | 'center' | 'end';
         "size": 'sm' | 'md' | 'lg' | 'xl';
         "weight": 'bold' | 'medium' | 'light';
     }
@@ -714,8 +714,8 @@ declare namespace LocalJSX {
         "submitLabel"?: string;
     }
     interface VuiAuthHeader {
+        "align"?: 'start' | 'center' | 'end';
         "description"?: string;
-        "halign"?: 'left' | 'center' | 'right';
         "heading"?: string;
         "size"?: 'sm' | 'md' | 'lg' | 'xl';
     }
@@ -741,7 +741,7 @@ declare namespace LocalJSX {
     interface VuiCardContent {
     }
     interface VuiCardDescription {
-        "halign"?: 'left' | 'center' | 'right';
+        "align"?: 'start' | 'center' | 'end';
     }
     interface VuiCardFooter {
         "variant"?: 'default' | 'inset';
@@ -749,7 +749,7 @@ declare namespace LocalJSX {
     interface VuiCardHeader {
     }
     interface VuiCardTitle {
-        "halign"?: 'left' | 'center' | 'right';
+        "align"?: 'start' | 'center' | 'end';
         "size"?: 'sm' | 'md' | 'lg' | 'xl';
         "weight"?: 'bold' | 'medium' | 'light';
     }

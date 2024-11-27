@@ -10,10 +10,14 @@ p {
   color: hsl(var(--muted-foreground));
 }
 
-:host([halign='center']) p {
+:host([align='start']) p {
+  text-align: start;
+}
+
+:host([align='center']) p {
   text-align: center;
 }
 
-:host([halign='right']) p {
-  text-align: right;
+:host([align='end']) p {
+  text-align: end;
 }

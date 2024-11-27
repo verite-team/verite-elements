@@ -46,7 +46,7 @@ export class Request {
       <Host>
         <slot name="logo"></slot>
         <slot name="header">
-          <vui-auth-header heading={this.application} size="lg"></vui-auth-header>
+          <vui-auth-header heading={this.application} size="lg" align="center"></vui-auth-header>
         </slot>
         <div class="request-container">
           <div class="permissions-section">

@@ -1,0 +1,13 @@
+:host {
+  text-align: start;
+}
+
+:host(.align-center) {
+  text-align: center;
+}
+
+:host(.align-start) {
+  text-align: start;
+}
+
+/* For RTL support, the browser will automatically flip 'start' to the right side when dir="rtl" */

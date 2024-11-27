@@ -24,12 +24,16 @@
 }
 
 /* Alignment */
-:host([halign='center']) {
+:host([align='start']) {
+  text-align: start;
+}
+
+:host([align='center']) {
   text-align: center;
 }
 
-:host([halign='right']) {
-  text-align: right;
+:host([align='end']) {
+  text-align: end;
 }
 
 /* Weights */
