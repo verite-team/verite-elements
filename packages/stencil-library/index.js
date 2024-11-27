@@ -1,6 +1,9 @@
 function showToast() {
   const toast = document.querySelector('vui-toast')
-  toast.show({ title: 'Hello, world! ::' + Date.now(), type: 'success' })
+  toast.show({
+    title: 'Hello, world! lorem ipsum dolor sit amet lorem ipsum dolor sit amet ::' + Date.now(),
+    type: 'success',
+  })
 }
 
 document.addEventListener('onVeriteReady', async evt => {

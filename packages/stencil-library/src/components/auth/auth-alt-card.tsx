@@ -27,7 +27,13 @@ export class AuthAltCard {
       <vui-card elevation={this.elevation}>
         <slot name="logo"></slot>
         <slot name="header">
-          <vui-auth-header heading={ti(this.heading)} description={ti(this.description)} size="xl"></vui-auth-header>
+          <vui-auth-header
+            class="header"
+            heading={ti(this.heading)}
+            description={ti(this.description)}
+            size="xl"
+            align="start"
+          ></vui-auth-header>
         </slot>
         <slot name="providers"></slot>
         <slot></slot>

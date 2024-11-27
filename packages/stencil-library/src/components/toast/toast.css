@@ -6,6 +6,8 @@
   gap: 0.5rem;
   padding: 1rem;
   pointer-events: none;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
 }
 
 :host(.top-left) {
@@ -53,7 +55,7 @@
   gap: 0.5rem;
   padding: 0.75rem;
   background: hsl(var(--background));
-  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   pointer-events: auto;
@@ -63,6 +65,33 @@
   animation: toast-enter 0.2s ease forwards;
   animation-delay: 100ms;
   will-change: transform, opacity;
+  transition: transform 0.2s ease-out;
+}
+
+.toast.removing {
+  animation: toast-exit 0.2s ease forwards;
+}
+
+@keyframes toast-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--lift));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(var(--lift));
+  }
 }
 
 :host(.top-left) .toast,
@@ -77,24 +106,13 @@
   --lift: 16px;
 }
 
-@keyframes toast-enter {
-  0% {
-    opacity: 0;
-    transform: translateY(var(--lift));
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.toast.success {
+/* .toast.success {
   border-color: hsl(var(--success));
 }
 
 .toast.error {
   border-color: hsl(var(--destructive));
-}
+} */
 
 .content {
   display: flex;
@@ -124,13 +142,13 @@
   color: hsl(var(--muted-foreground));
 }
 
-.success {
+/* .success {
   color: hsl(var(--success));
 }
 
 .error {
   color: hsl(var(--destructive));
-}
+} */
 
 .loading {
   animation: spin 1s linear infinite;

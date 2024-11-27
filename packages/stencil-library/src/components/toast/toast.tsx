@@ -59,37 +59,45 @@ export class Toast {
       this.toastTimeouts.delete(id)
     }
 
-    this.toasts = this.toasts.filter(t => t.id !== id)
-    this.dismiss.emit(id)
-  }
+    const toast = this.toasts.find(t => t.id === id)
+    if (toast) {
+      this.toasts = this.toasts.map(t => (t.id === id ? { ...t, removing: true } : t))
 
-  private getIcon(type: ToastType) {
-    switch (type) {
-      case 'success':
-        return <vui-icon name="ic:outline-check-circle" size="sm" class="success" />
-      case 'error':
-        return <vui-icon name="ic:outline-error" size="sm" class="error" />
-      case 'loading':
-        return <vui-icon name="ic:outline-refresh" size="sm" class="loading" />
-      default:
-        return null
+      setTimeout(() => {
+        this.toasts = this.toasts.filter(t => t.id !== id)
+        this.dismiss.emit(id)
+      }, 200)
     }
   }
 
+  // private getIcon(type: ToastType) {
+  //   switch (type) {
+  //     case 'success':
+  //       return <vui-icon name="ic:outline-check-circle" size="sm" class="success" />
+  //     case 'error':
+  //       return <vui-icon name="ic:outline-error" size="sm" class="error" />
+  //     case 'loading':
+  //       return <vui-icon name="ic:outline-refresh" size="sm" class="loading" />
+  //     default:
+  //       return null
+  //   }
+  // }
+
   render() {
     return (
-      <Host class={`toast-container ${this.position}`}>
+      <Host class={`toast-container dark ${this.position}`}>
         {this.toasts.map(toast => (
           <div
             key={toast.id}
             class={{
               toast: true,
               [toast.type]: true,
+              removing: toast.removing,
             }}
             part="toast"
           >
             <div class="content">
-              {this.getIcon(toast.type)}
+              {/* {this.getIcon(toast.type)} */}
               <div class="text">
                 {toast.title && <div class="title">{toast.title}</div>}
                 {toast.description && <div class="description">{toast.description}</div>}
