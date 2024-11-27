@@ -50,7 +50,7 @@ button:disabled {
 }
 
 :host([variant='outline']) button {
-  background-color: transparent;
+  background-color: hsl(var(--background));
   border-color: hsl(var(--border, var(--transparent)));
   color: hsl(var(--foreground));
 }

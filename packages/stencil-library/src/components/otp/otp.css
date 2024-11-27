@@ -11,9 +11,9 @@
   margin-bottom: 1rem;
 }
 
-.form-field {
+/* .form-field {
   position: relative;
-}
+} */
 
 .code-input {
   width: 40px;
@@ -37,7 +37,7 @@
 }
 
 .code-input.active::part(input) {
-  background-color: transparent;
+  background-color: hsl(var(--background));
 }
 
 .verify-button {
