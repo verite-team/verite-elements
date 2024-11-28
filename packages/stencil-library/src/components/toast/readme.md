@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description | Type                                                                                              | Default          |
 | ---------- | ---------- | ----------- | ------------------------------------------------------------------------------------------------- | ---------------- |
+| `duration` | `duration` |             | `number`                                                                                          | `4000`           |
 | `gap`      | `gap`      |             | `number`                                                                                          | `8`              |
 | `position` | `position` |             | `"bottom-center" \| "bottom-left" \| "bottom-right" \| "top-center" \| "top-left" \| "top-right"` | `'bottom-right'` |
 | `theme`    | `theme`    |             | `"default" \| "inverted"`                                                                         | `'default'`      |
@@ -41,19 +42,19 @@ Type: `Promise<void>`
 
 ### `show(toast: Omit<ToastProps, 'id'>) => Promise<string>`
 
-
+Shows a new toast notification
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                          | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ title?: string; type: ToastType; action?: { label: string; onClick: () => void; }; description?: string; duration?: number; dismissible?: boolean; removing?: boolean; isNew?: boolean; }` |             |
+| Name    | Type                                                                                                                                                                                          | Description                   |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `toast` | `{ title?: string; type: ToastType; action?: { label: string; onClick: () => void; }; description?: string; duration?: number; dismissible?: boolean; removing?: boolean; isNew?: boolean; }` | - Toast properties without ID |
 
 #### Returns
 
 Type: `Promise<string>`
 
-
+Generated toast ID
 
 ### `update(id: string, toast: Partial<ToastProps>) => Promise<void>`
 

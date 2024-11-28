@@ -234,6 +234,11 @@ export namespace Components {
         "duration": number;
         "gap": number;
         "position": 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+        /**
+          * Shows a new toast notification
+          * @param toast - Toast properties without ID
+          * @returns Generated toast ID
+         */
         "show": (toast: Omit<ToastProps, 'id'>) => Promise<string>;
         "theme": 'default' | 'inverted';
         "update": (id: string, toast: Partial<ToastProps>) => Promise<void>;

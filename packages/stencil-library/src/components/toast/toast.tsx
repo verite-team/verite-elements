@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core'
 import { ToastProps, ToastType } from './toast-interfaces'
 
-import { animate } from 'motion'
+import anime from 'animejs'
 
 @Component({
   tag: 'vui-toast',
@@ -9,28 +9,50 @@ import { animate } from 'motion'
   shadow: true,
 })
 export class Toast {
+  // Configuration props
   @Prop() position: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' =
     'bottom-right'
-  @State() toasts: ToastProps[] = []
-
-  @Event() dismiss: EventEmitter<string>
-
-  private toastTimeouts: Map<string, number> = new Map()
-
-  @State() expanded = false
-  private toastRefs: Map<string, HTMLElement> = new Map()
-  private heights: Map<string, number> = new Map()
-
-  private readonly MAX_TOASTS = 3
-
   @Prop({ reflect: true }) theme: 'default' | 'inverted' = 'default'
   @Prop() gap = 8
-  @Prop() duration = 4000 // how long the toast will be visible
+  @Prop() duration = 4000 // Duration in ms before toast auto-dismisses
 
+  // State management
+  @State() toasts: ToastProps[] = []
+  @State() expanded = false // Tracks if toast stack is expanded on hover
+
+  // Event emitter for toast dismissal
+  @Event() dismiss: EventEmitter<string>
+
+  // Constants
+  private readonly MAX_TOASTS = 3
+
+  // Internal tracking maps
+  private toastRefs: Map<string, HTMLElement> = new Map()
+  private heights: Map<string, number> = new Map()
+  private toastTimeouts: Map<string, number> = new Map()
+  private remainingDurations: Map<string, number> = new Map()
   private toastRegionRef?: HTMLDivElement
 
-  private remainingDurations: Map<string, number> = new Map()
+  private static readonly ANIMATION_CONFIG = {
+    duration: 150,
+    easing: 'easeOutCubic',
+    defaultOffset: 50,
+    properties: {
+      enter: {
+        opacity: [0, 1],
+      },
+      exit: {
+        opacity: [1, 0],
+        scale: 0.9,
+      },
+    },
+  }
 
+  /**
+   * Shows a new toast notification
+   * @param toast - Toast properties without ID
+   * @returns Generated toast ID
+   */
   @Method()
   async show(toast: Omit<ToastProps, 'id'>) {
     const id = Math.random().toString(36).substring(2, 9)
@@ -88,6 +110,9 @@ export class Toast {
     this.removeToast(id)
   }
 
+  /**
+   * Handles toast removal with animation
+   */
   private removeToast(id: string) {
     const timeout = this.toastTimeouts.get(id)
     if (timeout) {
@@ -104,24 +129,16 @@ export class Toast {
         element.classList.add('removed')
 
         const isTopPosition = this.position.startsWith('top-')
-        const exitOffset = isTopPosition ? -50 : 50
+        const exitOffset = isTopPosition ? -Toast.ANIMATION_CONFIG.defaultOffset : Toast.ANIMATION_CONFIG.defaultOffset
 
         try {
-          animate(
-            element,
-            {
-              opacity: [1, 0],
-              y: [0, exitOffset],
-              scale: 0.9,
-            },
-            {
-              type: 'spring',
-              stiffness: 800,
-              damping: 40,
-              mass: 0.2,
-              duration: 200,
-            }
-          )
+          anime({
+            targets: element,
+            ...Toast.ANIMATION_CONFIG.properties.exit,
+            translateY: [0, exitOffset],
+            duration: Toast.ANIMATION_CONFIG.duration,
+            easing: Toast.ANIMATION_CONFIG.easing,
+          })
         } catch (e) {
           console.warn('Toast animation failed:', e)
         }
@@ -133,10 +150,13 @@ export class Toast {
       setTimeout(() => {
         this.toasts = this.toasts.filter(t => t.id !== id)
         this.dismiss.emit(id)
-      }, 200)
+      }, 150)
     }
   }
 
+  /**
+   * Pause toast timeouts on mouse enter
+   */
   private handleMouseEnter = () => {
     this.expanded = true
     this.updateToastRegionHeight()
@@ -151,6 +171,9 @@ export class Toast {
     })
   }
 
+  /**
+   * Resume toast timeouts on mouse leave
+   */
   private handleMouseLeave = () => {
     this.expanded = false
     this.updateToastRegionHeight()
@@ -165,6 +188,9 @@ export class Toast {
     })
   }
 
+  /**
+   * Animation helpers
+   */
   private calculateExpandedOffset(index: number): number {
     if (index === this.toasts.length - 1) return 0
 
@@ -192,48 +218,40 @@ export class Toast {
     const isTopPosition = this.position.startsWith('top-')
 
     const stackedOffset = isTopPosition ? toastsBefore * this.gap : -(toastsBefore * this.gap)
-
     const expandedOffset = this.calculateExpandedOffset(index)
     const offset = this.expanded ? expandedOffset : stackedOffset
     const baseScale = this.expanded ? 1 : 1 - toastsBefore * 0.05
     const translateZ = this.expanded ? 0 : -toastsBefore * 10
 
     if (this.toasts[index].isNew) {
-      const entranceOffset = isTopPosition ? -50 : 50
+      const entranceOffset = isTopPosition
+        ? -Toast.ANIMATION_CONFIG.defaultOffset
+        : Toast.ANIMATION_CONFIG.defaultOffset
 
-      animate(
-        element,
-        {
-          y: [entranceOffset, offset],
-          opacity: [0, 1],
-          scale: baseScale,
-          z: translateZ,
-        },
-        {
-          type: 'spring',
-          stiffness: 800,
-          damping: 40,
-          mass: 0.2,
-        }
-      )
+      anime({
+        targets: element,
+        ...Toast.ANIMATION_CONFIG.properties.enter,
+        translateY: [entranceOffset, offset],
+        scale: baseScale,
+        translateZ: translateZ,
+        duration: Toast.ANIMATION_CONFIG.duration,
+        easing: Toast.ANIMATION_CONFIG.easing,
+      })
     } else {
-      animate(
-        element,
-        {
-          y: offset,
-          scale: baseScale,
-          z: translateZ,
-        },
-        {
-          type: 'spring',
-          stiffness: 800,
-          damping: 40,
-          mass: 0.2,
-        }
-      )
+      anime({
+        targets: element,
+        translateY: offset,
+        scale: baseScale,
+        translateZ: translateZ,
+        duration: Toast.ANIMATION_CONFIG.duration,
+        easing: Toast.ANIMATION_CONFIG.easing,
+      })
     }
   }
 
+  /**
+   * Layout management
+   */
   private updateToastRegionHeight() {
     if (!this.toastRegionRef) return
 
