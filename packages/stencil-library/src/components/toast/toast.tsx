@@ -12,7 +12,7 @@ export class Toast {
   // Configuration props
   @Prop() position: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' =
     'bottom-right'
-  @Prop({ reflect: true }) theme: 'default' | 'inverted' = 'default'
+  @Prop({ reflect: true }) theme: 'default' | 'light' | 'dark' | 'inverted' = 'default'
   @Prop() gap = 8
   @Prop() duration = 4000 // Duration in ms before toast auto-dismisses
 

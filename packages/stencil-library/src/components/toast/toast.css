@@ -59,20 +59,6 @@
   color: hsl(var(--muted-foreground));
 } */
 
-/* Inverted theme */
-:host([theme='inverted']) .toast {
-  background: hsl(var(--foreground));
-  color: hsl(var(--background));
-}
-
-:host([theme='inverted']) ::part(button):hover {
-  background-color: hsl(var(--background) / 0.1);
-}
-
-:host([theme='inverted']) ::part(icon) {
-  color: hsl(var(--background));
-}
-
 .toast {
   position: absolute;
   display: flex;
@@ -93,6 +79,57 @@
   box-sizing: border-box;
   opacity: 0;
   bottom: auto;
+}
+
+/* Light theme */
+:host([theme='light']) .toast {
+  background: hsl(var(--light-background));
+  color: hsl(var(--light-foreground));
+}
+
+:host([theme='light']) .description {
+  color: hsl(var(--light-muted-foreground));
+}
+
+:host([theme='light']) ::part(button):hover {
+  background-color: hsl(var(--light-background) / 0.1);
+}
+
+:host([theme='light']) ::part(icon) {
+  color: hsl(var(--light-foreground));
+}
+
+/* Dark theme */
+:host([theme='dark']) .toast {
+  background: hsl(var(--dark-background)) !important;
+  color: hsl(var(--dark-foreground)) !important;
+}
+
+:host([theme='dark']) .description,
+.dark :host([theme='dark']) .description {
+  color: hsl(var(--dark-muted-foreground));
+}
+
+:host([theme='dark']) ::part(button):hover {
+  background-color: hsl(var(--background) / 0.1);
+}
+
+:host([theme='dark']) ::part(icon) {
+  color: hsl(var(--dark-foreground));
+}
+
+/* Inverted theme */
+:host([theme='inverted']) .toast {
+  background: hsl(var(--inverted-background));
+  color: hsl(var(--inverted-foreground));
+}
+
+:host([theme='inverted']) ::part(button):hover {
+  background-color: hsl(var(--inverted-background));
+}
+
+:host([theme='inverted']) ::part(icon) {
+  color: hsl(var(--inverted-foreground));
 }
 
 .toast.stacked {
@@ -120,7 +157,7 @@
 
 .description {
   font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
+  color: hsl(var(--toast-description-color));
   line-height: 1.4;
 }
 
@@ -157,3 +194,20 @@
   bottom: 0;
   justify-content: flex-end;
 }
+
+/* Force dark mode by adding [data-force-dark] attribute */
+:host([data-force-dark]) .toast,
+:host([theme='dark']) .toast {
+  background-color: hsl(var(--toast-foreground));
+  color: hsl(var(--toast-background));
+}
+
+:host([data-force-dark]) .description,
+:host([theme='dark']) .description {
+  color: hsl(var(--toast-description-color));
+}
+
+/* Debug styles - add these temporarily to verify the colors */
+/* :host([theme='dark']) .toast {
+  border: 2px solid red;
+} */
