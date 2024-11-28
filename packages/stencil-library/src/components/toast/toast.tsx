@@ -204,7 +204,7 @@ export class Toast {
         offset += height + this.gap
       }
     } else {
-      for (let i = index; i >= 0; i--) {
+      for (let i = this.toasts.length - 1; i > index; i--) {
         const toast = this.toasts[i]
         const height = this.heights.get(toast.id) || 0
         offset -= height + this.gap
