@@ -818,7 +818,7 @@ export declare interface VuiThemeToggle extends Components.VuiThemeToggle {}
 
 
 @ProxyCmp({
-  inputs: ['position'],
+  inputs: ['gap', 'position'],
   methods: ['show', 'update', 'dismissToast']
 })
 @Component({
@@ -826,7 +826,7 @@ export declare interface VuiThemeToggle extends Components.VuiThemeToggle {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['position'],
+  inputs: ['gap', 'position'],
 })
 export class VuiToast {
   protected el: HTMLElement;

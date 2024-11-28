@@ -23,6 +23,8 @@ export class Toast {
 
   private readonly MAX_TOASTS = 3
 
+  @Prop() gap = 8
+
   @Method()
   async show(toast: Omit<ToastProps, 'id'>) {
     const id = Math.random().toString(36).substring(2, 9)
@@ -55,7 +57,7 @@ export class Toast {
         console.log(`Toast ${id} initial height:`, height)
         console.log('All heights:', Object.fromEntries(this.heights))
       }
-    }, 0)
+    }, 100)
 
     if (newToast.duration && newToast.type !== 'loading') {
       const timeout = window.setTimeout(() => {
@@ -92,6 +94,27 @@ export class Toast {
     if (toast) {
       this.toasts = this.toasts.map(t => (t.id === id ? { ...t, removing: true } : t))
 
+      const element = this.toastRefs.get(id)
+      if (element) {
+        const isTopPosition = this.position.startsWith('top-')
+        const exitOffset = isTopPosition ? -50 : 50
+
+        animate(
+          element,
+          {
+            opacity: [1, 0],
+            y: [0, exitOffset],
+            scale: 0.9,
+          },
+          {
+            type: 'spring',
+            stiffness: 800,
+            damping: 40,
+            mass: 0.2,
+          }
+        )
+      }
+
       setTimeout(() => {
         this.toasts = this.toasts.filter(t => t.id !== id)
         this.dismiss.emit(id)
@@ -127,7 +150,7 @@ export class Toast {
     for (let i = index + 1; i < this.toasts.length; i++) {
       const toast = this.toasts[i]
       const height = this.heights.get(toast.id) || 0
-      offset += isTopPosition ? height + 2 : -(height + 2)
+      offset += isTopPosition ? height + this.gap : -(height + this.gap)
     }
 
     console.log(`Calculating expanded offset for toast ${index}:`, {
@@ -148,18 +171,16 @@ export class Toast {
     const isTopPosition = this.position.startsWith('top-')
     const toast = this.toasts[index]
 
-    const stackedOffset = toastsBefore * 16
+    const stackedOffset = toastsBefore * this.gap
     const expandedOffset = this.calculateExpandedOffset(index)
     const offset = this.expanded ? expandedOffset : stackedOffset
     const baseScale = this.expanded ? 1 : 1 - toastsBefore * 0.05
     const translateZ = this.expanded ? 0 : -toastsBefore * 10
 
     if (toast.isNew) {
-      // Set initial state immediately
       element.style.opacity = '0'
 
-      // Delay the entrance animation slightly
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         const entranceOffset = isTopPosition ? -50 : 50
 
         animate(
@@ -177,9 +198,8 @@ export class Toast {
             mass: 0.2,
           }
         )
-      })
+      }, 0)
     } else {
-      // Normal stacking/expanding animation
       animate(
         element,
         {

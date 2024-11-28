@@ -231,6 +231,7 @@ export namespace Components {
     }
     interface VuiToast {
         "dismissToast": (id: string) => Promise<void>;
+        "gap": number;
         "position": 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
         "show": (toast: Omit<ToastProps, 'id'>) => Promise<string>;
         "update": (id: string, toast: Partial<ToastProps>) => Promise<void>;
@@ -880,6 +881,7 @@ declare namespace LocalJSX {
     interface VuiThemeToggle {
     }
     interface VuiToast {
+        "gap"?: number;
         "onDismiss"?: (event: VuiToastCustomEvent<string>) => void;
         "position"?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
     }
