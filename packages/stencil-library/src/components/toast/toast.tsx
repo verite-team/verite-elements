@@ -23,7 +23,10 @@ export class Toast {
 
   private readonly MAX_TOASTS = 3
 
+  @Prop({ reflect: true }) theme: 'default' | 'inverted' = 'default'
   @Prop() gap = 8
+
+  private toastRegionRef?: HTMLDivElement
 
   @Method()
   async show(toast: Omit<ToastProps, 'id'>) {
@@ -54,8 +57,6 @@ export class Toast {
       if (element) {
         const height = element.offsetHeight
         this.heights.set(id, height)
-        console.log(`Toast ${id} initial height:`, height)
-        console.log('All heights:', Object.fromEntries(this.heights))
       }
     }, 100)
 
@@ -124,6 +125,7 @@ export class Toast {
 
   private handleMouseEnter = () => {
     this.expanded = true
+    this.updateToastRegionHeight()
     this.toastTimeouts.forEach(timeout => {
       clearTimeout(timeout)
     })
@@ -131,14 +133,15 @@ export class Toast {
 
   private handleMouseLeave = () => {
     this.expanded = false
-    // this.toasts.forEach(toast => {
-    //   if (toast.duration && toast.type !== 'loading') {
-    //     const timeout = window.setTimeout(() => {
-    //       this.removeToast(toast.id)
-    //     }, toast.duration)
-    //     this.toastTimeouts.set(toast.id, timeout)
-    //   }
-    // })
+    this.updateToastRegionHeight()
+    this.toasts.forEach(toast => {
+      if (toast.duration && toast.type !== 'loading') {
+        const timeout = window.setTimeout(() => {
+          this.removeToast(toast.id)
+        }, toast.duration)
+        this.toastTimeouts.set(toast.id, timeout)
+      }
+    })
   }
 
   private calculateExpandedOffset(index: number): number {
@@ -152,17 +155,6 @@ export class Toast {
       const height = this.heights.get(toast.id) || 0
       offset += isTopPosition ? height + this.gap : -(height + this.gap)
     }
-
-    console.log(`Calculating expanded offset for toast ${index}:`, {
-      currentToastId: this.toasts[index].id,
-      offset,
-      index,
-      isNewest: index === this.toasts.length - 1,
-      position: this.position,
-      isTopPosition,
-      totalToasts: this.toasts.length,
-    })
-
     return offset
   }
 
@@ -178,27 +170,23 @@ export class Toast {
     const translateZ = this.expanded ? 0 : -toastsBefore * 10
 
     if (toast.isNew) {
-      element.style.opacity = '0'
+      const entranceOffset = isTopPosition ? -50 : 50
 
-      setTimeout(() => {
-        const entranceOffset = isTopPosition ? -50 : 50
-
-        animate(
-          element,
-          {
-            y: [entranceOffset, offset],
-            opacity: [0, 1],
-            scale: baseScale,
-            z: translateZ,
-          },
-          {
-            type: 'spring',
-            stiffness: 800,
-            damping: 40,
-            mass: 0.2,
-          }
-        )
-      }, 0)
+      animate(
+        element,
+        {
+          y: [entranceOffset, offset],
+          opacity: [0, 1],
+          scale: baseScale,
+          z: translateZ,
+        },
+        {
+          type: 'spring',
+          stiffness: 800,
+          damping: 40,
+          mass: 0.2,
+        }
+      )
     } else {
       animate(
         element,
@@ -217,23 +205,47 @@ export class Toast {
     }
   }
 
+  private updateToastRegionHeight() {
+    if (!this.toastRegionRef) return
+
+    const visibleToasts = this.toasts.slice(-this.MAX_TOASTS)
+    if (visibleToasts.length === 0) {
+      this.toastRegionRef.style.height = '0px'
+      return
+    }
+
+    if (this.expanded) {
+      // When expanded, sum up heights of all toasts plus gaps
+      let totalHeight = 0
+      visibleToasts.forEach((toast, index) => {
+        const height = this.heights.get(toast.id) || 0
+        totalHeight += height
+        if (index < visibleToasts.length - 1) {
+          totalHeight += this.gap
+        }
+      })
+      this.toastRegionRef.style.height = `${totalHeight}px`
+    } else {
+      // When collapsed, use height of single toast plus offset for stacked ones
+      const lastToastHeight = this.heights.get(visibleToasts[visibleToasts.length - 1]?.id) || 0
+      const stackOffset = (visibleToasts.length - 1) * this.gap
+      this.toastRegionRef.style.height = `${lastToastHeight + stackOffset}px`
+    }
+  }
+
   componentDidRender() {
-    console.log('Component rerendered. Current toasts:', this.toasts.length)
     this.toasts.forEach((toast, index) => {
       const element = this.toastRefs.get(toast.id)
       if (element) {
         const currentHeight = element.offsetHeight
         const storedHeight = this.heights.get(toast.id)
         if (currentHeight !== storedHeight) {
-          console.log(`Height changed for toast ${toast.id}:`, {
-            old: storedHeight,
-            new: currentHeight,
-          })
           this.heights.set(toast.id, currentHeight)
         }
         this.animateToast(element, index)
       }
     })
+    this.updateToastRegionHeight()
   }
 
   render() {
@@ -241,52 +253,60 @@ export class Toast {
 
     return (
       <Host
-        class={`toast-container dark ${this.position}`}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
+        class={{
+          'toast-container': true,
+          [this.position]: true,
+        }}
       >
-        {visibleToasts.map((toast, index) => (
-          <div
-            key={toast.id}
-            ref={el => this.toastRefs.set(toast.id, el as HTMLElement)}
-            class={{
-              toast: true,
-              [toast.type]: true,
-              removing: toast.removing,
-              stacked: !this.expanded,
-              expanded: this.expanded,
-            }}
-            style={{
-              zIndex: `${this.toasts.length + index}`,
-            }}
-            part="toast"
-          >
-            <div class="content">
-              <div class="text">
-                {toast.title && <div class="title">{toast.title}</div>}
-                {toast.description && <div class="description">{toast.description}</div>}
+        <div
+          class="toast-region"
+          ref={el => (this.toastRegionRef = el as HTMLDivElement)}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          {visibleToasts.map((toast, index) => (
+            <div
+              key={toast.id}
+              ref={el => this.toastRefs.set(toast.id, el as HTMLElement)}
+              class={{
+                toast: true,
+                [toast.type]: true,
+                removing: toast.removing,
+                stacked: !this.expanded,
+                expanded: this.expanded,
+              }}
+              style={{
+                zIndex: `${index + 1}`,
+              }}
+              part="toast"
+            >
+              <div class="content">
+                <div class="text">
+                  {toast.title && <div class="title">{toast.title}</div>}
+                  {toast.description && <div class="description">{toast.description}</div>}
+                </div>
               </div>
+
+              {toast.action && (
+                <vui-button variant="ghost" size="sm" onClick={toast.action.onClick}>
+                  {toast.action.label}
+                </vui-button>
+              )}
+
+              {toast.dismissible && (
+                <vui-button
+                  variant="ghost"
+                  size="icon"
+                  class="close"
+                  onClick={() => this.removeToast(toast.id)}
+                  aria-label="Dismiss"
+                >
+                  <vui-icon name="ic:outline-close" size="sm" />
+                </vui-button>
+              )}
             </div>
-
-            {toast.action && (
-              <vui-button variant="ghost" size="sm" onClick={toast.action.onClick}>
-                {toast.action.label}
-              </vui-button>
-            )}
-
-            {toast.dismissible && (
-              <vui-button
-                variant="ghost"
-                size="icon"
-                class="close"
-                onClick={() => this.removeToast(toast.id)}
-                aria-label="Dismiss"
-              >
-                <vui-icon name="ic:outline-close" size="sm" />
-              </vui-button>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </Host>
     )
   }

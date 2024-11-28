@@ -234,6 +234,7 @@ export namespace Components {
         "gap": number;
         "position": 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
         "show": (toast: Omit<ToastProps, 'id'>) => Promise<string>;
+        "theme": 'default' | 'inverted';
         "update": (id: string, toast: Partial<ToastProps>) => Promise<void>;
     }
     interface VuiUserMenu {
@@ -884,6 +885,7 @@ declare namespace LocalJSX {
         "gap"?: number;
         "onDismiss"?: (event: VuiToastCustomEvent<string>) => void;
         "position"?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+        "theme"?: 'default' | 'inverted';
     }
     interface VuiUserMenu {
         "onMenuAction"?: (event: VuiUserMenuCustomEvent<MenuAction>) => void;

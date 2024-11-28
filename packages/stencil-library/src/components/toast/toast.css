@@ -1,4 +1,7 @@
 :host {
+  --inner-toast-width: var(--toast-width, 388px);
+  --inner-toast-padding: var(--toast-padding, 1rem);
+
   position: fixed;
   z-index: 100;
   display: flex;
@@ -8,46 +11,77 @@
   pointer-events: none;
   font-family: var(--font-family);
   font-size: 0.875rem;
-  width: 388px;
+  width: 100%;
+  max-width: var(--inner-toast-width);
+  /* width: var(--inner-toast-width); */
   perspective: 1000px;
+  box-sizing: border-box;
 }
 
 :host(.top-center) {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding-top: 1rem;
+  padding-top: var(--inner-toast-padding);
 }
 
 :host(.top-left) {
   top: 0;
   left: 0;
-  padding-top: 1rem;
+  padding-left: var(--inner-toast-padding);
+  padding-top: var(--inner-toast-padding);
 }
 
 :host(.top-right) {
   top: 0;
   right: 0;
-  padding-top: 1rem;
+  padding-right: var(--inner-toast-padding);
+  padding-top: var(--inner-toast-padding);
 }
 
 :host(.bottom-left) {
   bottom: 0;
   left: 0;
-  padding-bottom: 1rem;
+  padding-bottom: var(--inner-toast-padding);
+  padding-left: var(--inner-toast-padding);
 }
 
 :host(.bottom-center) {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding-bottom: 1rem;
+  padding-bottom: var(--inner-toast-padding);
 }
 
 :host(.bottom-right) {
   bottom: 0;
   right: 0;
-  padding-bottom: 1rem;
+  padding-bottom: var(--inner-toast-padding);
+  padding-right: var(--inner-toast-padding);
+}
+
+/* Default theme */
+/* :host([theme='default']) .toast {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+:host([theme='default']) .description {
+  color: hsl(var(--muted-foreground));
+} */
+
+/* Inverted theme */
+:host([theme='inverted']) .toast {
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+}
+
+:host([theme='inverted']) ::part(button):hover {
+  background-color: hsl(var(--background) / 0.1);
+}
+
+:host([theme='inverted']) ::part(icon) {
+  color: hsl(var(--background));
 }
 
 .toast {
@@ -56,17 +90,19 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.75rem;
+  padding: var(--inner-toast-padding);
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   pointer-events: auto;
-  width: 356px;
+  width: var(--inner-toast-width);
   margin: 0;
   transform-origin: center bottom;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  box-sizing: border-box;
+  opacity: 0;
 }
 
 .toast.stacked {
@@ -98,19 +134,9 @@
   line-height: 1.4;
 }
 
-.close {
-  color: hsl(var(--muted-foreground));
-}
-
-.loading {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toast-region {
+  position: absolute;
+  pointer-events: auto;
+  width: 100%;
+  transition: height 0.2s ease-out;
 }
