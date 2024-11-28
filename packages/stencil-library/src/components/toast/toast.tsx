@@ -1,6 +1,8 @@
 import { Component, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core'
 import { ToastProps, ToastType } from './toast-interfaces'
 
+import { animate } from 'motion'
+
 @Component({
   tag: 'vui-toast',
   styleUrl: 'toast.css',
@@ -15,6 +17,12 @@ export class Toast {
 
   private toastTimeouts: Map<string, number> = new Map()
 
+  @State() expanded = false
+  private toastRefs: Map<string, HTMLElement> = new Map()
+  private heights: Map<string, number> = new Map()
+
+  private readonly MAX_TOASTS = 3
+
   @Method()
   async show(toast: Omit<ToastProps, 'id'>) {
     const id = Math.random().toString(36).substring(2, 9)
@@ -23,10 +31,31 @@ export class Toast {
       type: 'default' as ToastType,
       duration: 4000,
       dismissible: true,
+      height: 0,
+      isNew: true,
       ...toast,
     }
 
+    if (this.toasts.length >= this.MAX_TOASTS) {
+      const oldestToast = this.toasts[0]
+      this.removeToast(oldestToast.id)
+    }
+
     this.toasts = [...this.toasts, newToast]
+
+    setTimeout(() => {
+      this.toasts = this.toasts.map(t => (t.id === id ? { ...t, isNew: false } : t))
+    }, 100)
+
+    setTimeout(() => {
+      const element = this.toastRefs.get(id)
+      if (element) {
+        const height = element.offsetHeight
+        this.heights.set(id, height)
+        console.log(`Toast ${id} initial height:`, height)
+        console.log('All heights:', Object.fromEntries(this.heights))
+      }
+    }, 0)
 
     if (newToast.duration && newToast.type !== 'loading') {
       const timeout = window.setTimeout(() => {
@@ -70,34 +99,149 @@ export class Toast {
     }
   }
 
-  // private getIcon(type: ToastType) {
-  //   switch (type) {
-  //     case 'success':
-  //       return <vui-icon name="ic:outline-check-circle" size="sm" class="success" />
-  //     case 'error':
-  //       return <vui-icon name="ic:outline-error" size="sm" class="error" />
-  //     case 'loading':
-  //       return <vui-icon name="ic:outline-refresh" size="sm" class="loading" />
-  //     default:
-  //       return null
-  //   }
-  // }
+  private handleMouseEnter = () => {
+    this.expanded = true
+    this.toastTimeouts.forEach(timeout => {
+      clearTimeout(timeout)
+    })
+  }
+
+  private handleMouseLeave = () => {
+    this.expanded = false
+    // this.toasts.forEach(toast => {
+    //   if (toast.duration && toast.type !== 'loading') {
+    //     const timeout = window.setTimeout(() => {
+    //       this.removeToast(toast.id)
+    //     }, toast.duration)
+    //     this.toastTimeouts.set(toast.id, timeout)
+    //   }
+    // })
+  }
+
+  private calculateExpandedOffset(index: number): number {
+    if (index === this.toasts.length - 1) return 0
+
+    const isTopPosition = this.position.startsWith('top-')
+    let offset = 0
+
+    for (let i = index + 1; i < this.toasts.length; i++) {
+      const toast = this.toasts[i]
+      const height = this.heights.get(toast.id) || 0
+      offset += isTopPosition ? height + 2 : -(height + 2)
+    }
+
+    console.log(`Calculating expanded offset for toast ${index}:`, {
+      currentToastId: this.toasts[index].id,
+      offset,
+      index,
+      isNewest: index === this.toasts.length - 1,
+      position: this.position,
+      isTopPosition,
+      totalToasts: this.toasts.length,
+    })
+
+    return offset
+  }
+
+  private animateToast(element: HTMLElement, index: number) {
+    const toastsBefore = this.toasts.length - index - 1
+    const isTopPosition = this.position.startsWith('top-')
+    const toast = this.toasts[index]
+
+    const stackedOffset = toastsBefore * 16
+    const expandedOffset = this.calculateExpandedOffset(index)
+    const offset = this.expanded ? expandedOffset : stackedOffset
+    const baseScale = this.expanded ? 1 : 1 - toastsBefore * 0.05
+    const translateZ = this.expanded ? 0 : -toastsBefore * 10
+
+    if (toast.isNew) {
+      // Set initial state immediately
+      element.style.opacity = '0'
+
+      // Delay the entrance animation slightly
+      requestAnimationFrame(() => {
+        const entranceOffset = isTopPosition ? -50 : 50
+
+        animate(
+          element,
+          {
+            y: [entranceOffset, offset],
+            opacity: [0, 1],
+            scale: baseScale,
+            z: translateZ,
+          },
+          {
+            type: 'spring',
+            stiffness: 800,
+            damping: 40,
+            mass: 0.2,
+          }
+        )
+      })
+    } else {
+      // Normal stacking/expanding animation
+      animate(
+        element,
+        {
+          y: offset,
+          scale: baseScale,
+          z: translateZ,
+        },
+        {
+          type: 'spring',
+          stiffness: 800,
+          damping: 40,
+          mass: 0.2,
+        }
+      )
+    }
+  }
+
+  componentDidRender() {
+    console.log('Component rerendered. Current toasts:', this.toasts.length)
+    this.toasts.forEach((toast, index) => {
+      const element = this.toastRefs.get(toast.id)
+      if (element) {
+        const currentHeight = element.offsetHeight
+        const storedHeight = this.heights.get(toast.id)
+        if (currentHeight !== storedHeight) {
+          console.log(`Height changed for toast ${toast.id}:`, {
+            old: storedHeight,
+            new: currentHeight,
+          })
+          this.heights.set(toast.id, currentHeight)
+        }
+        this.animateToast(element, index)
+      }
+    })
+  }
 
   render() {
+    const visibleToasts = this.toasts.slice(-this.MAX_TOASTS)
+
     return (
-      <Host class={`toast-container dark ${this.position}`}>
-        {this.toasts.map(toast => (
+      <Host
+        class={`toast-container dark ${this.position}`}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        {visibleToasts.map((toast, index) => (
           <div
             key={toast.id}
+            ref={el => this.toastRefs.set(toast.id, el as HTMLElement)}
             class={{
               toast: true,
               [toast.type]: true,
               removing: toast.removing,
+              stacked: !this.expanded,
+              expanded: this.expanded,
+            }}
+            style={{
+              zIndex: `${this.toasts.length + index}`,
             }}
             part="toast"
           >
             <div class="content">
-              {/* {this.getIcon(toast.type)} */}
               <div class="text">
                 {toast.title && <div class="title">{toast.title}</div>}
                 {toast.description && <div class="description">{toast.description}</div>}

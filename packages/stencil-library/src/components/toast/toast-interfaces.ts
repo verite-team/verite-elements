@@ -12,4 +12,5 @@ export interface ToastProps {
     onClick: () => void
   }
   removing?: boolean
+  isNew?: boolean
 }
