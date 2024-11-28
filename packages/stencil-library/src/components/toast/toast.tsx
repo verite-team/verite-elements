@@ -160,10 +160,18 @@ export class Toast {
     const isTopPosition = this.position.startsWith('top-')
     let offset = 0
 
-    for (let i = index + 1; i < this.toasts.length; i++) {
-      const toast = this.toasts[i]
-      const height = this.heights.get(toast.id) || 0
-      offset += isTopPosition ? height + this.gap : -(height + this.gap)
+    if (isTopPosition) {
+      for (let i = index + 1; i < this.toasts.length; i++) {
+        const toast = this.toasts[i]
+        const height = this.heights.get(toast.id) || 0
+        offset += height + this.gap
+      }
+    } else {
+      for (let i = index; i >= 0; i--) {
+        const toast = this.toasts[i]
+        const height = this.heights.get(toast.id) || 0
+        offset -= height + this.gap
+      }
     }
     return offset
   }
@@ -171,15 +179,15 @@ export class Toast {
   private animateToast(element: HTMLElement, index: number) {
     const toastsBefore = this.toasts.length - index - 1
     const isTopPosition = this.position.startsWith('top-')
-    const toast = this.toasts[index]
 
-    const stackedOffset = toastsBefore * this.gap
+    const stackedOffset = isTopPosition ? toastsBefore * this.gap : -(toastsBefore * this.gap)
+
     const expandedOffset = this.calculateExpandedOffset(index)
     const offset = this.expanded ? expandedOffset : stackedOffset
     const baseScale = this.expanded ? 1 : 1 - toastsBefore * 0.05
     const translateZ = this.expanded ? 0 : -toastsBefore * 10
 
-    if (toast.isNew) {
+    if (this.toasts[index].isNew) {
       const entranceOffset = isTopPosition ? -50 : 50
 
       animate(
@@ -236,7 +244,6 @@ export class Toast {
       })
       this.toastRegionRef.style.height = `${totalHeight}px`
     } else {
-      // When collapsed, use height of single toast plus offset for stacked ones
       const lastToastHeight = this.heights.get(visibleToasts[visibleToasts.length - 1]?.id) || 0
       const stackOffset = (visibleToasts.length - 1) * this.gap
       this.toastRegionRef.style.height = `${lastToastHeight + stackOffset}px`
