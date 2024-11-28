@@ -25,8 +25,11 @@ export class Toast {
 
   @Prop({ reflect: true }) theme: 'default' | 'inverted' = 'default'
   @Prop() gap = 8
+  @Prop() duration = 4000 // how long the toast will be visible
 
   private toastRegionRef?: HTMLDivElement
+
+  private remainingDurations: Map<string, number> = new Map()
 
   @Method()
   async show(toast: Omit<ToastProps, 'id'>) {
@@ -34,10 +37,11 @@ export class Toast {
     const newToast = {
       id,
       type: 'default' as ToastType,
-      duration: 4000,
+      duration: this.duration, // how long the toast will be visible
       dismissible: true,
       height: 0,
       isNew: true,
+      startTime: Date.now(),
       ...toast,
     }
 
@@ -136,7 +140,13 @@ export class Toast {
   private handleMouseEnter = () => {
     this.expanded = true
     this.updateToastRegionHeight()
-    this.toastTimeouts.forEach(timeout => {
+    this.toastTimeouts.forEach((timeout, id) => {
+      const toast = this.toasts.find(t => t.id === id)
+      if (toast) {
+        const elapsed = Date.now() - (toast as any).startTime
+        const remaining = toast.duration - elapsed
+        this.remainingDurations.set(id, remaining > 0 ? remaining : 0)
+      }
       clearTimeout(timeout)
     })
   }
@@ -146,9 +156,10 @@ export class Toast {
     this.updateToastRegionHeight()
     this.toasts.forEach(toast => {
       if (toast.duration && toast.type !== 'loading') {
+        const remaining = this.remainingDurations.get(toast.id) || toast.duration
         const timeout = window.setTimeout(() => {
           this.removeToast(toast.id)
-        }, toast.duration)
+        }, remaining)
         this.toastTimeouts.set(toast.id, timeout)
       }
     })
