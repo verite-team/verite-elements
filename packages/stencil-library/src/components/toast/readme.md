@@ -9,7 +9,9 @@
 
 | Property   | Attribute  | Description | Type                                                                                              | Default          |
 | ---------- | ---------- | ----------- | ------------------------------------------------------------------------------------------------- | ---------------- |
+| `gap`      | `gap`      |             | `number`                                                                                          | `8`              |
 | `position` | `position` |             | `"bottom-center" \| "bottom-left" \| "bottom-right" \| "top-center" \| "top-left" \| "top-right"` | `'bottom-right'` |
+| `theme`    | `theme`    |             | `"default" \| "inverted"`                                                                         | `'default'`      |
 
 
 ## Events
@@ -43,9 +45,9 @@ Type: `Promise<void>`
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                      | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ title?: string; type?: ToastType; action?: { label: string; onClick: () => void; }; description?: string; duration?: number; dismissible?: boolean; }` |             |
+| Name    | Type                                                                                                                                                                                          | Description |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ title?: string; type: ToastType; action?: { label: string; onClick: () => void; }; description?: string; duration?: number; dismissible?: boolean; removing?: boolean; isNew?: boolean; }` |             |
 
 #### Returns
 
@@ -59,10 +61,10 @@ Type: `Promise<string>`
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                   | Description |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `id`    | `string`                                                                                                                                                               |             |
-| `toast` | `{ id?: string; title?: string; description?: string; type?: ToastType; duration?: number; dismissible?: boolean; action?: { label: string; onClick: () => void; }; }` |             |
+| Name    | Type                                                                                                                                                                                                        | Description |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `id`    | `string`                                                                                                                                                                                                    |             |
+| `toast` | `{ id?: string; type?: ToastType; title?: string; description?: string; duration?: number; dismissible?: boolean; action?: { label: string; onClick: () => void; }; removing?: boolean; isNew?: boolean; }` |             |
 
 #### Returns
 
@@ -82,14 +84,14 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [vui-icon](../icon)
 - [vui-button](../button)
+- [vui-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  vui-toast --> vui-icon
   vui-toast --> vui-button
+  vui-toast --> vui-icon
   vui-button --> vui-spinner
   style vui-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```

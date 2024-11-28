@@ -23,6 +23,68 @@
       ]
     },
     {
+      "name": "vui-auth-alt-card",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "description": ""
+        },
+        {
+          "name": "elevation",
+          "description": "",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            }
+          ]
+        },
+        {
+          "name": "heading",
+          "description": ""
+        },
+        {
+          "name": "prompt",
+          "description": ""
+        },
+        {
+          "name": "submit-label",
+          "description": ""
+        },
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "inset"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "vui-auth-card",
       "description": {
         "kind": "markdown",
@@ -195,12 +257,45 @@
       },
       "attributes": [
         {
+          "name": "align",
+          "description": "",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "start"
+            }
+          ]
+        },
+        {
           "name": "description",
           "description": ""
         },
         {
           "name": "heading",
           "description": ""
+        },
+        {
+          "name": "size",
+          "description": "",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            }
+          ]
         }
       ]
     },
@@ -298,7 +393,7 @@
               "name": "outline"
             },
             {
-              "name": "secondary"
+              "name": "soft"
             }
           ]
         },
@@ -362,14 +457,17 @@
       },
       "attributes": [
         {
-          "name": "halign",
+          "name": "align",
           "description": "",
           "values": [
             {
               "name": "center"
             },
             {
-              "name": "left"
+              "name": "end"
+            },
+            {
+              "name": "start"
             }
           ]
         }
@@ -412,14 +510,17 @@
       },
       "attributes": [
         {
-          "name": "halign",
+          "name": "align",
           "description": "",
           "values": [
             {
               "name": "center"
             },
             {
-              "name": "left"
+              "name": "end"
+            },
+            {
+              "name": "start"
             }
           ]
         },
@@ -435,6 +536,9 @@
             },
             {
               "name": "sm"
+            },
+            {
+              "name": "xl"
             }
           ]
         },
@@ -900,6 +1004,35 @@
       ]
     },
     {
+      "name": "vui-request",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "application",
+          "description": ""
+        },
+        {
+          "name": "is-loading",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "description": ""
+        },
+        {
+          "name": "redirect-uri",
+          "description": ""
+        },
+        {
+          "name": "show-redirect",
+          "description": ""
+        }
+      ]
+    },
+    {
       "name": "vui-spinner",
       "description": {
         "kind": "markdown",
@@ -1004,6 +1137,10 @@
       },
       "attributes": [
         {
+          "name": "gap",
+          "description": ""
+        },
+        {
           "name": "position",
           "description": "",
           "values": [
@@ -1024,6 +1161,18 @@
             },
             {
               "name": "top-right"
+            }
+          ]
+        },
+        {
+          "name": "theme",
+          "description": "",
+          "values": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "inverted"
             }
           ]
         }

@@ -97,24 +97,34 @@ export class Toast {
 
       const element = this.toastRefs.get(id)
       if (element) {
+        element.classList.add('removed')
+
         const isTopPosition = this.position.startsWith('top-')
         const exitOffset = isTopPosition ? -50 : 50
 
-        animate(
-          element,
-          {
-            opacity: [1, 0],
-            y: [0, exitOffset],
-            scale: 0.9,
-          },
-          {
-            type: 'spring',
-            stiffness: 800,
-            damping: 40,
-            mass: 0.2,
-          }
-        )
+        try {
+          animate(
+            element,
+            {
+              opacity: [1, 0],
+              y: [0, exitOffset],
+              scale: 0.9,
+            },
+            {
+              type: 'spring',
+              stiffness: 800,
+              damping: 40,
+              mass: 0.2,
+              duration: 200,
+            }
+          )
+        } catch (e) {
+          console.warn('Toast animation failed:', e)
+        }
       }
+
+      this.toastRefs.delete(id)
+      this.heights.delete(id)
 
       setTimeout(() => {
         this.toasts = this.toasts.filter(t => t.id !== id)

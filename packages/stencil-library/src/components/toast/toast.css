@@ -11,9 +11,8 @@
   pointer-events: none;
   font-family: var(--font-family);
   font-size: 0.875rem;
-  width: 100%;
+  width: calc(100% - var(--inner-toast-padding));
   max-width: var(--inner-toast-width);
-  /* width: var(--inner-toast-width); */
   perspective: 1000px;
   box-sizing: border-box;
 }
@@ -34,8 +33,7 @@
 
 :host(.top-right) {
   top: 0;
-  right: 0;
-  padding-right: var(--inner-toast-padding);
+  right: var(--inner-toast-padding);
   padding-top: var(--inner-toast-padding);
 }
 
@@ -55,9 +53,8 @@
 
 :host(.bottom-right) {
   bottom: 0;
-  right: 0;
+  right: var(--inner-toast-padding);
   padding-bottom: var(--inner-toast-padding);
-  padding-right: var(--inner-toast-padding);
 }
 
 /* Default theme */
@@ -138,5 +135,11 @@
   position: absolute;
   pointer-events: auto;
   width: 100%;
-  transition: height 0.2s ease-out;
+  /* transition: height 0.2s ease-out; */
+}
+
+.toast.removed {
+  opacity: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
 }

@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                            | Default  |
-| -------- | --------- | ----------- | ------------------------------- | -------- |
-| `halign` | `halign`  |             | `"center" \| "left"`            | `'left'` |
-| `size`   | `size`    |             | `"lg" \| "md" \| "sm"`          | `'md'`   |
-| `weight` | `weight`  |             | `"bold" \| "light" \| "medium"` | `'bold'` |
+| Property | Attribute | Description | Type                            | Default    |
+| -------- | --------- | ----------- | ------------------------------- | ---------- |
+| `align`  | `align`   |             | `"center" \| "end" \| "start"`  | `'center'` |
+| `size`   | `size`    |             | `"lg" \| "md" \| "sm" \| "xl"`  | `'md'`     |
+| `weight` | `weight`  |             | `"bold" \| "light" \| "medium"` | `'bold'`   |
 
 
 ## Shadow Parts

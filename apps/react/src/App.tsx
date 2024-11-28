@@ -1,5 +1,6 @@
 import './App.css'
 
+import React, { useRef, useState } from 'react'
 import {
   VeriteConnector,
   VuiAuthCard,
@@ -10,11 +11,10 @@ import {
   VuiI18n,
   VuiLogo,
   VuiThemeToggle,
+  VuiToast,
   VuiUserMenu,
   initialize,
 } from 'stencil-react'
-
-import React from 'react'
 
 // defineCustomElements()
 initialize({
@@ -30,6 +30,8 @@ initialize({
 
 // console.log(i18nStore.t('hello'))
 function App() {
+  const toastRef = useRef<HTMLVuiToastElement>(null)
+
   // useEffect(() => {
   //   console.log('init--->')
   //   init({
@@ -44,9 +46,37 @@ function App() {
   //   })
   // }, [])
 
+  const [counter, setCounter] = useState(1)
+
+  function showToast() {
+    // const toast = document.querySelector('VuiToast')
+    toastRef.current?.show({
+      title: 'Hello, world! lorem ipsum dolor sit amet lorem ipsum dolor sit amet ::' + counter,
+      type: 'success',
+    })
+    setCounter(counter + 1)
+    // const { animate, scroll } = Motion
+    // const box = document.querySelector('.box')
+    // animate(box, { translateZ: -100, rotate: 90 }, { duration: 0.2, type: 'spring', stiffness: 300 }).then(evt => {
+    //   animate(
+    //     '.box',
+    //     {
+    //       zoom: 1,
+    //       rotateX: 360,
+    //       rotateY: 360,
+    //       translateZ: 100,
+    //     },
+    //     {
+    //       duration: 0.5,
+    //       easing: 'ease-out',
+    //     }
+    //   )
+    // })
+  }
+
   return (
     <div className="container">
-      <VuiButton onClick={() => console.log('clicked')}>
+      <VuiButton onClick={showToast}>
         <VuiI18n text="hello" params={{ time: Date.now().toString() }} />
       </VuiButton>
       <div className="fixed flex items-center gap-2 font-semibold top-4 left-4">
@@ -56,6 +86,7 @@ function App() {
 
       <VuiThemeToggle className="fixed top-4 right-4"></VuiThemeToggle>
       <VuiUserMenu className="fixed top-4 right-16"></VuiUserMenu>
+      <VuiToast ref={toastRef} position="top-center" theme="inverted"></VuiToast>
 
       <VuiFlex direction="row" gap={8} width="full">
         <VeriteConnector className="w-full max-w-[400px]">

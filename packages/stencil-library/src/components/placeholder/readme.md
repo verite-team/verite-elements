@@ -22,19 +22,6 @@
 | `"placeholder"` |             |
 
 
-## Dependencies
-
-### Used by
-
- - [vui-auth-header](../auth)
-
-### Graph
-```mermaid
-graph TD;
-  vui-auth-header --> vui-placeholder
-  style vui-placeholder fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
