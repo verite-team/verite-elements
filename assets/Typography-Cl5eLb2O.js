@@ -1,0 +1,2 @@
+import{j as t}from"./jsx-runtime-N83kn9-W.js";import{useMDXComponents as r}from"./index-g1djAheZ.js";import"./_commonjsHelpers-Cpj98o6Y.js";function o(n){const e={h1:"h1",p:"p",...r(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(e.h1,{id:"typography",children:"Typography"}),`
+`,t.jsx(e.p,{children:"Our design system uses a system font stack for optimal performance and native feel:"})]})}function c(n={}){const{wrapper:e}={...r(),...n.components};return e?t.jsx(e,{...n,children:t.jsx(o,{...n})}):o(n)}export{c as default};

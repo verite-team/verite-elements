@@ -1,0 +1,64 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --success: 144 84% 38%;
+  --success-foreground: 211.29 100% 95%;
+  --error: 0 84.2% 60.2%;
+  --error-foreground: 0 0% 100%;
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 2%;
+  --elevation-sm: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-md: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-lg: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-xl: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --transparent: 0 0% 100% / 0;
+  --card-padding: 1.5rem;
+  --box-shadow: inset 0 1px 2px hsl(var(--foreground) / 0.1);
+  --toast-width: 388px;
+  --toast-padding: 1rem;
+  --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-color: 0deg 0% 0%;
+  --shadow-colored: 0 1px 2px 0 var(--shadow-color);
+  --inverted-background: var(--foreground);
+  --inverted-foreground: var(--background);
+  --inverted-muted-foreground: var(--muted-background, var(--muted-foreground));
+  --light-background: var(--background);
+  --light-foreground: var(--foreground);
+  /* --light-muted-foreground: var(--muted-background, var(--muted-foreground)); */
+  --dark-background: var(--foreground);
+  --dark-foreground: var(--background);
+}
+
+.dark {
+  --background: 0 0% 8.5%;
+  --foreground: 0 0% 98%;
+  --success: 144 84% 38%;
+  --success-foreground: 211.29 100% 95%;
+  --error: 0 84.2% 60.2%;
+  --error-foreground: 0 0% 100%;
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 2%;
+  --elevation-sm: 0px 1px 2px hsl(var(--shadow-color) / var(--shadow-strength));
+  --elevation-md: 0px 2px 4px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%));
+  --elevation-lg: 0px 4px 8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%));
+  --elevation-xl: 0px 8px 16px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+  --transparent: 0 0% 100% / 0;
+  --box-shadow: none;
+  --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-color: 0deg 0% 0%;
+  --shadow-colored: 0 1px 2px 0 var(--shadow-color);
+  --inverted-background: var(--foreground);
+  --inverted-foreground: var(--background);
+  --inverted-muted-foreground: var(--muted-background, var(--muted-foreground));
+  --light-background: var(--foreground);
+  --light-foreground: var(--background);
+  /* --light-muted-foreground: var(--muted-background, var(--muted-foreground)); */
+  --dark-background: var(--background);
+  --dark-foreground: var(--foreground);
+}

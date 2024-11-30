@@ -1,0 +1,126 @@
+{
+  "hello": "Hello, world!",
+  "brand": {
+    "label": "Secured by Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "First name",
+      "placeholder": "First name"
+    },
+    "lastName": {
+      "label": "Last name",
+      "placeholder": "Last name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Email"
+    },
+    "phone": {
+      "label": "Phone",
+      "placeholder": "Phone"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Password",
+      "show": "Show password",
+      "hide": "Hide password"
+    },
+    "forgotPassword": {
+      "label": "Forgot your password?"
+    },
+    "submit": {
+      "signin": "Sign in",
+      "signup": "Sign up",
+      "code": "Send code",
+      "sendResetLink": "Send reset link",
+      "resetPassword": "Reset password",
+      "label": "Submit"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} is required",
+    "email": {
+      "invalid": "Please enter a valid email",
+      "required": "Email is required",
+      "allowedDomains": "Email domain must be one of: {{domains}}",
+      "blockedDomains": "Email domain cannot be: {{domains}}"
+    },
+    "phone": {
+      "required": "Phone is required"
+    },
+    "password": {
+      "required": "Password is required",
+      "minLength": "Must be at least {length} characters",
+      "maxLength": "Must not exceed {length} characters",
+      "uppercase": "Must contain at least one uppercase letter",
+      "lowercase": "Must contain at least one lowercase letter",
+      "number": "Must contain at least one number",
+      "specialChar": "Must contain at least one special character"
+    }
+  },
+  "request": {
+    "title": "Request permissions",
+    "description": "This app will be able to:",
+    "prompt": "Do you want to continue?",
+    "permissions": {
+      "title": "This app will be able to:"
+    },
+    "redirect": {
+      "title": "Redirect URI:"
+    },
+    "action": "Continue",
+    "deny": {
+      "label": "Deny"
+    },
+    "approve": {
+      "label": "Approve"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Sign in to {product}",
+      "description": "Welcome back! Please sign in to continue",
+      "prompt": "Don't have an account?",
+      "action": "Sign up",
+      "submit": "Sign in"
+    },
+    "phone": {
+      "title": "Enter your phone number",
+      "description": "Send a code to your phone number to continue.",
+      "prompt": "Don't have an account?",
+      "action": "Sign up",
+      "submit": "Send code"
+    },
+    "email": {
+      "title": "Enter your email",
+      "description": "Send a code to your email to continue.",
+      "prompt": "Don't have an account?",
+      "action": "Sign up",
+      "submit": "Send code"
+    },
+    "with": "Sign in with {provider}",
+    "option": "or"
+  },
+  "signup": {
+    "default": {
+      "title": "Sign up to {product}",
+      "description": "Welcome! Please fill in the details to get started.",
+      "prompt": "Already have an account?",
+      "action": "Sign in",
+      "submit": "Sign up"
+    },
+    "with": "Sign up with {provider}",
+    "option": "or"
+  },
+  "otp": {
+    "title": "Verify your email",
+    "description": "We sent a verification code to your email. Please enter it below.",
+    "prompt": "Didn't receive the code?",
+    "action": "Resend",
+    "backToSignIn": "Back to sign in",
+    "signIn": "Sign in",
+    "submit": "Verify"
+  }
+}
