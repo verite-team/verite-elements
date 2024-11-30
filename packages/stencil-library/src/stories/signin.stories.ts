@@ -17,14 +17,14 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => `
-<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
+<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
     heading="$signin.default.title|product:Acme"
     description="$signin.default.description"
     brand-label="$brand.label"
-    brand-logo="/assets/logo.svg"
+    brand-logo="./assets/logo.svg"
   >
     <vui-placeholder width="64" height="64" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
     <div slot="providers">
