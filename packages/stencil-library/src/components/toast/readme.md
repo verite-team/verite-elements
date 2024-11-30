@@ -12,7 +12,7 @@
 | `duration` | `duration` |             | `number`                                                                                          | `4000`           |
 | `gap`      | `gap`      |             | `number`                                                                                          | `8`              |
 | `position` | `position` |             | `"bottom-center" \| "bottom-left" \| "bottom-right" \| "top-center" \| "top-left" \| "top-right"` | `'bottom-right'` |
-| `theme`    | `theme`    |             | `"default" \| "inverted"`                                                                         | `'default'`      |
+| `theme`    | `theme`    |             | `"dark" \| "default" \| "inverted" \| "light"`                                                    | `'default'`      |
 
 
 ## Events

@@ -32,20 +32,20 @@ const meta: Meta<ButtonProps> = {
       story: {
         inline: true,
         // This will make the docs stories respect the dark mode
-        parameters: {
-          backgrounds: {
-            default: 'dark',
-          },
-          themes: {
-            default: 'dark',
-          },
-        },
+        // parameters: {
+        //   backgrounds: {
+        //     default: 'dark',
+        //   },
+        //   themes: {
+        //     default: 'dark',
+        //   },
+        // },
       },
-      container: ({ children }) => `
-        <div class="dark">
-          ${children}
-        </div>
-      `,
+      // container: ({ children }) => `
+      //   <div class="dark">
+      //     ${children}
+      //   </div>
+      // `,
     },
   },
   argTypes: {

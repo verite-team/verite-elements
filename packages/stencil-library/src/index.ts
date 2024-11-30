@@ -6,7 +6,3 @@
  */
 
 export type * from './components.d.ts'
-export { initialize } from './global'
-export type { VeriteConfig } from './types'
-export { getI18n } from './utils/i18n.js'
-export type { I18nConfig, PluralType, TranslationDictionary } from './utils/i18n.js'

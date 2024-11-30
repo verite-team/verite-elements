@@ -96,6 +96,14 @@
           "description": ""
         },
         {
+          "name": "brand-label",
+          "description": ""
+        },
+        {
+          "name": "brand-logo",
+          "description": ""
+        },
+        {
           "name": "description",
           "description": ""
         },
@@ -158,11 +166,15 @@
           "description": ""
         },
         {
-          "name": "prompt",
+          "name": "brand-label",
           "description": ""
         },
         {
-          "name": "show-brand",
+          "name": "brand-logo",
+          "description": ""
+        },
+        {
+          "name": "prompt",
           "description": ""
         },
         {
@@ -220,11 +232,31 @@
           "description": ""
         },
         {
+          "name": "email-label",
+          "description": ""
+        },
+        {
+          "name": "email-placeholder",
+          "description": ""
+        },
+        {
           "name": "email-validation",
           "description": "Email validation options"
         },
         {
           "name": "first-name",
+          "description": ""
+        },
+        {
+          "name": "firstname-label",
+          "description": ""
+        },
+        {
+          "name": "firstname-placeholder",
+          "description": ""
+        },
+        {
+          "name": "forgot-password-label",
           "description": ""
         },
         {
@@ -236,11 +268,43 @@
           "description": ""
         },
         {
+          "name": "lastname-label",
+          "description": ""
+        },
+        {
+          "name": "lastname-placeholder",
+          "description": ""
+        },
+        {
           "name": "password",
           "description": ""
         },
         {
+          "name": "password-hide-label",
+          "description": ""
+        },
+        {
+          "name": "password-label",
+          "description": ""
+        },
+        {
+          "name": "password-placeholder",
+          "description": ""
+        },
+        {
+          "name": "password-show-label",
+          "description": ""
+        },
+        {
           "name": "phone",
+          "description": ""
+        },
+        {
+          "name": "phone-label",
+          "description": ""
+        },
+        {
+          "name": "phone-placeholder",
           "description": ""
         },
         {
@@ -1173,10 +1237,16 @@
           "description": "",
           "values": [
             {
+              "name": "dark"
+            },
+            {
               "name": "default"
             },
             {
               "name": "inverted"
+            },
+            {
+              "name": "light"
             }
           ]
         }

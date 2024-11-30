@@ -1,0 +1,125 @@
+{
+  "hello": "Bonjour, le monde!",
+  "brand": {
+    "label": "Sécurisé par Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "Prénom",
+      "placeholder": "Prénom"
+    },
+    "lastName": {
+      "label": "Nom",
+      "placeholder": "Nom"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Email"
+    },
+    "phone": {
+      "label": "Téléphone",
+      "placeholder": "Téléphone"
+    },
+    "password": {
+      "label": "Mot de passe",
+      "placeholder": "Mot de passe",
+      "show": "Afficher le mot de passe",
+      "hide": "Cacher le mot de passe"
+    },
+    "forgotPassword": {
+      "label": "Mot de passe oublié ?"
+    },
+    "submit": {
+      "signin": "Se connecter",
+      "signup": "S'inscrire",
+      "code": "Envoyer le code",
+      "sendResetLink": "Envoyer le lien de réinitialisation",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "label": "Soumettre"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} est requis",
+    "email": {
+      "invalid": "Veuillez entrer un email valide",
+      "required": "L'email est requis",
+      "allowedDomains": "Le domaine de l'email doit être l'un des suivants : {{domains}}",
+      "blockedDomains": "Le domaine de l'email ne peut pas être : {{domains}}"
+    },
+    "phone": {
+      "required": "Le téléphone est requis"
+    },
+    "password": {
+      "required": "Le mot de passe est requis",
+      "minLength": "Doit contenir au moins {length} caractères",
+      "maxLength": "Ne doit pas dépasser {length} caractères",
+      "uppercase": "Doit contenir au moins une lettre majuscule",
+      "lowercase": "Doit contenir au moins une lettre minuscule",
+      "number": "Doit contenir au moins un chiffre",
+      "specialChar": "Doit contenir au moins un caractère spécial"
+    }
+  },
+  "request": {
+    "title": "Demande d'autorisation",
+    "description": "L'application Test demande l'accès à votre compte",
+    "prompt": "Voulez-vous continuer ?",
+    "permissions": {
+      "title": "Cette application pourra:"
+    },
+    "redirect": {
+      "title": "URI de redirection:"
+    },
+    "action": "Continuer",
+    "deny": {
+      "label": "Refuser"
+    },
+    "approve": {
+      "label": "Approuver"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Se connecter à {product}",
+      "description": "Content de vous revoir ! Veuillez vous connecter pour continuer",
+      "prompt": "Vous n'avez pas de compte ?",
+      "action": "S'inscrire",
+      "submit": "Se connecter"
+    },
+    "phone": {
+      "title": "Entrez votre numéro de téléphone",
+      "description": "Envoyez un code à votre numéro de téléphone pour continuer.",
+      "prompt": "Vous n'avez pas de compte ?",
+      "action": "S'inscrire",
+      "submit": "Envoyer le code"
+    },
+    "email": {
+      "title": "Entrez votre email",
+      "description": "Envoyez un code à votre email pour continuer.",
+      "prompt": "Vous n'avez pas de compte ?",
+      "action": "S'inscrire",
+      "submit": "Envoyer le code"
+    },
+    "option": "ou"
+  },
+  "signup": {
+    "default": {
+      "title": "S'inscrire à {product}",
+      "description": "Bienvenue ! Veuillez remplir les détails pour commencer.",
+      "prompt": "Vous avez déjà un compte ?",
+      "action": "Se connecter",
+      "submit": "S'inscrire"
+    },
+    "with": "S'inscrire avec {provider}",
+    "option": "ou"
+  },
+  "otp": {
+    "title": "Vérifiez votre email",
+    "description": "Nous avons envoyé un code de vérification à votre email. Veuillez l'entrer ci-dessous.",
+    "prompt": "Vous n'avez pas reçu le code ?",
+    "action": "Renvoyer",
+    "backToSignIn": "Retour à la connexion",
+    "signIn": "Se connecter",
+    "submit": "Vérifier"
+  }
+}

@@ -1,0 +1,19 @@
+import { Canvas, Controls, Description, Meta, Primary, Source, Stories, Story, Title } from '@storybook/blocks'
+import { vui } from '../global'
+import * as SignupStories from './signup.stories'
+
+console.log('vui', vui)
+
+<Meta of={SignupStories} />
+
+<Title />
+
+<Description />
+
+<Primary />
+
+<Controls />
+
+## Usage Example
+
+<Source />

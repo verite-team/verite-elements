@@ -64,6 +64,24 @@
       "specialChar": "Must contain at least one special character"
     }
   },
+  "request": {
+    "title": "Authorization Request",
+    "description": "Test Application is requesting access to your account",
+    "prompt": "Do you want to continue?",
+    "permissions": {
+      "title": "This application will be able to:"
+    },
+    "redirect": {
+      "title": "Redirect URI:"
+    },
+    "action": "Continue",
+    "deny": {
+      "label": "Deny"
+    },
+    "approve": {
+      "label": "Approve"
+    }
+  },
   "signin": {
     "default": {
       "title": "Sign in to {product}",

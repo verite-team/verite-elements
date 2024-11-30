@@ -31,16 +31,12 @@
       "label": "Forgot your password?"
     },
     "submit": {
-      "label": "Submit"
-    },
-    "action1": {
       "signin": "Sign in",
       "signup": "Sign up",
-      "phone": "Send code",
-      "email": "Send code",
+      "code": "Send code",
       "sendResetLink": "Send reset link",
       "resetPassword": "Reset password",
-      "submit": "Submit"
+      "label": "Submit"
     }
   },
   "validation": {

@@ -3,15 +3,12 @@ import {
   EmailValidationOptions,
   PasswordValidationOptions,
   ValidationRule,
-  ValidationRules,
+  createValidationRules,
 } from '../../utils/validation'
 
-import { SignUpFormData } from './types'
-import { getI18n } from '../../utils/i18n'
 import { toJSON } from '../../utils/toJSON'
-
-const t = getI18n().translate
-const ti = getI18n().translateInterpolated
+import { I18nProvider } from '../i18n/i18n-provider'
+import { SignUpFormData } from './types'
 
 type Element = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
 
@@ -21,6 +18,10 @@ type Element = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
   shadow: true,
 })
 export class AuthForm {
+  @Element() el!: HTMLElement
+
+  private validationRules = createValidationRules(this.el)
+
   @State() private passwordVisible: boolean = false
   @State() private firstNameError: string = ''
   @State() private lastNameError: string = ''
@@ -30,21 +31,39 @@ export class AuthForm {
   @State() private isSubmitted: boolean = false
   @State() elementsList: Element[] = []
 
-  @Prop() action: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' = 'submit'
+  private _firstNameLabel = 'First name'
+  private _lastNameLabel = 'Last name'
+  private _emailLabel = 'Email'
+  private _phoneLabel = 'Phone'
+  private _passwordLabel = 'Password'
+
+  @Prop() action: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' | 'resetLink' | 'code' = 'submit'
+  @Prop() firstnameLabel = this._firstNameLabel
+  @Prop() firstnamePlaceholder = this._firstNameLabel
+  @Prop() lastnameLabel = this._lastNameLabel
+  @Prop() lastnamePlaceholder = this._lastNameLabel
+  @Prop() emailLabel = this._emailLabel
+  @Prop() emailPlaceholder = this._emailLabel
+  @Prop() phoneLabel = this._phoneLabel
+  @Prop() phonePlaceholder = this._phoneLabel
+  @Prop() passwordLabel = this._passwordLabel
+  @Prop() passwordPlaceholder = this._passwordLabel
+  @Prop() submitLabel = 'Submit'
+  @Prop() forgotPasswordLabel = 'Forgot password?'
+  @Prop() passwordShowLabel = 'Show password'
+  @Prop() passwordHideLabel = 'Hide password'
+
   @Prop({ mutable: true }) firstName?: string = ''
   @Prop({ mutable: true }) lastName?: string = ''
   @Prop({ mutable: true }) email?: string = ''
   @Prop({ mutable: true }) phone?: string = ''
   @Prop({ mutable: true }) password?: string = ''
-  @Prop({ mutable: true }) submitLabel?: string = ''
 
   @Prop({ reflect: true, mutable: true }) elements?: Element[] | string = []
 
   @Prop() styles?: {
     link?: { [key: string]: string | number }
   }
-
-  @Element() el!: HTMLElement
 
   @Event() formSubmit: EventEmitter<SignUpFormData>
   @Event() forgotPassword: EventEmitter<void>
@@ -80,23 +99,23 @@ export class AuthForm {
   }
 
   private get firstNameRules(): ValidationRule[] {
-    return ValidationRules.createNameRules('signup.firstName.label')
+    return this.validationRules.createNameRules(this.firstnamePlaceholder)
   }
 
   private get lastNameRules(): ValidationRule[] {
-    return ValidationRules.createNameRules('signup.lastName.label')
+    return this.validationRules.createNameRules(this.lastnamePlaceholder)
   }
 
   private get emailRules(): ValidationRule[] {
-    return ValidationRules.createEmailRules(this.parsedEmailValidation())
+    return this.validationRules.createEmailRules(this.parsedEmailValidation())
   }
 
   private get phoneRules(): ValidationRule[] {
-    return ValidationRules.createPhoneRules()
+    return this.validationRules.createPhoneRules()
   }
 
   private get passwordRules(): ValidationRule[] {
-    return ValidationRules.createPasswordRules(this.passwordValidation)
+    return this.validationRules.createPasswordRules(this.passwordValidation)
   }
 
   private validateField(value: string, rules: ValidationRule[]): string {
@@ -165,13 +184,41 @@ export class AuthForm {
     this.forgotPassword.emit()
   }
 
+  private translate(key: string, params?: Record<string, string>): string {
+    const provider = I18nProvider.getClosestProvider(this.el)
+    if (!provider) {
+      return key
+    }
+
+    return provider.getTranslation(key, params)
+  }
+
   async componentWillLoad() {
     if (typeof this.elements === 'string') {
       this.elementsList = toJSON<Element[]>(this.elements, [])
     } else {
       this.elementsList = this.elements
     }
-    await getI18n().waitUntilReady()
+
+    // Wait for provider to be ready
+    await I18nProvider.getClosestProvider(this.el)?.waitForTranslations()
+  }
+
+  private getSubmitTranslationKey(): string {
+    switch (this.action) {
+      case 'signup':
+        return '$form.submit.signup'
+      case 'signin':
+        return '$form.submit.signin'
+      case 'code':
+        return '$form.submit.code'
+      case 'resetLink':
+        return '$form.submit.sendResetLink'
+      case 'resetPassword':
+        return '$form.submit.resetPassword'
+      default:
+        return '$form.submit.label'
+    }
   }
 
   render() {
@@ -179,11 +226,15 @@ export class AuthForm {
       <form onSubmit={this.handleSubmit}>
         {this.elementsList.includes('name') && (
           <vui-flex gap={2} direction="row" items="stretch" breakpointDirection="column" breakpoint="300px">
-            <vui-form-input label={t('signup.firstName.label')} htmlFor="first-name" errorMessage={this.firstNameError}>
+            <vui-form-input
+              label={this.translate('$form.firstName.label', { default: this.firstnameLabel })}
+              htmlFor="first-name"
+              errorMessage={this.firstNameError}
+            >
               <vui-textbox
                 id="first-name"
                 name="firstName"
-                placeholder={t('form.firstName.placeholder')}
+                placeholder={this.translate('$form.firstName.placeholder', { default: this.firstnamePlaceholder })}
                 autocapitalize="none"
                 autocomplete="given-name"
                 autocorrect="off"
@@ -194,11 +245,15 @@ export class AuthForm {
               ></vui-textbox>
             </vui-form-input>
 
-            <vui-form-input label={t('signup.lastName.label')} htmlFor="last-name" errorMessage={this.lastNameError}>
+            <vui-form-input
+              label={this.translate('$form.lastName.label', { default: this.lastnameLabel })}
+              htmlFor="last-name"
+              errorMessage={this.lastNameError}
+            >
               <vui-textbox
                 id="last-name"
                 name="lastName"
-                placeholder={t('form.lastName.placeholder')}
+                placeholder={this.translate('$form.lastName.placeholder', { default: this.lastnamePlaceholder })}
                 autocomplete="family-name"
                 autocorrect="off"
                 disabled={this.isLoading}
@@ -211,11 +266,15 @@ export class AuthForm {
         )}
 
         {this.elementsList.includes('email') && (
-          <vui-form-input label={t('signup.email.label')} htmlFor="email" errorMessage={this.emailError}>
+          <vui-form-input
+            label={this.translate('$form.email.label', { default: this.emailLabel })}
+            htmlFor="email"
+            errorMessage={this.emailError}
+          >
             <vui-textbox
               id="email"
               name="email"
-              placeholder={t('form.email.placeholder')}
+              placeholder={this.translate('$form.email.placeholder', { default: this.emailPlaceholder })}
               type="email"
               autocapitalize="none"
               autocomplete="email"
@@ -229,11 +288,15 @@ export class AuthForm {
         )}
 
         {this.elementsList.includes('phone') && (
-          <vui-form-input label={t('signup.phone.label')} htmlFor="phone" errorMessage={this.phoneError}>
+          <vui-form-input
+            label={this.translate('$form.phone.label', { default: this.phoneLabel })}
+            htmlFor="phone"
+            errorMessage={this.phoneError}
+          >
             <vui-textbox
               id="phone"
               name="phone"
-              placeholder={t('form.phone.placeholder')}
+              placeholder={this.translate('$form.phone.placeholder', { default: this.phonePlaceholder })}
               type="tel"
               autocapitalize="none"
               autocomplete="tel"
@@ -247,11 +310,15 @@ export class AuthForm {
         )}
 
         {this.elementsList.includes('password') && (
-          <vui-form-input label={t('form.password.label')} htmlFor="password" errorMessage={this.passwordError}>
+          <vui-form-input
+            label={this.translate('$form.password.label', { default: this.passwordLabel })}
+            htmlFor="password"
+            errorMessage={this.passwordError}
+          >
             <vui-textbox
               id="password"
               name="password"
-              placeholder={t('form.password.placeholder')}
+              placeholder={this.translate('$form.password.placeholder', { default: this.passwordPlaceholder })}
               type={this.passwordVisible ? 'text' : 'password'}
               autocorrect="off"
               disabled={this.isLoading}
@@ -265,7 +332,11 @@ export class AuthForm {
               type="button"
               disabled={this.isLoading}
               onClick={this.togglePasswordVisibility}
-              aria-label={this.passwordVisible ? t('form.password.hide') : t('form.password.show')}
+              aria-label={
+                this.passwordVisible
+                  ? this.translate('$form.password.hideLabel')
+                  : this.translate('$form.password.showLabel')
+              }
             >
               <vui-icon name={this.passwordVisible ? 'ic:outline-visibility' : 'ic:outline-visibility-off'} size="sm" />
             </vui-button>
@@ -275,13 +346,13 @@ export class AuthForm {
         {this.elementsList.includes('forgotPassword') && (
           <div class="forgot-password">
             <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
-              {t('form.forgotPassword.label')}
+              {this.translate('$form.forgotPassword.label', { default: this.forgotPasswordLabel })}
             </vui-link>
           </div>
         )}
 
         <vui-button type="submit" class="submit-button" busy={this.isLoading}>
-          {ti(this.submitLabel) || t('form.submit.label')}
+          {this.translate(this.getSubmitTranslationKey(), { default: this.submitLabel })}
         </vui-button>
       </form>
     )
