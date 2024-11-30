@@ -9,6 +9,11 @@ const preview: Preview = {
         transform: code => code.replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
       },
     },
+    options: {
+      storySort: {
+        order: ['Elements', 'Components', 'Forms', 'Layout', '*'],
+      },
+    },
     darkMode: {
       // classTarget: 'html',
       darkClass: 'dark',
@@ -22,19 +27,7 @@ const preview: Preview = {
         disable: true,
       },
     },
-    // actions: { disable: true },
-    // controls: { disable: true },
   },
-  // decorators: [
-  //   (Story, context) => {
-  //     const isDark = context.globals.previewTheme === 'dark'
-
-  //     document.documentElement.classList.remove('light', 'dark')
-  //     document.documentElement.classList.add(isDark ? 'dark' : 'light')
-
-  //     return Story()
-  //   },
-  // ],
 }
 
 export default preview

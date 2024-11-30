@@ -1,8 +1,6 @@
-import { Component, Prop, h } from '@stencil/core'
+import { Component, Element, Prop, h } from '@stencil/core'
 
-import { getI18n } from '../../utils/i18n'
-
-const ti = getI18n().translateInterpolated
+import { I18nProvider } from '../i18n/i18n-provider'
 
 @Component({
   tag: 'vui-auth-alt-card',
@@ -10,6 +8,8 @@ const ti = getI18n().translateInterpolated
   shadow: true,
 })
 export class AuthAltCard {
+  @Element() el!: HTMLElement
+
   @Prop() heading: string
   @Prop() description: string
   @Prop() prompt: string
@@ -18,8 +18,16 @@ export class AuthAltCard {
   @Prop() variant?: 'default' | 'inset' = 'inset'
   @Prop() elevation?: 'none' | 'sm' | 'md' | 'lg' | 'xl' = 'none'
 
+  private translate(key: string, params?: Record<string, string>): string {
+    const provider = I18nProvider.getClosestProvider(this.el)
+    if (!provider) {
+      return key
+    }
+    return provider.getTranslation(key, params)
+  }
+
   async componentWillLoad() {
-    await getI18n().waitUntilReady()
+    await I18nProvider.getClosestProvider(this.el)?.waitForTranslations()
   }
 
   render() {
@@ -29,8 +37,8 @@ export class AuthAltCard {
         <slot name="header">
           <vui-auth-header
             class="header"
-            heading={ti(this.heading)}
-            description={ti(this.description)}
+            heading={this.translate(this.heading)}
+            description={this.translate(this.description)}
             size="xl"
             align="start"
           ></vui-auth-header>
@@ -38,7 +46,11 @@ export class AuthAltCard {
         <slot name="providers"></slot>
         <slot></slot>
         <slot name="footer">
-          <vui-auth-footer prompt={ti(this.prompt)} action={ti(this.action)} variant={this.variant}></vui-auth-footer>
+          <vui-auth-footer
+            prompt={this.translate(this.prompt)}
+            action={this.translate(this.action)}
+            variant={this.variant}
+          ></vui-auth-footer>
         </slot>
       </vui-card>
     )

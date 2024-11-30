@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -13,164 +13,214 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">Stencil Library</div>
-    <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
-    <vui-user-menu style="position: fixed; top: 1rem; right: 4rem"></vui-user-menu>
-    <vui-button style="position: fixed; top: 1rem; right: 7rem" size="sm" variant="outline" onClick="showToast()"
-      >Show Toast</vui-button
-    >
-    <div class="grid">
-      <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
-      <!-- heading="Verify your email"
+    <vui-i18n-provider supported-locales="en,fr" fallback-locale="en" translations-path="/assets/locales/{locale}.json">
+      <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">Stencil Library</div>
+      <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
+      <vui-user-menu style="position: fixed; top: 1rem; right: 4rem"></vui-user-menu>
+      <vui-button style="position: fixed; top: 1rem; right: 7rem" size="sm" variant="outline" onClick="showToast()"
+        >Show Toast</vui-button
+      >
+
+      <!-- <verite-i18n lang="en" translations-path="/locales/{locale}.json"></verite-i18n> -->
+
+      <div class="grid">
+        <!-- <vui-google-one-tap google-client-id="1234567890"></vui-google-one-tap> -->
+        <!-- heading="Verify your email"
       description="We sent a verification code to your email. Please enter it below."
       prompt="Didn't receive the code?"
       action="Resend"
       submit-label="Verify" -->
 
-      <verite-connector>
-        <vui-auth-alt-card
-          elevation="lg"
-          heading="Authorization Request"
-          description="Test Application is requesting access to your account"
-          size="xl"
-        >
-          <vui-request
-            application="Test App"
-            permissions='["read profile", "write posts", "openid"]'
-            redirect-uri="https://example.com"
+        <verite-connector>
+          <vui-auth-alt-card elevation="lg" heading="$request.title" description="$request.description" size="xl">
+            <vui-request
+              application="Test App"
+              permissions='["read profile", "write posts", "openid"]'
+              redirect-uri="https://example.com"
+            >
+              <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+            </vui-request>
+            <vui-auth-footer slot="footer">
+              <div style="text-align: center; padding: 1.5rem; line-height: 1.5">
+                By continuing, you agree to our
+                <vui-link href="https://example.com/terms">Terms of Service</vui-link> and
+                <vui-link href="https://example.com/privacy">Privacy Policy</vui-link>
+              </div>
+            </vui-auth-footer>
+          </vui-auth-alt-card>
+        </verite-connector>
+
+        <verite-connector type="otp">
+          <vui-auth-card
+            class="card--otp"
+            elevation="lg"
+            heading="$otp.title"
+            description="$otp.description"
+            prompt="$otp.prompt"
+            action="$otp.action"
           >
             <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          </vui-request>
-          <vui-auth-footer slot="footer">
-            <div style="text-align: center; padding: 1.5rem; line-height: 1.5">
-              By continuing, you agree to our <vui-link href="https://example.com/terms">Terms of Service</vui-link> and
-              <vui-link href="https://example.com/privacy">Privacy Policy</vui-link>
+            <vui-otp submit-label="$otp.submit"></vui-otp>
+          </vui-auth-card>
+        </verite-connector>
+
+        <!-- Using direct translations -->
+        <!-- <vui-i18n-provider locale="en" translations='{...}'></vui-i18n-provider> -->
+
+        <!-- Using a load function -->
+        <!-- <vui-i18n-provider locale="en" load-translations={loadFn}></vui-i18n-provider> -->
+
+        <!-- Using default file path -->
+        <!-- <vui-i18n-provider locale="en"></vui-i18n-provider> -->
+
+        <!-- Using custom file path -->
+        <!-- <vui-i18n-provider
+  locale="en" 
+  translations-path="/assets/i18n/{locale}.json"
+></vui-i18n-provider> -->
+
+        <!-- <vui-i18n-provider locale="en" translations-path="/locales/{locale}.json"></vui-i18n-provider>
+  Simple translation
+  <vui-i18n text="$welcome.message"></vui-i18n>
+
+  With parameters
+  <vui-i18n 
+    text="$welcome.user" 
+    params='{"name": "John"}'
+  ></vui-i18n>
+
+  Or with object parameters
+  <vui-i18n 
+    text="$welcome.user" 
+    params={{"name": "John"}}
+  ></vui-i18n>
+</vui-i18n-provider> -->
+
+        <!-- <vui-language-switcher current-locale="en" onLocaleChange="handleLocaleChange"></vui-language-switcher> -->
+
+        <verite-connector>
+          <vui-auth-card
+            elevation="lg"
+            heading="$signin.phone.title"
+            description="$signin.phone.description"
+            prompt="$signin.phone.prompt"
+            action="$signin.phone.action"
+          >
+            <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+            <vui-auth-form action="code" elements='["phone"]' submit-label="$signin.phone.submit"></vui-auth-form>
+          </vui-auth-card>
+        </verite-connector>
+
+        <verite-connector>
+          <vui-i18n-provider locale="fr" translations-path="/assets/locales/{locale}.json">
+            <vui-auth-card
+              elevation="lg"
+              heading="$signin.phone.title"
+              description="$signin.phone.description"
+              prompt="$signin.phone.prompt"
+              action="$signin.phone.action"
+            >
+              <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+              <vui-auth-form action="code" elements='["phone"]' submit-label="$signin.phone.submit"></vui-auth-form>
+            </vui-auth-card>
+          </vui-i18n-provider>
+        </verite-connector>
+
+        <verite-connector>
+          <vui-auth-card
+            elevation="lg"
+            heading="$signin.email.title"
+            description="$signin.email.description"
+            prompt="$signin.email.prompt"
+            action="$signin.email.action"
+          >
+            <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+            <vui-auth-form action="email" elements='["email"]' submit-label="$signin.email.submit"></vui-auth-form>
+          </vui-auth-card>
+        </verite-connector>
+
+        <verite-connector>
+          <vui-auth-card
+            elevation="lg"
+            heading="$signin.default.title|product:Acme Co"
+            description="$signin.default.description"
+            prompt="$signin.default.prompt"
+            action="$signin.default.action"
+          >
+            <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+            <div slot="providers">
+              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="apple" size="20"></vui-logo>
+                    <vui-i18n text="$signup.with" params='{"provider": "Apple"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
+
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="google" size="20"></vui-logo>
+                    <vui-i18n text="$signup.with" params='{"provider": "Google"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
+              </vui-flex>
+              <vui-divider orientation="horizontal" style="margin: 16px 0">
+                <vui-i18n text="$signup.option"></vui-i18n>
+              </vui-divider>
             </div>
-          </vui-auth-footer>
-        </vui-auth-alt-card>
-      </verite-connector>
 
-      <verite-connector type="otp">
-        <vui-auth-card
-          class="card--otp"
-          elevation="lg"
-          heading="$otp.title"
-          description="$otp.description"
-          prompt="$otp.prompt"
-          action="$otp.action"
-        >
-          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          <vui-otp submit-label="$otp.submit"></vui-otp>
-        </vui-auth-card>
-      </verite-connector>
+            <vui-auth-form
+              action="signin"
+              elements='["email", "password", "forgotPassword"]'
+              submit-label="$signin.default.submit"
+            ></vui-auth-form>
+          </vui-auth-card>
+        </verite-connector>
 
-      <verite-connector>
-        <vui-auth-card
-          elevation="lg"
-          heading="$signin.phone.title"
-          description="$signin.phone.description"
-          prompt="$signin.phone.prompt"
-          action="$signin.phone.action"
-        >
-          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          <vui-auth-form action="phone" elements='["phone"]' submit-label="$signin.phone.submit"></vui-auth-form>
-        </vui-auth-card>
-      </verite-connector>
+        <verite-connector>
+          <vui-auth-card
+            elevation="lg"
+            heading="$signup.default.title|product:Acme Co"
+            description="$signup.default.description"
+            prompt="$signup.default.prompt"
+            action="$signup.default.action"
+          >
+            <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
+            <div slot="providers">
+              <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="apple" size="20"></vui-logo>
+                    <vui-i18n text="$signup.with" params='{"provider": "Apple"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
 
-      <verite-connector>
-        <vui-auth-card
-          elevation="lg"
-          heading="$signin.email.title"
-          description="$signin.email.description"
-          prompt="$signin.email.prompt"
-          action="$signin.email.action"
-        >
-          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          <vui-auth-form action="email" elements='["email"]' submit-label="$signin.email.submit"></vui-auth-form>
-        </vui-auth-card>
-      </verite-connector>
+                <vui-button class="google-button" variant="outline" style="width: 100%">
+                  <vui-flex items="center" gap="2">
+                    <vui-logo name="google" size="20"></vui-logo>
+                    <vui-i18n text="$signup.with" params='{"provider": "Google"}'></vui-i18n>
+                  </vui-flex>
+                </vui-button>
+              </vui-flex>
+              <vui-divider orientation="horizontal" style="margin: 16px 0">
+                <vui-i18n text="$signup.option"></vui-i18n>
+              </vui-divider>
+            </div>
+            <vui-auth-form
+              action="signup"
+              elements='["name", "email", "password"]'
+              submit-label="$signup.default.submit"
+            ></vui-auth-form>
+          </vui-auth-card>
+        </verite-connector>
+      </div>
 
-      <verite-connector>
-        <vui-auth-card
-          elevation="lg"
-          heading="$signin.default.title|product:Acme Co"
-          description="$signin.default.description"
-          prompt="$signin.default.prompt"
-          action="$signin.default.action"
-        >
-          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          <div slot="providers">
-            <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
-              <vui-button class="google-button" variant="outline" style="width: 100%">
-                <vui-flex items="center" gap="2">
-                  <vui-logo name="apple" size="20"></vui-logo>
-                  <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
-                </vui-flex>
-              </vui-button>
-
-              <vui-button class="google-button" variant="outline" style="width: 100%">
-                <vui-flex items="center" gap="2">
-                  <vui-logo name="google" size="20"></vui-logo>
-                  <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
-                </vui-flex>
-              </vui-button>
-            </vui-flex>
-            <vui-divider orientation="horizontal" style="margin: 16px 0">
-              <vui-i18n text="signup.option"></vui-i18n>
-            </vui-divider>
-          </div>
-
-          <vui-auth-form
-            action="signin"
-            elements='["email", "password", "forgotPassword"]'
-            submit-label="$signin.default.submit"
-          ></vui-auth-form>
-        </vui-auth-card>
-      </verite-connector>
-
-      <verite-connector>
-        <vui-auth-card
-          elevation="lg"
-          heading="$signup.default.title|product:Acme Co"
-          description="$signup.default.description"
-          prompt="$signup.default.prompt"
-          action="$signup.default.action"
-        >
-          <vui-placeholder width="80" height="80" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
-          <div slot="providers">
-            <vui-flex direction="column" gap="2" justify="start" items="stretch" width="full">
-              <vui-button class="google-button" variant="outline" style="width: 100%">
-                <vui-flex items="center" gap="2">
-                  <vui-logo name="apple" size="20"></vui-logo>
-                  <vui-i18n text="signup.with" params='{"provider": "Apple"}'></vui-i18n>
-                </vui-flex>
-              </vui-button>
-
-              <vui-button class="google-button" variant="outline" style="width: 100%">
-                <vui-flex items="center" gap="2">
-                  <vui-logo name="google" size="20"></vui-logo>
-                  <vui-i18n text="signup.with" params='{"provider": "Google"}'></vui-i18n>
-                </vui-flex>
-              </vui-button>
-            </vui-flex>
-            <vui-divider orientation="horizontal" style="margin: 16px 0">
-              <vui-i18n text="signup.option"></vui-i18n>
-            </vui-divider>
-          </div>
-          <vui-auth-form
-            action="signup"
-            elements='["name", "email", "password"]'
-            submit-label="$signup.default.submit"
-          ></vui-auth-form>
-        </vui-auth-card>
-      </verite-connector>
-    </div>
-
-    <!-- <vui-toast position="top-left" theme="inverted"></vui-toast> -->
-    <!-- <vui-toast position="top-center" theme="inverted"></vui-toast> -->
-    <!-- <vui-toast position="top-right" theme="inverted"></vui-toast> -->
-    <!-- <vui-toast position="bottom-left" theme="inverted"></vui-toast> -->
-    <!-- <vui-toast position="bottom-center" theme="inverted"></vui-toast> -->
-    <vui-toast position="bottom-right" theme="light"></vui-toast>
+      <!-- <vui-toast position="top-left" theme="inverted"></vui-toast> -->
+      <!-- <vui-toast position="top-center" theme="inverted"></vui-toast> -->
+      <!-- <vui-toast position="top-right" theme="inverted"></vui-toast> -->
+      <!-- <vui-toast position="bottom-left" theme="inverted"></vui-toast> -->
+      <!-- <vui-toast position="bottom-center" theme="inverted"></vui-toast> -->
+      <vui-toast position="bottom-right" theme="light"></vui-toast>
+    </vui-i18n-provider>
   </body>
 </html>

@@ -7,7 +7,8 @@ function getAbsolutePath(value) {
 /** @type { import('@storybook/web-components-vite').StorybookConfig } */
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  staticDirs: [{ from: '../dist/stencil-library', to: '/assets' }],
+  // staticDirs: [{ from: '../dist/stencil-library', to: '/assets' }],
+  staticDirs: ['../www'],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),

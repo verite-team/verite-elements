@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 
+// import { vui } from '../../global'
+
+// vui.configure({})
+
 const meta: Meta = {
   title: 'Components/Card',
   component: 'vui-card',

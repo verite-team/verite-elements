@@ -52,14 +52,14 @@ export declare interface VuiAuthAltCard extends Components.VuiAuthAltCard {}
 
 
 @ProxyCmp({
-  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant']
+  inputs: ['action', 'brandLabel', 'brandLogo', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant']
 })
 @Component({
   selector: 'vui-auth-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant'],
+  inputs: ['action', 'brandLabel', 'brandLogo', 'description', 'elevation', 'heading', 'prompt', 'submitLabel', 'variant'],
 })
 export class VuiAuthCard {
   protected el: HTMLElement;
@@ -74,14 +74,14 @@ export declare interface VuiAuthCard extends Components.VuiAuthCard {}
 
 
 @ProxyCmp({
-  inputs: ['action', 'prompt', 'showBrand', 'showDivider', 'variant']
+  inputs: ['action', 'brandLabel', 'brandLogo', 'prompt', 'showBrand', 'showDivider', 'variant']
 })
 @Component({
   selector: 'vui-auth-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'prompt', 'showBrand', 'showDivider', 'variant'],
+  inputs: ['action', 'brandLabel', 'brandLogo', 'prompt', 'showBrand', 'showDivider', 'variant'],
 })
 export class VuiAuthFooter {
   protected el: HTMLElement;
@@ -100,14 +100,14 @@ export declare interface VuiAuthFooter extends Components.VuiAuthFooter {
 
 
 @ProxyCmp({
-  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles', 'submitLabel']
+  inputs: ['action', 'elements', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel']
 })
 @Component({
   selector: 'vui-auth-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'elements', 'email', 'emailValidation', 'firstName', 'isLoading', 'lastName', 'password', 'passwordValidation', 'phone', 'styles', 'submitLabel'],
+  inputs: ['action', 'elements', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel'],
 })
 export class VuiAuthForm {
   protected el: HTMLElement;
@@ -581,6 +581,32 @@ export declare interface VuiI18n extends Components.VuiI18n {}
 
 
 @ProxyCmp({
+  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'supportedLocales', 'translations', 'translationsPath']
+})
+@Component({
+  selector: 'vui-i18n-provider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'supportedLocales', 'translations', 'translationsPath'],
+})
+export class VuiI18nProvider {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['translationsLoaded']);
+  }
+}
+
+
+export declare interface VuiI18nProvider extends Components.VuiI18nProvider {
+
+  translationsLoaded: EventEmitter<CustomEvent<void>>;
+}
+
+
+@ProxyCmp({
   inputs: ['color', 'name', 'size']
 })
 @Component({
@@ -622,6 +648,32 @@ export class VuiLabel {
 
 
 export declare interface VuiLabel extends Components.VuiLabel {}
+
+
+@ProxyCmp({
+  inputs: ['currentLocale', 'languages', 'variant']
+})
+@Component({
+  selector: 'vui-language-switcher',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['currentLocale', 'languages', 'variant'],
+})
+export class VuiLanguageSwitcher {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['localeChange']);
+  }
+}
+
+
+export declare interface VuiLanguageSwitcher extends Components.VuiLanguageSwitcher {
+
+  localeChange: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({

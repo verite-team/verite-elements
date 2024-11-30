@@ -14,7 +14,7 @@ export const config: Config = {
   },
   srcDir: 'src',
   globalStyle: 'src/themes/index.css',
-  globalScript: 'src/global.ts',
+  // globalScript: 'src/global.ts',
   outputTargets: [
     {
       type: 'dist',

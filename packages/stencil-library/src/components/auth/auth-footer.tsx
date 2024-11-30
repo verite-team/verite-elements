@@ -1,28 +1,39 @@
-import { Component, Event, EventEmitter, Prop, h } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core'
 
-import { getI18n } from '../../utils/i18n'
+import { I18nProvider } from '../i18n/i18n-provider'
 
-const t = getI18n().translate
 @Component({
   tag: 'vui-auth-footer',
   styleUrl: 'auth-footer.css',
   shadow: true,
 })
 export class AuthFooter {
+  @Element() el!: HTMLElement
+
   @Prop() showDivider?: boolean = true
-  @Prop() showBrand?: boolean = true
   @Prop() prompt?: string
   @Prop() action?: string
   @Prop() variant?: 'default' | 'inset' = 'default'
+  @Prop() brandLabel?: string
+  @Prop() brandLogo?: string
+  @Prop() showBrand?: boolean = true
 
   @Event() actionClick: EventEmitter
+
+  private translate(key: string, params?: Record<string, string>): string {
+    const provider = I18nProvider.getClosestProvider(this.el)
+    if (!provider) {
+      return key
+    }
+    return provider.getTranslation(key, params)
+  }
 
   handleActionClick = () => {
     this.actionClick.emit()
   }
 
   async componentWillLoad() {
-    await getI18n().waitUntilReady()
+    await I18nProvider.getClosestProvider(this.el)?.waitForTranslations()
   }
 
   render() {
@@ -33,14 +44,22 @@ export class AuthFooter {
         </div>
         {this.prompt && (
           <div class="prompt">
-            <span>{this.prompt}</span>
+            <span>{this.translate(this.prompt)}</span>
             <vui-button variant="outline" size="sm" onClick={this.handleActionClick}>
-              {this.action}
+              {this.translate(this.action)}
             </vui-button>
           </div>
         )}
-        {this.showDivider && <vui-divider orientation="horizontal"></vui-divider>}
-        {this.showBrand && <vui-brand class="brand" label={t('brand.label')} logo={t('brand.logo')}></vui-brand>}
+        {this.showBrand && (
+          <div>
+            {this.showDivider && <vui-divider orientation="horizontal"></vui-divider>}
+            <vui-brand
+              class="brand"
+              label={this.translate('$brand.label', { default: this.brandLabel })}
+              logo={this.translate('$brand.logo', { default: this.brandLogo })}
+            ></vui-brand>
+          </div>
+        )}
       </vui-card-footer>
     )
   }

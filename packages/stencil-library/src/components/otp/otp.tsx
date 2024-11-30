@@ -1,9 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
 
-import { getI18n } from '../../utils/i18n'
-
-const t = getI18n().translate
-const ti = getI18n().translateInterpolated
+import { I18nProvider } from '../i18n/i18n-provider'
 
 @Component({
   tag: 'vui-otp',
@@ -21,6 +18,15 @@ export class Otp {
   @Prop({ mutable: true }) submitLabel?: string = ''
 
   private readonly codeLength = 6
+
+  private translate(key: string, params?: Record<string, string>): string {
+    const provider = I18nProvider.getClosestProvider(this.el)
+    if (!provider) {
+      console.warn('No i18n provider found, using key as fallback')
+      return key
+    }
+    return provider.getTranslation(key, params)
+  }
 
   private focusActive() {
     setTimeout(() => {
@@ -79,10 +85,6 @@ export class Otp {
     }
   }
 
-  async componentWillLoad() {
-    await getI18n().waitUntilReady()
-  }
-
   componentDidLoad() {
     this.focusActive()
   }
@@ -112,7 +114,7 @@ export class Otp {
           </vui-flex>
 
           <vui-button class="verify-button" type="submit" onClick={this.handleSubmit}>
-            {ti(this.submitLabel) || t('form.submit.label')}
+            {this.translate(this.submitLabel, { default: '$form.submit.label' })}
           </vui-button>
         </form>
       </Host>

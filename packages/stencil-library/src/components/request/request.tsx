@@ -1,9 +1,7 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
 
-import { getI18n } from '../../utils/i18n'
+import { I18nProvider } from '../i18n/i18n-provider'
 import { toJSON } from '../../utils/toJSON'
-
-const t = getI18n().translate
 
 @Component({
   tag: 'vui-request',
@@ -11,6 +9,8 @@ const t = getI18n().translate
   shadow: true,
 })
 export class Request {
+  @Element() el!: HTMLElement
+
   @Prop({ mutable: true, reflect: true }) permissions?: string[] | string = []
   @Prop({ reflect: true }) application?: string
   @Prop({ reflect: true }) redirectUri?: string
@@ -21,6 +21,15 @@ export class Request {
 
   @Event() requestApprove: EventEmitter<void>
   @Event() requestDeny: EventEmitter<void>
+
+  private translate(key: string, params?: Record<string, string>): string {
+    const provider = I18nProvider.getClosestProvider(this.el)
+    if (!provider) {
+      console.warn('No i18n provider found, using key as fallback')
+      return key
+    }
+    return provider.getTranslation(`$${key}`, params)
+  }
 
   private handleApprove = (e: Event) => {
     e.preventDefault()
@@ -38,7 +47,6 @@ export class Request {
     } else {
       this.permissionsList = this.permissions
     }
-    console.log('permissionsList', this.permissionsList)
   }
 
   render() {
@@ -50,7 +58,7 @@ export class Request {
         </slot>
         <div class="request-container">
           <div class="permissions-section">
-            <div class="section-title">{t('request.permissions.title')}</div>
+            <div class="section-title">{this.translate('request.permissions.title')}</div>
             <ul class="permissions-list">
               {this.permissionsList.map(permission => (
                 <li class="permission-item">{permission}</li>
@@ -60,7 +68,7 @@ export class Request {
 
           {this.redirectUri && (
             <div class="redirect-section">
-              <div class="section-title">{t('request.redirect.title')}</div>
+              <div class="section-title">{this.translate('request.redirect.title')}</div>
               {this.showRedirect && <div class="redirect-uri">{this.redirectUri}</div>}
             </div>
           )}
@@ -73,7 +81,7 @@ export class Request {
               busy={this.isLoading}
               disabled={this.isLoading}
             >
-              {t('request.deny.label')}
+              {this.translate('request.deny.label')}
             </vui-button>
 
             <vui-button
@@ -83,7 +91,7 @@ export class Request {
               busy={this.isLoading}
               disabled={this.isLoading}
             >
-              {t('request.approve.label')}
+              {this.translate('request.approve.label')}
             </vui-button>
           </div>
         </div>

@@ -9,6 +9,8 @@ import { Element } from "@stencil/core";
 import { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
 import { SignUpFormData } from "./components/auth/types";
 import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+import { Translation } from "./components/i18n/i18n-provider";
+import { Language } from "./components/i18n/language-switcher";
 import { LogoName } from "./components/logo/logo";
 import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 import { MenuAction } from "./components/user-menu/user-menu-interfaces";
@@ -16,6 +18,8 @@ export { Element } from "@stencil/core";
 export { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
 export { SignUpFormData } from "./components/auth/types";
 export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+export { Translation } from "./components/i18n/i18n-provider";
+export { Language } from "./components/i18n/language-switcher";
 export { LogoName } from "./components/logo/logo";
 export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
 export { MenuAction } from "./components/user-menu/user-menu-interfaces";
@@ -34,6 +38,8 @@ export namespace Components {
     }
     interface VuiAuthCard {
         "action": string;
+        "brandLabel"?: string;
+        "brandLogo"?: string;
         "description": string;
         "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
         "heading": string;
@@ -43,35 +49,50 @@ export namespace Components {
     }
     interface VuiAuthFooter {
         "action"?: string;
+        "brandLabel"?: string;
+        "brandLogo"?: string;
         "prompt"?: string;
         "showBrand"?: boolean;
         "showDivider"?: boolean;
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthForm {
-        "action": 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword';
+        "action": 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' | 'resetLink' | 'code';
         "elements"?: Element[] | string;
         "email"?: string;
+        "emailLabel": string;
+        "emailPlaceholder": string;
         /**
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
         "firstName"?: string;
+        "firstnameLabel": string;
+        "firstnamePlaceholder": string;
+        "forgotPasswordLabel": string;
         /**
           * Controls the loading state of the component
          */
         "isLoading"?: boolean;
         "lastName"?: string;
+        "lastnameLabel": string;
+        "lastnamePlaceholder": string;
         "password"?: string;
+        "passwordHideLabel": string;
+        "passwordLabel": string;
+        "passwordPlaceholder": string;
+        "passwordShowLabel": string;
         /**
           * Password validation options
          */
         "passwordValidation"?: PasswordValidationOptions;
         "phone"?: string;
+        "phoneLabel": string;
+        "phonePlaceholder": string;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
-        "submitLabel"?: string;
+        "submitLabel": string;
     }
     interface VuiAuthHeader {
         "align": 'start' | 'center' | 'end';
@@ -161,6 +182,14 @@ export namespace Components {
         "params"?: Record<string, string> | string;
         "text": string;
     }
+    interface VuiI18nProvider {
+        "fallbackLocale"?: string;
+        "loadTranslations"?: (locale: string) => Promise<Translation>;
+        "locale"?: string;
+        "supportedLocales"?: string[] | string;
+        "translations"?: Translation | string;
+        "translationsPath"?: string;
+    }
     interface VuiIcon {
         "color"?: string;
         "name": string;
@@ -169,6 +198,11 @@ export namespace Components {
     interface VuiLabel {
         "for"?: string;
         "required"?: boolean;
+    }
+    interface VuiLanguageSwitcher {
+        "currentLocale"?: string;
+        "languages": Language[] | string;
+        "variant": 'select' | 'buttons';
     }
     interface VuiLink {
         "disabled"?: boolean;
@@ -265,6 +299,14 @@ export interface VuiDropdownMenuItemCustomEvent<T> extends CustomEvent<T> {
 export interface VuiGoogleOneTapCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiGoogleOneTapElement;
+}
+export interface VuiI18nProviderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiI18nProviderElement;
+}
+export interface VuiLanguageSwitcherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiLanguageSwitcherElement;
 }
 export interface VuiOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -494,6 +536,23 @@ declare global {
         prototype: HTMLVuiI18nElement;
         new (): HTMLVuiI18nElement;
     };
+    interface HTMLVuiI18nProviderElementEventMap {
+        "translationsLoaded": void;
+    }
+    interface HTMLVuiI18nProviderElement extends Components.VuiI18nProvider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiI18nProviderElementEventMap>(type: K, listener: (this: HTMLVuiI18nProviderElement, ev: VuiI18nProviderCustomEvent<HTMLVuiI18nProviderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiI18nProviderElementEventMap>(type: K, listener: (this: HTMLVuiI18nProviderElement, ev: VuiI18nProviderCustomEvent<HTMLVuiI18nProviderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiI18nProviderElement: {
+        prototype: HTMLVuiI18nProviderElement;
+        new (): HTMLVuiI18nProviderElement;
+    };
     interface HTMLVuiIconElement extends Components.VuiIcon, HTMLStencilElement {
     }
     var HTMLVuiIconElement: {
@@ -505,6 +564,23 @@ declare global {
     var HTMLVuiLabelElement: {
         prototype: HTMLVuiLabelElement;
         new (): HTMLVuiLabelElement;
+    };
+    interface HTMLVuiLanguageSwitcherElementEventMap {
+        "localeChange": string;
+    }
+    interface HTMLVuiLanguageSwitcherElement extends Components.VuiLanguageSwitcher, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiLanguageSwitcherElementEventMap>(type: K, listener: (this: HTMLVuiLanguageSwitcherElement, ev: VuiLanguageSwitcherCustomEvent<HTMLVuiLanguageSwitcherElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiLanguageSwitcherElementEventMap>(type: K, listener: (this: HTMLVuiLanguageSwitcherElement, ev: VuiLanguageSwitcherCustomEvent<HTMLVuiLanguageSwitcherElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVuiLanguageSwitcherElement: {
+        prototype: HTMLVuiLanguageSwitcherElement;
+        new (): HTMLVuiLanguageSwitcherElement;
     };
     interface HTMLVuiLinkElement extends Components.VuiLink, HTMLStencilElement {
     }
@@ -650,8 +726,10 @@ declare global {
         "vui-form-input": HTMLVuiFormInputElement;
         "vui-google-one-tap": HTMLVuiGoogleOneTapElement;
         "vui-i18n": HTMLVuiI18nElement;
+        "vui-i18n-provider": HTMLVuiI18nProviderElement;
         "vui-icon": HTMLVuiIconElement;
         "vui-label": HTMLVuiLabelElement;
+        "vui-language-switcher": HTMLVuiLanguageSwitcherElement;
         "vui-link": HTMLVuiLinkElement;
         "vui-logo": HTMLVuiLogoElement;
         "vui-otp": HTMLVuiOtpElement;
@@ -679,6 +757,8 @@ declare namespace LocalJSX {
     }
     interface VuiAuthCard {
         "action"?: string;
+        "brandLabel"?: string;
+        "brandLogo"?: string;
         "description"?: string;
         "elevation"?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
         "heading"?: string;
@@ -688,6 +768,8 @@ declare namespace LocalJSX {
     }
     interface VuiAuthFooter {
         "action"?: string;
+        "brandLabel"?: string;
+        "brandLogo"?: string;
         "onActionClick"?: (event: VuiAuthFooterCustomEvent<any>) => void;
         "prompt"?: string;
         "showBrand"?: boolean;
@@ -695,27 +777,40 @@ declare namespace LocalJSX {
         "variant"?: 'default' | 'inset';
     }
     interface VuiAuthForm {
-        "action"?: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword';
+        "action"?: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' | 'resetLink' | 'code';
         "elements"?: Element[] | string;
         "email"?: string;
+        "emailLabel"?: string;
+        "emailPlaceholder"?: string;
         /**
           * Email validation options
          */
         "emailValidation"?: EmailValidationOptions | string;
         "firstName"?: string;
+        "firstnameLabel"?: string;
+        "firstnamePlaceholder"?: string;
+        "forgotPasswordLabel"?: string;
         /**
           * Controls the loading state of the component
          */
         "isLoading"?: boolean;
         "lastName"?: string;
+        "lastnameLabel"?: string;
+        "lastnamePlaceholder"?: string;
         "onForgotPassword"?: (event: VuiAuthFormCustomEvent<void>) => void;
         "onFormSubmit"?: (event: VuiAuthFormCustomEvent<SignUpFormData>) => void;
         "password"?: string;
+        "passwordHideLabel"?: string;
+        "passwordLabel"?: string;
+        "passwordPlaceholder"?: string;
+        "passwordShowLabel"?: string;
         /**
           * Password validation options
          */
         "passwordValidation"?: PasswordValidationOptions;
         "phone"?: string;
+        "phoneLabel"?: string;
+        "phonePlaceholder"?: string;
         "styles"?: {
     link?: { [key: string]: string | number }
   };
@@ -813,6 +908,15 @@ declare namespace LocalJSX {
         "params"?: Record<string, string> | string;
         "text"?: string;
     }
+    interface VuiI18nProvider {
+        "fallbackLocale"?: string;
+        "loadTranslations"?: (locale: string) => Promise<Translation>;
+        "locale"?: string;
+        "onTranslationsLoaded"?: (event: VuiI18nProviderCustomEvent<void>) => void;
+        "supportedLocales"?: string[] | string;
+        "translations"?: Translation | string;
+        "translationsPath"?: string;
+    }
     interface VuiIcon {
         "color"?: string;
         "name": string;
@@ -821,6 +925,12 @@ declare namespace LocalJSX {
     interface VuiLabel {
         "for"?: string;
         "required"?: boolean;
+    }
+    interface VuiLanguageSwitcher {
+        "currentLocale"?: string;
+        "languages"?: Language[] | string;
+        "onLocaleChange"?: (event: VuiLanguageSwitcherCustomEvent<string>) => void;
+        "variant"?: 'select' | 'buttons';
     }
     interface VuiLink {
         "disabled"?: boolean;
@@ -923,8 +1033,10 @@ declare namespace LocalJSX {
         "vui-form-input": VuiFormInput;
         "vui-google-one-tap": VuiGoogleOneTap;
         "vui-i18n": VuiI18n;
+        "vui-i18n-provider": VuiI18nProvider;
         "vui-icon": VuiIcon;
         "vui-label": VuiLabel;
+        "vui-language-switcher": VuiLanguageSwitcher;
         "vui-link": VuiLink;
         "vui-logo": VuiLogo;
         "vui-otp": VuiOtp;
@@ -966,8 +1078,10 @@ declare module "@stencil/core" {
             "vui-form-input": LocalJSX.VuiFormInput & JSXBase.HTMLAttributes<HTMLVuiFormInputElement>;
             "vui-google-one-tap": LocalJSX.VuiGoogleOneTap & JSXBase.HTMLAttributes<HTMLVuiGoogleOneTapElement>;
             "vui-i18n": LocalJSX.VuiI18n & JSXBase.HTMLAttributes<HTMLVuiI18nElement>;
+            "vui-i18n-provider": LocalJSX.VuiI18nProvider & JSXBase.HTMLAttributes<HTMLVuiI18nProviderElement>;
             "vui-icon": LocalJSX.VuiIcon & JSXBase.HTMLAttributes<HTMLVuiIconElement>;
             "vui-label": LocalJSX.VuiLabel & JSXBase.HTMLAttributes<HTMLVuiLabelElement>;
+            "vui-language-switcher": LocalJSX.VuiLanguageSwitcher & JSXBase.HTMLAttributes<HTMLVuiLanguageSwitcherElement>;
             "vui-link": LocalJSX.VuiLink & JSXBase.HTMLAttributes<HTMLVuiLinkElement>;
             "vui-logo": LocalJSX.VuiLogo & JSXBase.HTMLAttributes<HTMLVuiLogoElement>;
             "vui-otp": LocalJSX.VuiOtp & JSXBase.HTMLAttributes<HTMLVuiOtpElement>;
