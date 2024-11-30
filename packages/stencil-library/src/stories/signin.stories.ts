@@ -17,7 +17,7 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => `
-<vui-i18n-provider locale="en" translations-path="/locales/{locale}.json">
+<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
