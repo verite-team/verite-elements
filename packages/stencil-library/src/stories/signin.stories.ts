@@ -24,7 +24,7 @@ export const Default: Story = {
     heading="$signin.default.title|product:Acme"
     description="$signin.default.description"
     brand-label="$brand.label"
-    brand-logo="./assets/logo.svg"
+    brand-logo="./verite-elements/assets/logo.svg"
   >
     <vui-placeholder width="64" height="64" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
     <div slot="providers">
