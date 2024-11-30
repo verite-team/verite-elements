@@ -73,6 +73,10 @@ html.dark table * {
   color: hsl(var(--foreground));
 }
 
+.sbdocs p {
+  color: hsl(var(--muted-foreground));
+}
+
 td {
   background-color: hsl(var(--background)) !important;
 }

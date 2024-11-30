@@ -13,22 +13,12 @@ import {
   VuiThemeToggle,
   VuiToast,
   VuiUserMenu,
-  initialize,
+  bootstrapVerite,
 } from 'stencil-react'
 
 // defineCustomElements()
-initialize({
-  i18n: {
-    translationsPath: '/locales/{locale}.json',
-    translations: {
-      hello: 'Hello, world! :: {time}',
-    },
-  },
-})
+bootstrapVerite()
 
-// const i18nStore = vui.getI18nStore()
-
-// console.log(i18nStore.t('hello'))
 function App() {
   const toastRef = useRef<HTMLVuiToastElement>(null)
 
