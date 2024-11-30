@@ -29,9 +29,9 @@ const config = {
   },
   previewHead: head => `
     ${head}
-    <script type="module" src="/assets/stencil-library.esm.js"></script>
-    <link rel="stylesheet" href="/themes/index.css">
-    <link rel="stylesheet" href="/storybook/index.css">
+    <script type="module" src="./assets/stencil-library.esm.js"></script>
+    <link rel="stylesheet" href="./themes/index.css">
+    <link rel="stylesheet" href="./storybook/index.css">
   `,
   viteFinal: async config => {
     config.plugins = [
