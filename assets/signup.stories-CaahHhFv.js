@@ -1,12 +1,12 @@
-const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:()=>`
-<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
+const a={title:"Elements/Signup",component:"vui-signup",argTypes:{}},i={render:()=>`
+<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
-    heading="$signin.default.title|product:Acme"
-    description="$signin.default.description"
+    heading="$signup.default.title|product:Acme"
+    description="$signup.default.description"
     brand-label="$brand.label"
-    brand-logo="/assets/logo.svg"
+    brand-logo="./assets/logo.svg"
   >
     <vui-placeholder width="64" height="64" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
     <div slot="providers">
@@ -14,24 +14,24 @@ const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:(
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="apple" size="20"></vui-logo>
-            <vui-i18n text="$signin.with" params='{"provider": "Apple"}'></vui-i18n>
+            <vui-i18n text="$signup.with" params='{"provider": "Apple"}'></vui-i18n>
           </vui-flex>
         </vui-button>
 
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="google" size="20"></vui-logo>
-            <vui-i18n text="$signin.with" params='{"provider": "Google"}'></vui-i18n>
+            <vui-i18n text="$signup.with" params='{"provider": "Google"}'></vui-i18n>
           </vui-flex>
         </vui-button>
       </vui-flex>
       <vui-divider orientation="horizontal" style="margin: 16px 0">
-        <vui-i18n text="$signin.option"></vui-i18n>
+        <vui-i18n text="$signup.option"></vui-i18n>
       </vui-divider>
     </div>
     <vui-auth-form
-      action="signin"
-      elements='["email", "password"]'
+      action="signup"
+      elements='["name", "email", "password", "forgotPassword"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>
@@ -39,14 +39,14 @@ const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:(
 </vui-i18n-provider>
   `};var t,e,o;i.parameters={...i.parameters,docs:{...(t=i.parameters)==null?void 0:t.docs,source:{originalSource:`{
   render: () => \`
-<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
+<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
-    heading="$signin.default.title|product:Acme"
-    description="$signin.default.description"
+    heading="$signup.default.title|product:Acme"
+    description="$signup.default.description"
     brand-label="$brand.label"
-    brand-logo="/assets/logo.svg"
+    brand-logo="./assets/logo.svg"
   >
     <vui-placeholder width="64" height="64" slot="logo" style="margin: 20px auto 0 auto"></vui-placeholder>
     <div slot="providers">
@@ -54,24 +54,24 @@ const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:(
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="apple" size="20"></vui-logo>
-            <vui-i18n text="$signin.with" params='{"provider": "Apple"}'></vui-i18n>
+            <vui-i18n text="$signup.with" params='{"provider": "Apple"}'></vui-i18n>
           </vui-flex>
         </vui-button>
 
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="google" size="20"></vui-logo>
-            <vui-i18n text="$signin.with" params='{"provider": "Google"}'></vui-i18n>
+            <vui-i18n text="$signup.with" params='{"provider": "Google"}'></vui-i18n>
           </vui-flex>
         </vui-button>
       </vui-flex>
       <vui-divider orientation="horizontal" style="margin: 16px 0">
-        <vui-i18n text="$signin.option"></vui-i18n>
+        <vui-i18n text="$signup.option"></vui-i18n>
       </vui-divider>
     </div>
     <vui-auth-form
-      action="signin"
-      elements='["email", "password"]'
+      action="signup"
+      elements='["name", "email", "password", "forgotPassword"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>

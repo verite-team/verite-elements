@@ -1,5 +1,5 @@
 const i={title:"Elements/OTP",component:"vui-otp",parameters:{componentSubtitle:"One-time Password",docs:{description:{component:"A component for entering and validating one-time passwords (OTP). Commonly used for two-factor authentication and verification processes."}}}},t={render:()=>`
-<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
+<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <verite-connector type="otp" style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;">
     <vui-auth-card
       class="card--otp"
@@ -16,7 +16,7 @@ const i={title:"Elements/OTP",component:"vui-otp",parameters:{componentSubtitle:
 </vui-i18n-provider>
   `};var o,e,n;t.parameters={...t.parameters,docs:{...(o=t.parameters)==null?void 0:o.docs,source:{originalSource:`{
   render: () => \`
-<vui-i18n-provider locale="en" translations-path="./locales/{locale}.json">
+<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <verite-connector type="otp" style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;">
     <vui-auth-card
       class="card--otp"
