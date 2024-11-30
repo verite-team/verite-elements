@@ -99,23 +99,31 @@ export class AuthForm {
   }
 
   private get firstNameRules(): ValidationRule[] {
-    return this.validationRules.createNameRules(this.firstnamePlaceholder)
+    return this.validationRules.createNameRules(
+      this.translate('$form.firstName.label', { default: this.firstnameLabel })
+    )
   }
 
   private get lastNameRules(): ValidationRule[] {
-    return this.validationRules.createNameRules(this.lastnamePlaceholder)
+    return this.validationRules.createNameRules(this.translate('$form.lastName.label', { default: this.lastnameLabel }))
   }
 
   private get emailRules(): ValidationRule[] {
-    return this.validationRules.createEmailRules(this.parsedEmailValidation())
+    return [
+      ...this.validationRules.createNameRules(this.translate('$form.email.label', { default: this.emailLabel })),
+      ...this.validationRules.createEmailRules(this.parsedEmailValidation()),
+    ]
   }
 
   private get phoneRules(): ValidationRule[] {
-    return this.validationRules.createPhoneRules()
+    return this.validationRules.createPhoneRules(this.translate('$form.phone.label', { default: this.phoneLabel }))
   }
 
   private get passwordRules(): ValidationRule[] {
-    return this.validationRules.createPasswordRules(this.passwordValidation)
+    return [
+      ...this.validationRules.createNameRules(this.translate('$form.password.label', { default: this.passwordLabel })),
+      ...this.validationRules.createPasswordRules(this.passwordValidation),
+    ]
   }
 
   private validateField(value: string, rules: ValidationRule[]): string {

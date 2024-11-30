@@ -21,10 +21,8 @@ export interface EmailValidationOptions {
 
 export const createValidationRules = (element: HTMLElement) => {
   const getTranslation = (key: string, params?: Record<string, string>): string => {
-    console.log('getTranslation', { key, params })
     const provider = I18nProvider.getClosestProvider(element)
     if (!provider) {
-      console.warn('No i18n provider found, using key as fallback')
       return key
     }
     return provider.getTranslation(key, params)
@@ -103,11 +101,11 @@ export const createValidationRules = (element: HTMLElement) => {
       ]
     },
 
-    createPhoneRules: (): ValidationRule[] => {
+    createPhoneRules: (fieldName: string): ValidationRule[] => {
       return [
-        ValidationRules.required(getTranslation('$form.phone.label')),
+        ValidationRules.required(fieldName),
         {
-          message: getTranslation('$validation.phone.required'),
+          message: getTranslation('$validation.required', { fieldName }),
           validate: (value: string) => /^\+?[\d\s-()]+$/.test(value.trim()),
         },
       ]

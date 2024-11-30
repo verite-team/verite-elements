@@ -581,14 +581,14 @@ export declare interface VuiI18n extends Components.VuiI18n {}
 
 
 @ProxyCmp({
-  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'translations', 'translationsPath']
+  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'supportedLocales', 'translations', 'translationsPath']
 })
 @Component({
   selector: 'vui-i18n-provider',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'translations', 'translationsPath'],
+  inputs: ['fallbackLocale', 'loadTranslations', 'locale', 'supportedLocales', 'translations', 'translationsPath'],
 })
 export class VuiI18nProvider {
   protected el: HTMLElement;

@@ -43,15 +43,10 @@
     "required": "{fieldName} est requis",
     "email": {
       "invalid": "Veuillez entrer un email valide",
-      "required": "L'email est requis",
       "allowedDomains": "Le domaine de l'email doit être l'un des suivants : {{domains}}",
       "blockedDomains": "Le domaine de l'email ne peut pas être : {{domains}}"
     },
-    "phone": {
-      "required": "Le téléphone est requis"
-    },
     "password": {
-      "required": "Le mot de passe est requis",
       "minLength": "Doit contenir au moins {length} caractères",
       "maxLength": "Ne doit pas dépasser {length} caractères",
       "uppercase": "Doit contenir au moins une lettre majuscule",

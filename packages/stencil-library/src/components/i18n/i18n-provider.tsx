@@ -15,11 +15,12 @@ interface HTMLVuiI18nProviderElement extends HTMLElement {
 export class I18nProvider {
   @Element() el!: HTMLVuiI18nProviderElement
 
-  @Prop() locale: string
+  @Prop() locale?: string
   @Prop() translations?: Translation | string
   @Prop() loadTranslations?: (locale: string) => Promise<Translation>
   @Prop() translationsPath?: string = '/locales/{locale}.json'
   @Prop() fallbackLocale?: string
+  @Prop() supportedLocales?: string[] | string
 
   @State() private currentTranslations: Record<string, string> = {}
   @State() private isLoading: boolean = false
@@ -36,6 +37,45 @@ export class I18nProvider {
     })
   }
 
+  private getSupportedLocales(): string[] {
+    if (!this.supportedLocales) {
+      return []
+    }
+
+    if (typeof this.supportedLocales === 'string') {
+      return this.supportedLocales.split(',').map(locale => locale.trim())
+    }
+
+    return this.supportedLocales
+  }
+
+  private getPreferredLocale(): string {
+    const supported = this.getSupportedLocales()
+    console.log('supported', supported)
+    if (this.locale) {
+      if (!supported.length || supported.includes(this.locale)) {
+        return this.locale
+      }
+      console.warn(`Locale "${this.locale}" is not supported. Falling back to "${this.fallbackLocale || 'en'}"`)
+    }
+
+    const htmlLang = document.documentElement.lang
+    if (htmlLang) {
+      if (!supported.length || supported.includes(htmlLang)) {
+        return htmlLang
+      }
+    }
+
+    const browserLocales = navigator.languages || [navigator.language]
+    for (const browserLocale of browserLocales) {
+      if (!supported.length || supported.includes(browserLocale)) {
+        return browserLocale
+      }
+    }
+
+    return this.fallbackLocale || 'en'
+  }
+
   @Watch('locale')
   async handleLocaleChange() {
     await this.loadCurrentTranslations()
@@ -43,6 +83,9 @@ export class I18nProvider {
 
   async componentWillLoad() {
     this.el.__provider = this
+    if (!this.locale) {
+      this.locale = this.getPreferredLocale()
+    }
     await this.loadCurrentTranslations()
     this.resolveReady()
   }
@@ -55,7 +98,6 @@ export class I18nProvider {
     this.isLoading = true
 
     try {
-      // Check cache first
       const cached = this.translationCache.get(this.locale)
       if (cached) {
         this.currentTranslations = cached
@@ -65,7 +107,6 @@ export class I18nProvider {
 
       let rawTranslations: Translation = {}
 
-      // Try loading translations for current locale
       try {
         if (this.translations) {
           rawTranslations = typeof this.translations === 'string' ? JSON.parse(this.translations) : this.translations
@@ -80,7 +121,6 @@ export class I18nProvider {
           rawTranslations = await response.json()
         }
       } catch (error) {
-        // If fallback locale is set and different from current locale, try loading fallback
         if (this.fallbackLocale && this.fallbackLocale !== this.locale) {
           console.warn(`Failed to load translations for ${this.locale}, falling back to ${this.fallbackLocale}`)
           if (this.translations) {
@@ -102,7 +142,6 @@ export class I18nProvider {
 
       const flattened = this.flattenTranslations(rawTranslations)
 
-      // Cache the translations
       this.translationCache.set(this.locale, flattened)
 
       this.currentTranslations = flattened
@@ -132,27 +171,15 @@ export class I18nProvider {
     )
   }
 
-  /**
-   * Translates a key or returns the literal if it's not a translation key
-   * Supports:
-   * - Literals: "Hello, world"
-   * - Translation keys: "$hello"
-   * - Nested paths: "$path.to.translation"
-   * - Parameters: "$hello|name:John"
-   */
   private translate(input: string, defaultParams?: Record<string, string>): string {
-    // If not a translation key, return as literal
     if (!input?.startsWith('$')) {
       return input
     }
 
-    // Remove the $ prefix
     const withoutPrefix = input.slice(1)
 
-    // Split into translation key and params
     const [translationKey, ...paramParts] = withoutPrefix.split('|')
 
-    // Parse inline parameters
     const inlineParams = paramParts.reduce(
       (acc, param) => {
         const [key, value] = param.split(':')
@@ -162,13 +189,10 @@ export class I18nProvider {
       {} as Record<string, string>
     )
 
-    // Merge default params with inline params
     const params = { ...defaultParams, ...inlineParams }
 
-    // Get translation or wrap key in square brackets if not found
     const translation = this.currentTranslations[translationKey] || `[${translationKey}]`
 
-    // Replace parameters if any
     if (Object.keys(params).length > 0) {
       return translation.replace(/\{(\w+)\}/g, (_, key) => params[key] || `{${key}}`)
     }
@@ -176,32 +200,22 @@ export class I18nProvider {
     return translation
   }
 
-  /**
-   * Static method to find the nearest provider from any element
-   * Traverses through shadow DOM boundaries
-   */
   static getClosestProvider(element: HTMLElement): I18nProvider | null {
-    // First try in the same shadow root
     const providerElement = element.closest('vui-i18n-provider') as HTMLVuiI18nProviderElement
     if (providerElement?.__provider) {
       return providerElement.__provider
     }
 
-    // If not found, traverse up through shadow boundaries
     let currentElement: Element | null = element
     while (currentElement) {
-      // Check if we're in a shadow root
       const shadowRoot = currentElement.getRootNode() as ShadowRoot
       if (shadowRoot instanceof ShadowRoot) {
-        // Try to find provider in the shadow root's host element's context
         const hostProvider = (shadowRoot.host.closest('vui-i18n-provider') as HTMLVuiI18nProviderElement)?.__provider
         if (hostProvider) {
           return hostProvider
         }
-        // Move up to the host element to continue searching
         currentElement = shadowRoot.host
       } else {
-        // We're in the light DOM, do one final check
         const lightProvider = (currentElement.closest('vui-i18n-provider') as HTMLVuiI18nProviderElement)?.__provider
         return lightProvider || null
       }
@@ -210,16 +224,10 @@ export class I18nProvider {
     return null
   }
 
-  /**
-   * Public method for child components to use
-   */
   public getTranslation(input: string, params?: Record<string, string>): string {
     return this.translate(input, params)
   }
 
-  /**
-   * Public method for child components to wait for translations
-   */
   public async waitForTranslations(): Promise<void> {
     return this.readyPromise
   }

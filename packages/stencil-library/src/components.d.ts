@@ -185,7 +185,8 @@ export namespace Components {
     interface VuiI18nProvider {
         "fallbackLocale"?: string;
         "loadTranslations"?: (locale: string) => Promise<Translation>;
-        "locale": string;
+        "locale"?: string;
+        "supportedLocales"?: string[] | string;
         "translations"?: Translation | string;
         "translationsPath"?: string;
     }
@@ -912,6 +913,7 @@ declare namespace LocalJSX {
         "loadTranslations"?: (locale: string) => Promise<Translation>;
         "locale"?: string;
         "onTranslationsLoaded"?: (event: VuiI18nProviderCustomEvent<void>) => void;
+        "supportedLocales"?: string[] | string;
         "translations"?: Translation | string;
         "translationsPath"?: string;
     }

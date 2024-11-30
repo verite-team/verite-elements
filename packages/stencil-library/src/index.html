@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -13,7 +13,7 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <vui-i18n-provider locale="en" translations-path="/assets/locales/{locale}.json">
+    <vui-i18n-provider supported-locales="en,fr" fallback-locale="en" translations-path="/assets/locales/{locale}.json">
       <div style="position: fixed; top: 1.5rem; left: 1.5rem; font-weight: 600">Stencil Library</div>
       <vui-theme-toggle style="position: fixed; top: 1rem; right: 1rem"></vui-theme-toggle>
       <vui-user-menu style="position: fixed; top: 1rem; right: 4rem"></vui-user-menu>
@@ -32,12 +32,7 @@
       submit-label="Verify" -->
 
         <verite-connector>
-          <vui-auth-alt-card
-            elevation="lg"
-            heading="Authorization Request"
-            description="Test Application is requesting access to your account"
-            size="xl"
-          >
+          <vui-auth-alt-card elevation="lg" heading="$request.title" description="$request.description" size="xl">
             <vui-request
               application="Test App"
               permissions='["read profile", "write posts", "openid"]'
