@@ -7,8 +7,12 @@ function getAbsolutePath(value) {
 /** @type { import('@storybook/web-components-vite').StorybookConfig } */
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  // staticDirs: [{ from: '../dist/stencil-library', to: '/assets' }],
-  staticDirs: ['../www'],
+  staticDirs: [
+    { from: '../dist/stencil-library', to: '/assets' },
+    { from: '../src/assets/locales', to: '/locales' },
+    { from: '../src/themes', to: '/themes' },
+    { from: '../.storybook', to: '/storybook' },
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
@@ -25,9 +29,9 @@ const config = {
   },
   previewHead: head => `
     ${head}
-    <script type="module" src="./../www/build/stencil-library.esm.js"></script>
-    <link rel="stylesheet" href="../src/themes/index.css">
-    <link rel="stylesheet" href="../.storybook/index.css">
+    <script type="module" src="/assets/stencil-library.esm.js"></script>
+    <link rel="stylesheet" href="/themes/index.css">
+    <link rel="stylesheet" href="/storybook/index.css">
   `,
   viteFinal: async config => {
     config.plugins = [

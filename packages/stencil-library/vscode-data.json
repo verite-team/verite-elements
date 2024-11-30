@@ -178,6 +178,10 @@
           "description": ""
         },
         {
+          "name": "show-brand",
+          "description": ""
+        },
+        {
           "name": "show-divider",
           "description": ""
         },
@@ -207,7 +211,13 @@
           "description": "",
           "values": [
             {
+              "name": "code"
+            },
+            {
               "name": "forgotPassword"
+            },
+            {
+              "name": "resetLink"
             },
             {
               "name": "resetPassword"
@@ -898,6 +908,35 @@
       ]
     },
     {
+      "name": "vui-i18n-provider",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "fallback-locale",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "description": ""
+        },
+        {
+          "name": "supported-locales",
+          "description": ""
+        },
+        {
+          "name": "translations",
+          "description": ""
+        },
+        {
+          "name": "translations-path",
+          "description": ""
+        }
+      ]
+    },
+    {
       "name": "vui-icon",
       "description": {
         "kind": "markdown",
@@ -946,6 +985,35 @@
         {
           "name": "required",
           "description": ""
+        }
+      ]
+    },
+    {
+      "name": "vui-language-switcher",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "current-locale",
+          "description": ""
+        },
+        {
+          "name": "languages",
+          "description": ""
+        },
+        {
+          "name": "variant",
+          "description": "",
+          "values": [
+            {
+              "name": "buttons"
+            },
+            {
+              "name": "select"
+            }
+          ]
         }
       ]
     },

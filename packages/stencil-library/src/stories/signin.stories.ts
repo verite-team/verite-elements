@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 
 const meta: Meta = {
-  title: 'Elements/Signup',
-  component: 'vui-signup',
+  title: 'Elements/Signin',
+  component: 'vui-signin',
   argTypes: {
     // elevation: {
     //   control: 'select',
@@ -21,8 +21,8 @@ export const Default: Story = {
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
-    heading="$signup.default.title|product:Acme"
-    description="$signup.default.description"
+    heading="$signin.default.title|product:Acme"
+    description="$signin.default.description"
     brand-label="$brand.label"
     brand-logo="/assets/logo.svg"
   >
@@ -32,24 +32,24 @@ export const Default: Story = {
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="apple" size="20"></vui-logo>
-            <vui-i18n text="$signup.with" params='{"provider": "Apple"}'></vui-i18n>
+            <vui-i18n text="$signin.with" params='{"provider": "Apple"}'></vui-i18n>
           </vui-flex>
         </vui-button>
 
         <vui-button class="google-button" variant="outline" style="width: 100%">
           <vui-flex items="center" gap="2">
             <vui-logo name="google" size="20"></vui-logo>
-            <vui-i18n text="$signup.with" params='{"provider": "Google"}'></vui-i18n>
+            <vui-i18n text="$signin.with" params='{"provider": "Google"}'></vui-i18n>
           </vui-flex>
         </vui-button>
       </vui-flex>
       <vui-divider orientation="horizontal" style="margin: 16px 0">
-        <vui-i18n text="$signup.option"></vui-i18n>
+        <vui-i18n text="$signin.option"></vui-i18n>
       </vui-divider>
     </div>
     <vui-auth-form
-      action="signup"
-      elements='["name", "email", "password", "forgotPassword"]'
+      action="signin"
+      elements='["email", "password"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>

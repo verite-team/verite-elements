@@ -38,6 +38,7 @@
 
  - [vui-auth-footer](../auth)
  - [vui-auth-form](../auth)
+ - [vui-language-switcher](../i18n)
  - [vui-otp](../otp)
  - [vui-request](../request)
  - [vui-theme-toggle](../theme-toggle)
@@ -54,6 +55,7 @@ graph TD;
   vui-button --> vui-spinner
   vui-auth-footer --> vui-button
   vui-auth-form --> vui-button
+  vui-language-switcher --> vui-button
   vui-otp --> vui-button
   vui-request --> vui-button
   vui-theme-toggle --> vui-button
