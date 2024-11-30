@@ -48,6 +48,9 @@ const config = {
         },
       },
     ]
+    if (process.env.NODE_ENV === 'production') {
+      config.base = '/verite-elements/'
+    }
     return config
   },
 }
