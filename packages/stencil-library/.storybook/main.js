@@ -50,17 +50,6 @@ const config = {
     ]
     if (process.env.NODE_ENV === 'production') {
       config.base = '/verite-elements/'
-      config.build = {
-        ...config.build,
-        assetsDir: 'assets',
-        rollupOptions: {
-          output: {
-            assetFileNames: 'assets/[name][extname]',
-            chunkFileNames: 'assets/[name]-[hash].js',
-            entryFileNames: 'assets/[name]-[hash].js',
-          },
-        },
-      }
     }
     return config
   },
