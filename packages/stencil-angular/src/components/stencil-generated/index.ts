@@ -100,14 +100,14 @@ export declare interface VuiAuthFooter extends Components.VuiAuthFooter {
 
 
 @ProxyCmp({
-  inputs: ['action', 'elements', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel']
+  inputs: ['action', 'display', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel']
 })
 @Component({
   selector: 'vui-auth-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['action', 'elements', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel'],
+  inputs: ['action', 'display', 'email', 'emailLabel', 'emailPlaceholder', 'emailValidation', 'firstName', 'firstnameLabel', 'firstnamePlaceholder', 'forgotPasswordLabel', 'isLoading', 'lastName', 'lastnameLabel', 'lastnamePlaceholder', 'password', 'passwordHideLabel', 'passwordLabel', 'passwordPlaceholder', 'passwordShowLabel', 'passwordValidation', 'phone', 'phoneLabel', 'phonePlaceholder', 'styles', 'submitLabel'],
 })
 export class VuiAuthForm {
   protected el: HTMLElement;

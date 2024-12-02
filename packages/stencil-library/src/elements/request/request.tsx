@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core'
 
-import { I18nProvider } from '../i18n/i18n-provider'
+import { I18nProvider } from '../../components/i18n/i18n-provider'
 import { toJSON } from '../../utils/toJSON'
 
 @Component({

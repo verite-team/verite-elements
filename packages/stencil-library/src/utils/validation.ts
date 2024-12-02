@@ -112,8 +112,8 @@ export const createValidationRules = (element: HTMLElement) => {
     },
 
     // Helper functions
-    createPasswordRules: (options: PasswordValidationOptions = {}): ValidationRule[] => {
-      const rules: ValidationRule[] = [ValidationRules.required(getTranslation('$validation.password.required'))]
+    createPasswordRules: (fieldName: string, options: PasswordValidationOptions = {}): ValidationRule[] => {
+      const rules: ValidationRule[] = [ValidationRules.required(fieldName)]
 
       if (options.minLength) {
         rules.push(ValidationRules.minLength(options.minLength))
@@ -137,9 +137,9 @@ export const createValidationRules = (element: HTMLElement) => {
       return rules
     },
 
-    createEmailRules: (options?: EmailValidationOptions): ValidationRule[] => {
+    createEmailRules: (fieldName: string, options?: EmailValidationOptions): ValidationRule[] => {
       const rules: ValidationRule[] = [
-        ValidationRules.required(getTranslation('$validation.email.required')),
+        ValidationRules.required(fieldName),
         ValidationRules.email(getTranslation('$validation.email.invalid')),
       ]
 

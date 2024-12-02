@@ -49,7 +49,7 @@ export const Default: Story = {
     </div>
     <vui-auth-form
       action="signup"
-      elements='["name", "email", "password", "forgotPassword"]'
+      display='["name", "email", "password", "forgotPassword"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>

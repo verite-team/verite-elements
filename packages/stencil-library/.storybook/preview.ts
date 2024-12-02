@@ -1,4 +1,5 @@
 import '../src/themes/index.css'
+import './globals.css'
 
 import { Preview } from '@storybook/web-components'
 
@@ -11,14 +12,30 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Elements', 'Components', 'Forms', 'Layout', '*'],
+        order: [
+          'Introduction',
+          'Getting Started',
+          'Features',
+          'Customization',
+          'FAQ',
+          'Examples',
+          'Contributing',
+          'Elements',
+          ['Signin', 'Signup', 'OTP'],
+          'Connectors',
+          'Components',
+          'Forms',
+          'Layout',
+          '*',
+        ],
       },
     },
+    initialActive: 'Introduction',
+    viewMode: 'docs',
     darkMode: {
-      // classTarget: 'html',
+      classTarget: 'html',
       darkClass: 'dark',
       lightClass: 'light',
-      // current: 'dark',
       stylePreview: true,
     },
     backgrounds: {

@@ -10,6 +10,22 @@ body {
   overflow: auto;
 }
 
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #0078d7, #00a8ff);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* text-transform: uppercase; */
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  margin-bottom: 1rem !important;
+}
+
 Markdown content styling .sb-unstyled {
   color: var(--docs-text-color, inherit);
 }
@@ -75,8 +91,10 @@ html.dark table * {
   color: hsl(var(--foreground));
 }
 
-.sbdocs p {
-  color: hsl(var(--muted-foreground));
+.sbdocs p,
+.sbdocs li {
+  color: hsl(var(--foreground));
+  font-size: 1rem;
 }
 
 td {
@@ -96,3 +114,5 @@ table td button {
   background-color: hsl(var(--background)) !important;
   color: hsl(var(--foreground)) !important;
 }
+
+/*  DARK MODE FOR CODE */

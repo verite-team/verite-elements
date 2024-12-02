@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="FAQ" />
+
+# Frequently Asked Questions
+
+## General Questions
+
+### What makes Verite Elements different from other auth UI libraries?
+Unlike most auth UI libraries that are framework-specific, Verite Elements uses web components, making it truly framework-agnostic. You can use it with any JavaScript framework or vanilla JS, and it won't conflict with your existing components.
+
+### Do I need to use a specific backend?
+No! While we provide easy integration with popular auth providers (Auth0, Firebase, etc.), you can use any backend. Our components emit standard events that you can handle however you need.
+
+### What's the browser support like?
+We support all modern browsers (Chrome, Firefox, Safari, Edge). For older browsers, we recommend using our polyfill bundle, though this is rarely needed as web components are now widely supported.
+
+## Technical Questions
+
+### Can I use this with Server-Side Rendering (SSR)?
+Yes! We're fully compatible with SSR frameworks like Next.js, Nuxt, and others. Our components hydrate properly and avoid the dreaded flash of unstyled content (FOUC).
+
+### How do I handle form submission?
+Our components emit standard events that you can listen for:
+
+```javascript
+const form = document.querySelector('vui-signin');
+form.addEventListener('submit', async (e) => {
+  const formData = e.detail;
+  // Handle submission
+});
+```
+
+### Can I customize the validation rules?
+Absolutely! While we provide sensible defaults, you can override or add custom validation rules:
+
+```javascript
+const form = document.querySelector('vui-form');
+form.validationRules = {
+  password: [
+    {
+      validate: (value) => value.length >= 10,
+      message: 'Password must be at least 10 characters'
+    }
+  ]
+};
+```
+
+## Styling & Customization
+
+### Can I use my own CSS framework?
+Yes! Our components use CSS custom properties (variables) for styling, making them easy to theme. They won't conflict with Bootstrap, Tailwind, or other CSS frameworks.
+
+### How do I create a dark theme?
+We provide a built-in dark theme, but you can also create your own:
+
+```css
+[data-theme="dark"] {
+  --vui-background: #1a1a1a;
+  --vui-text: #ffffff;
+  /* other variables */
+}
+```
+
+## Performance & Security
+
+### What's the bundle size impact?
+Our core bundle is around 12KB gzipped. Components are loaded on-demand, so you only pay for what you use.
+
+### How do you handle security?
+We follow security best practices including:
+- CSRF protection
+- XSS prevention
+- Input sanitization
+- Secure defaults
+- Regular security audits
+
+### Is there a performance impact?
+Web components are lightweight and run close to the metal. Our components are tree-shakeable and lazy-loaded, so they won't impact your initial page load.
+
+## Support & Troubleshooting
+
+### Where can I get help?
+- Check our [documentation](/docs)
+{/* - Join our [Discord community](https://discord.gg/verite) */}
+- Open an issue on [GitHub](https://github.com/verite/elements)
+- Email support at support@verite.dev
+
+### Found a bug?
+Please report it on our [GitHub Issues](https://github.com/verite/elements/issues) page with:
+- A minimal reproduction
+- Browser/device information
+- Expected vs actual behavior

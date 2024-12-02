@@ -1,8 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 
+import { action } from '@storybook/addon-actions'
+
+// Add this import
+
 const meta: Meta = {
   title: 'Elements/Signin',
   component: 'vui-signin',
+  args: {
+    buttonClick: action('button-click'),
+    // onSignin: action('signin'),
+    // onGoogleSignin: action('google-signin'),
+    // onAppleSignin: action('apple-signin'),
+    // onFormSubmit: action('form-submit'),
+  },
   argTypes: {
     // elevation: {
     //   control: 'select',
@@ -16,7 +27,7 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {
-  render: () => `
+  render: args => `
 <vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
@@ -49,9 +60,10 @@ export const Default: Story = {
     </div>
     <vui-auth-form
       action="signin"
-      elements='["email", "password"]'
+      display='["email", "password"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
+      onSubmit=${args.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>

@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Examples" />
+
+# Examples
+
+## Basic Authentication
+
+### Simple Sign In
+The most straightforward way to add authentication to your app:
+
+```html
+<vui-signin
+  provider="email"
+  onSuccess={(user) => console.log('Signed in:', user)}
+></vui-signin>
+```
+
+### Social Authentication
+Implement social login with minimal setup:
+
+```html
+<vui-social-auth
+  providers={['google', 'github', 'twitter']}
+  layout="buttons"
+></vui-social-auth>
+```
+
+## Advanced Patterns
+
+### Multi-step Registration
+Create a smooth multi-step signup flow:
+
+```html
+<vui-multi-step-form>
+  <vui-step name="basics">
+    <vui-signup-basics></vui-signup-basics>
+  </vui-step>
+  <vui-step name="verification">
+    <vui-email-verification></vui-email-verification>
+  </vui-step>
+  <vui-step name="complete">
+    <vui-welcome></vui-welcome>
+  </vui-step>
+</vui-multi-step-form>
+```
+
+### Password-less Authentication
+Implement modern authentication without passwords:
+
+```html
+<vui-magic-link
+  redirect-url="/dashboard"
+  email-template="welcome"
+></vui-magic-link>
+```
+
+## Real-world Solutions
+
+### Enterprise SSO
+Connect with your organization's identity provider:
+
+```html
+<vui-enterprise-auth
+  providers={['okta', 'azure-ad']}
+  domain="company.com"
+></vui-enterprise-auth>
+```
+
+### Compliance-ready Forms
+GDPR and CCPA compliant registration:
+
+```html
+<vui-signup
+  require-consent
+  privacy-policy-url="/privacy"
+  terms-url="/terms"
+></vui-signup>
+```
+
+Check out our [Storybook](/docs/storybook) for more examples and live demos.

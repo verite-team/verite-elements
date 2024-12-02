@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Customization" />
+
+# Customization
+
+## Styling Your Components
+
+### CSS Variables
+Every visual aspect of our components can be customized using CSS variables. Here's a quick example:
+
+```css
+:root {
+  --vui-primary-color: #0066ff;
+  --vui-border-radius: 8px;
+  --vui-font-family: 'Inter', sans-serif;
+}
+```
+
+### Component Slots
+Need more control? Use slots to inject custom content:
+
+```html
+<vui-signin>
+  <div slot="header">
+    <your-custom-logo />
+  </div>
+  <div slot="footer">
+    <your-terms-and-conditions />
+  </div>
+</vui-signin>
+```
+
+## Theming System
+
+### Pre-built Themes
+Jump-start your design with our included themes:
+- Light/Dark modes
+- Material Design inspired
+- iOS style
+- Enterprise look
+
+### Creating Custom Themes
+Build your own theme by extending our base theme:
+
+```css
+.custom-theme {
+  --vui-color-scheme: light;
+  --vui-primary: #0066ff;
+  --vui-secondary: #6c757d;
+  --vui-success: #28a745;
+  --vui-error: #dc3545;
+  /* ... more variables */
+}
+```
+
+## Behavioral Customization
+
+### Event Hooks
+Intercept and modify component behavior:
+
+```javascript
+const signin = document.querySelector('vui-signin');
+signin.addEventListener('beforeSubmit', (e) => {
+  // Add custom validation
+  // Modify form data
+  // Cancel submission if needed
+});
+```
+
+### Validation Rules
+Add custom validation rules:
+
+```javascript
+vuiForm.addValidation('password', {
+  custom: (value) => value.length >= 12,
+  message: 'Password must be at least 12 characters'
+});
+```
+
+### Authentication Flow
+Customize the authentication flow to match your needs:
+- Add extra steps
+- Modify the order of operations
+- Add custom success/error handling
+- Integrate with your backend

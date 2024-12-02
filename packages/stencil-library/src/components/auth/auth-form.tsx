@@ -10,7 +10,7 @@ import { toJSON } from '../../utils/toJSON'
 import { I18nProvider } from '../i18n/i18n-provider'
 import { SignUpFormData } from './types'
 
-type Element = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
+export type DisplayElement = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
 
 @Component({
   tag: 'vui-auth-form',
@@ -29,7 +29,7 @@ export class AuthForm {
   @State() private phoneError: string = ''
   @State() private passwordError: string = ''
   @State() private isSubmitted: boolean = false
-  @State() elementsList: Element[] = []
+  @State() private displayList: DisplayElement[] = []
 
   private _firstNameLabel = 'First name'
   private _lastNameLabel = 'Last name'
@@ -59,7 +59,7 @@ export class AuthForm {
   @Prop({ mutable: true }) phone?: string = ''
   @Prop({ mutable: true }) password?: string = ''
 
-  @Prop({ reflect: true, mutable: true }) elements?: Element[] | string = []
+  @Prop({ reflect: true, mutable: true }) display?: DisplayElement[] | string = []
 
   @Prop() styles?: {
     link?: { [key: string]: string | number }
@@ -110,8 +110,10 @@ export class AuthForm {
 
   private get emailRules(): ValidationRule[] {
     return [
-      ...this.validationRules.createNameRules(this.translate('$form.email.label', { default: this.emailLabel })),
-      ...this.validationRules.createEmailRules(this.parsedEmailValidation()),
+      ...this.validationRules.createEmailRules(
+        this.translate('$form.email.label', { default: this.emailLabel }),
+        this.parsedEmailValidation()
+      ),
     ]
   }
 
@@ -121,8 +123,10 @@ export class AuthForm {
 
   private get passwordRules(): ValidationRule[] {
     return [
-      ...this.validationRules.createNameRules(this.translate('$form.password.label', { default: this.passwordLabel })),
-      ...this.validationRules.createPasswordRules(this.passwordValidation),
+      ...this.validationRules.createPasswordRules(
+        this.translate('$form.password.label', { default: this.passwordLabel }),
+        this.passwordValidation
+      ),
     ]
   }
 
@@ -139,17 +143,17 @@ export class AuthForm {
     e.preventDefault()
     this.isSubmitted = true
 
-    if (this.elements.includes('name')) {
+    if (this.display.includes('name')) {
       this.firstNameError = this.validateField(this.firstName, this.firstNameRules)
       this.lastNameError = this.validateField(this.lastName, this.lastNameRules)
     }
-    if (this.elements.includes('email')) {
+    if (this.display.includes('email')) {
       this.emailError = this.validateField(this.email, this.emailRules)
     }
-    if (this.elements.includes('phone')) {
+    if (this.display.includes('phone')) {
       this.phoneError = this.validateField(this.phone, this.phoneRules)
     }
-    if (this.elements.includes('password')) {
+    if (this.display.includes('password')) {
       this.passwordError = this.validateField(this.password, this.passwordRules)
     }
 
@@ -202,10 +206,16 @@ export class AuthForm {
   }
 
   async componentWillLoad() {
-    if (typeof this.elements === 'string') {
-      this.elementsList = toJSON<Element[]>(this.elements, [])
-    } else {
-      this.elementsList = this.elements
+    if (typeof this.display === 'string') {
+      if (this.display.startsWith('[')) {
+        // if starts with '[', it's a JSON string
+        this.displayList = toJSON<DisplayElement[]>(this.display, [])
+      } else {
+        // if has a comma, it's a comma separated string
+        this.displayList = this.display.split(',') as DisplayElement[]
+      }
+    } else if (Array.isArray(this.display)) {
+      this.displayList = this.display
     }
 
     // Wait for provider to be ready
@@ -232,7 +242,7 @@ export class AuthForm {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.elementsList.includes('name') && (
+        {this.displayList.includes('name') && (
           <vui-flex gap={2} direction="row" items="stretch" breakpointDirection="column" breakpoint="300px">
             <vui-form-input
               label={this.translate('$form.firstName.label', { default: this.firstnameLabel })}
@@ -273,7 +283,7 @@ export class AuthForm {
           </vui-flex>
         )}
 
-        {this.elementsList.includes('email') && (
+        {this.displayList.includes('email') && (
           <vui-form-input
             label={this.translate('$form.email.label', { default: this.emailLabel })}
             htmlFor="email"
@@ -295,7 +305,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elementsList.includes('phone') && (
+        {this.displayList.includes('phone') && (
           <vui-form-input
             label={this.translate('$form.phone.label', { default: this.phoneLabel })}
             htmlFor="phone"
@@ -317,7 +327,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elementsList.includes('password') && (
+        {this.displayList.includes('password') && (
           <vui-form-input
             label={this.translate('$form.password.label', { default: this.passwordLabel })}
             htmlFor="password"
@@ -351,7 +361,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.elementsList.includes('forgotPassword') && (
+        {this.displayList.includes('forgotPassword') && (
           <div class="forgot-password">
             <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
               {this.translate('$form.forgotPassword.label', { default: this.forgotPasswordLabel })}

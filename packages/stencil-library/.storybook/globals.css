@@ -1,0 +1,139 @@
+/**
+ * MIT License
+ * Copyright (c) 2021 Ayush Saini
+ * Holi Theme for prism.js
+ * @author Ayush Saini <@AyushCodes on Twitter>
+ */
+
+.dark code[class*='language-'],
+.dark pre[class*='language-'] {
+  color: #d6e7ff;
+  background: #030314;
+  text-shadow: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  text-align: left;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.dark .prismjs pre[class*='language-']::-moz-selection,
+.dark .prismjs pre[class*='language-'] ::-moz-selection,
+.dark .prismjs code[class*='language-']::-moz-selection,
+.dark .prismjs code[class*='language-'] ::-moz-selection,
+.dark .prismjs pre[class*='language-']::selection,
+.dark .prismjs pre[class*='language-'] ::selection,
+.dark .prismjs code[class*='language-']::selection,
+.dark .prismjs code[class*='language-'] ::selection {
+  color: inherit;
+  background: #1d3b54;
+  text-shadow: none;
+}
+
+.dark .prismjs pre[class*='language-'] {
+  border: 1px solid #2a4555;
+  border-radius: 5px;
+  padding: 1.5em 1em;
+  margin: 1em 0;
+  overflow: auto;
+}
+
+.dark :not(pre) > code[class*='language-'] {
+  color: #f0f6f6;
+  background: #2a4555;
+  padding: 0.2em 0.3em;
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+}
+
+.dark .prismjs .token.comment,
+.dark .prismjs .token.prolog,
+.dark .prismjs .token.doctype,
+.dark .prismjs .token.cdata {
+  color: #446e69;
+}
+
+.dark .prismjs .token.punctuation {
+  color: #d6b007;
+}
+
+.dark .prismjs .token.property,
+.dark .prismjs .token.tag,
+.dark .prismjs .token.boolean,
+.dark .prismjs .token.number,
+.dark .prismjs .token.constant,
+.dark .prismjs .token.symbol,
+.dark .prismjs .token.deleted {
+  color: #d6e7ff;
+}
+
+.dark .prismjs .token.property {
+  color: #009dff;
+}
+
+.dark .prismjs .token.tag {
+  color: #009dff;
+}
+
+/* Style for plain text spans (no token class) */
+/* .dark .prismjs span:not([class]),
+.dark .prismjs span.token:not([class*='token-']) {
+  color: #009dff;
+} */
+
+/* Ensure the opening tag is styled consistently */
+.dark .prismjs .language-html span:first-child {
+  color: #009dff;
+}
+
+.dark .prismjs .token.selector,
+.dark .prismjs .token.selector,
+.dark .prismjs .token.attr-name,
+.dark .prismjs .token.builtin,
+.dark .prismjs .token.inserted {
+  color: #ff0073;
+}
+
+.dark .prismjs .token.string,
+.dark .prismjs .token.char {
+  color: #49c6ec;
+}
+
+.dark .prismjs .token.operator,
+.dark .prismjs .token.entity,
+.dark .prismjs .token.url,
+.dark .prismjs .language-css .token.string,
+.dark .prismjs .style .token.string {
+  color: #ec8e01;
+  background: transparent;
+}
+
+.dark .prismjs .token.atrule,
+.dark .prismjs .token.attr-value,
+.dark .prismjs .token.keyword {
+  color: #0fe468;
+}
+
+.dark .prismjs .token.function,
+.dark .prismjs .token.class-name {
+  color: #78f3e9;
+}
+
+.dark .prismjs .token.regex,
+.dark .prismjs .token.important,
+.dark .prismjs .token.variable {
+  color: #d6e7ff;
+}

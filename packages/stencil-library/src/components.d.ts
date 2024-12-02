@@ -5,24 +5,24 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Element } from "@stencil/core";
+import { DisplayElement } from "./components/auth/auth-form";
 import { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
 import { SignUpFormData } from "./components/auth/types";
-import { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+import { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 import { Translation } from "./components/i18n/i18n-provider";
 import { Language } from "./components/i18n/language-switcher";
 import { LogoName } from "./components/logo/logo";
-import { ToastProps, ToastType } from "./components/toast/toast-interfaces";
-import { MenuAction } from "./components/user-menu/user-menu-interfaces";
-export { Element } from "@stencil/core";
+import { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
+import { MenuAction } from "./elements/user-menu/user-menu-interfaces";
+export { DisplayElement } from "./components/auth/auth-form";
 export { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
 export { SignUpFormData } from "./components/auth/types";
-export { SignInWithIdTokenCredentials } from "./components/google-one-tap/google-one-tap-interfaces";
+export { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 export { Translation } from "./components/i18n/i18n-provider";
 export { Language } from "./components/i18n/language-switcher";
 export { LogoName } from "./components/logo/logo";
-export { ToastProps, ToastType } from "./components/toast/toast-interfaces";
-export { MenuAction } from "./components/user-menu/user-menu-interfaces";
+export { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
+export { MenuAction } from "./elements/user-menu/user-menu-interfaces";
 export namespace Components {
     interface VeriteConnector {
         "type": 'signup' | 'signin';
@@ -58,7 +58,7 @@ export namespace Components {
     }
     interface VuiAuthForm {
         "action": 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' | 'resetLink' | 'code';
-        "elements"?: Element[] | string;
+        "display"?: DisplayElement[] | string;
         "email"?: string;
         "emailLabel": string;
         "emailPlaceholder": string;
@@ -778,7 +778,7 @@ declare namespace LocalJSX {
     }
     interface VuiAuthForm {
         "action"?: 'submit' | 'signup' | 'signin' | 'forgotPassword' | 'resetPassword' | 'resetLink' | 'code';
-        "elements"?: Element[] | string;
+        "display"?: DisplayElement[] | string;
         "email"?: string;
         "emailLabel"?: string;
         "emailPlaceholder"?: string;

@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Introduction" />
+
+<span className="badge">Pre-Alpha</span>
+
+# Introduction
+
+Welcome to Verite Elements — a robust library of web components designed to simplify authentication UI development. Built with Stencil.js, our components help developers implement secure, accessible, and customizable authentication flows with minimal effort.
+
+## What is Verite Elements?
+
+Verite Elements provides framework-agnostic web components focused on authentication interfaces. Our library excels at three core areas:
+
+- **Authentication UI Components:** Pre-built, customizable components for sign-in, sign-up, and one-time password flows
+- **Built-in Form Validation:** Robust client-side validation with customizable rules and error messages
+- **Event System:** Rich event system for tracking authentication flows and user interactions
+
+## Key Benefits
+
+- **Framework Agnostic:** Works seamlessly with React, Vue, Angular, or vanilla JavaScript
+- **Zero Dependencies:** Lightweight and conflict-free - just what you need
+- **Developer Experience:** TypeScript support, extensive documentation, and predictable APIs
+- **Enterprise Ready:** Accessibility compliant, RTL support, and built-in localization
+
+## Quick Example
+
+Here's a simple example of implementing a sign-in form:
+
+```html
+<vui-i18n-provider locale="en">
+  <vui-auth-form
+    action="signin"
+    elements='["email", "password"]'
+    submit-label="$authForm.submit"
+    forgot-password-label="$authForm.forgotPassword"
+  ></vui-auth-form>
+</vui-i18n-provider>
+```
+
+Ready to get started? Check out our [Getting Started](/docs/getting-started) guide or explore our [Components](/docs/components) documentation.
