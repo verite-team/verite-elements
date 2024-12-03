@@ -31,13 +31,13 @@ const a={title:"Elements/Signup",component:"vui-signup",argTypes:{}},i={render:(
     </div>
     <vui-auth-form
       action="signup"
-      elements='["name", "email", "password", "forgotPassword"]'
+      display='["name", "email", "password", "forgotPassword"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
-  `};var e,t,o;i.parameters={...i.parameters,docs:{...(e=i.parameters)==null?void 0:e.docs,source:{originalSource:`{
+  `};var t,e,o;i.parameters={...i.parameters,docs:{...(t=i.parameters)==null?void 0:t.docs,source:{originalSource:`{
   render: () => \`
 <vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
@@ -71,11 +71,11 @@ const a={title:"Elements/Signup",component:"vui-signup",argTypes:{}},i={render:(
     </div>
     <vui-auth-form
       action="signup"
-      elements='["name", "email", "password", "forgotPassword"]'
+      display='["name", "email", "password", "forgotPassword"]'
       submit-label="$authForm.submit"
       forgot-password-label="$authForm.forgotPassword"
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
   \`
-}`,...(o=(t=i.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const l=["Default"];export{i as Default,l as __namedExportsOrder,a as default};
+}`,...(o=(e=i.parameters)==null?void 0:e.docs)==null?void 0:o.source}}};const l=["Default"];export{i as Default,l as __namedExportsOrder,a as default};

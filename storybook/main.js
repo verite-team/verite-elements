@@ -19,6 +19,7 @@ const config = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('storybook-dark-mode'),
     '@storybook/addon-actions',
+    '@storybook/addon-interactions',
   ],
   framework: {
     name: getAbsolutePath('@storybook/web-components-vite'),

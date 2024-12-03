@@ -1,0 +1,2 @@
+import{r as o,h as e,g as s}from"./p-bcf8319a.js";const t=class{constructor(e){o(this,e);this.type="signup"}handleForgotPassword(o){console.log("Forgot password clicked",o)}handleActionClick(o){console.log("Action clicked",o)}async handleFormSubmit(o){o.stopPropagation();console.log("type --\x3e",this.type);console.log("vuiComponent on submit --\x3e",o.detail)}render(){return e("slot",{key:"8916344400fe20c60196779865c564043582f7b7"})}get element(){return s(this)}};export{t as verite_connector};
+//# sourceMappingURL=p-ec02ce1c.entry.js.map

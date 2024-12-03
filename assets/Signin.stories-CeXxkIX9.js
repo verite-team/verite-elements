@@ -1,4 +1,4 @@
-const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:()=>`
+import{v as x}from"./v4-CQkTLCs1.js";const{addons:O}=__STORYBOOK_MODULE_PREVIEW_API__,{ImplicitActionsDuringRendering:E}=__STORYBOOK_MODULE_CORE_EVENTS_PREVIEW_ERRORS__,{global:d}=__STORYBOOK_MODULE_GLOBAL__;var S="storybook/actions",R=`${S}/action-event`,$={depth:10,clearOnStoryChange:!0,limit:50},h=(e,t)=>{let i=Object.getPrototypeOf(e);return!i||t(i)?i:h(i,t)},D=e=>!!(typeof e=="object"&&e&&h(e,t=>/^Synthetic(?:Base)?Event$/.test(t.constructor.name))&&typeof e.persist=="function"),A=e=>{if(D(e)){let t=Object.create(e.constructor.prototype,Object.getOwnPropertyDescriptors(e));t.persist();let i=Object.getOwnPropertyDescriptor(t,"view"),o=i==null?void 0:i.value;return typeof o=="object"&&(o==null?void 0:o.constructor.name)==="Window"&&Object.defineProperty(t,"view",{...i,value:Object.create(o.constructor.prototype)}),t}return e},j=()=>typeof crypto=="object"&&typeof crypto.getRandomValues=="function"?x():Date.now().toString(36)+Math.random().toString(36).substring(2);function P(e,t={}){let i={...$,...t},o=function(...a){var l,u;if(t.implicit){let p=(l="__STORYBOOK_PREVIEW__"in d?d.__STORYBOOK_PREVIEW__:void 0)==null?void 0:l.storyRenders.find(r=>r.phase==="playing"||r.phase==="rendering");if(p){let r=!((u=window==null?void 0:window.FEATURES)!=null&&u.disallowImplicitActionsInRenderV8),c=new E({phase:p.phase,name:e,deprecated:r});if(r)console.warn(c);else throw c}}let f=O.getChannel(),b=j(),y=5,s=a.map(A),w=a.length>1?s:s[0],_={id:b,count:0,data:{name:e,args:w},options:{...i,maxDepth:y+(i.depth||3),allowFunction:i.allowFunction||!1}};f.emit(R,_)};return o.isAction=!0,o.implicit=t.implicit,o}const T={title:"Elements/Signin",component:"vui-signin",args:{buttonClick:P("button-click")},argTypes:{}},n={render:e=>`
 <vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
@@ -31,14 +31,16 @@ const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:(
     </div>
     <vui-auth-form
       action="signin"
-      elements='["email", "password"]'
+      display='["email", "password"]'
       submit-label="$authForm.submit"
+      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
+      onSubmit=${e.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
-  `};var e,t,o;i.parameters={...i.parameters,docs:{...(e=i.parameters)==null?void 0:e.docs,source:{originalSource:`{
-  render: () => \`
+  `};var v,g,m;n.parameters={...n.parameters,docs:{...(v=n.parameters)==null?void 0:v.docs,source:{originalSource:`{
+  render: args => \`
 <vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
@@ -71,11 +73,13 @@ const a={title:"Elements/Signin",component:"vui-signin",argTypes:{}},i={render:(
     </div>
     <vui-auth-form
       action="signin"
-      elements='["email", "password"]'
+      display='["email", "password"]'
       submit-label="$authForm.submit"
+      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
+      onSubmit=\${args.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
   \`
-}`,...(o=(t=i.parameters)==null?void 0:t.docs)==null?void 0:o.source}}};const l=["Default"];export{i as Default,l as __namedExportsOrder,a as default};
+}`,...(m=(g=n.parameters)==null?void 0:g.docs)==null?void 0:m.source}}};const z=["Default"];export{n as Default,z as __namedExportsOrder,T as default};
