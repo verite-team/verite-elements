@@ -14,15 +14,19 @@ input {
   padding: 0 12px;
   font-size: 14px;
   line-height: 1.5;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
   font-family: var(--font-family);
   box-shadow: var(--shadow);
+  outline: none;
 }
 
 input:focus {
-  outline: none;
   border-color: hsl(var(--ring));
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }
 
 input:disabled {
@@ -35,12 +39,17 @@ input::placeholder {
   color: hsl(var(--muted-foreground));
 }
 
-input:invalid {
-  border-color: hsl(var(--destructive));
+input:invalid,
+:host([invalid]) input {
+  border-color: hsl(var(--error, var(--destructive)));
 }
 
-input:invalid:focus {
-  box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+input:invalid:focus,
+:host([invalid]) input:focus {
+  border-color: hsl(var(--error, var(--destructive)));
+  box-shadow: 0 0 0 2px hsl(var(--error, var(--destructive)) / 0.2);
+  outline: 2px solid hsl(var(--error, var(--destructive)));
+  outline-offset: 2px;
 }
 
 input:read-only {

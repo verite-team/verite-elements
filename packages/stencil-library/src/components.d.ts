@@ -85,7 +85,7 @@ export namespace Components {
         /**
           * Password validation options
          */
-        "passwordValidation"?: PasswordValidationOptions;
+        "passwordValidation"?: PasswordValidationOptions | string;
         "phone"?: string;
         "phoneLabel": string;
         "phonePlaceholder": string;
@@ -253,6 +253,7 @@ export namespace Components {
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
         "focusable"?: boolean;
+        "invalid"?: boolean;
         "maxlength"?: number;
         "name"?: string;
         "placeholder"?: string;
@@ -807,7 +808,7 @@ declare namespace LocalJSX {
         /**
           * Password validation options
          */
-        "passwordValidation"?: PasswordValidationOptions;
+        "passwordValidation"?: PasswordValidationOptions | string;
         "phone"?: string;
         "phoneLabel"?: string;
         "phonePlaceholder"?: string;
@@ -984,6 +985,7 @@ declare namespace LocalJSX {
         "autocorrect"?: 'on' | 'off';
         "disabled"?: boolean;
         "focusable"?: boolean;
+        "invalid"?: boolean;
         "maxlength"?: number;
         "name"?: string;
         "onEnterKey"?: (event: VuiTextboxCustomEvent<void>) => void;

@@ -819,14 +819,14 @@ export declare interface VuiSpinner extends Components.VuiSpinner {}
 
 
 @ProxyCmp({
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'invalid', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value']
 })
 @Component({
   selector: 'vui-textbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
+  inputs: ['autocomplete', 'autocorrect', 'disabled', 'focusable', 'invalid', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'type', 'value'],
 })
 export class VuiTextbox {
   protected el: HTMLElement;

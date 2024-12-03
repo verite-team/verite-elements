@@ -18,6 +18,7 @@ export class Textbox {
   @Prop({ reflect: true }) readonly?: boolean
   @Prop({ mutable: true, reflect: true }) value: string = ''
   @Prop() focusable?: boolean = true
+  @Prop({ reflect: true }) invalid?: boolean
 
   // Events
   @Event() valueChange: EventEmitter<string>

@@ -62,6 +62,7 @@ export const Default: Story = {
       action="signin"
       display='["email", "password"]'
       submit-label="$authForm.submit"
+      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
       onSubmit=${args.onFormSubmit}
     ></vui-auth-form>

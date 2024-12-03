@@ -29,7 +29,6 @@ export class AuthForm {
   @State() private phoneError: string = ''
   @State() private passwordError: string = ''
   @State() private isSubmitted: boolean = false
-  @State() private displayList: DisplayElement[] = []
 
   private _firstNameLabel = 'First name'
   private _lastNameLabel = 'Last name'
@@ -73,7 +72,7 @@ export class AuthForm {
   }
 
   /** Password validation options */
-  @Prop() passwordValidation?: PasswordValidationOptions = {
+  @Prop() passwordValidation?: PasswordValidationOptions | string = {
     minLength: 8,
     requireUppercase: false,
     requireLowercase: false,
@@ -121,11 +120,22 @@ export class AuthForm {
     return this.validationRules.createPhoneRules(this.translate('$form.phone.label', { default: this.phoneLabel }))
   }
 
+  private parsedPasswordValidation(): PasswordValidationOptions {
+    try {
+      if (typeof this.passwordValidation === 'string') {
+        return JSON.parse(this.passwordValidation)
+      }
+      return this.passwordValidation || {}
+    } catch (error) {
+      return {}
+    }
+  }
+
   private get passwordRules(): ValidationRule[] {
     return [
       ...this.validationRules.createPasswordRules(
         this.translate('$form.password.label', { default: this.passwordLabel }),
-        this.passwordValidation
+        this.parsedPasswordValidation()
       ),
     ]
   }
@@ -209,13 +219,11 @@ export class AuthForm {
     if (typeof this.display === 'string') {
       if (this.display.startsWith('[')) {
         // if starts with '[', it's a JSON string
-        this.displayList = toJSON<DisplayElement[]>(this.display, [])
+        this.display = toJSON<DisplayElement[]>(this.display, [])
       } else {
         // if has a comma, it's a comma separated string
-        this.displayList = this.display.split(',') as DisplayElement[]
+        this.display = this.display.split(',') as DisplayElement[]
       }
-    } else if (Array.isArray(this.display)) {
-      this.displayList = this.display
     }
 
     // Wait for provider to be ready
@@ -242,7 +250,7 @@ export class AuthForm {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.displayList.includes('name') && (
+        {this.display.includes('name') && (
           <vui-flex gap={2} direction="row" items="stretch" breakpointDirection="column" breakpoint="300px">
             <vui-form-input
               label={this.translate('$form.firstName.label', { default: this.firstnameLabel })}
@@ -258,6 +266,7 @@ export class AuthForm {
                 autocorrect="off"
                 disabled={this.isLoading}
                 value={this.firstName}
+                invalid={!!this.firstNameError}
                 onInput={this.handleInput('firstName')}
                 onEnterKey={this.handleSubmit}
               ></vui-textbox>
@@ -276,6 +285,7 @@ export class AuthForm {
                 autocorrect="off"
                 disabled={this.isLoading}
                 value={this.lastName}
+                invalid={!!this.lastNameError}
                 onInput={this.handleInput('lastName')}
                 onEnterKey={this.handleSubmit}
               ></vui-textbox>
@@ -283,7 +293,7 @@ export class AuthForm {
           </vui-flex>
         )}
 
-        {this.displayList.includes('email') && (
+        {this.display.includes('email') && (
           <vui-form-input
             label={this.translate('$form.email.label', { default: this.emailLabel })}
             htmlFor="email"
@@ -299,13 +309,14 @@ export class AuthForm {
               autocorrect="off"
               disabled={this.isLoading}
               value={this.email}
+              invalid={!!this.emailError}
               onInput={this.handleInput('email')}
               onEnterKey={this.handleSubmit}
             ></vui-textbox>
           </vui-form-input>
         )}
 
-        {this.displayList.includes('phone') && (
+        {this.display.includes('phone') && (
           <vui-form-input
             label={this.translate('$form.phone.label', { default: this.phoneLabel })}
             htmlFor="phone"
@@ -321,13 +332,14 @@ export class AuthForm {
               autocorrect="off"
               disabled={this.isLoading}
               value={this.phone}
+              invalid={!!this.phoneError}
               onInput={this.handleInput('phone')}
               onEnterKey={this.handleSubmit}
             />
           </vui-form-input>
         )}
 
-        {this.displayList.includes('password') && (
+        {this.display.includes('password') && (
           <vui-form-input
             label={this.translate('$form.password.label', { default: this.passwordLabel })}
             htmlFor="password"
@@ -341,6 +353,7 @@ export class AuthForm {
               autocorrect="off"
               disabled={this.isLoading}
               value={this.password}
+              invalid={!!this.passwordError}
               onInput={this.handleInput('password')}
               onEnterKey={this.handleSubmit}
             />
@@ -361,7 +374,7 @@ export class AuthForm {
           </vui-form-input>
         )}
 
-        {this.displayList.includes('forgotPassword') && (
+        {this.display.includes('forgotPassword') && (
           <div class="forgot-password">
             <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
               {this.translate('$form.forgotPassword.label', { default: this.forgotPasswordLabel })}

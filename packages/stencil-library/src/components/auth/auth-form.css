@@ -31,7 +31,6 @@ form {
   position: absolute;
   inset-inline-end: 1px;
   top: 1px;
-  bottom: 1px;
 }
 
 .visibility-toggle::part(button) {
