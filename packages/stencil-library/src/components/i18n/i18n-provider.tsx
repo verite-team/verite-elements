@@ -51,7 +51,6 @@ export class I18nProvider {
 
   private getPreferredLocale(): string {
     const supported = this.getSupportedLocales()
-    console.log('supported', supported)
     if (this.locale) {
       if (!supported.length || supported.includes(this.locale)) {
         return this.locale
