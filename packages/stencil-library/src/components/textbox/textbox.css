@@ -56,3 +56,21 @@ input:read-only {
   background-color: hsl(var(--muted));
   cursor: default;
 }
+
+/* Prevent Chrome's autofill background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important; /* Change white to your desired background color */
+  -webkit-text-fill-color: inherit !important; /* Maintains text color */
+  transition: background-color 5000s ease-in-out 0s; /* Trick to prevent Chrome from resetting the style */
+}
+
+/* For iOS Safari - force the background and text colors */
+@supports (-webkit-touch-callout: none) {
+  input {
+    background-color: hsl(var(--background)) !important; /* Change white to your desired background color */
+    color: inherit !important;
+  }
+}

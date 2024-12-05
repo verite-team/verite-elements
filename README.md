@@ -4,6 +4,7 @@
 pnpm clean
 pnpm install
 pnpm build
+pnpm stencil:dev
 pnpm react:dev
 ```
 

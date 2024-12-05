@@ -1,0 +1,126 @@
+{
+  "language": "italian",
+  "brand": {
+    "label": "Protetto da Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "Nome",
+      "placeholder": "Inserisci il nome"
+    },
+    "lastName": {
+      "label": "Cognome",
+      "placeholder": "Inserisci il cognome"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Inserisci l'email"
+    },
+    "phone": {
+      "label": "Telefono",
+      "placeholder": "Inserisci il numero di telefono"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Inserisci la password",
+      "show": "Mostra password",
+      "hide": "Nascondi password"
+    },
+    "forgotPassword": {
+      "label": "Hai dimenticato la password?"
+    },
+    "submit": {
+      "signin": "Accedi",
+      "signup": "Registrati",
+      "code": "Invia codice",
+      "sendResetLink": "Invia link di reset",
+      "resetPassword": "Reimposta password",
+      "label": "Invia"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} è obbligatorio",
+    "email": {
+      "invalid": "Inserisci un'email valida",
+      "required": "L'email è obbligatoria",
+      "allowedDomains": "Il dominio email deve essere uno dei seguenti: {{domains}}",
+      "blockedDomains": "Il dominio email non può essere: {{domains}}"
+    },
+    "phone": {
+      "required": "Il numero di telefono è obbligatorio"
+    },
+    "password": {
+      "required": "La password è obbligatoria",
+      "minLength": "Deve contenere almeno {length} caratteri",
+      "maxLength": "Non deve superare {length} caratteri",
+      "uppercase": "Deve contenere almeno una lettera maiuscola",
+      "lowercase": "Deve contenere almeno una lettera minuscola",
+      "number": "Deve contenere almeno un numero",
+      "specialChar": "Deve contenere almeno un carattere speciale"
+    }
+  },
+  "request": {
+    "title": "Richiesta permessi",
+    "description": "Questa app potrà:",
+    "prompt": "Vuoi continuare?",
+    "permissions": {
+      "title": "Questa app potrà:"
+    },
+    "redirect": {
+      "title": "URI di reindirizzamento:"
+    },
+    "action": "Continua",
+    "deny": {
+      "label": "Nega"
+    },
+    "approve": {
+      "label": "Approva"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Accedi a {product}",
+      "description": "Bentornato! Accedi per continuare",
+      "prompt": "Non hai un account?",
+      "action": "Registrati",
+      "submit": "Accedi"
+    },
+    "phone": {
+      "title": "Inserisci il tuo numero di telefono",
+      "description": "Ti invieremo un codice sul telefono per continuare",
+      "prompt": "Non hai un account?",
+      "action": "Registrati",
+      "submit": "Invia codice"
+    },
+    "email": {
+      "title": "Inserisci la tua email",
+      "description": "Ti invieremo un codice via email per continuare",
+      "prompt": "Non hai un account?",
+      "action": "Registrati",
+      "submit": "Invia codice"
+    },
+    "with": "Accedi con {provider}",
+    "option": "oppure"
+  },
+  "signup": {
+    "default": {
+      "title": "Registrati su {product}",
+      "description": "Benvenuto! Inserisci i tuoi dati per iniziare",
+      "prompt": "Hai già un account?",
+      "action": "Accedi",
+      "submit": "Registrati"
+    },
+    "with": "Registrati con {provider}",
+    "option": "oppure"
+  },
+  "otp": {
+    "title": "Verifica la tua email",
+    "description": "Abbiamo inviato un codice di verifica alla tua email. Inseriscilo qui sotto",
+    "prompt": "Non hai ricevuto il codice?",
+    "action": "Invia di nuovo",
+    "backToSignIn": "Torna al login",
+    "signIn": "Accedi",
+    "submit": "Verifica"
+  }
+}

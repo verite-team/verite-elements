@@ -1,0 +1,126 @@
+{
+  "language": "hebrew",
+  "brand": {
+    "label": "מאובטח על ידי Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "שם פרטי",
+      "placeholder": "הכנס שם פרטי"
+    },
+    "lastName": {
+      "label": "שם משפחה",
+      "placeholder": "הכנס שם משפחה"
+    },
+    "email": {
+      "label": "דואר אלקטרוני",
+      "placeholder": "הכנס דואר אלקטרוני"
+    },
+    "phone": {
+      "label": "טלפון",
+      "placeholder": "הכנס מספר טלפון"
+    },
+    "password": {
+      "label": "סיסמה",
+      "placeholder": "הכנס סיסמה",
+      "show": "הצג סיסמה",
+      "hide": "הסתר סיסמה"
+    },
+    "forgotPassword": {
+      "label": "שכחת את הסיסמה?"
+    },
+    "submit": {
+      "signin": "התחבר",
+      "signup": "הרשמה",
+      "code": "שלח קוד",
+      "sendResetLink": "שלח קישור לאיפוס",
+      "resetPassword": "אפס סיסמה",
+      "label": "שלח"
+    }
+  },
+  "validation": {
+    "required": "יש להזין {fieldName}",
+    "email": {
+      "invalid": "נא להזין כתובת דואר אלקטרוני תקינה",
+      "required": "יש להזין דואר אלקטרוני",
+      "allowedDomains": "דומיין הדואר האלקטרוני חייב להיות אחד מאלה: {{domains}}",
+      "blockedDomains": "לא ניתן להשתמש בדומיין דואר אלקטרוני: {{domains}}"
+    },
+    "phone": {
+      "required": "יש להזין מספר טלפון"
+    },
+    "password": {
+      "required": "יש להזין סיסמה",
+      "minLength": "חייב להכיל לפחות {length} תווים",
+      "maxLength": "אורך מקסימלי הוא {length} תווים",
+      "uppercase": "חייב להכיל לפחות אות גדולה אחת באנגלית",
+      "lowercase": "חייב להכיל לפחות אות קטנה אחת באנגלית",
+      "number": "חייב להכיל לפחות ספרה אחת",
+      "specialChar": "חייב להכיל לפחות תו מיוחד אחד"
+    }
+  },
+  "request": {
+    "title": "בקשת הרשאות",
+    "description": "האפליקציה תוכל:",
+    "prompt": "האם ברצונך להמשיך?",
+    "permissions": {
+      "title": "האפליקציה תוכל:"
+    },
+    "redirect": {
+      "title": "כתובת הפניה:"
+    },
+    "action": "המשך",
+    "deny": {
+      "label": "דחה"
+    },
+    "approve": {
+      "label": "אשר"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "התחברות ל{product}",
+      "description": "ברוכים השבים! אנא התחבר כדי להמשיך",
+      "prompt": "אין לך חשבון?",
+      "action": "הרשמה",
+      "submit": "התחבר"
+    },
+    "phone": {
+      "title": "הכנס את מספר הטלפון שלך",
+      "description": "נשלח קוד למספר הטלפון שלך להמשך",
+      "prompt": "אין לך חשבון?",
+      "action": "הרשמה",
+      "submit": "שלח קוד"
+    },
+    "email": {
+      "title": "הכנס את הדואר האלקטרוני שלך",
+      "description": "נשלח קוד לדואר האלקטרוני שלך להמשך",
+      "prompt": "אין לך חשבון?",
+      "action": "הרשמה",
+      "submit": "שלח קוד"
+    },
+    "with": "התחבר באמצעות {provider}",
+    "option": "או"
+  },
+  "signup": {
+    "default": {
+      "title": "הרשמה ל{product}",
+      "description": "ברוכים הבאים! אנא מלא את הפרטים כדי להתחיל",
+      "prompt": "כבר יש לך חשבון?",
+      "action": "התחבר",
+      "submit": "הרשמה"
+    },
+    "with": "הרשם באמצעות {provider}",
+    "option": "או"
+  },
+  "otp": {
+    "title": "אמת את הדואר האלקטרוני שלך",
+    "description": "שלחנו קוד אימות לדואר האלקטרוני שלך. אנא הזן אותו למטה",
+    "prompt": "לא קיבלת את הקוד?",
+    "action": "שלח שוב",
+    "backToSignIn": "חזור להתחברות",
+    "signIn": "התחבר",
+    "submit": "אמת"
+  }
+}

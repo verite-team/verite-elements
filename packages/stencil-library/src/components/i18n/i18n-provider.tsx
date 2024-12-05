@@ -15,7 +15,7 @@ interface HTMLVuiI18nProviderElement extends HTMLElement {
 export class I18nProvider {
   @Element() el!: HTMLVuiI18nProviderElement
 
-  @Prop() locale?: string
+  @Prop({ mutable: true }) locale?: string
   @Prop() translations?: Translation | string
   @Prop() loadTranslations?: (locale: string) => Promise<Translation>
   @Prop() translationsPath?: string = '/locales/{locale}.json'

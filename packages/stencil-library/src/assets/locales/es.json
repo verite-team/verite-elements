@@ -1,0 +1,126 @@
+{
+  "language": "spanish",
+  "brand": {
+    "label": "Asegurado por Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "Nombre",
+      "placeholder": "Nombre"
+    },
+    "lastName": {
+      "label": "Apellido",
+      "placeholder": "Apellido"
+    },
+    "email": {
+      "label": "Correo electrónico",
+      "placeholder": "Correo electrónico"
+    },
+    "phone": {
+      "label": "Teléfono",
+      "placeholder": "Teléfono"
+    },
+    "password": {
+      "label": "Contraseña",
+      "placeholder": "Contraseña",
+      "show": "Mostrar contraseña",
+      "hide": "Ocultar contraseña"
+    },
+    "forgotPassword": {
+      "label": "¿Olvidaste tu contraseña?"
+    },
+    "submit": {
+      "signin": "Iniciar sesión",
+      "signup": "Registrarse",
+      "code": "Enviar código",
+      "sendResetLink": "Enviar enlace",
+      "resetPassword": "Restablecer contraseña",
+      "label": "Enviar"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} es obligatorio",
+    "email": {
+      "invalid": "Por favor, introduce un correo electrónico válido",
+      "required": "El correo electrónico es obligatorio",
+      "allowedDomains": "El dominio debe ser uno de: {{domains}}",
+      "blockedDomains": "El dominio no puede ser: {{domains}}"
+    },
+    "phone": {
+      "required": "El teléfono es obligatorio"
+    },
+    "password": {
+      "required": "La contraseña es obligatoria",
+      "minLength": "Debe tener al menos {length} caracteres",
+      "maxLength": "No debe exceder {length} caracteres",
+      "uppercase": "Debe contener al menos una letra mayúscula",
+      "lowercase": "Debe contener al menos una letra minúscula",
+      "number": "Debe contener al menos un número",
+      "specialChar": "Debe contener al menos un carácter especial"
+    }
+  },
+  "request": {
+    "title": "Solicitar permisos",
+    "description": "Esta aplicación podrá:",
+    "prompt": "¿Deseas continuar?",
+    "permissions": {
+      "title": "Esta aplicación podrá:"
+    },
+    "redirect": {
+      "title": "URI de redirección:"
+    },
+    "action": "Continuar",
+    "deny": {
+      "label": "Denegar"
+    },
+    "approve": {
+      "label": "Aprobar"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Iniciar sesión en {product}",
+      "description": "¡Bienvenido de nuevo! Por favor, inicia sesión para continuar",
+      "prompt": "¿No tienes una cuenta?",
+      "action": "Registrarse",
+      "submit": "Iniciar sesión"
+    },
+    "phone": {
+      "title": "Introduce tu número de teléfono",
+      "description": "Enviaremos un código a tu teléfono para continuar.",
+      "prompt": "¿No tienes una cuenta?",
+      "action": "Registrarse",
+      "submit": "Enviar código"
+    },
+    "email": {
+      "title": "Introduce tu correo electrónico",
+      "description": "Enviaremos un código a tu correo para continuar.",
+      "prompt": "¿No tienes una cuenta?",
+      "action": "Registrarse",
+      "submit": "Enviar código"
+    },
+    "with": "Iniciar sesión con {provider}",
+    "option": "o"
+  },
+  "signup": {
+    "default": {
+      "title": "Registrarse en {product}",
+      "description": "¡Bienvenido! Por favor, completa los detalles para comenzar.",
+      "prompt": "¿Ya tienes una cuenta?",
+      "action": "Iniciar sesión",
+      "submit": "Registrarse"
+    },
+    "with": "Registrarse con {provider}",
+    "option": "o"
+  },
+  "otp": {
+    "title": "Verifica tu correo electrónico",
+    "description": "Hemos enviado un código de verificación a tu correo. Por favor, ingrésalo a continuación.",
+    "prompt": "¿No recibiste el código?",
+    "action": "Reenviar",
+    "backToSignIn": "Volver a iniciar sesión",
+    "signIn": "Iniciar sesión",
+    "submit": "Verificar"
+  }
+}
