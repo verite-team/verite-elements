@@ -1,4 +1,4 @@
-import{ae as e,af as t}from"./index-RIGUx13k.js";import{u as s}from"./index-Uee_5tPI.js";import"./iframe-uD4Mc1O-.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function r(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",ul:"ul",...s(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"FAQ"}),`
+import{ae as e,af as t}from"./index-C3TpnbGx.js";import{u as s}from"./index-CIan5W2J.js";import"./iframe-C2ehTtFX.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function r(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",ul:"ul",...s(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"FAQ"}),`
 `,e.jsx(n.h1,{id:"frequently-asked-questions",children:"Frequently Asked Questions"}),`
 `,e.jsx(n.h2,{id:"general-questions",children:"General Questions"}),`
 `,e.jsx(n.h3,{id:"what-makes-verite-elements-different-from-other-auth-ui-libraries",children:"What makes Verite Elements different from other auth UI libraries?"}),`

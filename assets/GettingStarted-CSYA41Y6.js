@@ -1,4 +1,4 @@
-import{ae as e,af as r}from"./index-RIGUx13k.js";import{u as i}from"./index-Uee_5tPI.js";import"./iframe-uD4Mc1O-.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Getting Started"}),`
+import{ae as e,af as r}from"./index-C3TpnbGx.js";import{u as i}from"./index-CIan5W2J.js";import"./iframe-C2ehTtFX.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Getting Started"}),`
 `,e.jsx(n.h1,{id:"getting-started",children:"Getting Started"}),`
 `,e.jsx(n.p,{children:"Getting started with Verite Elements is as easy as including a script and dropping components into your HTML. No build steps. No dependencies."}),`
 `,e.jsx(n.h2,{id:"install",children:"Install"}),`

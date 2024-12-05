@@ -1,0 +1,126 @@
+{
+  "language": "german",
+  "brand": {
+    "label": "Gesichert durch Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "Vorname",
+      "placeholder": "Vorname"
+    },
+    "lastName": {
+      "label": "Nachname",
+      "placeholder": "Nachname"
+    },
+    "email": {
+      "label": "E-Mail",
+      "placeholder": "E-Mail"
+    },
+    "phone": {
+      "label": "Telefon",
+      "placeholder": "Telefon"
+    },
+    "password": {
+      "label": "Passwort",
+      "placeholder": "Passwort",
+      "show": "Passwort anzeigen",
+      "hide": "Passwort verbergen"
+    },
+    "forgotPassword": {
+      "label": "Passwort vergessen?"
+    },
+    "submit": {
+      "signin": "Anmelden",
+      "signup": "Registrieren",
+      "code": "Code senden",
+      "sendResetLink": "Reset-Link senden",
+      "resetPassword": "Passwort zurücksetzen",
+      "label": "Absenden"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} ist erforderlich",
+    "email": {
+      "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "required": "E-Mail ist erforderlich",
+      "allowedDomains": "E-Mail-Domain muss eine der folgenden sein: {{domains}}",
+      "blockedDomains": "E-Mail-Domain darf nicht sein: {{domains}}"
+    },
+    "phone": {
+      "required": "Telefonnummer ist erforderlich"
+    },
+    "password": {
+      "required": "Passwort ist erforderlich",
+      "minLength": "Muss mindestens {length} Zeichen lang sein",
+      "maxLength": "Darf nicht länger als {length} Zeichen sein",
+      "uppercase": "Muss mindestens einen Großbuchstaben enthalten",
+      "lowercase": "Muss mindestens einen Kleinbuchstaben enthalten",
+      "number": "Muss mindestens eine Zahl enthalten",
+      "specialChar": "Muss mindestens ein Sonderzeichen enthalten"
+    }
+  },
+  "request": {
+    "title": "Berechtigungen anfordern",
+    "description": "Diese App wird in der Lage sein:",
+    "prompt": "Möchten Sie fortfahren?",
+    "permissions": {
+      "title": "Diese App wird in der Lage sein:"
+    },
+    "redirect": {
+      "title": "Weiterleitungs-URI:"
+    },
+    "action": "Fortfahren",
+    "deny": {
+      "label": "Ablehnen"
+    },
+    "approve": {
+      "label": "Genehmigen"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Bei {product} anmelden",
+      "description": "Willkommen zurück! Bitte melden Sie sich an, um fortzufahren",
+      "prompt": "Noch kein Konto?",
+      "action": "Registrieren",
+      "submit": "Anmelden"
+    },
+    "phone": {
+      "title": "Geben Sie Ihre Telefonnummer ein",
+      "description": "Senden Sie einen Code an Ihre Telefonnummer, um fortzufahren.",
+      "prompt": "Noch kein Konto?",
+      "action": "Registrieren",
+      "submit": "Code senden"
+    },
+    "email": {
+      "title": "Geben Sie Ihre E-Mail-Adresse ein",
+      "description": "Senden Sie einen Code an Ihre E-Mail-Adresse, um fortzufahren.",
+      "prompt": "Noch kein Konto?",
+      "action": "Registrieren",
+      "submit": "Code senden"
+    },
+    "with": "Anmelden mit {provider}",
+    "option": "oder"
+  },
+  "signup": {
+    "default": {
+      "title": "Bei {product} registrieren",
+      "description": "Willkommen! Bitte füllen Sie die Details aus, um zu beginnen.",
+      "prompt": "Bereits ein Konto?",
+      "action": "Anmelden",
+      "submit": "Registrieren"
+    },
+    "with": "Registrieren mit {provider}",
+    "option": "oder"
+  },
+  "otp": {
+    "title": "E-Mail bestätigen",
+    "description": "Wir haben einen Bestätigungscode an Ihre E-Mail gesendet. Bitte geben Sie ihn unten ein.",
+    "prompt": "Keinen Code erhalten?",
+    "action": "Erneut senden",
+    "backToSignIn": "Zurück zur Anmeldung",
+    "signIn": "Anmelden",
+    "submit": "Bestätigen"
+  }
+}

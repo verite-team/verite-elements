@@ -1,0 +1,126 @@
+{
+  "language": "portuguese",
+  "brand": {
+    "label": "Protegido por Verite",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "Nome",
+      "placeholder": "Digite seu nome"
+    },
+    "lastName": {
+      "label": "Sobrenome",
+      "placeholder": "Digite seu sobrenome"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Digite seu e-mail"
+    },
+    "phone": {
+      "label": "Telefone",
+      "placeholder": "Digite seu telefone"
+    },
+    "password": {
+      "label": "Senha",
+      "placeholder": "Digite sua senha",
+      "show": "Mostrar senha",
+      "hide": "Ocultar senha"
+    },
+    "forgotPassword": {
+      "label": "Esqueceu sua senha?"
+    },
+    "submit": {
+      "signin": "Entrar",
+      "signup": "Cadastrar",
+      "code": "Enviar código",
+      "sendResetLink": "Enviar link de redefinição",
+      "resetPassword": "Redefinir senha",
+      "label": "Enviar"
+    }
+  },
+  "validation": {
+    "required": "{fieldName} é obrigatório",
+    "email": {
+      "invalid": "Por favor, insira um e-mail válido",
+      "required": "E-mail é obrigatório",
+      "allowedDomains": "O domínio do e-mail deve ser um dos seguintes: {{domains}}",
+      "blockedDomains": "O domínio do e-mail não pode ser: {{domains}}"
+    },
+    "phone": {
+      "required": "Telefone é obrigatório"
+    },
+    "password": {
+      "required": "Senha é obrigatória",
+      "minLength": "Deve ter pelo menos {length} caracteres",
+      "maxLength": "Não deve exceder {length} caracteres",
+      "uppercase": "Deve conter pelo menos uma letra maiúscula",
+      "lowercase": "Deve conter pelo menos uma letra minúscula",
+      "number": "Deve conter pelo menos um número",
+      "specialChar": "Deve conter pelo menos um caractere especial"
+    }
+  },
+  "request": {
+    "title": "Solicitar permissões",
+    "description": "Este aplicativo poderá:",
+    "prompt": "Deseja continuar?",
+    "permissions": {
+      "title": "Este aplicativo poderá:"
+    },
+    "redirect": {
+      "title": "URI de redirecionamento:"
+    },
+    "action": "Continuar",
+    "deny": {
+      "label": "Negar"
+    },
+    "approve": {
+      "label": "Aprovar"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "Entrar no {product}",
+      "description": "Bem-vindo de volta! Por favor, faça login para continuar",
+      "prompt": "Não tem uma conta?",
+      "action": "Cadastre-se",
+      "submit": "Entrar"
+    },
+    "phone": {
+      "title": "Digite seu número de telefone",
+      "description": "Enviaremos um código para seu telefone para continuar",
+      "prompt": "Não tem uma conta?",
+      "action": "Cadastre-se",
+      "submit": "Enviar código"
+    },
+    "email": {
+      "title": "Digite seu e-mail",
+      "description": "Enviaremos um código para seu e-mail para continuar",
+      "prompt": "Não tem uma conta?",
+      "action": "Cadastre-se",
+      "submit": "Enviar código"
+    },
+    "with": "Entrar com {provider}",
+    "option": "ou"
+  },
+  "signup": {
+    "default": {
+      "title": "Cadastrar no {product}",
+      "description": "Bem-vindo! Por favor, preencha os detalhes para começar",
+      "prompt": "Já tem uma conta?",
+      "action": "Entrar",
+      "submit": "Cadastrar"
+    },
+    "with": "Cadastrar com {provider}",
+    "option": "ou"
+  },
+  "otp": {
+    "title": "Verificar seu e-mail",
+    "description": "Enviamos um código de verificação para seu e-mail. Por favor, digite-o abaixo",
+    "prompt": "Não recebeu o código?",
+    "action": "Reenviar",
+    "backToSignIn": "Voltar para login",
+    "signIn": "Entrar",
+    "submit": "Verificar"
+  }
+}

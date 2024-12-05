@@ -1,0 +1,126 @@
+{
+  "language": "japanese",
+  "brand": {
+    "label": "Veriteによって保護されています",
+    "logo": "/assets/logo.svg"
+  },
+  "form": {
+    "firstName": {
+      "label": "名",
+      "placeholder": "名を入力"
+    },
+    "lastName": {
+      "label": "姓",
+      "placeholder": "姓を入力"
+    },
+    "email": {
+      "label": "メールアドレス",
+      "placeholder": "メールアドレスを入力"
+    },
+    "phone": {
+      "label": "電話番号",
+      "placeholder": "電話番号を入力"
+    },
+    "password": {
+      "label": "パスワード",
+      "placeholder": "パスワードを入力",
+      "show": "パスワードを表示",
+      "hide": "パスワードを非表示"
+    },
+    "forgotPassword": {
+      "label": "パスワードをお忘れですか？"
+    },
+    "submit": {
+      "signin": "ログイン",
+      "signup": "アカウント作成",
+      "code": "認証コードを送信",
+      "sendResetLink": "リセットリンクを送信",
+      "resetPassword": "パスワードをリセット",
+      "label": "送信"
+    }
+  },
+  "validation": {
+    "required": "{fieldName}を入力してください",
+    "email": {
+      "invalid": "有効なメールアドレスを入力してください",
+      "required": "メールアドレスを入力してください",
+      "allowedDomains": "メールドメインは次のいずれかである必要があります：{{domains}}",
+      "blockedDomains": "このメールドメインは使用できません：{{domains}}"
+    },
+    "phone": {
+      "required": "電話番号を入力してください"
+    },
+    "password": {
+      "required": "パスワードを入力してください",
+      "minLength": "{length}文字以上で入力してください",
+      "maxLength": "{length}文字以下で入力してください",
+      "uppercase": "大文字を1文字以上含める必要があります",
+      "lowercase": "小文字を1文字以上含める必要があります",
+      "number": "数字を1文字以上含める必要があります",
+      "specialChar": "特殊文字を1文字以上含める必要があります"
+    }
+  },
+  "request": {
+    "title": "権限リクエスト",
+    "description": "このアプリは以下の操作が可能になります：",
+    "prompt": "続行しますか？",
+    "permissions": {
+      "title": "このアプリは以下の操作が可能になります："
+    },
+    "redirect": {
+      "title": "リダイレクトURI："
+    },
+    "action": "続行",
+    "deny": {
+      "label": "拒否"
+    },
+    "approve": {
+      "label": "承認"
+    }
+  },
+  "signin": {
+    "default": {
+      "title": "{product}にログイン",
+      "description": "お帰りなさい！ログインして続行してください",
+      "prompt": "アカウントをお持ちでないですか？",
+      "action": "アカウント作成",
+      "submit": "ログイン"
+    },
+    "phone": {
+      "title": "電話番号を入力",
+      "description": "電話番号に認証コードを送信します",
+      "prompt": "アカウントをお持ちでないですか？",
+      "action": "アカウント作成",
+      "submit": "認証コードを送信"
+    },
+    "email": {
+      "title": "メールアドレスを入力",
+      "description": "メールアドレスに認証コードを送信します",
+      "prompt": "アカウントをお持ちでないですか？",
+      "action": "アカウント作成",
+      "submit": "認証コードを送信"
+    },
+    "with": "{provider}でログイン",
+    "option": "または"
+  },
+  "signup": {
+    "default": {
+      "title": "{product}にアカウント作成",
+      "description": "ようこそ！詳細を入力して始めましょう",
+      "prompt": "すでにアカウントをお持ちですか？",
+      "action": "ログイン",
+      "submit": "アカウント作成"
+    },
+    "with": "{provider}でアカウント作成",
+    "option": "または"
+  },
+  "otp": {
+    "title": "メールアドレスを確認",
+    "description": "メールアドレスに認証コードを送信しました。下記に入力してください。",
+    "prompt": "コードが届きませんでしたか？",
+    "action": "再送信",
+    "backToSignIn": "ログインに戻る",
+    "signIn": "ログイン",
+    "submit": "確認"
+  }
+}
