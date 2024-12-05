@@ -1,4 +1,4 @@
-import{ae as n,af as t}from"./index-C7B-pu6f.js";import{u as l}from"./index-BrYv1I7r.js";import"./iframe-UPcROoWa.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function r(i){const e={h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",ul:"ul",...l(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Features"}),`
+import{ae as n,af as t}from"./index-RIGUx13k.js";import{u as l}from"./index-Uee_5tPI.js";import"./iframe-uD4Mc1O-.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function r(i){const e={h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",ul:"ul",...l(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Features"}),`
 `,n.jsx(e.h1,{id:"features",children:"Features"}),`
 `,n.jsx(e.h2,{id:"core-features",children:"Core Features"}),`
 `,n.jsx(e.h3,{id:"framework-agnostic-components",children:"Framework Agnostic Components"}),`

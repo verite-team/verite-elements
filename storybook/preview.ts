@@ -21,7 +21,7 @@ const preview: Preview = {
   },
   decorators: [
     (story, context) => {
-      document.documentElement.lang = context.globals.locale
+      document.documentElement.lang = context.globals.locale || 'en'
       return story()
     },
   ],

@@ -1,4 +1,4 @@
-import{ae as e,af as r}from"./index-C7B-pu6f.js";import{u as i}from"./index-BrYv1I7r.js";import"./iframe-UPcROoWa.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",ul:"ul",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Contributing"}),`
+import{ae as e,af as r}from"./index-RIGUx13k.js";import{u as i}from"./index-Uee_5tPI.js";import"./iframe-uD4Mc1O-.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",ul:"ul",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Contributing"}),`
 `,e.jsx(n.h1,{id:"contributing-to-verite-elements",children:"Contributing to Verite Elements"}),`
 `,e.jsx(n.p,{children:"We love your input! We want to make contributing to Verite Elements as easy and transparent as possible, whether it's:"}),`
 `,e.jsxs(n.ul,{children:[`
