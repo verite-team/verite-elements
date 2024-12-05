@@ -45,7 +45,7 @@ export class AuthFooter {
         {this.prompt && (
           <div class="prompt">
             <span>{this.translate(this.prompt)}</span>
-            <vui-button variant="outline" size="sm" onClick={this.handleActionClick}>
+            <vui-button name="action" variant="outline" size="sm" onClick={this.handleActionClick}>
               {this.translate(this.action)}
             </vui-button>
           </div>

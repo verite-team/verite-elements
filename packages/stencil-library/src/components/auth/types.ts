@@ -1,8 +1,9 @@
-export interface SignUpFormData {
+export interface FormSubmitDetail {
   firstName: string
   lastName: string
   email: string
   password: string
+  event: SubmitEvent | Event
 }
 
 export interface SignUpLabels {

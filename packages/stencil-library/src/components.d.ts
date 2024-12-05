@@ -5,21 +5,27 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DisplayElement } from "./components/auth/auth-form";
+import { DisplayElement, FormErrorDetail } from "./components/auth/auth-form";
 import { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
-import { SignUpFormData } from "./components/auth/types";
+import { FormSubmitDetail } from "./components/auth/types";
+import { LinkClickDetail } from "./components/link/link";
+import { ButtonClickDetail } from "./components/button/button";
 import { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 import { Translation } from "./components/i18n/i18n-provider";
 import { Language } from "./components/i18n/language-switcher";
+import { LinkClickDetail as LinkClickDetail1 } from "./components/link/link";
 import { LogoName } from "./components/logo/logo";
 import { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
 import { MenuAction } from "./elements/user-menu/user-menu-interfaces";
-export { DisplayElement } from "./components/auth/auth-form";
+export { DisplayElement, FormErrorDetail } from "./components/auth/auth-form";
 export { EmailValidationOptions, PasswordValidationOptions } from "./utils/validation";
-export { SignUpFormData } from "./components/auth/types";
+export { FormSubmitDetail } from "./components/auth/types";
+export { LinkClickDetail } from "./components/link/link";
+export { ButtonClickDetail } from "./components/button/button";
 export { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 export { Translation } from "./components/i18n/i18n-provider";
 export { Language } from "./components/i18n/language-switcher";
+export { LinkClickDetail as LinkClickDetail1 } from "./components/link/link";
 export { LogoName } from "./components/logo/logo";
 export { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
 export { MenuAction } from "./elements/user-menu/user-menu-interfaces";
@@ -207,6 +213,7 @@ export namespace Components {
     interface VuiLink {
         "disabled"?: boolean;
         "href"?: string;
+        "name"?: string;
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         "variant"?: 'default' | 'muted' | 'destructive';
     }
@@ -309,6 +316,10 @@ export interface VuiLanguageSwitcherCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiLanguageSwitcherElement;
 }
+export interface VuiLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVuiLinkElement;
+}
 export interface VuiOtpCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVuiOtpElement;
@@ -366,8 +377,9 @@ declare global {
         new (): HTMLVuiAuthFooterElement;
     };
     interface HTMLVuiAuthFormElementEventMap {
-        "formSubmit": SignUpFormData;
-        "forgotPassword": void;
+        "formError": FormErrorDetail;
+        "formSubmit": FormSubmitDetail;
+        "linkClick": LinkClickDetail;
     }
     interface HTMLVuiAuthFormElement extends Components.VuiAuthForm, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiAuthFormElementEventMap>(type: K, listener: (this: HTMLVuiAuthFormElement, ev: VuiAuthFormCustomEvent<HTMLVuiAuthFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -396,7 +408,7 @@ declare global {
         new (): HTMLVuiBrandElement;
     };
     interface HTMLVuiButtonElementEventMap {
-        "buttonClick": MouseEvent;
+        "buttonClick": ButtonClickDetail;
     }
     interface HTMLVuiButtonElement extends Components.VuiButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiButtonElementEventMap>(type: K, listener: (this: HTMLVuiButtonElement, ev: VuiButtonCustomEvent<HTMLVuiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -583,7 +595,18 @@ declare global {
         prototype: HTMLVuiLanguageSwitcherElement;
         new (): HTMLVuiLanguageSwitcherElement;
     };
+    interface HTMLVuiLinkElementEventMap {
+        "linkClick": CustomEvent<LinkClickDetail1>;
+    }
     interface HTMLVuiLinkElement extends Components.VuiLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVuiLinkElementEventMap>(type: K, listener: (this: HTMLVuiLinkElement, ev: VuiLinkCustomEvent<HTMLVuiLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVuiLinkElementEventMap>(type: K, listener: (this: HTMLVuiLinkElement, ev: VuiLinkCustomEvent<HTMLVuiLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLVuiLinkElement: {
         prototype: HTMLVuiLinkElement;
@@ -798,8 +821,9 @@ declare namespace LocalJSX {
         "lastName"?: string;
         "lastnameLabel"?: string;
         "lastnamePlaceholder"?: string;
-        "onForgotPassword"?: (event: VuiAuthFormCustomEvent<void>) => void;
-        "onFormSubmit"?: (event: VuiAuthFormCustomEvent<SignUpFormData>) => void;
+        "onFormError"?: (event: VuiAuthFormCustomEvent<FormErrorDetail>) => void;
+        "onFormSubmit"?: (event: VuiAuthFormCustomEvent<FormSubmitDetail>) => void;
+        "onLinkClick"?: (event: VuiAuthFormCustomEvent<LinkClickDetail>) => void;
         "password"?: string;
         "passwordHideLabel"?: string;
         "passwordLabel"?: string;
@@ -832,7 +856,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "form"?: string;
         "name"?: string;
-        "onButtonClick"?: (event: VuiButtonCustomEvent<MouseEvent>) => void;
+        "onButtonClick"?: (event: VuiButtonCustomEvent<ButtonClickDetail>) => void;
         "size"?: 'default' | 'sm' | 'lg' | 'icon';
         "type"?: 'button' | 'submit' | 'reset';
         "value"?: string;
@@ -936,6 +960,8 @@ declare namespace LocalJSX {
     interface VuiLink {
         "disabled"?: boolean;
         "href"?: string;
+        "name"?: string;
+        "onLinkClick"?: (event: VuiLinkCustomEvent<CustomEvent<LinkClickDetail1>>) => void;
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         "variant"?: 'default' | 'muted' | 'destructive';
     }

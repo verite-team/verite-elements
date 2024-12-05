@@ -2,15 +2,25 @@ import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stenci
 import {
   EmailValidationOptions,
   PasswordValidationOptions,
+  ValidationError,
   ValidationRule,
   createValidationRules,
 } from '../../utils/validation'
 
 import { toJSON } from '../../utils/toJSON'
 import { I18nProvider } from '../i18n/i18n-provider'
-import { SignUpFormData } from './types'
+import { LinkClickDetail } from '../link/link'
+import { FormSubmitDetail } from './types'
 
 export type DisplayElement = 'name' | 'email' | 'phone' | 'password' | 'forgotPassword'
+
+export interface FormErrorDetail {
+  firstName?: ValidationError
+  lastName?: ValidationError
+  email?: ValidationError
+  phone?: ValidationError
+  password?: ValidationError
+}
 
 @Component({
   tag: 'vui-auth-form',
@@ -23,11 +33,11 @@ export class AuthForm {
   private validationRules = createValidationRules(this.el)
 
   @State() private passwordVisible: boolean = false
-  @State() private firstNameError: string = ''
-  @State() private lastNameError: string = ''
-  @State() private emailError: string = ''
-  @State() private phoneError: string = ''
-  @State() private passwordError: string = ''
+  @State() private firstNameError: ValidationError
+  @State() private lastNameError: ValidationError
+  @State() private emailError: ValidationError
+  @State() private phoneError: ValidationError
+  @State() private passwordError: ValidationError
   @State() private isSubmitted: boolean = false
 
   private _firstNameLabel = 'First name'
@@ -64,8 +74,9 @@ export class AuthForm {
     link?: { [key: string]: string | number }
   }
 
-  @Event() formSubmit: EventEmitter<SignUpFormData>
-  @Event() forgotPassword: EventEmitter<void>
+  @Event({ bubbles: true }) formError: EventEmitter<FormErrorDetail>
+  @Event({ bubbles: true }) formSubmit: EventEmitter<FormSubmitDetail>
+  @Event({ bubbles: true }) linkClick: EventEmitter<LinkClickDetail>
 
   private togglePasswordVisibility = () => {
     this.passwordVisible = !this.passwordVisible
@@ -140,41 +151,77 @@ export class AuthForm {
     ]
   }
 
-  private validateField(value: string, rules: ValidationRule[]): string {
+  private validateField(value: string, rules: ValidationRule[], fieldName: string): ValidationError | null {
     for (const rule of rules) {
       if (!rule.validate(value)) {
-        return rule.message
+        return {
+          field: fieldName,
+          message: rule.message,
+          rule: rule.name,
+          value: value,
+        }
       }
     }
-    return ''
+    return null
   }
 
-  private handleSubmit = (e: Event) => {
+  private handleSubmit = (e: SubmitEvent | Event) => {
     e.preventDefault()
     this.isSubmitted = true
 
+    const errors: Record<string, ValidationError> = {}
+
     if (this.display.includes('name')) {
-      this.firstNameError = this.validateField(this.firstName, this.firstNameRules)
-      this.lastNameError = this.validateField(this.lastName, this.lastNameRules)
-    }
-    if (this.display.includes('email')) {
-      this.emailError = this.validateField(this.email, this.emailRules)
-    }
-    if (this.display.includes('phone')) {
-      this.phoneError = this.validateField(this.phone, this.phoneRules)
-    }
-    if (this.display.includes('password')) {
-      this.passwordError = this.validateField(this.password, this.passwordRules)
+      const firstNameResult = this.validateField(this.firstName, this.firstNameRules, 'firstName')
+      const lastNameResult = this.validateField(this.lastName, this.lastNameRules, 'lastName')
+
+      if (firstNameResult) {
+        this.firstNameError = firstNameResult
+        errors.firstName = firstNameResult
+      }
+      if (lastNameResult) {
+        this.lastNameError = lastNameResult
+        errors.lastName = lastNameResult
+      }
     }
 
-    if (!this.firstNameError && !this.lastNameError && !this.emailError && !this.phoneError && !this.passwordError) {
-      this.formSubmit.emit({
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-      })
+    if (this.display.includes('email')) {
+      const emailResult = this.validateField(this.email, this.emailRules, 'email')
+      if (emailResult) {
+        this.emailError = emailResult
+        errors.email = emailResult
+      }
     }
+
+    if (this.display.includes('phone')) {
+      const phoneResult = this.validateField(this.phone, this.phoneRules, 'phone')
+      if (phoneResult) {
+        this.phoneError = phoneResult
+        errors.phone = phoneResult
+      }
+    }
+
+    if (this.display.includes('password')) {
+      const passwordResult = this.validateField(this.password, this.passwordRules, 'password')
+      if (passwordResult) {
+        this.passwordError = passwordResult
+        errors.password = passwordResult
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      this.formError.emit(errors)
+      return
+    }
+
+    const detail: FormSubmitDetail = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      password: this.password,
+      event: e,
+    }
+    this.formSubmit.emit(detail)
   }
 
   private handleInput = (field: 'firstName' | 'lastName' | 'email' | 'phone' | 'password') => (e: Event) => {
@@ -184,26 +231,22 @@ export class AuthForm {
     if (this.isSubmitted) {
       switch (field) {
         case 'firstName':
-          this.firstNameError = this.validateField(this.firstName, this.firstNameRules)
+          this.firstNameError = this.validateField(this.firstName, this.firstNameRules, 'firstName')
           break
         case 'lastName':
-          this.lastNameError = this.validateField(this.lastName, this.lastNameRules)
+          this.lastNameError = this.validateField(this.lastName, this.lastNameRules, 'lastName')
           break
         case 'email':
-          this.emailError = this.validateField(this.email, this.emailRules)
+          this.emailError = this.validateField(this.email, this.emailRules, 'email')
           break
         case 'phone':
-          this.phoneError = this.validateField(this.phone, this.phoneRules)
+          this.phoneError = this.validateField(this.phone, this.phoneRules, 'phone')
           break
         case 'password':
-          this.passwordError = this.validateField(this.password, this.passwordRules)
+          this.passwordError = this.validateField(this.password, this.passwordRules, 'password')
           break
       }
     }
-  }
-
-  private handleForgotPassword = () => {
-    this.forgotPassword.emit()
   }
 
   private translate(key: string, params?: Record<string, string>): string {
@@ -255,7 +298,7 @@ export class AuthForm {
             <vui-form-input
               label={this.translate('$form.firstName.label', { default: this.firstnameLabel })}
               htmlFor="first-name"
-              errorMessage={this.firstNameError}
+              errorMessage={this.firstNameError?.message}
             >
               <vui-textbox
                 id="first-name"
@@ -275,7 +318,7 @@ export class AuthForm {
             <vui-form-input
               label={this.translate('$form.lastName.label', { default: this.lastnameLabel })}
               htmlFor="last-name"
-              errorMessage={this.lastNameError}
+              errorMessage={this.lastNameError?.message}
             >
               <vui-textbox
                 id="last-name"
@@ -297,7 +340,7 @@ export class AuthForm {
           <vui-form-input
             label={this.translate('$form.email.label', { default: this.emailLabel })}
             htmlFor="email"
-            errorMessage={this.emailError}
+            errorMessage={this.emailError?.message}
           >
             <vui-textbox
               id="email"
@@ -320,7 +363,7 @@ export class AuthForm {
           <vui-form-input
             label={this.translate('$form.phone.label', { default: this.phoneLabel })}
             htmlFor="phone"
-            errorMessage={this.phoneError}
+            errorMessage={this.phoneError?.message}
           >
             <vui-textbox
               id="phone"
@@ -343,7 +386,7 @@ export class AuthForm {
           <vui-form-input
             label={this.translate('$form.password.label', { default: this.passwordLabel })}
             htmlFor="password"
-            errorMessage={this.passwordError}
+            errorMessage={this.passwordError?.message}
           >
             <vui-textbox
               id="password"
@@ -359,6 +402,7 @@ export class AuthForm {
             />
             <vui-button
               variant="ghost"
+              size="sm"
               class="visibility-toggle"
               type="button"
               disabled={this.isLoading}
@@ -376,13 +420,13 @@ export class AuthForm {
 
         {this.display.includes('forgotPassword') && (
           <div class="forgot-password">
-            <vui-link href="javascript:void(0)" onClick={this.handleForgotPassword} exportparts="link">
+            <vui-link name="forgotPassword" href="javascript:void(0)" exportparts="link">
               {this.translate('$form.forgotPassword.label', { default: this.forgotPasswordLabel })}
             </vui-link>
           </div>
         )}
 
-        <vui-button type="submit" class="submit-button" busy={this.isLoading}>
+        <vui-button name="submit" type="submit" class="submit-button" busy={this.isLoading}>
           {this.translate(this.getSubmitTranslationKey(), { default: this.submitLabel })}
         </vui-button>
       </form>

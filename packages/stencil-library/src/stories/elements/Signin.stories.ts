@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
+import { ButtonClickDetail, FormErrorDetail, FormSubmitDetail, LinkClickDetail } from '../../components'
 
 import { action } from '@storybook/addon-actions'
 
@@ -8,11 +9,7 @@ const meta: Meta = {
   title: 'Elements/Signin',
   component: 'vui-signin',
   args: {
-    buttonClick: action('button-click'),
-    // onSignin: action('signin'),
-    // onGoogleSignin: action('google-signin'),
-    // onAppleSignin: action('apple-signin'),
-    // onFormSubmit: action('form-submit'),
+    action: action('signin'),
   },
   argTypes: {
     // elevation: {
@@ -27,8 +24,8 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {
-  render: args => `
-<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
+  render: () => `
+<vui-i18n-provider translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
@@ -62,11 +59,48 @@ export const Default: Story = {
       action="signin"
       display='["email", "password"]'
       submit-label="$authForm.submit"
-      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
-      onSubmit=${args.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
   `,
+  play: async ({ canvasElement }) => {
+    const doc = canvasElement.ownerDocument
+
+    const handleButtonClick = (event: CustomEvent<ButtonClickDetail>) => {
+      action('buttonClick')(event)
+    }
+
+    const handleLinkClick = (event: CustomEvent<LinkClickDetail>) => {
+      action('linkClick')(event)
+    }
+
+    const handleFormError = (event: CustomEvent<FormErrorDetail>) => {
+      action('formError')(event)
+    }
+
+    const handleFormSubmit = (event: CustomEvent<FormSubmitDetail>) => {
+      action('formSubmit')(event)
+    }
+
+    // Add all listeners
+    doc.addEventListener('buttonClick', handleButtonClick)
+    doc.addEventListener('linkClick', handleLinkClick)
+    doc.addEventListener('formError', handleFormError)
+    doc.addEventListener('formSubmit', handleFormSubmit)
+
+    // Execute cleanup within the Promise
+    await new Promise<void>(resolve => {
+      const cleanup = () => {
+        doc.removeEventListener('buttonClick', handleButtonClick)
+        doc.removeEventListener('linkClick', handleLinkClick)
+        doc.removeEventListener('formSubmit', handleFormSubmit)
+        doc.removeEventListener('formError', handleFormError)
+        resolve()
+      }
+
+      // Attach cleanup to window unload or you can call it when needed
+      window.addEventListener('unload', cleanup)
+    })
+  },
 }

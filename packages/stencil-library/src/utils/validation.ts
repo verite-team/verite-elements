@@ -1,8 +1,16 @@
 import { I18nProvider } from '../components/i18n/i18n-provider'
 
 export interface ValidationRule {
+  name: string
   message: string
   validate: (value: any) => boolean
+}
+
+export interface ValidationError {
+  field?: string
+  message: string
+  rule?: string
+  value?: any
 }
 
 export interface PasswordValidationOptions {
@@ -27,9 +35,9 @@ export const createValidationRules = (element: HTMLElement) => {
     }
     return provider.getTranslation(key, params)
   }
-
   const ValidationRules = {
     required: (fieldName = ''): ValidationRule => ({
+      name: 'required',
       message: getTranslation('$validation.required', { fieldName }),
       validate: (value: any) => {
         if (value === null || value === undefined) return false
@@ -39,6 +47,7 @@ export const createValidationRules = (element: HTMLElement) => {
     }),
 
     email: (message = ''): ValidationRule => ({
+      name: 'email',
       message: message || getTranslation('$validation.email.invalid'),
       validate: (value: string) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
@@ -46,6 +55,7 @@ export const createValidationRules = (element: HTMLElement) => {
     }),
 
     allowedDomains: (domains: string[], message?: string): ValidationRule => ({
+      name: 'allowedDomains',
       message: message || getTranslation('$validation.email.allowedDomains', { domains: domains.join(', ') }),
       validate: (value: string) => {
         const domain = value.split('@')[1]?.toLowerCase()
@@ -54,6 +64,7 @@ export const createValidationRules = (element: HTMLElement) => {
     }),
 
     blockedDomains: (domains: string[], message?: string): ValidationRule => ({
+      name: 'blockedDomains',
       message: message || getTranslation('$validation.email.blockedDomains', { domains: domains.join(', ') }),
       validate: (value: string) => {
         const domain = value.split('@')[1]?.toLowerCase()
@@ -62,31 +73,37 @@ export const createValidationRules = (element: HTMLElement) => {
     }),
 
     minLength: (length: number, message?: string): ValidationRule => ({
+      name: 'minLength',
       message: message || getTranslation('$validation.password.minLength', { length: length.toString() }),
       validate: (value: string) => value.length >= length,
     }),
 
     maxLength: (length: number, message?: string): ValidationRule => ({
+      name: 'maxLength',
       message: message || getTranslation('$validation.password.maxLength', { length: length.toString() }),
       validate: (value: string) => value.length <= length,
     }),
 
     hasUppercase: (message = ''): ValidationRule => ({
+      name: 'hasUppercase',
       message: message || getTranslation('$validation.password.uppercase'),
       validate: (value: string) => /[A-Z]/.test(value),
     }),
 
     hasLowercase: (message = ''): ValidationRule => ({
+      name: 'hasLowercase',
       message: message || getTranslation('$validation.password.lowercase'),
       validate: (value: string) => /[a-z]/.test(value),
     }),
 
     hasNumber: (message = ''): ValidationRule => ({
+      name: 'hasNumber',
       message: message || getTranslation('$validation.password.number'),
       validate: (value: string) => /\d/.test(value),
     }),
 
     hasSpecialChar: (message = ''): ValidationRule => ({
+      name: 'hasSpecialChar',
       message: message || getTranslation('$validation.password.specialChar'),
       validate: (value: string) => /[!@#$%^&*(),.?":{}|<>]/.test(value),
     }),
@@ -95,6 +112,7 @@ export const createValidationRules = (element: HTMLElement) => {
       return [
         ValidationRules.required(fieldName),
         {
+          name: 'validName',
           message: getTranslation('$validation.required', { fieldName }),
           validate: (value: string) => /^[a-zA-Z\s-']+$/.test(value.trim()),
         },
@@ -105,6 +123,7 @@ export const createValidationRules = (element: HTMLElement) => {
       return [
         ValidationRules.required(fieldName),
         {
+          name: 'validPhone',
           message: getTranslation('$validation.required', { fieldName }),
           validate: (value: string) => /^\+?[\d\s-()]+$/.test(value.trim()),
         },

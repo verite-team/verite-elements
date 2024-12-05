@@ -75,6 +75,7 @@ export class Request {
 
           <div class="actions">
             <vui-button
+              name="deny"
               variant="soft"
               class="deny-button"
               onClick={this.handleDeny}
@@ -85,6 +86,7 @@ export class Request {
             </vui-button>
 
             <vui-button
+              name="approve"
               variant="default"
               class="approve-button"
               onClick={this.handleApprove}

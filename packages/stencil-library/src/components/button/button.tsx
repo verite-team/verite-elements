@@ -1,5 +1,14 @@
 import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stencil/core'
 
+import { Element } from '@stencil/core/internal'
+
+export interface ButtonClickDetail {
+  type: 'button' | 'submit' | 'reset'
+  name?: string
+  value?: string
+  event: MouseEvent
+}
+
 @Component({
   tag: 'vui-button',
   styleUrl: 'button.css',
@@ -7,6 +16,8 @@ import { AttachInternals, Component, Event, EventEmitter, Prop, h } from '@stenc
   formAssociated: true,
 })
 export class Button {
+  @Element() el!: HTMLElement
+
   @Prop({ reflect: true }) variant?: 'default' | 'soft' | 'outline' | 'ghost' | 'destructive' = 'default'
   @Prop({ reflect: true }) size?: 'default' | 'sm' | 'lg' | 'icon' = 'default'
   @Prop({ reflect: true }) width?: 'full' | 'auto' = 'auto'
@@ -22,11 +33,12 @@ export class Button {
   @AttachInternals() internals: ElementInternals
 
   // Events
-  @Event() buttonClick: EventEmitter<MouseEvent>
+  @Event() buttonClick: EventEmitter<ButtonClickDetail>
 
   private handleClick = (event: MouseEvent) => {
     if (!this.busy) {
-      this.buttonClick.emit(event)
+      const detail: ButtonClickDetail = { type: this.type, name: this.name, value: this.value ?? undefined, event }
+      this.buttonClick.emit(detail)
       if (this.type === 'submit') {
         // perform form submission
         this.internals.form?.requestSubmit()

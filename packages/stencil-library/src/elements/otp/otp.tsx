@@ -113,7 +113,7 @@ export class Otp {
             ))}
           </vui-flex>
 
-          <vui-button class="verify-button" type="submit" onClick={this.handleSubmit}>
+          <vui-button name="submit" class="verify-button" type="submit" onClick={this.handleSubmit}>
             {this.translate(this.submitLabel, { default: '$form.submit.label' })}
           </vui-button>
         </form>

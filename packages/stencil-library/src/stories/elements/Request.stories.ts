@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components'
 
+import { action } from '@storybook/addon-actions'
+import { ButtonClickDetail } from '../../components'
+
 const meta: Meta = {
   title: 'Elements/Permissions Request',
   component: 'vui-request',
@@ -38,4 +41,13 @@ export const Default: Story = {
   </vui-auth-alt-card>
 </vui-i18n-provider>
   `,
+  play: async ({ canvasElement }) => {
+    const doc = canvasElement.ownerDocument
+
+    const handleButtonClick = (event: CustomEvent<ButtonClickDetail>) => {
+      action('buttonClick')(event)
+    }
+
+    doc.addEventListener('buttonClick', handleButtonClick)
+  },
 }

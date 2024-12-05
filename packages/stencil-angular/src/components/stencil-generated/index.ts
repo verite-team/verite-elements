@@ -114,18 +114,22 @@ export class VuiAuthForm {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['formSubmit', 'forgotPassword']);
+    proxyOutputs(this, this.el, ['formError', 'formSubmit', 'linkClick']);
   }
 }
 
 
-import type { SignUpFormData as IVuiAuthFormSignUpFormData } from 'stencil-library';
+import type { FormErrorDetail as IVuiAuthFormFormErrorDetail } from 'stencil-library';
+import type { FormSubmitDetail as IVuiAuthFormFormSubmitDetail } from 'stencil-library';
+import type { LinkClickDetail as IVuiAuthFormLinkClickDetail } from 'stencil-library';
 
 export declare interface VuiAuthForm extends Components.VuiAuthForm {
 
-  formSubmit: EventEmitter<CustomEvent<IVuiAuthFormSignUpFormData>>;
+  formError: EventEmitter<CustomEvent<IVuiAuthFormFormErrorDetail>>;
 
-  forgotPassword: EventEmitter<CustomEvent<void>>;
+  formSubmit: EventEmitter<CustomEvent<IVuiAuthFormFormSubmitDetail>>;
+
+  linkClick: EventEmitter<CustomEvent<IVuiAuthFormLinkClickDetail>>;
 }
 
 
@@ -193,9 +197,11 @@ export class VuiButton {
 }
 
 
+import type { ButtonClickDetail as IVuiButtonButtonClickDetail } from 'stencil-library';
+
 export declare interface VuiButton extends Components.VuiButton {
 
-  buttonClick: EventEmitter<CustomEvent<MouseEvent>>;
+  buttonClick: EventEmitter<CustomEvent<IVuiButtonButtonClickDetail>>;
 }
 
 
@@ -677,25 +683,31 @@ export declare interface VuiLanguageSwitcher extends Components.VuiLanguageSwitc
 
 
 @ProxyCmp({
-  inputs: ['disabled', 'href', 'target', 'variant']
+  inputs: ['disabled', 'href', 'name', 'target', 'variant']
 })
 @Component({
   selector: 'vui-link',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'href', 'target', 'variant'],
+  inputs: ['disabled', 'href', 'name', 'target', 'variant'],
 })
 export class VuiLink {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['linkClick']);
   }
 }
 
 
-export declare interface VuiLink extends Components.VuiLink {}
+import type { LinkClickDetail as IVuiLinkLinkClickDetail } from 'stencil-library';
+
+export declare interface VuiLink extends Components.VuiLink {
+
+  linkClick: EventEmitter<CustomEvent<IVuiLinkCustomEvent<[object Object]>>>;
+}
 
 
 @ProxyCmp({
