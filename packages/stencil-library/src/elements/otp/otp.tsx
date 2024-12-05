@@ -37,6 +37,8 @@ export class Otp {
   }
 
   private handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Unidentified') return
+
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault()
       return
@@ -85,6 +87,17 @@ export class Otp {
     }
   }
 
+  private handleInput = (e: Event) => {
+    const input = e.target as HTMLInputElement
+    const value = input.value.slice(-1)
+
+    if (/^\d$/.test(value)) {
+      this.handleDigitInput(value)
+    }
+
+    input.value = ''
+  }
+
   componentDidLoad() {
     this.focusActive()
   }
@@ -104,10 +117,11 @@ export class Otp {
                     active: index === this.activeIndex,
                   }}
                   value={this.code[index] || ''}
-                  readonly
                   focusable={index === this.activeIndex}
                   onMouseDown={this.handleMouseDown}
                   onClick={this.handleMouseDown}
+                  onInput={this.handleInput}
+                  type="tel"
                 />
               </div>
             ))}
