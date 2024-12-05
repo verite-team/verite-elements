@@ -1,5 +1,5 @@
-import{v as x}from"./v4-CQkTLCs1.js";const{addons:O}=__STORYBOOK_MODULE_PREVIEW_API__,{ImplicitActionsDuringRendering:E}=__STORYBOOK_MODULE_CORE_EVENTS_PREVIEW_ERRORS__,{global:d}=__STORYBOOK_MODULE_GLOBAL__;var S="storybook/actions",R=`${S}/action-event`,$={depth:10,clearOnStoryChange:!0,limit:50},h=(e,t)=>{let i=Object.getPrototypeOf(e);return!i||t(i)?i:h(i,t)},D=e=>!!(typeof e=="object"&&e&&h(e,t=>/^Synthetic(?:Base)?Event$/.test(t.constructor.name))&&typeof e.persist=="function"),A=e=>{if(D(e)){let t=Object.create(e.constructor.prototype,Object.getOwnPropertyDescriptors(e));t.persist();let i=Object.getOwnPropertyDescriptor(t,"view"),o=i==null?void 0:i.value;return typeof o=="object"&&(o==null?void 0:o.constructor.name)==="Window"&&Object.defineProperty(t,"view",{...i,value:Object.create(o.constructor.prototype)}),t}return e},j=()=>typeof crypto=="object"&&typeof crypto.getRandomValues=="function"?x():Date.now().toString(36)+Math.random().toString(36).substring(2);function P(e,t={}){let i={...$,...t},o=function(...a){var l,u;if(t.implicit){let p=(l="__STORYBOOK_PREVIEW__"in d?d.__STORYBOOK_PREVIEW__:void 0)==null?void 0:l.storyRenders.find(r=>r.phase==="playing"||r.phase==="rendering");if(p){let r=!((u=window==null?void 0:window.FEATURES)!=null&&u.disallowImplicitActionsInRenderV8),c=new E({phase:p.phase,name:e,deprecated:r});if(r)console.warn(c);else throw c}}let f=O.getChannel(),b=j(),y=5,s=a.map(A),w=a.length>1?s:s[0],_={id:b,count:0,data:{name:e,args:w},options:{...i,maxDepth:y+(i.depth||3),allowFunction:i.allowFunction||!1}};f.emit(R,_)};return o.isAction=!0,o.implicit=t.implicit,o}const T={title:"Elements/Signin",component:"vui-signin",args:{buttonClick:P("button-click")},argTypes:{}},n={render:e=>`
-<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
+import{a as t}from"./chunk-D5ZWXAHU-CGElDDNX.js";import"./v4-CQkTLCs1.js";const g={title:"Elements/Signin",component:"vui-signin",args:{action:t("signin")},argTypes:{}},o={render:()=>`
+<vui-i18n-provider translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
@@ -33,15 +33,13 @@ import{v as x}from"./v4-CQkTLCs1.js";const{addons:O}=__STORYBOOK_MODULE_PREVIEW_
       action="signin"
       display='["email", "password"]'
       submit-label="$authForm.submit"
-      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
-      onSubmit=${e.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
-  `};var v,g,m;n.parameters={...n.parameters,docs:{...(v=n.parameters)==null?void 0:v.docs,source:{originalSource:`{
-  render: args => \`
-<vui-i18n-provider locale="en" translations-path="./assets/locales/{locale}.json">
+  `,play:async({canvasElement:v})=>{const i=v.ownerDocument,n=e=>{t("buttonClick")(e)},r=e=>{t("linkClick")(e)},a=e=>{t("formError")(e)},l=e=>{t("formSubmit")(e)};i.addEventListener("buttonClick",n),i.addEventListener("linkClick",r),i.addEventListener("formError",a),i.addEventListener("formSubmit",l),await new Promise(e=>{const c=()=>{i.removeEventListener("buttonClick",n),i.removeEventListener("linkClick",r),i.removeEventListener("formSubmit",l),i.removeEventListener("formError",a),e()};window.addEventListener("unload",c)})}};var s,u,d;o.parameters={...o.parameters,docs:{...(s=o.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  render: () => \`
+<vui-i18n-provider translations-path="./assets/locales/{locale}.json">
   <vui-auth-card
     style="display: flex; flex-direction: column; gap: 24px; max-width: 400px; margin: 0 auto;"
     elevation="lg"
@@ -75,11 +73,46 @@ import{v as x}from"./v4-CQkTLCs1.js";const{addons:O}=__STORYBOOK_MODULE_PREVIEW_
       action="signin"
       display='["email", "password"]'
       submit-label="$authForm.submit"
-      password-validation='{"minLength": 8, "requireUppercase": true, "requireLowercase": true, "requireNumbers": true, "requireSpecialChars": true}'
       forgot-password-label="$authForm.forgotPassword"
-      onSubmit=\${args.onFormSubmit}
     ></vui-auth-form>
   </vui-auth-card>
 </vui-i18n-provider>
-  \`
-}`,...(m=(g=n.parameters)==null?void 0:g.docs)==null?void 0:m.source}}};const z=["Default"];export{n as Default,z as __namedExportsOrder,T as default};
+  \`,
+  play: async ({
+    canvasElement
+  }) => {
+    const doc = canvasElement.ownerDocument;
+    const handleButtonClick = (event: CustomEvent<ButtonClickDetail>) => {
+      action('buttonClick')(event);
+    };
+    const handleLinkClick = (event: CustomEvent<LinkClickDetail>) => {
+      action('linkClick')(event);
+    };
+    const handleFormError = (event: CustomEvent<FormErrorDetail>) => {
+      action('formError')(event);
+    };
+    const handleFormSubmit = (event: CustomEvent<FormSubmitDetail>) => {
+      action('formSubmit')(event);
+    };
+
+    // Add all listeners
+    doc.addEventListener('buttonClick', handleButtonClick);
+    doc.addEventListener('linkClick', handleLinkClick);
+    doc.addEventListener('formError', handleFormError);
+    doc.addEventListener('formSubmit', handleFormSubmit);
+
+    // Execute cleanup within the Promise
+    await new Promise<void>(resolve => {
+      const cleanup = () => {
+        doc.removeEventListener('buttonClick', handleButtonClick);
+        doc.removeEventListener('linkClick', handleLinkClick);
+        doc.removeEventListener('formSubmit', handleFormSubmit);
+        doc.removeEventListener('formError', handleFormError);
+        resolve();
+      };
+
+      // Attach cleanup to window unload or you can call it when needed
+      window.addEventListener('unload', cleanup);
+    });
+  }
+}`,...(d=(u=o.parameters)==null?void 0:u.docs)==null?void 0:d.source}}};const h=["Default"];export{o as Default,h as __namedExportsOrder,g as default};

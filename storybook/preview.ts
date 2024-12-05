@@ -4,6 +4,27 @@ import './globals.css'
 import { Preview } from '@storybook/web-components'
 
 const preview: Preview = {
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Controls the locale for the story',
+      toolbar: {
+        icon: 'globe',
+        dynamicTitle: true,
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'fr', title: 'French' },
+        ],
+        defaultValue: 'en',
+      },
+    },
+  },
+  decorators: [
+    (story, context) => {
+      document.documentElement.lang = context.globals.locale
+      return story()
+    },
+  ],
   parameters: {
     docs: {
       source: {

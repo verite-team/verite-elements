@@ -1,4 +1,4 @@
-import{ae as n,af as t}from"./index-BA7zSGmS.js";import{u as o}from"./index-DCJKTJXR.js";import"./iframe-B5UYubIh.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(i){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",ul:"ul",...o(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Customization"}),`
+import{ae as n,af as t}from"./index-C7B-pu6f.js";import{u as o}from"./index-BrYv1I7r.js";import"./iframe-UPcROoWa.js";import"../sb-preview/runtime.js";import"./index-BiL3ubqk.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";function s(i){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",ul:"ul",...o(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Customization"}),`
 `,n.jsx(e.h1,{id:"customization",children:"Customization"}),`
 `,n.jsx(e.h2,{id:"styling-your-components",children:"Styling Your Components"}),`
 `,n.jsx(e.h3,{id:"css-variables",children:"CSS Variables"}),`
