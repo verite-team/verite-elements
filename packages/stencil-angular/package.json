@@ -2,7 +2,7 @@
   "name": "stencil-angular",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run tsc",
+    "build-x": "npm run tsc",
     "clean": "rm -rf node_modules .turbo dist",
     "tsc": "tsc -p . --outDir ./dist"
   },

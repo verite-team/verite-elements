@@ -6,6 +6,7 @@ pnpm install
 pnpm build
 pnpm stencil:dev
 pnpm react:dev
+pnpm storybook
 ```
 
 ## What should I do first?

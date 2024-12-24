@@ -28,8 +28,8 @@
 
 ### Depends on
 
-- [vui-auth-header](../auth)
-- [vui-button](../button)
+- [vui-auth-header](../../components/auth)
+- [vui-button](../../components/button)
 
 ### Graph
 ```mermaid

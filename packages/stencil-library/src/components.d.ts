@@ -13,7 +13,6 @@ import { ButtonClickDetail } from "./components/button/button";
 import { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 import { Translation } from "./components/i18n/i18n-provider";
 import { Language } from "./components/i18n/language-switcher";
-import { LinkClickDetail as LinkClickDetail1 } from "./components/link/link";
 import { LogoName } from "./components/logo/logo";
 import { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
 import { MenuAction } from "./elements/user-menu/user-menu-interfaces";
@@ -25,7 +24,6 @@ export { ButtonClickDetail } from "./components/button/button";
 export { SignInWithIdTokenCredentials } from "./elements/google-one-tap/google-one-tap-interfaces";
 export { Translation } from "./components/i18n/i18n-provider";
 export { Language } from "./components/i18n/language-switcher";
-export { LinkClickDetail as LinkClickDetail1 } from "./components/link/link";
 export { LogoName } from "./components/logo/logo";
 export { ToastProps, ToastType } from "./elements/toast/toast-interfaces";
 export { MenuAction } from "./elements/user-menu/user-menu-interfaces";
@@ -596,7 +594,7 @@ declare global {
         new (): HTMLVuiLanguageSwitcherElement;
     };
     interface HTMLVuiLinkElementEventMap {
-        "linkClick": CustomEvent<LinkClickDetail1>;
+        "linkClick": CustomEvent<{ name: string; event: MouseEvent }>;
     }
     interface HTMLVuiLinkElement extends Components.VuiLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLVuiLinkElementEventMap>(type: K, listener: (this: HTMLVuiLinkElement, ev: VuiLinkCustomEvent<HTMLVuiLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -961,7 +959,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "href"?: string;
         "name"?: string;
-        "onLinkClick"?: (event: VuiLinkCustomEvent<CustomEvent<LinkClickDetail1>>) => void;
+        "onLinkClick"?: (event: VuiLinkCustomEvent<CustomEvent<{ name: string; event: MouseEvent }>>) => void;
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         "variant"?: 'default' | 'muted' | 'destructive';
     }

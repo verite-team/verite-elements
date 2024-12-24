@@ -234,7 +234,7 @@
           ]
         },
         {
-          "name": "elements",
+          "name": "display",
           "description": ""
         },
         {
@@ -304,6 +304,10 @@
         {
           "name": "password-show-label",
           "description": ""
+        },
+        {
+          "name": "password-validation",
+          "description": "Password validation options"
         },
         {
           "name": "phone",
@@ -1033,6 +1037,10 @@
           "description": ""
         },
         {
+          "name": "name",
+          "description": ""
+        },
+        {
           "name": "target",
           "description": "",
           "values": [
@@ -1221,6 +1229,10 @@
         },
         {
           "name": "focusable",
+          "description": ""
+        },
+        {
+          "name": "invalid",
           "description": ""
         },
         {

@@ -28,9 +28,9 @@
 
 ### Depends on
 
-- [vui-flex](../flex)
-- [vui-textbox](../textbox)
-- [vui-button](../button)
+- [vui-flex](../../components/flex)
+- [vui-textbox](../../components/textbox)
+- [vui-button](../../components/button)
 
 ### Graph
 ```mermaid

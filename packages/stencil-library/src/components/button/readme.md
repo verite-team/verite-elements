@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event         | Description | Type                      |
-| ------------- | ----------- | ------------------------- |
-| `buttonClick` |             | `CustomEvent<MouseEvent>` |
+| Event         | Description | Type                             |
+| ------------- | ----------- | -------------------------------- |
+| `buttonClick` |             | `CustomEvent<ButtonClickDetail>` |
 
 
 ## Shadow Parts
@@ -39,11 +39,11 @@
  - [vui-auth-footer](../auth)
  - [vui-auth-form](../auth)
  - [vui-language-switcher](../i18n)
- - [vui-otp](../otp)
- - [vui-request](../request)
- - [vui-theme-toggle](../theme-toggle)
- - [vui-toast](../toast)
- - [vui-user-menu](../user-menu)
+ - [vui-otp](../../elements/otp)
+ - [vui-request](../../elements/request)
+ - [vui-theme-toggle](../../elements/theme-toggle)
+ - [vui-toast](../../elements/toast)
+ - [vui-user-menu](../../elements/user-menu)
 
 ### Depends on
 

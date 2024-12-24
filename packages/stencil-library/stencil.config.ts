@@ -36,29 +36,22 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: 'stencil-library',
-      // proxiesFile: './dist/frameworks/verite-react/index.ts',
-      // includePolyfills: true,
-
       proxiesFile: '../stencil-react/src/components/stencil-generated/index.ts',
-      // customElementsDir: 'dist/components',
-      // includeDefineCustomElements: true,
     }),
+    {
+      type: 'dist-custom-elements',
+      dir: 'dist/components',
+      customElementsExportBehavior: 'single-export-module',
+      includeGlobalScripts: true,
+      externalRuntime: false,
+    },
     angularOutputTarget({
       componentCorePackage: 'stencil-library',
-      // outputType: 'standalone',
-      // directivesProxyFile: './dist/frameworks/verite-angular/index.ts',
-      // outputType: 'component',
-      directivesProxyFile: '../stencil-angular/src/components/stencil-generated/index.ts',
-      // valueAccessorConfigs: angularValueAccessorBindings,
+      outputType: 'standalone',
+      directivesProxyFile: '../stencil-angular/src/components/stencil-generated/components.ts',
+      directivesArrayFile: '../stencil-angular/src/components/stencil-generated/index.ts',
+      customElementsDir: 'dist/components',
     }),
-    // {
-    //   type: 'dist-custom-elements',
-    //   // customElementsExportBehavior: 'auto-define-custom-elements',
-    //   // externalRuntime: false,
-    // },
-    // {
-    //   type: 'docs-readme',
-    // },
     {
       type: 'www',
       serviceWorker: null, // disable service workers

@@ -25,9 +25,9 @@
 
  - [vui-auth-form](../auth)
  - [vui-error-message](../form)
- - [vui-theme-toggle](../theme-toggle)
- - [vui-toast](../toast)
- - [vui-user-menu](../user-menu)
+ - [vui-theme-toggle](../../elements/theme-toggle)
+ - [vui-toast](../../elements/toast)
+ - [vui-user-menu](../../elements/user-menu)
 
 ### Graph
 ```mermaid

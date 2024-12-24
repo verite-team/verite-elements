@@ -24,7 +24,7 @@
 ### Used by
 
  - [vui-auth-form](../auth)
- - [vui-otp](../otp)
+ - [vui-otp](../../elements/otp)
 
 ### Graph
 ```mermaid

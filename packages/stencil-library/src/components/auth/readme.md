@@ -28,7 +28,7 @@
 
  - [vui-auth-alt-card](.)
  - [vui-auth-card](.)
- - [vui-request](../request)
+ - [vui-request](../../elements/request)
 
 ### Depends on
 

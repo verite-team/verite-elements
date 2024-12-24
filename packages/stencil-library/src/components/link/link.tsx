@@ -17,7 +17,7 @@ export class Link {
   @Prop({ reflect: true }) variant?: 'default' | 'muted' | 'destructive' = 'default'
   @Prop({ reflect: true }) disabled?: boolean = false
 
-  @Event({ bubbles: true }) linkClick: EventEmitter<CustomEvent<LinkClickDetail>>
+  @Event({ bubbles: true }) linkClick: EventEmitter<CustomEvent<{ name: string; event: MouseEvent }>>
 
   private handleClick = (event: MouseEvent) => {
     const evt = new CustomEvent<LinkClickDetail>('linkClick', {

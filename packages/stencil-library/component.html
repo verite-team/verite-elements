@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Component Example</title>
+    <link rel="stylesheet" href="/dist/stencil-library/themes/index.css" />
+    <script type="module">
+      import { defineCustomElement } from '/dist/components/vui-button.js'
+      defineCustomElement()
+
+      // Add event listener when the DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.querySelector('vui-button')
+        button.addEventListener('buttonClick', event => {
+          console.log('Button clicked!', event.detail)
+          // event.detail contains: { type, name, value, event }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <vui-button variant="outline" size="sm">Click me</vui-button>
+  </body>
+</html>

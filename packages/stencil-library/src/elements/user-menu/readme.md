@@ -30,12 +30,12 @@
 
 ### Depends on
 
-- [vui-dropdown-menu](../dropdown-menu)
-- [vui-dropdown-menu-trigger](../dropdown-menu)
-- [vui-button](../button)
-- [vui-icon](../icon)
-- [vui-dropdown-menu-item](../dropdown-menu)
-- [vui-dropdown-menu-separator](../dropdown-menu)
+- [vui-dropdown-menu](../../components/dropdown-menu)
+- [vui-dropdown-menu-trigger](../../components/dropdown-menu)
+- [vui-button](../../components/button)
+- [vui-icon](../../components/icon)
+- [vui-dropdown-menu-item](../../components/dropdown-menu)
+- [vui-dropdown-menu-separator](../../components/dropdown-menu)
 
 ### Graph
 ```mermaid

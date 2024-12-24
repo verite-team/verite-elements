@@ -2,9 +2,12 @@
   "name": "stencil-library",
   "version": "1.0.0",
   "description": "Stencil Component Starter",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "elements": "dist/components/index.js",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stencil-library/stencil-library.esm.js",
@@ -30,7 +33,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
     "@ljcl/storybook-addon-cssprops": "^4.0.0",
-    "@stencil/angular-output-target": "^0.10.0",
+    "@stencil/angular-output-target": "^0.10.2",
     "@stencil/core": "^4.7.0",
     "@stencil/react-output-target": "^0.5.3",
     "@storybook/addon-actions": "^8.4.4",
@@ -77,6 +80,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs.js",
       "types": "./dist/types/index.d.ts"
+    },
+    "./dist/components/*": "./dist/components/*",
+    "./dist/components": {
+      "types": "./dist/types/components.d.ts",
+      "import": "./dist/components/index.js"
     },
     "./loader": {
       "import": "./dist/loader/index.js",

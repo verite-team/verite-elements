@@ -9,8 +9,16 @@
 | ---------- | ---------- | ----------- | -------------------------------------------- | ----------- |
 | `disabled` | `disabled` |             | `boolean`                                    | `false`     |
 | `href`     | `href`     |             | `string`                                     | `undefined` |
+| `name`     | `name`     |             | `string`                                     | `undefined` |
 | `target`   | `target`   |             | `"_blank" \| "_parent" \| "_self" \| "_top"` | `undefined` |
 | `variant`  | `variant`  |             | `"default" \| "destructive" \| "muted"`      | `'default'` |
+
+
+## Events
+
+| Event       | Description | Type                                                             |
+| ----------- | ----------- | ---------------------------------------------------------------- |
+| `linkClick` |             | `CustomEvent<CustomEvent<{ name: string; event: MouseEvent; }>>` |
 
 
 ## Shadow Parts

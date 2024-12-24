@@ -11,6 +11,7 @@
 | `autocorrect`  | `autocorrect`  |             | `"off" \| "on"` | `undefined` |
 | `disabled`     | `disabled`     |             | `boolean`       | `undefined` |
 | `focusable`    | `focusable`    |             | `boolean`       | `true`      |
+| `invalid`      | `invalid`      |             | `boolean`       | `undefined` |
 | `maxlength`    | `maxlength`    |             | `number`        | `undefined` |
 | `name`         | `name`         |             | `string`        | `undefined` |
 | `placeholder`  | `placeholder`  |             | `string`        | `undefined` |
@@ -41,7 +42,7 @@
 ### Used by
 
  - [vui-auth-form](../auth)
- - [vui-otp](../otp)
+ - [vui-otp](../../elements/otp)
 
 ### Graph
 ```mermaid

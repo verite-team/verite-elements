@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [vui-user-menu](../user-menu)
+ - [vui-user-menu](../../elements/user-menu)
 
 ### Graph
 ```mermaid

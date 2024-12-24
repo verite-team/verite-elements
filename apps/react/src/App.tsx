@@ -1,6 +1,6 @@
 import './App.css'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import {
   VeriteConnector,
   VuiAuthCard,
@@ -36,39 +36,36 @@ function App() {
   //   })
   // }, [])
 
-  const [counter, setCounter] = useState(1)
+  // const [counter, setCounter] = useState(1)
 
-  function showToast() {
-    // const toast = document.querySelector('VuiToast')
-    toastRef.current?.show({
-      title: 'Hello, world! lorem ipsum dolor sit amet lorem ipsum dolor sit amet ::' + counter,
-      type: 'success',
-    })
-    setCounter(counter + 1)
-    // const { animate, scroll } = Motion
-    // const box = document.querySelector('.box')
-    // animate(box, { translateZ: -100, rotate: 90 }, { duration: 0.2, type: 'spring', stiffness: 300 }).then(evt => {
-    //   animate(
-    //     '.box',
-    //     {
-    //       zoom: 1,
-    //       rotateX: 360,
-    //       rotateY: 360,
-    //       translateZ: 100,
-    //     },
-    //     {
-    //       duration: 0.5,
-    //       easing: 'ease-out',
-    //     }
-    //   )
-    // })
-  }
+  // function showToast() {
+  //   // const toast = document.querySelector('VuiToast')
+  //   toastRef.current?.show({
+  //     title: 'Hello, world! lorem ipsum dolor sit amet lorem ipsum dolor sit amet ::' + counter,
+  //     type: 'success',
+  //   })
+  //   setCounter(counter + 1)
+  //   // const { animate, scroll } = Motion
+  //   // const box = document.querySelector('.box')
+  //   // animate(box, { translateZ: -100, rotate: 90 }, { duration: 0.2, type: 'spring', stiffness: 300 }).then(evt => {
+  //   //   animate(
+  //   //     '.box',
+  //   //     {
+  //   //       zoom: 1,
+  //   //       rotateX: 360,
+  //   //       rotateY: 360,
+  //   //       translateZ: 100,
+  //   //     },
+  //   //     {
+  //   //       duration: 0.5,
+  //   //       easing: 'ease-out',
+  //   //     }
+  //   //   )
+  //   // })
+  // }
 
   return (
     <div className="container">
-      <VuiButton onClick={showToast}>
-        <VuiI18n text="hello" params={{ time: Date.now().toString() }} />
-      </VuiButton>
       <div className="fixed flex items-center gap-2 font-semibold top-4 left-4">
         <img src="/assets/react.svg" alt="React Logo" style={{ width: '32px' }} />
         React App Demo
@@ -110,7 +107,7 @@ function App() {
 
             <VuiAuthForm
               action="signin"
-              elements='["email", "password", "forgotPassword"]'
+              display={['email', 'password', 'forgotPassword']}
               submit-label="$signin.default.submit"
             ></VuiAuthForm>
           </VuiAuthCard>
@@ -146,7 +143,7 @@ function App() {
             </div>
             <VuiAuthForm
               action="signup"
-              elements='["name", "email", "password"]'
+              display={['name', 'email', 'password']}
               submit-label="$signup.default.submit"
             ></VuiAuthForm>
           </VuiAuthCard>

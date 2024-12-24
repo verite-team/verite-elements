@@ -14,8 +14,8 @@
 
 ### Depends on
 
-- [vui-button](../button)
-- [vui-icon](../icon)
+- [vui-button](../../components/button)
+- [vui-icon](../../components/icon)
 
 ### Graph
 ```mermaid
