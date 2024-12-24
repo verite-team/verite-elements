@@ -8,15 +8,23 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "lib": ["dom", "es2015"],
-    "module": "es2015",
+    "lib": ["dom", "es2020"],
+    "module": "es2020",
     "moduleResolution": "node",
-    "target": "es2015",
+    "target": "es2020",
     "skipLibCheck": true,
-    // "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
-    "declarationDir": "./dist/types"
+    "declarationDir": "./dist/types",
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"]
+  "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

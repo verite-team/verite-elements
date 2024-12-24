@@ -9,8 +9,19 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./dist/components": {
+      "types": "./dist/types/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    }
+  },
   "scripts": {
-    "build-x": "npm run tsc",
+    "build": "npm run tsc && npm run copy-files",
+    "copy-files": "cp -r src/components/stencil-generated dist/components/",
     "clean": "rm -rf node_modules .turbo dist",
     "tsc": "tsc -p . --outDir ./dist"
   },

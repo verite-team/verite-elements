@@ -50,6 +50,9 @@ importers:
       stencil-angular:
         specifier: workspace:*
         version: link:../../packages/stencil-angular
+      stencil-library:
+        specifier: workspace:*
+        version: link:../../packages/stencil-library
       tslib:
         specifier: ^2.3.0
         version: 2.6.3
@@ -192,8 +195,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       '@stencil/angular-output-target':
-        specifier: ^0.10.0
-        version: 0.10.0(@stencil/core@4.19.2)
+        specifier: ^0.10.2
+        version: 0.10.2(@stencil/core@4.19.2)
       '@stencil/core':
         specifier: ^4.7.0
         version: 4.19.2
@@ -4110,8 +4113,8 @@ packages:
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
     dev: true
 
-  /@stencil/angular-output-target@0.10.0(@stencil/core@4.19.2):
-    resolution: {integrity: sha512-j/VXofXggbqzfzX6+1F++IZbGNfEKw1eQAdd5S4PpjGGWsf0TI6qDBd4YrjCMHAKCSV18FNuKFBejejM/49T/Q==}
+  /@stencil/angular-output-target@0.10.2(@stencil/core@4.19.2):
+    resolution: {integrity: sha512-jPRa2NMAPtm/iMY+mUaWATbIhgY5zPJfUNQyF8nwC0rMrfXifPoRCf6BbH2S4Gy7SX0X4hlP+jAbVUjQNg/P+Q==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
