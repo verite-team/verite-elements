@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { RocClock } from 'stencil-angular'
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core'
+import { PlaygroundComponent } from './components/playground/playground.component'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RocClock],
+  imports: [PlaygroundComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular';
+  title = 'angular'
 }
